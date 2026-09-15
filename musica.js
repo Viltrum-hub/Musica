@@ -28,6 +28,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const playButtons = document.querySelectorAll(".play-card");
 
+    const SUPABASE_URL = "https://tiqwiqwtobuldmncrnrp.supabase.co";
+const SUPABASE_KEY = "sb_publishable_XvlD7ubul9Oo5xZwFwGCRQ_UDR8SPGd";
+
+const { createClient } = window.supabase;
+
+const supabaseClient = createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+);
+
 
     let currentSong = -1;
 
@@ -818,5 +828,135 @@ function animateVisualizer() {
         }
     );
 
+/* =========================================
+   LOGIN / REGISTRO — MODAL
+========================================= */
+
+const loginButton = document.getElementById("loginButton");
+const authOverlay = document.getElementById("authOverlay");
+const authClose = document.getElementById("authClose");
+const authForm = document.getElementById("authForm");
+const authTitle = document.getElementById("authTitle");
+const authSubtitle = document.getElementById("authSubtitle");
+const authSubmit = document.getElementById("authSubmit");
+const authSwitch = document.getElementById("authSwitch");
+const authSwitchText = document.getElementById("authSwitchText");
+const authMessage = document.getElementById("authMessage");
+
+let registerMode = false;
+
+/* Abrir modal */
+
+loginButton.addEventListener("click", () => {
+    authOverlay.classList.add("show");
+    authMessage.textContent = "";
+});
+
+/* Cerrar modal */
+
+authClose.addEventListener("click", () => {
+    authOverlay.classList.remove("show");
+});
+
+/* Cerrar al hacer clic fuera */
+
+authOverlay.addEventListener("click", (event) => {
+    if (event.target === authOverlay) {
+        authOverlay.classList.remove("show");
+    }
+});
+
+/* Cambiar entre iniciar sesión y registrarse */
+
+authSwitch.addEventListener("click", () => {
+
+    registerMode = !registerMode;
+
+    authMessage.textContent = "";
+
+    if (registerMode) {
+
+        authTitle.textContent = "Crear cuenta";
+        authSubtitle.textContent = "Únete a SONORA";
+        authSubmit.textContent = "Registrarse";
+        authSwitchText.textContent = "¿Ya tienes una cuenta?";
+        authSwitch.textContent = "Iniciar sesión";
+
+    } else {
+
+        authTitle.textContent = "Iniciar sesión";
+        authSubtitle.textContent = "Entra a tu cuenta de SONORA";
+        authSubmit.textContent = "Iniciar sesión";
+        authSwitchText.textContent = "¿No tienes una cuenta?";
+        authSwitch.textContent = "Registrarse";
+    }
+});
+
+authForm.addEventListener("submit", async (event) => {
+
+    event.preventDefault();
+
+    const email = document.getElementById("authEmail").value.trim();
+    const password = document.getElementById("authPassword").value;
+
+    if (!email || !password) return;
+
+    authMessage.textContent = "Procesando...";
+    authSubmit.disabled = true;
+
+    try {
+
+        if (registerMode) {
+
+            // REGISTRO
+            const { data, error } = await supabaseClient.auth.signUp({
+             email: email,
+             password: password,
+             options: {
+               emailRedirectTo: window.location.origin
+          }
+        });
+
+            if (error) {
+                throw error;
+            }
+
+            authMessage.textContent =
+                "Cuenta creada correctamente. Revisa tu correo para confirmar tu cuenta.";
+
+        } else {
+
+            // INICIO DE SESIÓN
+            const { data, error } = await supabaseClient.auth.signInWithPassword({
+                email: email,
+                password: password
+            });
+
+            if (error) {
+                throw error;
+            }
+
+            authMessage.textContent =
+                "¡Bienvenido a SONORA!";
+
+            setTimeout(() => {
+                authOverlay.classList.remove("show");
+                authForm.reset();
+                authMessage.textContent = "";
+            }, 1200);
+        }
+
+    } catch (error) {
+
+        console.error("Error de autenticación:", error);
+
+        authMessage.textContent = error.message;
+
+    } finally {
+
+        authSubmit.disabled = false;
+
+    }
+});
 
 });
