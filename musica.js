@@ -913,7 +913,7 @@ authForm.addEventListener("submit", async (event) => {
              email: email,
              password: password,
              options: {
-               emailRedirectTo: window.location.origin
+               emailRedirectTo: "https://viltrum-hub.github.io/Musica/"
           }
         });
 
