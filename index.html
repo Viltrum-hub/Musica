@@ -1,97 +1,183 @@
-<!-- Actualizacion de prueba-->
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>SONORA | Música que conecta</title>
 
-    <!-- Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    <!-- =========================
+         BOOTSTRAP
+    ========================== -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
         rel="stylesheet"
     >
 
-    <!-- Bootstrap Icons -->
+    <!-- =========================
+         BOOTSTRAP ICONS
+    ========================== -->
+
     <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     >
 
-    <!-- Google Font -->
+    <!-- =========================
+         GOOGLE FONT
+    ========================== -->
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
 
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
         rel="stylesheet"
     >
 
+    <!-- =========================
+         CSS
+    ========================== -->
+
     <link rel="stylesheet" href="musica.css">
+
 </head>
+
 
 <body>
 
-<!-- =========================
-     NAVBAR
-========================= -->
 
-<nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav
+    class="navbar navbar-expand-lg fixed-top"
+    id="mainNavbar"
+>
 
     <div class="container">
 
-        <a class="navbar-brand d-flex align-items-center gap-2" href="#inicio">
+
+        <!-- LOGO -->
+
+        <a
+            class="navbar-brand d-flex align-items-center gap-2"
+            href="#inicio"
+        >
 
             <div class="logo-icon">
+
                 <i class="bi bi-soundwave"></i>
+
             </div>
 
-            <span>SONORA</span>
+            <span>
+                SONORA
+            </span>
 
         </a>
+
+
+        <!-- MENÚ MÓVIL -->
 
         <button
             class="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarContent"
+            aria-controls="navbarContent"
+            aria-expanded="false"
+            aria-label="Abrir menú"
         >
+
             <i class="bi bi-list"></i>
+
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarContent">
+
+        <!-- CONTENIDO NAVBAR -->
+
+        <div
+            class="collapse navbar-collapse"
+            id="navbarContent"
+        >
+
+
+            <!-- ENLACES -->
 
             <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
 
+
                 <li class="nav-item">
-                    <a class="nav-link active" href="#inicio">
+
+                    <a
+                        class="nav-link active"
+                        href="#inicio"
+                    >
                         Inicio
                     </a>
+
                 </li>
 
+
                 <li class="nav-item">
-                    <a class="nav-link" href="#explorar">
+
+                    <a
+                        class="nav-link"
+                        href="#explorar"
+                    >
                         Explorar
                     </a>
+
                 </li>
 
+
                 <li class="nav-item">
-                    <a class="nav-link" href="#artistas">
+
+                    <a
+                        class="nav-link"
+                        href="#artistas"
+                    >
                         Artistas
                     </a>
+
                 </li>
 
+
                 <li class="nav-item">
-                    <a class="nav-link" href="#albumes">
+
+                    <a
+                        class="nav-link"
+                        href="#albumes"
+                    >
                         Álbumes
                     </a>
+
                 </li>
+
 
             </ul>
 
+
+            <!-- CONTROLES -->
+
             <div class="d-flex align-items-center gap-3">
 
+
+                <!-- SELECTOR DE TEMA -->
+
                 <div class="planet-theme-selector">
+
+
                     <button
                         class="planet-theme-button"
                         id="planetThemeButton"
@@ -100,181 +186,421 @@
                         aria-controls="planetThemeMenu"
                         aria-label="Seleccionar estilo musical"
                     >
+
                         <span class="planet-button-orb"></span>
+
                         <span class="planet-button-text">
-                           
-                            <strong id="currentThemeName">ELECTRONIC</strong>
+
+                            <strong id="currentThemeName">
+                                ELECTRONIC
+                            </strong>
+
                         </span>
+
                         <i class="bi bi-chevron-down"></i>
+
                     </button>
 
-                    <div class="planet-theme-menu" id="planetThemeMenu">
+
+                    <div
+                        class="planet-theme-menu"
+                        id="planetThemeMenu"
+                    >
+
                         <div class="planet-menu-heading">
-                            <span>SELECT YOUR WORLD</span>
-                            <small>Cambia la identidad visual de SONORA</small>
+
+                            <span>
+                                SELECT YOUR WORLD
+                            </span>
+
+                            <small>
+                                Cambia la identidad visual de SONORA
+                            </small>
+
                         </div>
 
-                        <button class="planet-theme-option active" data-theme="electronic" type="button">
+
+                        <!-- ELECTRONIC -->
+
+                        <button
+                            class="planet-theme-option active"
+                            data-theme="electronic"
+                            type="button"
+                        >
+
                             <span class="theme-planet-orb electronic"></span>
+
                             <span>
-                                <strong>ELECTRONIC</strong>
-                                <small>Cyan / Violet</small>
+
+                                <strong>
+                                    ELECTRONIC
+                                </strong>
+
+                                <small>
+                                    Cyan / Violet
+                                </small>
+
                             </span>
+
                         </button>
 
-                        <button class="planet-theme-option" data-theme="pop" type="button">
+
+                        <!-- POP -->
+
+                        <button
+                            class="planet-theme-option"
+                            data-theme="pop"
+                            type="button"
+                        >
+
                             <span class="theme-planet-orb pop"></span>
+
                             <span>
-                                <strong>POP</strong>
-                                <small>Pink / Magenta</small>
+
+                                <strong>
+                                    POP
+                                </strong>
+
+                                <small>
+                                    Pink / Magenta
+                                </small>
+
                             </span>
+
                         </button>
 
-                        <button class="planet-theme-option" data-theme="rock" type="button">
+
+                        <!-- ROCK -->
+
+                        <button
+                            class="planet-theme-option"
+                            data-theme="rock"
+                            type="button"
+                        >
+
                             <span class="theme-planet-orb rock"></span>
+
                             <span>
-                                <strong>ROCK</strong>
-                                <small>Red / Orange</small>
+
+                                <strong>
+                                    ROCK
+                                </strong>
+
+                                <small>
+                                    Red / Orange
+                                </small>
+
                             </span>
+
                         </button>
 
-                        <button class="planet-theme-option" data-theme="jazz" type="button">
+
+                        <!-- JAZZ -->
+
+                        <button
+                            class="planet-theme-option"
+                            data-theme="jazz"
+                            type="button"
+                        >
+
                             <span class="theme-planet-orb jazz"></span>
+
                             <span>
-                                <strong>JAZZ</strong>
-                                <small>Gold / Teal</small>
+
+                                <strong>
+                                    JAZZ
+                                </strong>
+
+                                <small>
+                                    Gold / Teal
+                                </small>
+
                             </span>
+
                         </button>
 
-                        <button class="planet-theme-option" data-theme="hiphop" type="button">
+
+                        <!-- HIP HOP -->
+
+                        <button
+                            class="planet-theme-option"
+                            data-theme="hiphop"
+                            type="button"
+                        >
+
                             <span class="theme-planet-orb hiphop"></span>
+
                             <span>
-                                <strong>HIP HOP</strong>
-                                <small>Lime / Orange</small>
+
+                                <strong>
+                                    HIP HOP
+                                </strong>
+
+                                <small>
+                                    Lime / Orange
+                                </small>
+
                             </span>
+
                         </button>
+
+
                     </div>
+
                 </div>
 
-                <button class="search-button" id="openSearch"> <i class="bi bi-search"></i> </button>
 
-                <button class="login-button" id="loginButton">Iniciar sesión </button>
+                <!-- BUSCAR -->
+
+                <button
+                    class="search-button"
+                    id="openSearch"
+                    type="button"
+                    aria-label="Buscar"
+                >
+
+                    <i class="bi bi-search"></i>
+
+                </button>
+
+
+                <!-- MI PERFIL -->
+
+<button
+    class="login-button"
+    id="loginButton"
+    type="button"
+    aria-label="Abrir perfil"
+>
+    <span id="loginButtonContent">
+        <span class="navbar-profile-content">
+            <span class="navbar-avatar-wrapper">
+                <img
+                    src=""
+                    alt="Avatar"
+                    class="navbar-avatar"
+                >
+            </span>
+
+            <span class="navbar-profile-text">Mi perfil</span>
+        </span>
+    </span>
+</button>
+
+
             </div>
+
         </div>
+
     </div>
+
 </nav>
 
 
-<!-- =========================
-     HERO
-========================= -->
 
-<section id="inicio" class="hero">
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section
+    id="inicio"
+    class="hero"
+>
+
 
     <div class="hero-glow glow-one"></div>
+
     <div class="hero-glow glow-two"></div>
+
 
     <div class="container">
 
+
         <div class="row align-items-center min-vh-100">
+
+
+            <!-- CONTENIDO -->
 
             <div class="col-lg-6 hero-content">
 
+
                 <span class="hero-label">
+
                     <i class="bi bi-stars"></i>
+
                     DESCUBRE NUEVOS SONIDOS
+
                 </span>
 
+
                 <h1>
+
                     La música
-                    <span>que te hace sentir.</span>
+
+                    <span>
+                        que te hace sentir.
+                    </span>
+
                 </h1>
 
+
                 <p>
+
                     Descubre artistas, álbumes y canciones que harán
                     que cada momento tenga su propia banda sonora.
+
                 </p>
+
 
                 <div class="hero-buttons">
 
-                    <a href="#explorar" class="btn-main">
+
+                    <a
+                        href="#explorar"
+                        class="btn-main"
+                    >
+
                         Explorar música
+
                         <i class="bi bi-arrow-right"></i>
+
                     </a>
 
-                    <a href="#albumes" class="btn-outline">
+
+                    <a
+                        href="#albumes"
+                        class="btn-outline"
+                    >
+
                         Ver álbumes
+
                     </a>
+
 
                 </div>
 
+
                 <div class="hero-stats">
 
-                    <div>
-                        <strong>500K+</strong>
-                        <span>Canciones</span>
-                    </div>
 
                     <div>
-                        <strong>80K+</strong>
-                        <span>Artistas</span>
+
+                        <strong>
+                            500K+
+                        </strong>
+
+                        <span>
+                            Canciones
+                        </span>
+
                     </div>
 
+
                     <div>
-                        <strong>120+</strong>
-                        <span>Géneros</span>
+
+                        <strong>
+                            80K+
+                        </strong>
+
+                        <span>
+                            Artistas
+                        </span>
+
                     </div>
+
+
+                    <div>
+
+                        <strong>
+                            120+
+                        </strong>
+
+                        <span>
+                            Géneros
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- VISUALIZADOR -->
+
+            <div class="sound-wave">
+
+                <div class="equalizer">
+
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
 
                 </div>
 
             </div>
 
 
-           
-<div class="sound-wave">
-    <div class="equalizer">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-</div>
+            <!-- NOTAS -->
 
-<div class="floating-note note-one">♪</div>
-<div class="floating-note note-two">♫</div>
-<div class="floating-note note-three">♪</div>
+            <div class="floating-note note-one">
+                ♪
+            </div>
+
+            <div class="floating-note note-two">
+                ♫
+            </div>
+
+            <div class="floating-note note-three">
+                ♪
+            </div>
+
+
+        </div>
+
+    </div>
 
 </section>
 
 
-<!-- =========================
-     EXPLORAR
-========================= -->
 
-<section id="explorar" class="section-space">
+<!-- =====================================================
+     EXPLORAR
+===================================================== -->
+
+<section
+    id="explorar"
+    class="section-space"
+>
 
     <div class="container">
 
+
         <div class="section-heading">
 
+
             <div>
+
                 <span class="small-title">
                     DESCUBRE
                 </span>
@@ -282,42 +608,103 @@
                 <h2>
                     Explora nuevos sonidos
                 </h2>
+
             </div>
 
-            <a href="#" class="see-more">
+
+            <a
+                href="#"
+                class="see-more"
+            >
+
                 Ver todo
+
                 <i class="bi bi-arrow-up-right"></i>
+
             </a>
+
 
         </div>
 
 
+
         <div class="genre-grid">
 
-            <button class="genre-card genre-pop theme-sync-card" data-theme="pop">
+
+            <button
+                class="genre-card genre-pop theme-sync-card"
+                data-theme="pop"
+                type="button"
+            >
+
                 <i class="bi bi-mic"></i>
-                <span>Pop</span>
+
+                <span>
+                    Pop
+                </span>
+
             </button>
 
-            <button class="genre-card genre-rock theme-sync-card" data-theme="rock">
+
+            <button
+                class="genre-card genre-rock theme-sync-card"
+                data-theme="rock"
+                type="button"
+            >
+
                 <i class="bi bi-lightning"></i>
-                <span>Rock</span>
+
+                <span>
+                    Rock
+                </span>
+
             </button>
 
-            <button class="genre-card genre-hiphop theme-sync-card" data-theme="hiphop">
+
+            <button
+                class="genre-card genre-hiphop theme-sync-card"
+                data-theme="hiphop"
+                type="button"
+            >
+
                 <i class="bi bi-headphones"></i>
-                <span>Hip Hop</span>
+
+                <span>
+                    Hip Hop
+                </span>
+
             </button>
 
-            <button class="genre-card genre-electronic theme-sync-card" data-theme="electronic">
+
+            <button
+                class="genre-card genre-electronic theme-sync-card"
+                data-theme="electronic"
+                type="button"
+            >
+
                 <i class="bi bi-soundwave"></i>
-                <span>Electrónica</span>
+
+                <span>
+                    Electrónica
+                </span>
+
             </button>
 
-            <button class="genre-card genre-jazz theme-sync-card" data-theme="jazz">
+
+            <button
+                class="genre-card genre-jazz theme-sync-card"
+                data-theme="jazz"
+                type="button"
+            >
+
                 <i class="bi bi-vinyl"></i>
-                <span>Jazz</span>
+
+                <span>
+                    Jazz
+                </span>
+
             </button>
+
 
         </div>
 
@@ -326,17 +713,24 @@
 </section>
 
 
-<!-- =========================
-     ÁLBUMES
-========================= -->
 
-<section id="albumes" class="section-space section-dark">
+<!-- =====================================================
+     ÁLBUMES
+===================================================== -->
+
+<section
+    id="albumes"
+    class="section-space section-dark"
+>
 
     <div class="container">
 
+
         <div class="section-heading">
 
+
             <div>
+
                 <span class="small-title">
                     TENDENCIAS
                 </span>
@@ -344,21 +738,33 @@
                 <h2>
                     Álbumes destacados
                 </h2>
+
             </div>
 
-            <a href="#" class="see-more">
+
+            <a
+                href="#"
+                class="see-more"
+            >
+
                 Más álbumes
+
                 <i class="bi bi-arrow-up-right"></i>
+
             </a>
+
 
         </div>
 
 
+
         <div class="row g-4">
+
 
             <!-- ALBUM 1 -->
 
             <div class="col-lg-4 col-md-6">
+
 
                 <div
                     class="album-card"
@@ -367,38 +773,69 @@
                     data-audio="Canciones/The police.mpeg"
                 >
 
+
                     <div class="album-image">
+
+
                         <img
                             src="Imagenes/stranger.avif"
                             alt="Every Breath You Take"
                         >
-                        <button class="play-card">
+
+
+                        <button
+                            class="play-card"
+                            type="button"
+                        >
+
                             <i class="bi bi-play-fill"></i>
+
                         </button>
 
+
                     </div>
+
 
                     <div class="album-info">
 
+
                         <div>
-                            <h3>Every Breath You Take</h3>
-                            <p>The police</p>
+
+                            <h3>
+                                Every Breath You Take
+                            </h3>
+
+                            <p>
+                                The police
+                            </p>
+
                         </div>
 
-                        <button class="more-button">
+
+                        <button
+                            class="more-button"
+                            type="button"
+                            aria-label="Más opciones"
+                        >
+
                             <i class="bi bi-three-dots"></i>
+
                         </button>
 
+
                     </div>
+
 
                 </div>
 
             </div>
 
 
+
             <!-- ALBUM 2 -->
 
             <div class="col-lg-4 col-md-6">
+
 
                 <div
                     class="album-card"
@@ -407,40 +844,69 @@
                     data-audio="Canciones/Scorpions.mpeg"
                 >
 
+
                     <div class="album-image">
+
 
                         <img
                             src="Imagenes/Scorpions.jpg"
                             alt="Wind of Change"
                         >
 
-                        <button class="play-card">
+
+                        <button
+                            class="play-card"
+                            type="button"
+                        >
+
                             <i class="bi bi-play-fill"></i>
+
                         </button>
 
+
                     </div>
+
 
                     <div class="album-info">
 
+
                         <div>
-                            <h3>Wind of Change</h3>
-                            <p>Scorpions</p>
+
+                            <h3>
+                                Wind of Change
+                            </h3>
+
+                            <p>
+                                Scorpions
+                            </p>
+
                         </div>
 
-                        <button class="more-button">
+
+                        <button
+                            class="more-button"
+                            type="button"
+                            aria-label="Más opciones"
+                        >
+
                             <i class="bi bi-three-dots"></i>
+
                         </button>
 
+
                     </div>
+
 
                 </div>
 
             </div>
 
 
+
             <!-- ALBUM 3 -->
 
             <div class="col-lg-4 col-md-6">
+
 
                 <div
                     class="album-card"
@@ -449,35 +915,63 @@
                     data-audio="Canciones/65.mpeg"
                 >
 
+
                     <div class="album-image">
+
 
                         <img
                             src="Imagenes/blue.webp"
                             alt="Blue (Da Ba Dee)"
                         >
 
-                        <button class="play-card">
+
+                        <button
+                            class="play-card"
+                            type="button"
+                        >
+
                             <i class="bi bi-play-fill"></i>
+
                         </button>
 
+
                     </div>
+
 
                     <div class="album-info">
 
+
                         <div>
-                            <h3>Blue (Da Ba Dee)</h3>
-                            <p>Eiffel 65</p>
+
+                            <h3>
+                                Blue (Da Ba Dee)
+                            </h3>
+
+                            <p>
+                                Eiffel 65
+                            </p>
+
                         </div>
 
-                        <button class="more-button">
+
+                        <button
+                            class="more-button"
+                            type="button"
+                            aria-label="Más opciones"
+                        >
+
                             <i class="bi bi-three-dots"></i>
+
                         </button>
 
+
                     </div>
+
 
                 </div>
 
             </div>
+
 
         </div>
 
@@ -486,15 +980,21 @@
 </section>
 
 
-<!-- =========================
-     ARTISTAS
-========================= -->
 
-<section id="artistas" class="section-space">
+<!-- =====================================================
+     ARTISTAS
+===================================================== -->
+
+<section
+    id="artistas"
+    class="section-space"
+>
 
     <div class="container">
 
+
         <div class="section-heading">
+
 
             <div>
 
@@ -508,14 +1008,20 @@
 
             </div>
 
+
         </div>
+
 
 
         <div class="row g-4">
 
+
+            <!-- ARTISTA 1 -->
+
             <div class="col-lg-3 col-md-6">
 
                 <div class="artist-card">
+
 
                     <div class="artist-image">
 
@@ -526,76 +1032,147 @@
 
                     </div>
 
-                    <h3>Luna</h3>
-                    <p>Pop alternativo</p>
 
-                    <button class="artist-play">
+                    <h3>
+                        Luna
+                    </h3>
+
+                    <p>
+                        Pop alternativo
+                    </p>
+
+
+                    <button
+                        class="artist-play"
+                        type="button"
+                    >
+
                         <i class="bi bi-play-fill"></i>
+
                     </button>
+
 
                 </div>
 
             </div>
 
+
+
+            <!-- ARTISTA 2 -->
 
             <div class="col-lg-3 col-md-6">
 
                 <div class="artist-card">
 
+
                     <div class="artist-image artist-placeholder">
+
                         <i class="bi bi-person"></i>
+
                     </div>
 
-                    <h3>Nova</h3>
-                    <p>Electrónica</p>
 
-                    <button class="artist-play">
+                    <h3>
+                        Nova
+                    </h3>
+
+                    <p>
+                        Electrónica
+                    </p>
+
+
+                    <button
+                        class="artist-play"
+                        type="button"
+                    >
+
                         <i class="bi bi-play-fill"></i>
+
                     </button>
+
 
                 </div>
 
             </div>
 
+
+
+            <!-- ARTISTA 3 -->
 
             <div class="col-lg-3 col-md-6">
 
                 <div class="artist-card">
 
+
                     <div class="artist-image artist-placeholder">
+
                         <i class="bi bi-person"></i>
+
                     </div>
 
-                    <h3>Echo</h3>
-                    <p>Indie Rock</p>
 
-                    <button class="artist-play">
+                    <h3>
+                        Echo
+                    </h3>
+
+                    <p>
+                        Indie Rock
+                    </p>
+
+
+                    <button
+                        class="artist-play"
+                        type="button"
+                    >
+
                         <i class="bi bi-play-fill"></i>
+
                     </button>
+
 
                 </div>
 
             </div>
 
+
+
+            <!-- ARTISTA 4 -->
 
             <div class="col-lg-3 col-md-6">
 
                 <div class="artist-card">
 
+
                     <div class="artist-image artist-placeholder">
+
                         <i class="bi bi-person"></i>
+
                     </div>
 
-                    <h3>Velvet</h3>
-                    <p>R&B</p>
 
-                    <button class="artist-play">
+                    <h3>
+                        Velvet
+                    </h3>
+
+                    <p>
+                        R&B
+                    </p>
+
+
+                    <button
+                        class="artist-play"
+                        type="button"
+                    >
+
                         <i class="bi bi-play-fill"></i>
+
                     </button>
+
 
                 </div>
 
             </div>
+
 
         </div>
 
@@ -604,15 +1181,18 @@
 </section>
 
 
-<!-- =========================
+
+<!-- =====================================================
      NEWSLETTER
-========================= -->
+===================================================== -->
 
 <section class="newsletter-section">
 
     <div class="container">
 
+
         <div class="newsletter-box">
+
 
             <div>
 
@@ -630,18 +1210,23 @@
 
             </div>
 
+
             <div class="newsletter-form">
+
 
                 <input
                     type="email"
                     placeholder="Tu correo electrónico"
                 >
 
-                <button>
+
+                <button type="button">
                     Suscribirme
                 </button>
 
+
             </div>
+
 
         </div>
 
@@ -650,125 +1235,195 @@
 </section>
 
 
-<!-- =========================
+
+<!-- =====================================================
      FOOTER
-========================= -->
+===================================================== -->
 
 <footer>
 
     <div class="container">
 
+
         <div class="footer-content">
+
 
             <div>
 
+
                 <a class="navbar-brand footer-brand">
+
+
                     <div class="logo-icon">
+
                         <i class="bi bi-soundwave"></i>
+
                     </div>
 
+
                     SONORA
+
+
                 </a>
+
 
                 <p>
                     Música que conecta emociones.
                 </p>
+
 
             </div>
 
 
             <div class="social-links">
 
-                <a href="#">
+
+                <a href="#" aria-label="Instagram">
+
                     <i class="bi bi-instagram"></i>
+
                 </a>
 
-                <a href="#">
+
+                <a href="#" aria-label="Spotify">
+
                     <i class="bi bi-spotify"></i>
+
                 </a>
 
-                <a href="#">
+
+                <a href="#" aria-label="YouTube">
+
                     <i class="bi bi-youtube"></i>
+
                 </a>
 
-                <a href="#">
+
+                <a href="#" aria-label="TikTok">
+
                     <i class="bi bi-tiktok"></i>
+
                 </a>
+
 
             </div>
 
+
         </div>
 
+
         <div class="footer-bottom">
+
 
             <span>
                 © 2026 SONORA
             </span>
 
+
             <span>
                 Todos los derechos reservados.
             </span>
 
+
         </div>
+
 
     </div>
 
 </footer>
 
 
-<!-- =========================
-     REPRODUCTOR
-========================= -->
 
-<div class="music-player" id="musicPlayer">
+<!-- =====================================================
+     REPRODUCTOR
+===================================================== -->
+
+<div
+    class="music-player"
+    id="musicPlayer"
+>
+
 
     <div class="player-song">
 
+
         <div class="player-cover">
+
             <i class="bi bi-music-note-beamed"></i>
+
         </div>
 
+
         <div>
+
 
             <h4 id="playerTitle">
                 Selecciona una canción
             </h4>
 
+
             <span id="playerArtist">
                 SONORA
             </span>
 
+
         </div>
+
 
     </div>
 
 
+
     <div class="player-controls">
+
 
         <div class="control-buttons">
 
-            <button id="previousBtn">
+
+            <button
+                id="previousBtn"
+                type="button"
+                aria-label="Canción anterior"
+            >
+
                 <i class="bi bi-skip-backward-fill"></i>
+
             </button>
+
 
             <button
                 id="mainPlayBtn"
                 class="main-play"
+                type="button"
+                aria-label="Reproducir"
             >
+
                 <i class="bi bi-play-fill"></i>
+
             </button>
 
-            <button id="nextBtn">
+
+            <button
+                id="nextBtn"
+                type="button"
+                aria-label="Siguiente canción"
+            >
+
                 <i class="bi bi-skip-forward-fill"></i>
+
             </button>
+
 
         </div>
 
+
         <div class="progress-container">
+
 
             <span id="currentTime">
                 0:00
             </span>
+
 
             <input
                 type="range"
@@ -778,18 +1433,24 @@
                 value="0"
             >
 
+
             <span id="duration">
                 0:00
             </span>
 
+
         </div>
+
 
     </div>
 
 
+
     <div class="player-volume">
 
+
         <i class="bi bi-volume-up-fill"></i>
+
 
         <input
             type="range"
@@ -800,9 +1461,12 @@
             value="0.8"
         >
 
+
     </div>
 
+
 </div>
+
 
 
 <!-- AUDIO -->
@@ -810,29 +1474,42 @@
 <audio id="audioPlayer"></audio>
 
 
-<!-- SEARCH MODAL -->
+
+<!-- =====================================================
+     SEARCH MODAL
+===================================================== -->
 
 <div
     class="search-overlay"
     id="searchOverlay"
 >
 
+
     <div class="search-box">
+
 
         <button
             class="close-search"
             id="closeSearch"
+            type="button"
+            aria-label="Cerrar búsqueda"
         >
+
             <i class="bi bi-x-lg"></i>
+
         </button>
+
 
         <h2>
             ¿Qué quieres escuchar?
         </h2>
 
+
         <div class="search-input">
 
+
             <i class="bi bi-search"></i>
+
 
             <input
                 type="text"
@@ -840,65 +1517,522 @@
                 placeholder="Busca canciones, artistas o álbumes..."
             >
 
+
         </div>
+
 
         <div id="searchResults"></div>
 
+
     </div>
+
 
 </div>
 
 
-<!-- Bootstrap JS -->
+
+<!-- =====================================================
+     BOOTSTRAP JS
+===================================================== -->
 
 <script
-    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+></script>
+
+
+<!-- SUPABASE -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+></script>
+
+
+<!-- TU JAVASCRIPT -->
+
 <script src="musica.js"></script>
 
 
 
-<!-- MODAL DE AUTENTICACIÓN -->
-<div class="auth-overlay" id="authOverlay">
+<!-- =====================================================
+     MODAL DE AUTENTICACIÓN
+===================================================== -->
+
+<div
+    class="auth-overlay"
+    id="authOverlay"
+>
+
+
     <div class="auth-modal">
 
-        <button class="auth-close" id="authClose" aria-label="Cerrar"><i class="bi bi-x-lg"></i></button>
+
+        <!-- CERRAR -->
+
+        <button
+            class="auth-close"
+            id="authClose"
+            type="button"
+            aria-label="Cerrar"
+        >
+
+            <i class="bi bi-x-lg"></i>
+
+        </button>
+
+
+        <!-- ENCABEZADO -->
+
         <div class="auth-header">
-            <div class="auth-icon"><i class="bi bi-music-note-beamed"></i></div>
-            <h2 id="authTitle">Iniciar sesión</h2>
-            <p id="authSubtitle">Entra a tu cuenta de SONORA</p>
+
+
+            <div class="auth-icon">
+
+                <i class="bi bi-music-note-beamed"></i>
+
+            </div>
+
+
+            <h2 id="authTitle">
+                Iniciar sesión
+            </h2>
+
+
+            <p id="authSubtitle">
+                Entra a tu cuenta de SONORA
+            </p>
+
+
         </div>
+
+
+
+        <!-- FORMULARIO -->
 
         <form id="authForm">
 
+
+            <!-- CORREO -->
+
             <div class="auth-field">
-                <label for="authEmail">Correo electrónico</label>
+
+
+                <label for="authEmail">
+                    Correo electrónico
+                </label>
+
+
                 <div class="auth-input">
+
+
                     <i class="bi bi-envelope"></i>
-                    <input type="email" id="authEmail" placeholder="tu@email.com" required>
+
+
+                    <input
+                        type="email"
+                        id="authEmail"
+                        placeholder="tu@email.com"
+                        required
+                    >
+
+
                 </div>
+
+
             </div>
+
+
+
+            <!-- CONTRASEÑA -->
 
             <div class="auth-field">
-                <label for="authPassword">Contraseña</label>
+
+
+                <label for="authPassword">
+                    Contraseña
+                </label>
+
+
                 <div class="auth-input">
+
+
                     <i class="bi bi-lock"></i>
-                    <input type="password" id="authPassword" placeholder="••••••••" required>
+
+
+                    <input
+                        type="password"
+                        id="authPassword"
+                        placeholder="••••••••"
+                        required
+                    >
+
+
                 </div>
+
+
             </div>
 
-            <p class="auth-message" id="authMessage"></p>
 
-            <button type="submit" class="auth-submit" id="authSubmit">Iniciar sesión</button>
+
+            <!-- MENSAJE -->
+
+            <p
+                class="auth-message"
+                id="authMessage"
+            ></p>
+
+
+
+            <!-- ENVIAR -->
+
+            <button
+                type="submit"
+                class="auth-submit"
+                id="authSubmit"
+            >
+                Iniciar sesión
+            </button>
+
+
         </form>
 
+
+
+        <!-- CAMBIAR MODO -->
+
         <div class="auth-switch">
-            <span id="authSwitchText">¿No tienes una cuenta?</span>
-            <button type="button" id="authSwitch">Registrarse</button>
+
+
+            <span id="authSwitchText">
+                ¿No tienes una cuenta?
+            </span>
+
+
+            <button
+                type="button"
+                id="authSwitch"
+            >
+                Registrarse
+            </button>
+
+
         </div>
+
+
     </div>
+
 </div>
 
+
+
+<!-- =====================================================
+     MODAL DE PERFIL
+===================================================== -->
+
+<div
+    class="profile-overlay"
+    id="profileOverlay"
+>
+
+    <div class="profile-modal">
+
+        <!-- =========================
+             CERRAR
+        ========================== -->
+
+        <button
+            type="button"
+            class="profile-close"
+            id="profileClose"
+            aria-label="Cerrar perfil"
+        >
+
+            <i class="bi bi-x-lg"></i>
+
+        </button>
+
+
+
+        <!-- =========================
+             AVATAR
+        ========================== -->
+
+        <div class="profile-avatar-container">
+
+
+            <div
+                class="profile-avatar"
+                id="profileAvatar"
+            >
+
+                <i class="bi bi-person-fill"></i>
+
+            </div>
+
+
+           <button type="button" class="change-avatar-button" id="changeAvatarButton" aria-label="Cambiar avatar">
+    <i class="bi bi-camera-fill"></i>
+</button>
+
+<input
+    type="file"
+    id="avatarFileInput"
+    accept="image/png,image/jpeg,image/webp"
+    hidden
+>
+
+        </div>
+
+
+
+        <!-- =========================
+             NOMBRE
+        ========================== -->
+
+        <h2 id="profileName">
+            Mi perfil
+        </h2>
+
+
+
+        <!-- =========================
+             CORREO
+        ========================== -->
+
+        <p
+            class="profile-email"
+            id="profileEmail"
+        >
+            -
+        </p>
+
+
+
+        <!-- =========================
+             EDITAR PERFIL
+        ========================== -->
+
+        <button
+            type="button"
+            class="edit-profile-button"
+            id="editProfileButton"
+        >
+
+            <i class="bi bi-pencil"></i>
+
+            Editar perfil
+
+        </button>
+
+
+
+        <!-- =================================================
+             SECCIÓN DE EDICIÓN
+        ================================================== -->
+
+        <div
+            class="profile-edit-section"
+            id="profileEditSection"
+            style="display: none;"
+        >
+
+
+            <!-- NOMBRE DE USUARIO -->
+
+            <div class="profile-edit-field">
+
+
+                <label for="profileUsername">
+                    Nombre de usuario
+                </label>
+
+
+                <div class="profile-input">
+
+
+                    <i class="bi bi-person"></i>
+
+
+                    <input
+                        type="text"
+                        id="profileUsername"
+                        placeholder="Tu nombre de usuario"
+                        maxlength="30"
+                        autocomplete="off"
+                    >
+
+                </div>
+            </div>
+
+            <!-- URL DEL AVATAR -->
+
+            <div class="profile-edit-field">
+                <label for="profileAvatarUrl">URL del avatar</label>
+                <div class="profile-input">
+                    <i class="bi bi-image"></i>
+
+                    <input
+                        type="url"
+                        id="profileAvatarUrl"
+                        placeholder="https://..."
+                        autocomplete="off"
+                    >
+
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- MENSAJE -->
+
+            <p
+                class="profile-message"
+                id="profileMessage"
+            ></p>
+
+
+
+            <!-- GUARDAR -->
+
+            <button
+                type="button"
+                class="save-profile-button"
+                id="saveProfileButton"
+            >
+
+                <i class="bi bi-check-lg"></i>
+
+                Guardar cambios
+
+            </button>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             INFORMACIÓN DE LA CUENTA
+        ================================================== -->
+
+        <div class="profile-info">
+
+
+            <i class="bi bi-calendar3"></i>
+
+
+            <div>
+
+
+                <span>
+                    Miembro desde
+                </span>
+
+
+                <strong id="profileDate">
+                    -
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             ESTADÍSTICAS
+        ================================================== -->
+
+        <div class="profile-stats">
+
+
+            <!-- CANCIONES -->
+
+            <div class="profile-stat">
+
+
+                <i class="bi bi-music-note-list"></i>
+
+
+                <strong id="profileSongs">
+                    0
+                </strong>
+
+
+                <span>
+                    Canciones
+                </span>
+
+
+            </div>
+
+
+
+            <!-- FAVORITOS -->
+
+            <div class="profile-stat">
+
+
+                <i class="bi bi-heart"></i>
+
+
+                <strong id="profileFavorites">
+                    0
+                </strong>
+
+
+                <span>
+                    Favoritos
+                </span>
+
+
+            </div>
+
+
+
+            <!-- PLAYLISTS -->
+
+            <div class="profile-stat">
+
+
+                <i class="bi bi-music-note-beamed"></i>
+
+
+                <strong id="profilePlaylists">
+                    0
+                </strong>
+
+
+                <span>
+                    Playlists
+                </span>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================================
+             CERRAR SESIÓN
+        ================================================== -->
+
+        <button
+            type="button"
+            class="logout-button"
+            id="logoutButton"
+        >
+
+            <i class="bi bi-box-arrow-right"></i>
+            Cerrar sesión
+        </button>
+    </div>
+</div>
 </body>
 </html>
