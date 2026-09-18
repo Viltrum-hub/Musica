@@ -45,11 +45,11 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================= */
 
     const songs = Array.from(cards).map(card => ({
-        title: card.dataset.title || "Canción",
-        artist: card.dataset.artist || "Artista",
-        audio: card.dataset.audio || ""
-    }));
-
+    title: card.dataset.title || "Canción",
+    artist: card.dataset.artist || "Artista",
+    audio: card.dataset.audio || "",
+    image: card.dataset.image || ""
+}));
 
     /* =========================
        VISUALIZADOR DE AUDIO
@@ -227,92 +227,98 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+    function updatePlayerCover(image) {
+    const playerCover = document.getElementById("playerCover");
+
+    if (!playerCover) return;
+
+    let imageElement = playerCover.querySelector("img");
+    const icon = playerCover.querySelector("i");
+
+    if (image) {
+
+        if (!imageElement) {
+            imageElement = document.createElement("img");
+            playerCover.appendChild(imageElement);
+        }
+
+        imageElement.src = image;
+        imageElement.alt = "Portada de la canción";
+
+        if (icon) {
+            icon.style.display = "none";
+        }
+
+    } else {
+
+        if (imageElement) {
+            imageElement.remove();
+        }
+
+        if (icon) {
+            icon.style.display = "flex";
+        }
+    }
+}
 
     /* =========================
        CARGAR CANCIÓN
     ========================= */
 
-    function loadSong(
-        index,
-        autoplay = true
-    ) {
+  function loadSong(index, autoplay = true) {
 
-        if (
-            !songs[index] ||
-            !audioPlayer
-        ) {
-            return;
-        }
+    if (!songs[index] || !audioPlayer) return;
 
-        currentSong = index;
+    currentSong = index;
 
-        const song =
-            songs[index];
+    const song = songs[index];
 
+    audioPlayer.src = song.audio;
 
-        audioPlayer.src =
-            song.audio;
-
-
-        if (playerTitle) {
-            playerTitle.textContent =
-                song.title;
-        }
-
-
-        if (playerArtist) {
-            playerArtist.textContent =
-                song.artist;
-        }
-
-
-        if (progressBar) {
-            progressBar.value = 0;
-        }
-
-
-        if (currentTimeEl) {
-            currentTimeEl.textContent = "0:00";
-        }
-
-
-        if (durationEl) {
-            durationEl.textContent = "0:00";
-        }
-
-
-        if (autoplay) {
-
-            setupAudioVisualizer();
-
-
-            if (
-                audioContext &&
-                audioContext.state === "suspended"
-            ) {
-
-                audioContext.resume();
-
-            }
-
-
-            audioPlayer
-                .play()
-                .then(() => {
-                    updatePlayButton();
-                })
-                .catch(() => {
-
-                    console.log(
-                        "No se pudo reproducir el archivo de audio."
-                    );
-
-                });
-
-        }
-
+    if (playerTitle) {
+        playerTitle.textContent = song.title;
     }
 
+    if (playerArtist) {
+        playerArtist.textContent = song.artist;
+    }
+
+    updatePlayerCover(song.image);
+
+    if (progressBar) {
+        progressBar.value = 0;
+    }
+
+    if (currentTimeEl) {
+        currentTimeEl.textContent = "0:00";
+    }
+
+    if (durationEl) {
+        durationEl.textContent = "0:00";
+    }
+
+    if (autoplay) {
+
+        setupAudioVisualizer();
+
+        if (
+            audioContext &&
+            audioContext.state === "suspended"
+        ) {
+            audioContext.resume();
+        }
+
+        audioPlayer.play()
+            .then(() => {
+                updatePlayButton();
+            })
+            .catch(() => {
+                console.log(
+                    "No se pudo reproducir el archivo de audio."
+                );
+            });
+    }
+}
 
     /* =========================
        PLAY / PAUSE
@@ -868,174 +874,617 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     );
 
+/* =========================
+   BUSCADOR
+========================= */
 
-    /* =========================
-       BUSCADOR
-    ========================= */
+const openSearch =
+    document.getElementById(
+        "openSearch"
+    );
 
-    const openSearch =
-        document.getElementById(
-            "openSearch"
-        );
+const closeSearch =
+    document.getElementById(
+        "closeSearch"
+    );
 
-    const closeSearch =
-        document.getElementById(
-            "closeSearch"
-        );
+const searchOverlay =
+    document.getElementById(
+        "searchOverlay"
+    );
 
-    const searchOverlay =
-        document.getElementById(
-            "searchOverlay"
-        );
+const searchInput =
+    document.getElementById(
+        "searchInput"
+    );
 
-    const searchInput =
-        document.getElementById(
-            "searchInput"
-        );
+const searchResults =
+    document.getElementById(
+        "searchResults"
+    );
 
-    const searchResults =
-        document.getElementById(
-            "searchResults"
-        );
 
+/* =========================================================
+   CATÁLOGO DE CANCIONES DE EXPLORAR
+========================================================= */
+
+let exploreSearchSongs = [];
+let exploreCatalogLoaded = false;
+let exploreCatalogLoading = null;
+
+
+/* =========================================================
+   CARGAR CANCIONES DE EXPLORAR
+========================================================= */
+
+async function loadExploreSearchCatalog() {
+
+    if (exploreCatalogLoaded) {
+        return exploreSearchSongs;
+    }
+
+    if (exploreCatalogLoading) {
+        return exploreCatalogLoading;
+    }
+
+    exploreCatalogLoading = fetch("explorar.html")
+        .then(response => {
+
+            if (!response.ok) {
+                throw new Error(
+                    "No se pudo cargar explorar.html"
+                );
+            }
+
+            return response.text();
+
+        })
+        .then(html => {
+
+            const parser =
+                new DOMParser();
+
+            const documentHTML =
+                parser.parseFromString(
+                    html,
+                    "text/html"
+                );
+
+            const cards =
+                documentHTML.querySelectorAll(
+                    ".explore-song-card"
+                );
+
+            exploreSearchSongs =
+                Array.from(cards).map(
+                    card => ({
+
+                        title:
+                            card.dataset.title ||
+                            card.querySelector("h3")?.textContent.trim() ||
+                            "Canción",
+
+                        artist:
+                            card.dataset.artist ||
+                            card.querySelector("p")?.textContent.trim() ||
+                            "Artista",
+
+                        genre:
+                            card.dataset.genre ||
+                            card.querySelector(".song-genre")?.textContent.trim() ||
+                            "",
+
+                        audio:
+                            card.dataset.audio ||
+                            "",
+
+                        image:
+                            card.dataset.image ||
+                            card.querySelector("img")?.src ||
+                            "",
+
+                        source:
+                            "explore"
+
+                    })
+                );
+
+            exploreCatalogLoaded = true;
+
+            return exploreSearchSongs;
+
+        })
+        .catch(error => {
+
+            console.error(
+                "Error cargando canciones de Explorar:",
+                error
+            );
+
+            exploreSearchSongs = [];
+
+            return [];
+
+        })
+        .finally(() => {
+
+            exploreCatalogLoading = null;
+
+        });
+
+    return exploreCatalogLoading;
+}
+
+
+/* =========================================================
+   CERRAR BUSCADOR
+========================================================= */
+
+function closeSearchOverlay() {
+
+    if (!searchOverlay) {
+        return;
+    }
+
+    searchOverlay.classList.remove(
+        "show"
+    );
+
+    if (searchInput) {
+        searchInput.value = "";
+    }
+
+    if (searchResults) {
+        searchResults.innerHTML = "";
+    }
+
+}
+
+
+/* =========================================================
+   MOSTRAR RESULTADOS
+========================================================= */
+
+async function updateSearchResults() {
 
     if (
-        openSearch &&
-        closeSearch &&
-        searchOverlay &&
-        searchInput &&
-        searchResults
+        !searchInput ||
+        !searchResults
     ) {
+        return;
+    }
 
-        openSearch.addEventListener(
-            "click",
-            () => {
+    const query =
+        searchInput.value
+            .trim()
+            .toLowerCase();
 
-                searchOverlay.classList.add(
-                    "show"
-                );
+    searchResults.innerHTML = "";
 
-                searchInput.focus();
-
-            }
-        );
-
-
-        closeSearch.addEventListener(
-            "click",
-            () => {
-
-                searchOverlay.classList.remove(
-                    "show"
-                );
-
-            }
-        );
-
-
-        searchOverlay.addEventListener(
-            "click",
-            (event) => {
-
-                if (
-                    event.target ===
-                    searchOverlay
-                ) {
-
-                    searchOverlay.classList.remove(
-                        "show"
-                    );
-
-                }
-
-            }
-        );
-
-
-        searchInput.addEventListener(
-            "input",
-            () => {
-
-                const query =
-                    searchInput.value
-                        .trim()
-                        .toLowerCase();
-
-                searchResults.innerHTML = "";
-
-
-                if (!query) {
-                    return;
-                }
-
-
-                songs
-                    .map(
-                        (song, index) => ({
-                            song,
-                            index
-                        })
-                    )
-                    .filter(
-                        ({ song }) =>
-                            song.title
-                                .toLowerCase()
-                                .includes(query) ||
-                            song.artist
-                                .toLowerCase()
-                                .includes(query)
-                    )
-                    .forEach(
-                        ({ song, index }) => {
-
-                            const result =
-                                document.createElement(
-                                    "div"
-                                );
-
-                            result.className =
-                                "search-result";
-
-                            result.innerHTML = `
-                                <strong>${song.title}</strong>
-                                <br>
-                                <small>${song.artist}</small>
-                            `;
-
-
-                            result.addEventListener(
-                                "click",
-                                () => {
-
-                                    loadSong(
-                                        index,
-                                        true
-                                    );
-
-                                    searchOverlay.classList.remove(
-                                        "show"
-                                    );
-
-                                    searchInput.value =
-                                        "";
-
-                                }
-                            );
-
-
-                            searchResults.appendChild(
-                                result
-                            );
-
-                        }
-                    );
-
-            }
-        );
-
+    if (!query) {
+        return;
     }
 
 
+    /* -----------------------------------------------------
+       CANCIONES DE INICIO
+    ----------------------------------------------------- */
+
+    const homeSongs =
+        songs.map(
+            (song, index) => ({
+
+                ...song,
+
+                source:
+                    "home",
+
+                index
+
+            })
+        );
+
+
+    /* -----------------------------------------------------
+       CANCIONES DE EXPLORAR
+    ----------------------------------------------------- */
+
+    const exploreSongs =
+        await loadExploreSearchCatalog();
+
+
+    /* -----------------------------------------------------
+       UNIR TODOS LOS RESULTADOS
+    ----------------------------------------------------- */
+
+    const allSongs = [
+        ...homeSongs,
+        ...exploreSongs
+    ];
+
+
+    /* -----------------------------------------------------
+       EVITAR CANCIONES DUPLICADAS
+    ----------------------------------------------------- */
+
+    const uniqueSongs = [];
+
+    const usedSongs =
+        new Set();
+
+
+    allSongs.forEach(song => {
+
+        const key =
+            `${song.title}`
+                .toLowerCase()
+                .trim()
+            + "|"
+            +
+            `${song.artist}`
+                .toLowerCase()
+                .trim();
+
+        if (!usedSongs.has(key)) {
+
+            usedSongs.add(key);
+
+            uniqueSongs.push(
+                song
+            );
+
+        }
+
+    });
+
+
+    /* -----------------------------------------------------
+       FILTRAR
+    ----------------------------------------------------- */
+
+    const results =
+        uniqueSongs.filter(
+            song => {
+
+                const title =
+                    (
+                        song.title ||
+                        ""
+                    )
+                        .toLowerCase();
+
+                const artist =
+                    (
+                        song.artist ||
+                        ""
+                    )
+                        .toLowerCase();
+
+                const genre =
+                    (
+                        song.genre ||
+                        ""
+                    )
+                        .toLowerCase();
+
+                return (
+                    title.includes(query) ||
+                    artist.includes(query) ||
+                    genre.includes(query)
+                );
+
+            }
+        );
+
+
+    /* -----------------------------------------------------
+       SIN RESULTADOS
+    ----------------------------------------------------- */
+
+    if (!results.length) {
+
+        searchResults.innerHTML = `
+            <div class="search-no-results">
+                <i class="bi bi-search"></i>
+                <p>No encontramos canciones</p>
+            </div>
+        `;
+
+        return;
+    }
+
+
+    /* -----------------------------------------------------
+       CREAR RESULTADOS
+    ----------------------------------------------------- */
+
+    results.forEach(song => {
+
+        const result =
+            document.createElement(
+                "div"
+            );
+
+        result.className =
+            "search-result";
+
+
+        result.innerHTML = `
+
+            ${
+                song.image
+                    ? `
+                        <img
+                            src="${song.image}"
+                            alt="${song.title}"
+                        >
+                    `
+                    : `
+                        <div class="search-result-placeholder">
+                            <i class="bi bi-music-note"></i>
+                        </div>
+                    `
+            }
+
+            <div class="search-result-info">
+
+                <strong>
+                    ${song.title}
+                </strong>
+
+                <small>
+                    ${song.artist}
+                </small>
+
+            </div>
+
+            ${
+                song.genre
+                    ? `
+                        <span class="search-result-genre">
+                            ${song.genre}
+                        </span>
+                    `
+                    : ""
+            }
+
+            <button
+                class="search-result-play"
+                type="button"
+                aria-label="Reproducir ${song.title}"
+            >
+                <i class="bi bi-play-fill"></i>
+            </button>
+
+        `;
+
+
+        /* -------------------------------------------------
+           REPRODUCIR RESULTADO
+        ------------------------------------------------- */
+
+        result.addEventListener(
+            "click",
+            async event => {
+
+                event.preventDefault();
+
+                event.stopPropagation();
+
+
+                /* -----------------------------------------
+                   CANCIÓN DE INICIO
+                ----------------------------------------- */
+
+                if (
+                    song.source ===
+                    "home"
+                ) {
+
+                    loadSong(
+                        song.index,
+                        true
+                    );
+
+                }
+
+
+                /* -----------------------------------------
+                   CANCIÓN DE EXPLORAR
+                ----------------------------------------- */
+
+                else if (
+                    song.source ===
+                    "explore"
+                ) {
+
+                    if (
+                        !audioPlayer
+                    ) {
+                        return;
+                    }
+
+
+                    /* Cargar canción */
+                    audioPlayer.src =
+                        song.audio;
+
+
+                    /* Actualizar información */
+                    if (playerTitle) {
+
+                        playerTitle.textContent =
+                            song.title;
+
+                    }
+
+                    if (playerArtist) {
+
+                        playerArtist.textContent =
+                            song.artist;
+
+                    }
+
+
+                    /* Actualizar portada */
+                    if (
+                        typeof updatePlayerCover ===
+                        "function"
+                    ) {
+
+                        updatePlayerCover(
+                            song.image
+                        );
+
+                    }
+
+
+                    /* Reproducir */
+                    try {
+
+                        await audioPlayer.play();
+
+                    } catch (error) {
+
+                        console.warn(
+                            "El navegador bloqueó la reproducción automática.",
+                            error
+                        );
+
+                    }
+
+                }
+
+
+                /* -----------------------------------------
+                   CERRAR BUSCADOR
+                ----------------------------------------- */
+
+                closeSearchOverlay();
+
+            }
+        );
+
+
+        searchResults.appendChild(
+            result
+        );
+
+    });
+
+}
+
+
+/* =========================================================
+   ABRIR BUSCADOR
+========================================================= */
+
+if (
+    openSearch &&
+    closeSearch &&
+    searchOverlay &&
+    searchInput &&
+    searchResults
+) {
+
+    openSearch.addEventListener(
+        "click",
+        async () => {
+
+            searchOverlay.classList.add(
+                "show"
+            );
+
+            searchInput.focus();
+
+
+            /*
+             * Cargamos el catálogo de Explorar
+             * desde el momento en que se abre
+             * el buscador.
+             */
+            loadExploreSearchCatalog();
+
+        }
+    );
+
+
+    /* =====================================================
+       CERRAR CON X
+    ===================================================== */
+
+    closeSearch.addEventListener(
+        "click",
+        event => {
+
+            event.preventDefault();
+
+            event.stopPropagation();
+
+            closeSearchOverlay();
+
+        }
+    );
+
+
+    /* =====================================================
+       CERRAR AL HACER CLIC EN EL FONDO
+    ===================================================== */
+
+    searchOverlay.addEventListener(
+        "click",
+        event => {
+
+            if (
+                event.target ===
+                searchOverlay
+            ) {
+
+                closeSearchOverlay();
+
+            }
+
+        }
+    );
+
+
+    /* =====================================================
+       BUSCAR
+    ===================================================== */
+
+    searchInput.addEventListener(
+        "input",
+        () => {
+
+            updateSearchResults();
+
+        }
+    );
+
+
+    /* =====================================================
+       ESC PARA CERRAR
+    ===================================================== */
+
+    document.addEventListener(
+        "keydown",
+        event => {
+
+            if (
+                event.key === "Escape" &&
+                searchOverlay.classList.contains(
+                    "show"
+                )
+            ) {
+
+                closeSearchOverlay();
+
+            }
+
+        }
+    );
+
+}
     /* =========================
        LOGIN / REGISTRO
     ========================= */

@@ -3426,3 +3426,435 @@ input[type="range"] {
     font-weight: 700;
     line-height: 1;
 }
+
+/* =========================================================
+   PORTADA DEL REPRODUCTOR
+========================================================= */
+
+#playerCover {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    min-height: 50px;
+
+    overflow: hidden;
+    flex-shrink: 0;
+
+    border-radius: 8px;
+}
+
+#playerCover img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+}
+
+#playerCover i {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 20px;
+}
+
+/* =========================================================
+   BUSCADOR — VENTANA SUPERPUESTA
+========================================================= */
+
+#searchOverlay {
+    position: fixed !important;
+    inset: 0 !important;
+
+    width: 100vw !important;
+    height: 100vh !important;
+
+    z-index: 9999 !important;
+
+    display: none;
+    align-items: flex-start;
+    justify-content: center;
+
+    padding: 90px 20px 30px;
+
+    background: rgba(8, 8, 12, 0.96) !important;
+
+    overflow: hidden;
+}
+
+/* Cuando el buscador está abierto */
+#searchOverlay.show {
+    display: flex !important;
+}
+
+/* Contenedor */
+#searchOverlay .search-container {
+    position: relative;
+
+    width: min(760px, 100%);
+    max-height: calc(100vh - 120px);
+
+    display: flex;
+    flex-direction: column;
+
+    background: #111118 !important;
+
+    border: 1px solid #30303d;
+    border-radius: 18px;
+
+    padding: 20px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.55);
+}
+
+/* =========================================================
+   BOTÓN X
+========================================================= */
+
+#searchOverlay #closeSearch {
+    position: absolute !important;
+
+    top: 12px;
+    right: 12px;
+
+    z-index: 10001 !important;
+
+    width: 40px;
+    height: 40px;
+
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid #3b3b4b !important;
+    border-radius: 50%;
+
+    background: #252532 !important;
+    color: #ffffff !important;
+
+    font-size: 18px;
+
+    cursor: pointer;
+
+    pointer-events: auto !important;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+#searchOverlay #closeSearch:hover {
+    background: #3a3a4c !important;
+    transform: scale(1.06);
+}
+
+/* =========================================================
+   CAMPO DE BÚSQUEDA
+========================================================= */
+
+#searchOverlay #searchInput {
+    width: 100%;
+    height: 56px;
+
+    padding: 0 55px 0 18px;
+
+    box-sizing: border-box;
+
+    border: 1px solid #343444 !important;
+    border-radius: 14px;
+
+    outline: none;
+
+    background: #181820 !important;
+    color: #ffffff !important;
+
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+}
+
+#searchOverlay #searchInput::placeholder {
+    color: #9292a5 !important;
+}
+
+#searchOverlay #searchInput:focus {
+    border-color: #55556d !important;
+
+    box-shadow:
+        0 0 0 3px rgba(255, 255, 255, 0.04);
+}
+
+/* =========================================================
+   RESULTADOS — SCROLL INTERNO
+========================================================= */
+
+#searchOverlay #searchResults {
+    width: 100%;
+
+    max-height: min(65vh, 520px);
+
+    margin-top: 12px;
+
+    padding: 4px;
+
+    box-sizing: border-box;
+
+    overflow-y: auto !important;
+    overflow-x: hidden !important;
+
+    overscroll-behavior: contain !important;
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: thin;
+}
+
+/* Scrollbar */
+#searchOverlay #searchResults::-webkit-scrollbar {
+    width: 6px;
+}
+
+#searchOverlay #searchResults::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#searchOverlay #searchResults::-webkit-scrollbar-thumb {
+    background: #454556;
+    border-radius: 20px;
+}
+
+#searchOverlay #searchResults::-webkit-scrollbar-thumb:hover {
+    background: #66667a;
+}
+
+/* =========================================================
+   RESULTADOS
+========================================================= */
+
+#searchOverlay .search-result {
+    min-height: 70px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 7px;
+    padding: 9px 12px;
+
+    box-sizing: border-box;
+
+    border: 1px solid transparent;
+    border-radius: 14px;
+
+    background: #1b1b25 !important;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+#searchOverlay .search-result:hover {
+    background: #252536 !important;
+    border-color: #454556 !important;
+
+    transform: translateX(3px);
+}
+
+#searchOverlay .search-result img {
+    width: 52px;
+    height: 52px;
+
+    flex-shrink: 0;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+}
+
+#searchOverlay .search-result-info {
+    min-width: 0;
+    flex: 1;
+}
+
+#searchOverlay .search-result-info strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    color: #ffffff !important;
+
+    font-size: 13px;
+    font-weight: 800;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#searchOverlay .search-result-info small {
+    display: block;
+
+    color: #a5a5b8 !important;
+
+    font-size: 11px;
+}
+
+/* Género */
+#searchOverlay .search-result-genre {
+    flex-shrink: 0;
+
+    padding: 5px 8px;
+
+    border-radius: 20px;
+
+    background: #29293a !important;
+    color: #c5c5d8 !important;
+
+    font-size: 9px;
+    font-weight: 700;
+}
+
+/* Botón reproducir */
+#searchOverlay .search-result-play {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #ffffff !important;
+    color: #111118 !important;
+
+    cursor: pointer;
+
+    transition: transform 0.2s ease;
+}
+
+#searchOverlay .search-result-play:hover {
+    transform: scale(1.08);
+}
+
+/* =========================================================
+   MÓVIL
+========================================================= */
+
+@media (max-width: 576px) {
+
+    #searchOverlay {
+        padding: 70px 10px 15px;
+    }
+
+    #searchOverlay .search-container {
+        max-height: calc(100vh - 85px);
+        padding: 15px;
+    }
+
+    #searchOverlay #searchResults {
+        max-height: calc(100vh - 170px);
+    }
+
+    #searchOverlay .search-result {
+        min-height: 62px;
+        gap: 10px;
+        padding: 7px 9px;
+    }
+
+    #searchOverlay .search-result img {
+        width: 46px;
+        height: 46px;
+    }
+
+    #searchOverlay .search-result-genre {
+        display: none;
+    }
+
+    #searchOverlay .search-result-play {
+        width: 34px;
+        height: 34px;
+    }
+}
+
+/* =========================================================
+   BUSCADOR — COLORES FIJOS
+========================================================= */
+
+#searchOverlay {
+    background: rgba(8, 8, 12, 0.96) !important;
+}
+
+#searchOverlay .search-container {
+    background: #111118 !important;
+}
+
+#searchOverlay #searchInput {
+    background: #181820 !important;
+    color: #ffffff !important;
+    border-color: #343444 !important;
+}
+
+#searchOverlay #searchInput::placeholder {
+    color: #9292a5 !important;
+}
+
+#searchOverlay #searchResults {
+    background: transparent !important;
+}
+
+#searchOverlay .search-result {
+    background: #1b1b25 !important;
+    border-color: #30303d !important;
+}
+
+#searchOverlay .search-result:hover {
+    background: #252536 !important;
+    border-color: #55556d !important;
+}
+
+#searchOverlay .search-result-info strong {
+    color: #ffffff !important;
+}
+
+#searchOverlay .search-result-info small {
+    color: #a5a5b8 !important;
+}
+
+#searchOverlay .search-result-genre {
+    background: #29293a !important;
+    color: #c5c5d8 !important;
+}
+
+#searchOverlay .search-result-play {
+    background: #ffffff !important;
+    color: #111118 !important;
+}
+
+#searchOverlay .search-result-play:hover {
+    background: #dcdce8 !important;
+}
+
+#searchOverlay #closeSearch {
+    color: #ffffff !important;
+    background: #252532 !important;
+    border-color: #3b3b4b !important;
+}
+
+#searchOverlay #closeSearch:hover {
+    background: #383849 !important;
+}

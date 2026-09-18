@@ -48,6 +48,7 @@
     ========================== -->
 
     <link rel="stylesheet" href="musica.css">
+    <link rel="stylesheet" href="explorar.css">
 
 </head>
 
@@ -122,6 +123,7 @@
                     <a
                         class="nav-link active"
                         href="#inicio"
+                        data-page="inicio"
                     >
                         Inicio
                     </a>
@@ -131,12 +133,13 @@
 
                 <li class="nav-item">
 
-                    <a
-                        class="nav-link"
-                        href="#explorar"
-                    >
-                        Explorar
-                    </a>
+                   <a
+                     class="nav-link"
+                     href="index.html?page=explorar"
+                    data-page="explorar"
+                     >
+                    Explorar
+                       </a>
 
                 </li>
 
@@ -146,6 +149,7 @@
                     <a
                         class="nav-link"
                         href="#artistas"
+                        data-page="artistas"
                     >
                         Artistas
                     </a>
@@ -158,6 +162,7 @@
                     <a
                         class="nav-link"
                         href="#albumes"
+                        data-page="albumes"
                     >
                         Álbumes
                     </a>
@@ -366,26 +371,36 @@
 
                 <!-- MI PERFIL -->
 
-<button
-    class="login-button"
-    id="loginButton"
-    type="button"
-    aria-label="Abrir perfil"
->
-    <span id="loginButtonContent">
-        <span class="navbar-profile-content">
-            <span class="navbar-avatar-wrapper">
-                <img
-                    src=""
-                    alt="Avatar"
-                    class="navbar-avatar"
+                <button
+                    class="login-button"
+                    id="loginButton"
+                    type="button"
+                    aria-label="Abrir perfil"
                 >
-            </span>
 
-            <span class="navbar-profile-text">Mi perfil</span>
-        </span>
-    </span>
-</button>
+                    <span id="loginButtonContent">
+
+                        <span class="navbar-profile-content">
+
+                            <span class="navbar-avatar-wrapper">
+
+                                <img
+                                    src=""
+                                    alt="Avatar"
+                                    class="navbar-avatar"
+                                >
+
+                            </span>
+
+                            <span class="navbar-profile-text">
+                                Mi perfil
+                            </span>
+
+                        </span>
+
+                    </span>
+
+                </button>
 
 
             </div>
@@ -399,840 +414,818 @@
 
 
 <!-- =====================================================
-     HERO
+     CONTENIDO PRINCIPAL
 ===================================================== -->
 
-<section
-    id="inicio"
-    class="hero"
->
+<main id="mainHome">
 
 
-    <div class="hero-glow glow-one"></div>
+    <!-- =================================================
+         HERO
+    ================================================== -->
 
-    <div class="hero-glow glow-two"></div>
-
-
-    <div class="container">
-
-
-        <div class="row align-items-center min-vh-100">
-
-
-            <!-- CONTENIDO -->
-
-            <div class="col-lg-6 hero-content">
+    <section
+        id="inicio"
+        class="hero"
+    >
 
 
-                <span class="hero-label">
+        <div class="hero-glow glow-one"></div>
 
-                    <i class="bi bi-stars"></i>
-
-                    DESCUBRE NUEVOS SONIDOS
-
-                </span>
+        <div class="hero-glow glow-two"></div>
 
 
-                <h1>
+        <div class="container">
 
-                    La música
 
-                    <span>
-                        que te hace sentir.
+            <div class="row align-items-center min-vh-100">
+
+
+                <!-- CONTENIDO -->
+
+                <div class="col-lg-6 hero-content">
+
+
+                    <span class="hero-label">
+
+                        <i class="bi bi-stars"></i>
+
+                        DESCUBRE NUEVOS SONIDOS
+
                     </span>
 
-                </h1>
 
+                    <h1>
 
-                <p>
-
-                    Descubre artistas, álbumes y canciones que harán
-                    que cada momento tenga su propia banda sonora.
-
-                </p>
-
-
-                <div class="hero-buttons">
-
-
-                    <a
-                        href="#explorar"
-                        class="btn-main"
-                    >
-
-                        Explorar música
-
-                        <i class="bi bi-arrow-right"></i>
-
-                    </a>
-
-
-                    <a
-                        href="#albumes"
-                        class="btn-outline"
-                    >
-
-                        Ver álbumes
-
-                    </a>
-
-
-                </div>
-
-
-                <div class="hero-stats">
-
-
-                    <div>
-
-                        <strong>
-                            500K+
-                        </strong>
+                        La música
 
                         <span>
-                            Canciones
+                            que te hace sentir.
                         </span>
 
-                    </div>
+                    </h1>
 
-
-                    <div>
-
-                        <strong>
-                            80K+
-                        </strong>
-
-                        <span>
-                            Artistas
-                        </span>
-
-                    </div>
-
-
-                    <div>
-
-                        <strong>
-                            120+
-                        </strong>
-
-                        <span>
-                            Géneros
-                        </span>
-
-                    </div>
-
-
-                </div>
-
-
-            </div>
-
-
-            <!-- VISUALIZADOR -->
-
-            <div class="sound-wave">
-
-                <div class="equalizer">
-
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                    <span></span>
-
-                </div>
-
-            </div>
-
-
-            <!-- NOTAS -->
-
-            <div class="floating-note note-one">
-                ♪
-            </div>
-
-            <div class="floating-note note-two">
-                ♫
-            </div>
-
-            <div class="floating-note note-three">
-                ♪
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     EXPLORAR
-===================================================== -->
-
-<section
-    id="explorar"
-    class="section-space"
->
-
-    <div class="container">
-
-
-        <div class="section-heading">
-
-
-            <div>
-
-                <span class="small-title">
-                    DESCUBRE
-                </span>
-
-                <h2>
-                    Explora nuevos sonidos
-                </h2>
-
-            </div>
-
-
-            <a
-                href="#"
-                class="see-more"
-            >
-
-                Ver todo
-
-                <i class="bi bi-arrow-up-right"></i>
-
-            </a>
-
-
-        </div>
-
-
-
-        <div class="genre-grid">
-
-
-            <button
-                class="genre-card genre-pop theme-sync-card"
-                data-theme="pop"
-                type="button"
-            >
-
-                <i class="bi bi-mic"></i>
-
-                <span>
-                    Pop
-                </span>
-
-            </button>
-
-
-            <button
-                class="genre-card genre-rock theme-sync-card"
-                data-theme="rock"
-                type="button"
-            >
-
-                <i class="bi bi-lightning"></i>
-
-                <span>
-                    Rock
-                </span>
-
-            </button>
-
-
-            <button
-                class="genre-card genre-hiphop theme-sync-card"
-                data-theme="hiphop"
-                type="button"
-            >
-
-                <i class="bi bi-headphones"></i>
-
-                <span>
-                    Hip Hop
-                </span>
-
-            </button>
-
-
-            <button
-                class="genre-card genre-electronic theme-sync-card"
-                data-theme="electronic"
-                type="button"
-            >
-
-                <i class="bi bi-soundwave"></i>
-
-                <span>
-                    Electrónica
-                </span>
-
-            </button>
-
-
-            <button
-                class="genre-card genre-jazz theme-sync-card"
-                data-theme="jazz"
-                type="button"
-            >
-
-                <i class="bi bi-vinyl"></i>
-
-                <span>
-                    Jazz
-                </span>
-
-            </button>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     ÁLBUMES
-===================================================== -->
-
-<section
-    id="albumes"
-    class="section-space section-dark"
->
-
-    <div class="container">
-
-
-        <div class="section-heading">
-
-
-            <div>
-
-                <span class="small-title">
-                    TENDENCIAS
-                </span>
-
-                <h2>
-                    Álbumes destacados
-                </h2>
-
-            </div>
-
-
-            <a
-                href="#"
-                class="see-more"
-            >
-
-                Más álbumes
-
-                <i class="bi bi-arrow-up-right"></i>
-
-            </a>
-
-
-        </div>
-
-
-
-        <div class="row g-4">
-
-
-            <!-- ALBUM 1 -->
-
-            <div class="col-lg-4 col-md-6">
-
-
-                <div
-                    class="album-card"
-                    data-title="Every Breath You Take"
-                    data-artist="The police"
-                    data-audio="Canciones/The police.mpeg"
-                >
-
-
-                    <div class="album-image">
-
-
-                        <img
-                            src="Imagenes/stranger.avif"
-                            alt="Every Breath You Take"
-                        >
-
-
-                        <button
-                            class="play-card"
-                            type="button"
-                        >
-
-                            <i class="bi bi-play-fill"></i>
-
-                        </button>
-
-
-                    </div>
-
-
-                    <div class="album-info">
-
-
-                        <div>
-
-                            <h3>
-                                Every Breath You Take
-                            </h3>
-
-                            <p>
-                                The police
-                            </p>
-
-                        </div>
-
-
-                        <button
-                            class="more-button"
-                            type="button"
-                            aria-label="Más opciones"
-                        >
-
-                            <i class="bi bi-three-dots"></i>
-
-                        </button>
-
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-
-
-            <!-- ALBUM 2 -->
-
-            <div class="col-lg-4 col-md-6">
-
-
-                <div
-                    class="album-card"
-                    data-title="Wind of Change"
-                    data-artist="Scorpions"
-                    data-audio="Canciones/Scorpions.mpeg"
-                >
-
-
-                    <div class="album-image">
-
-
-                        <img
-                            src="Imagenes/Scorpions.jpg"
-                            alt="Wind of Change"
-                        >
-
-
-                        <button
-                            class="play-card"
-                            type="button"
-                        >
-
-                            <i class="bi bi-play-fill"></i>
-
-                        </button>
-
-
-                    </div>
-
-
-                    <div class="album-info">
-
-
-                        <div>
-
-                            <h3>
-                                Wind of Change
-                            </h3>
-
-                            <p>
-                                Scorpions
-                            </p>
-
-                        </div>
-
-
-                        <button
-                            class="more-button"
-                            type="button"
-                            aria-label="Más opciones"
-                        >
-
-                            <i class="bi bi-three-dots"></i>
-
-                        </button>
-
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-
-
-            <!-- ALBUM 3 -->
-
-            <div class="col-lg-4 col-md-6">
-
-
-                <div
-                    class="album-card"
-                    data-title="Blue (Da Ba Dee)"
-                    data-artist="Eiffel 65"
-                    data-audio="Canciones/65.mpeg"
-                >
-
-
-                    <div class="album-image">
-
-
-                        <img
-                            src="Imagenes/blue.webp"
-                            alt="Blue (Da Ba Dee)"
-                        >
-
-
-                        <button
-                            class="play-card"
-                            type="button"
-                        >
-
-                            <i class="bi bi-play-fill"></i>
-
-                        </button>
-
-
-                    </div>
-
-
-                    <div class="album-info">
-
-
-                        <div>
-
-                            <h3>
-                                Blue (Da Ba Dee)
-                            </h3>
-
-                            <p>
-                                Eiffel 65
-                            </p>
-
-                        </div>
-
-
-                        <button
-                            class="more-button"
-                            type="button"
-                            aria-label="Más opciones"
-                        >
-
-                            <i class="bi bi-three-dots"></i>
-
-                        </button>
-
-
-                    </div>
-
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     ARTISTAS
-===================================================== -->
-
-<section
-    id="artistas"
-    class="section-space"
->
-
-    <div class="container">
-
-
-        <div class="section-heading">
-
-
-            <div>
-
-                <span class="small-title">
-                    ARTISTAS
-                </span>
-
-                <h2>
-                    Voces que debes conocer
-                </h2>
-
-            </div>
-
-
-        </div>
-
-
-
-        <div class="row g-4">
-
-
-            <!-- ARTISTA 1 -->
-
-            <div class="col-lg-3 col-md-6">
-
-                <div class="artist-card">
-
-
-                    <div class="artist-image">
-
-                        <img
-                            src="img/artista1.jpg"
-                            alt="Luna"
-                        >
-
-                    </div>
-
-
-                    <h3>
-                        Luna
-                    </h3>
 
                     <p>
-                        Pop alternativo
+
+                        Descubre artistas, álbumes y canciones que harán
+                        que cada momento tenga su propia banda sonora.
+
                     </p>
 
 
-                    <button
-                        class="artist-play"
-                        type="button"
-                    >
+                    <div class="hero-buttons">
 
-                        <i class="bi bi-play-fill"></i>
 
-                    </button>
+                        <a
+                            href="#explorar"
+                            class="btn-main"
+                            data-page="explorar"
+                        >
+
+                            Explorar música
+
+                            <i class="bi bi-arrow-right"></i>
+
+                        </a>
+
+
+                        <a
+                            href="#albumes"
+                            class="btn-outline"
+                        >
+
+                            Ver álbumes
+
+                        </a>
+
+
+                    </div>
+
+
+                    <div class="hero-stats">
+
+
+                        <div>
+
+                            <strong>
+                                500K+
+                            </strong>
+
+                            <span>
+                                Canciones
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                80K+
+                            </strong>
+
+                            <span>
+                                Artistas
+                            </span>
+
+                        </div>
+
+
+                        <div>
+
+                            <strong>
+                                120+
+                            </strong>
+
+                            <span>
+                                Géneros
+                            </span>
+
+                        </div>
+
+
+                    </div>
 
 
                 </div>
+
+
+                <!-- VISUALIZADOR -->
+
+                <div class="sound-wave">
+
+                    <div class="equalizer">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- NOTAS -->
+
+                <div class="floating-note note-one">
+                    ♪
+                </div>
+
+                <div class="floating-note note-two">
+                    ♫
+                </div>
+
+                <div class="floating-note note-three">
+                    ♪
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         EXPLORAR
+    ================================================== -->
+
+    <section
+        id="explorar"
+        class="section-space"
+    >
+
+        <div class="container">
+
+
+            <div class="section-heading">
+
+
+                <div>
+
+                    <span class="small-title">
+                        DESCUBRE
+                    </span>
+
+                    <h2>
+                        Explora nuevos sonidos
+                    </h2>
+
+                </div>
+
+
+                <a
+                    href="explorar.html"
+                    class="see-more"
+                    data-page="explorar"
+                >
+
+                    Ver todo
+
+                    <i class="bi bi-arrow-up-right"></i>
+
+                </a>
+
 
             </div>
 
 
 
-            <!-- ARTISTA 2 -->
-
-            <div class="col-lg-3 col-md-6">
-
-                <div class="artist-card">
+            <div class="genre-grid">
 
 
-                    <div class="artist-image artist-placeholder">
+                <button
+                    class="genre-card genre-pop theme-sync-card"
+                    data-theme="pop"
+                    type="button"
+                >
 
-                        <i class="bi bi-person"></i>
+                    <i class="bi bi-mic"></i>
 
-                    </div>
+                    <span>
+                        Pop
+                    </span>
+
+                </button>
 
 
-                    <h3>
-                        Nova
-                    </h3>
+                <button
+                    class="genre-card genre-rock theme-sync-card"
+                    data-theme="rock"
+                    type="button"
+                >
 
-                    <p>
+                    <i class="bi bi-lightning"></i>
+
+                    <span>
+                        Rock
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="genre-card genre-hiphop theme-sync-card"
+                    data-theme="hiphop"
+                    type="button"
+                >
+
+                    <i class="bi bi-headphones"></i>
+
+                    <span>
+                        Hip Hop
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="genre-card genre-electronic theme-sync-card"
+                    data-theme="electronic"
+                    type="button"
+                >
+
+                    <i class="bi bi-soundwave"></i>
+
+                    <span>
                         Electrónica
-                    </p>
+                    </span>
 
+                </button>
 
-                    <button
-                        class="artist-play"
-                        type="button"
-                    >
 
-                        <i class="bi bi-play-fill"></i>
-
-                    </button>
-
-
-                </div>
-
-            </div>
-
-
-
-            <!-- ARTISTA 3 -->
-
-            <div class="col-lg-3 col-md-6">
-
-                <div class="artist-card">
-
-
-                    <div class="artist-image artist-placeholder">
-
-                        <i class="bi bi-person"></i>
-
-                    </div>
-
-
-                    <h3>
-                        Echo
-                    </h3>
-
-                    <p>
-                        Indie Rock
-                    </p>
-
-
-                    <button
-                        class="artist-play"
-                        type="button"
-                    >
-
-                        <i class="bi bi-play-fill"></i>
-
-                    </button>
-
-
-                </div>
-
-            </div>
-
-
-
-            <!-- ARTISTA 4 -->
-
-            <div class="col-lg-3 col-md-6">
-
-                <div class="artist-card">
-
-
-                    <div class="artist-image artist-placeholder">
-
-                        <i class="bi bi-person"></i>
-
-                    </div>
-
-
-                    <h3>
-                        Velvet
-                    </h3>
-
-                    <p>
-                        R&B
-                    </p>
-
-
-                    <button
-                        class="artist-play"
-                        type="button"
-                    >
-
-                        <i class="bi bi-play-fill"></i>
-
-                    </button>
-
-
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     NEWSLETTER
-===================================================== -->
-
-<section class="newsletter-section">
-
-    <div class="container">
-
-
-        <div class="newsletter-box">
-
-
-            <div>
-
-                <span class="small-title">
-                    NO TE PIERDAS NADA
-                </span>
-
-                <h2>
-                    Mantente conectado con la música.
-                </h2>
-
-                <p>
-                    Recibe recomendaciones y novedades directamente.
-                </p>
-
-            </div>
-
-
-            <div class="newsletter-form">
-
-
-                <input
-                    type="email"
-                    placeholder="Tu correo electrónico"
+                <button
+                    class="genre-card genre-jazz theme-sync-card"
+                    data-theme="jazz"
+                    type="button"
                 >
 
+                    <i class="bi bi-vinyl"></i>
 
-                <button type="button">
-                    Suscribirme
+                    <span>
+                        Jazz
+                    </span>
+
                 </button>
 
 
             </div>
 
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         ÁLBUMES
+    ================================================== -->
+
+    <section
+        id="albumes"
+        class="section-space section-dark"
+    >
+
+        <div class="container">
+
+
+            <div class="section-heading">
+
+
+                <div>
+
+                    <span class="small-title">
+                        TENDENCIAS
+                    </span>
+
+                    <h2>
+                        Álbumes destacados
+                    </h2>
+
+                </div>
+
+
+                <a
+                    href="#"
+                    class="see-more"
+                >
+
+                    Más álbumes
+
+                    <i class="bi bi-arrow-up-right"></i>
+
+                </a>
+
+
+            </div>
+
+
+
+            <div class="row g-4">
+
+
+                <!-- ALBUM 1 -->
+
+               <div class="col-lg-4 col-md-6">
+    <div class="album-card"
+        data-title="Every Breath You Take"
+        data-artist="The police"
+        data-audio="Canciones/The police.mpeg"
+        data-image="Imagenes/stranger.avif">
+
+        <div class="album-image">
+            <img src="Imagenes/stranger.avif" alt="Every Breath You Take">
+
+            <button class="play-card" type="button">
+                <i class="bi bi-play-fill"></i>
+            </button>
+        </div>
+
+        <div class="album-info">
+            <div>
+                <h3>Every Breath You Take</h3>
+                <p>The police</p>
+            </div>
+
+            <button class="more-button" type="button" aria-label="Más opciones">
+                <i class="bi bi-three-dots"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+                <!-- ALBUM 2 -->
+
+                <div class="col-lg-4 col-md-6">
+
+
+                    <div
+                        class="album-card"
+                        data-title="Wind of Change"
+                        data-artist="Scorpions"
+                        data-audio="Canciones/Scorpions.mpeg"
+                    >
+
+
+                        <div class="album-image">
+
+
+                            <img
+                                src="Imagenes/Scorpions.jpg"
+                                alt="Wind of Change"
+                            >
+
+
+                            <button
+                                class="play-card"
+                                type="button"
+                            >
+
+                                <i class="bi bi-play-fill"></i>
+
+                            </button>
+
+
+                        </div>
+
+
+                        <div class="album-info">
+
+
+                            <div>
+
+                                <h3>
+                                    Wind of Change
+                                </h3>
+
+                                <p>
+                                    Scorpions
+                                </p>
+
+                            </div>
+
+
+                            <button
+                                class="more-button"
+                                type="button"
+                                aria-label="Más opciones"
+                            >
+
+                                <i class="bi bi-three-dots"></i>
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ALBUM 3 -->
+
+                <div class="col-lg-4 col-md-6">
+
+
+                    <div
+                        class="album-card"
+                        data-title="Blue (Da Ba Dee)"
+                        data-artist="Eiffel 65"
+                        data-audio="Canciones/65.mpeg"
+                    >
+
+
+                        <div class="album-image">
+
+
+                            <img
+                                src="Imagenes/blue.webp"
+                                alt="Blue (Da Ba Dee)"
+                            >
+
+
+                            <button
+                                class="play-card"
+                                type="button"
+                            >
+
+                                <i class="bi bi-play-fill"></i>
+
+                            </button>
+
+
+                        </div>
+
+
+                        <div class="album-info">
+
+
+                            <div>
+
+                                <h3>
+                                    Blue (Da Ba Dee)
+                                </h3>
+
+                                <p>
+                                    Eiffel 65
+                                </p>
+
+                            </div>
+
+
+                            <button
+                                class="more-button"
+                                type="button"
+                                aria-label="Más opciones"
+                            >
+
+                                <i class="bi bi-three-dots"></i>
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
 
         </div>
 
-    </div>
+    </section>
 
-</section>
+
+
+    <!-- =================================================
+         ARTISTAS
+    ================================================== -->
+
+    <section
+        id="artistas"
+        class="section-space"
+    >
+
+        <div class="container">
+
+
+            <div class="section-heading">
+
+
+                <div>
+
+                    <span class="small-title">
+                        ARTISTAS
+                    </span>
+
+                    <h2>
+                        Voces que debes conocer
+                    </h2>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="row g-4">
+
+
+                <!-- ARTISTA 1 -->
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="artist-card">
+
+
+                        <div class="artist-image">
+
+                            <img
+                                src="img/artista1.jpg"
+                                alt="Luna"
+                            >
+
+                        </div>
+
+
+                        <h3>
+                            Luna
+                        </h3>
+
+                        <p>
+                            Pop alternativo
+                        </p>
+
+
+                        <button
+                            class="artist-play"
+                            type="button"
+                        >
+
+                            <i class="bi bi-play-fill"></i>
+
+                        </button>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ARTISTA 2 -->
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="artist-card">
+
+
+                        <div class="artist-image artist-placeholder">
+
+                            <i class="bi bi-person"></i>
+
+                        </div>
+
+
+                        <h3>
+                            Nova
+                        </h3>
+
+                        <p>
+                            Electrónica
+                        </p>
+
+
+                        <button
+                            class="artist-play"
+                            type="button"
+                        >
+
+                            <i class="bi bi-play-fill"></i>
+
+                        </button>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ARTISTA 3 -->
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="artist-card">
+
+
+                        <div class="artist-image artist-placeholder">
+
+                            <i class="bi bi-person"></i>
+
+                        </div>
+
+
+                        <h3>
+                            Echo
+                        </h3>
+
+                        <p>
+                            Indie Rock
+                        </p>
+
+
+                        <button
+                            class="artist-play"
+                            type="button"
+                        >
+
+                            <i class="bi bi-play-fill"></i>
+
+                        </button>
+
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- ARTISTA 4 -->
+
+                <div class="col-lg-3 col-md-6">
+
+                    <div class="artist-card">
+
+
+                        <div class="artist-image artist-placeholder">
+
+                            <i class="bi bi-person"></i>
+
+                        </div>
+
+
+                        <h3>
+                            Velvet
+                        </h3>
+
+                        <p>
+                            R&B
+                        </p>
+
+
+                        <button
+                            class="artist-play"
+                            type="button"
+                        >
+
+                            <i class="bi bi-play-fill"></i>
+
+                        </button>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         NEWSLETTER
+    ================================================== -->
+
+    <section class="newsletter-section">
+
+        <div class="container">
+
+
+            <div class="newsletter-box">
+
+
+                <div>
+
+                    <span class="small-title">
+                        NO TE PIERDAS NADA
+                    </span>
+
+                    <h2>
+                        Mantente conectado con la música.
+                    </h2>
+
+                    <p>
+                        Recibe recomendaciones y novedades directamente.
+                    </p>
+
+                </div>
+
+
+                <div class="newsletter-form">
+
+
+                    <input
+                        type="email"
+                        placeholder="Tu correo electrónico"
+                    >
+
+
+                    <button type="button">
+                        Suscribirme
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+</main>
+
+
+<!-- =====================================================
+     CONTENEDOR PARA EXPLORAR
+===================================================== -->
+
+<div id="pageContainer"></div>
 
 
 
@@ -1279,30 +1272,22 @@
 
 
                 <a href="#" aria-label="Instagram">
-
                     <i class="bi bi-instagram"></i>
-
                 </a>
 
 
                 <a href="#" aria-label="Spotify">
-
                     <i class="bi bi-spotify"></i>
-
                 </a>
 
 
                 <a href="#" aria-label="YouTube">
-
                     <i class="bi bi-youtube"></i>
-
                 </a>
 
 
                 <a href="#" aria-label="TikTok">
-
                     <i class="bi bi-tiktok"></i>
-
                 </a>
 
 
@@ -1343,35 +1328,16 @@
     id="musicPlayer"
 >
 
-
-    <div class="player-song">
-
-
-        <div class="player-cover">
-
-            <i class="bi bi-music-note-beamed"></i>
-
-        </div>
-
-
-        <div>
-
-
-            <h4 id="playerTitle">
-                Selecciona una canción
-            </h4>
-
-
-            <span id="playerArtist">
-                SONORA
-            </span>
-
-
-        </div>
-
-
+<div class="player-song">
+    <div class="player-cover" id="playerCover">
+        <i class="bi bi-music-note-beamed"></i>
     </div>
 
+    <div>
+        <h4 id="playerTitle">Selecciona una canción</h4>
+        <span id="playerArtist">SONORA</span>
+    </div>
+</div>
 
 
     <div class="player-controls">
@@ -1540,16 +1506,27 @@
 ></script>
 
 
-<!-- SUPABASE -->
+<!-- =====================================================
+     SUPABASE
+===================================================== -->
 
 <script
     src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
 ></script>
 
 
-<!-- TU JAVASCRIPT -->
+<!-- =====================================================
+     TU JAVASCRIPT
+===================================================== -->
 
 <script src="musica.js"></script>
+
+<!-- =====================================================
+     JAVASCRIPT EXPLORAR
+===================================================== -->
+
+<script src="explorar.js"></script>
+
 
 
 
@@ -1566,8 +1543,6 @@
     <div class="auth-modal">
 
 
-        <!-- CERRAR -->
-
         <button
             class="auth-close"
             id="authClose"
@@ -1579,8 +1554,6 @@
 
         </button>
 
-
-        <!-- ENCABEZADO -->
 
         <div class="auth-header">
 
@@ -1606,12 +1579,8 @@
 
 
 
-        <!-- FORMULARIO -->
-
         <form id="authForm">
 
-
-            <!-- CORREO -->
 
             <div class="auth-field">
 
@@ -1642,8 +1611,6 @@
 
 
 
-            <!-- CONTRASEÑA -->
-
             <div class="auth-field">
 
 
@@ -1673,16 +1640,12 @@
 
 
 
-            <!-- MENSAJE -->
-
             <p
                 class="auth-message"
                 id="authMessage"
             ></p>
 
 
-
-            <!-- ENVIAR -->
 
             <button
                 type="submit"
@@ -1696,8 +1659,6 @@
         </form>
 
 
-
-        <!-- CAMBIAR MODO -->
 
         <div class="auth-switch">
 
@@ -1735,9 +1696,6 @@
 
     <div class="profile-modal">
 
-        <!-- =========================
-             CERRAR
-        ========================== -->
 
         <button
             type="button"
@@ -1752,10 +1710,6 @@
 
 
 
-        <!-- =========================
-             AVATAR
-        ========================== -->
-
         <div class="profile-avatar-container">
 
 
@@ -1769,34 +1723,35 @@
             </div>
 
 
-           <button type="button" class="change-avatar-button" id="changeAvatarButton" aria-label="Cambiar avatar">
-    <i class="bi bi-camera-fill"></i>
-</button>
+            <button
+                type="button"
+                class="change-avatar-button"
+                id="changeAvatarButton"
+                aria-label="Cambiar avatar"
+            >
 
-<input
-    type="file"
-    id="avatarFileInput"
-    accept="image/png,image/jpeg,image/webp"
-    hidden
->
+                <i class="bi bi-camera-fill"></i>
+
+            </button>
+
+
+            <input
+                type="file"
+                id="avatarFileInput"
+                accept="image/png,image/jpeg,image/webp"
+                hidden
+            >
+
 
         </div>
 
 
-
-        <!-- =========================
-             NOMBRE
-        ========================== -->
 
         <h2 id="profileName">
             Mi perfil
         </h2>
 
 
-
-        <!-- =========================
-             CORREO
-        ========================== -->
 
         <p
             class="profile-email"
@@ -1806,10 +1761,6 @@
         </p>
 
 
-
-        <!-- =========================
-             EDITAR PERFIL
-        ========================== -->
 
         <button
             type="button"
@@ -1825,18 +1776,12 @@
 
 
 
-        <!-- =================================================
-             SECCIÓN DE EDICIÓN
-        ================================================== -->
-
         <div
             class="profile-edit-section"
             id="profileEditSection"
             style="display: none;"
         >
 
-
-            <!-- NOMBRE DE USUARIO -->
 
             <div class="profile-edit-field">
 
@@ -1860,15 +1805,27 @@
                         autocomplete="off"
                     >
 
+
                 </div>
+
+
             </div>
 
-            <!-- URL DEL AVATAR -->
+
 
             <div class="profile-edit-field">
-                <label for="profileAvatarUrl">URL del avatar</label>
+
+
+                <label for="profileAvatarUrl">
+                    URL del avatar
+                </label>
+
+
                 <div class="profile-input">
+
+
                     <i class="bi bi-image"></i>
+
 
                     <input
                         type="url"
@@ -1885,16 +1842,12 @@
 
 
 
-            <!-- MENSAJE -->
-
             <p
                 class="profile-message"
                 id="profileMessage"
             ></p>
 
 
-
-            <!-- GUARDAR -->
 
             <button
                 type="button"
@@ -1912,10 +1865,6 @@
         </div>
 
 
-
-        <!-- =================================================
-             INFORMACIÓN DE LA CUENTA
-        ================================================== -->
 
         <div class="profile-info">
 
@@ -1943,14 +1892,8 @@
 
 
 
-        <!-- =================================================
-             ESTADÍSTICAS
-        ================================================== -->
-
         <div class="profile-stats">
 
-
-            <!-- CANCIONES -->
 
             <div class="profile-stat">
 
@@ -1972,8 +1915,6 @@
 
 
 
-            <!-- FAVORITOS -->
-
             <div class="profile-stat">
 
 
@@ -1993,8 +1934,6 @@
             </div>
 
 
-
-            <!-- PLAYLISTS -->
 
             <div class="profile-stat">
 
@@ -2019,10 +1958,6 @@
 
 
 
-        <!-- =================================================
-             CERRAR SESIÓN
-        ================================================== -->
-
         <button
             type="button"
             class="logout-button"
@@ -2030,9 +1965,990 @@
         >
 
             <i class="bi bi-box-arrow-right"></i>
+
             Cerrar sesión
+
         </button>
+
+
     </div>
+
 </div>
-</body>
-</html>
+
+
+
+<!-- =====================================================
+     NAVEGACIÓN SPA
+     MANTIENE VIVO EL REPRODUCTOR
+===================================================== -->
+<script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const mainHome = document.getElementById("mainHome");
+    const pageContainer = document.getElementById("pageContainer");
+
+    const navbarLinks = document.querySelectorAll(
+        ".navbar-nav .nav-link"
+    );
+
+    const audio = document.getElementById("audioPlayer");
+    const playerTitle = document.getElementById("playerTitle");
+    const playerArtist = document.getElementById("playerArtist");
+    const playerCover = document.getElementById("playerCover");
+
+
+    /* =================================================
+       ESTADO DEL REPRODUCTOR
+    ================================================= */
+
+    const PLAYER_STORAGE_KEY = "sonora-player-state";
+
+
+    function savePlayerState() {
+
+        if (!audio) return;
+
+        const image =
+            playerCover?.querySelector("img")?.getAttribute("src") || "";
+
+        const state = {
+            src: audio.currentSrc || audio.src || "",
+            title: playerTitle?.textContent || "",
+            artist: playerArtist?.textContent || "",
+            image: image,
+            time: Number(audio.currentTime) || 0,
+            volume: Number(audio.volume)
+        };
+
+        localStorage.setItem(
+            PLAYER_STORAGE_KEY,
+            JSON.stringify(state)
+        );
+
+    }
+
+
+    function getSavedPlayerState() {
+
+        try {
+
+            const saved =
+                localStorage.getItem(
+                    PLAYER_STORAGE_KEY
+                );
+
+            if (!saved) return null;
+
+            return JSON.parse(saved);
+
+        } catch (error) {
+
+            console.warn(
+                "No se pudo recuperar el estado del reproductor.",
+                error
+            );
+
+            return null;
+
+        }
+
+    }
+
+
+    function restorePlayerState() {
+
+        if (!audio) return;
+
+        const state =
+            getSavedPlayerState();
+
+        if (!state) return;
+
+
+        /* Volumen */
+
+        if (
+            typeof state.volume === "number" &&
+            !Number.isNaN(state.volume)
+        ) {
+
+            audio.volume =
+                Math.max(
+                    0,
+                    Math.min(
+                        1,
+                        state.volume
+                    )
+                );
+
+        }
+
+
+        if (!state.src) return;
+
+
+        /*
+           Restauramos únicamente los datos.
+           La reproducción automática después
+           de una actualización puede ser bloqueada
+           por el navegador.
+        */
+
+        audio.src = state.src;
+
+
+        if (playerTitle) {
+
+            playerTitle.textContent =
+                state.title || "Canción";
+
+        }
+
+
+        if (playerArtist) {
+
+            playerArtist.textContent =
+                state.artist || "Artista";
+
+        }
+
+
+        if (
+            playerCover &&
+            state.image
+        ) {
+
+            playerCover.innerHTML = `
+                <img
+                    src="${state.image}"
+                    alt="${state.title || "Portada"}"
+                >
+            `;
+
+        }
+
+
+        audio.addEventListener(
+            "loadedmetadata",
+            () => {
+
+                if (
+                    typeof state.time === "number" &&
+                    state.time > 0 &&
+                    state.time < audio.duration
+                ) {
+
+                    audio.currentTime =
+                        state.time;
+
+                }
+
+            },
+            {
+                once: true
+            }
+        );
+
+    }
+
+
+    /*
+       Guardamos periódicamente el progreso
+       de la canción.
+    */
+
+    if (audio) {
+
+        audio.addEventListener(
+            "timeupdate",
+            () => {
+
+                savePlayerState();
+
+            }
+        );
+
+
+        audio.addEventListener(
+            "volumechange",
+            () => {
+
+                savePlayerState();
+
+            }
+        );
+
+
+        window.addEventListener(
+            "beforeunload",
+            () => {
+
+                savePlayerState();
+
+            }
+        );
+
+    }
+
+
+    /* =================================================
+       CERRAR MENÚ MÓVIL
+    ================================================= */
+
+    function closeMobileMenu() {
+
+        const navbarContent =
+            document.getElementById(
+                "navbarContent"
+            );
+
+        const toggler =
+            document.querySelector(
+                ".navbar-toggler"
+            );
+
+
+        if (
+            navbarContent &&
+            navbarContent.classList.contains("show")
+        ) {
+
+            const collapse =
+                bootstrap.Collapse.getInstance(
+                    navbarContent
+                );
+
+            if (collapse) {
+
+                collapse.hide();
+
+            } else {
+
+                navbarContent.classList.remove(
+                    "show"
+                );
+
+            }
+
+        }
+
+
+        if (toggler) {
+
+            toggler.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+        }
+
+    }
+
+
+    /* =================================================
+       MENÚ ACTIVO
+    ================================================= */
+
+    function setActivePage(page) {
+
+        navbarLinks.forEach(link => {
+
+            link.classList.remove(
+                "active"
+            );
+
+        });
+
+
+        const active =
+            document.querySelector(
+                `.navbar-nav .nav-link[data-page="${page}"]`
+            );
+
+
+        if (active) {
+
+            active.classList.add(
+                "active"
+            );
+
+        }
+
+    }
+
+
+    /* =================================================
+       REPRODUCIR CANCIÓN DE EXPLORAR
+    ================================================= */
+
+    function setupExploreSongs() {
+
+        const cards =
+            pageContainer.querySelectorAll(
+                ".explore-song-card"
+            );
+
+
+        cards.forEach(card => {
+
+            const playButton =
+                card.querySelector(
+                    ".explore-play-button"
+                );
+
+
+            async function playSong(event) {
+
+                if (event) {
+
+                    event.preventDefault();
+                    event.stopPropagation();
+
+                }
+
+
+                if (!audio) return;
+
+
+                const title =
+                    card.dataset.title ||
+                    "Canción";
+
+
+                const artist =
+                    card.dataset.artist ||
+                    "Artista";
+
+
+                const audioFile =
+                    card.dataset.audio ||
+                    "";
+
+
+                const image =
+                    card.dataset.image ||
+                    "";
+
+
+                if (!audioFile) return;
+
+
+                /*
+                   Si es la misma canción que ya está
+                   cargada, no la reiniciamos.
+                */
+
+                const currentSource =
+                    audio.currentSrc ||
+                    audio.src ||
+                    "";
+
+
+                const absoluteAudio =
+                    new URL(
+                        audioFile,
+                        window.location.href
+                    ).href;
+
+
+                if (
+                    currentSource !== absoluteAudio
+                ) {
+
+                    audio.src =
+                        audioFile;
+
+                    audio.currentTime =
+                        0;
+
+                }
+
+
+                if (playerTitle) {
+
+                    playerTitle.textContent =
+                        title;
+
+                }
+
+
+                if (playerArtist) {
+
+                    playerArtist.textContent =
+                        artist;
+
+                }
+
+
+                /* =================================================
+                   PORTADA
+                ================================================= */
+
+                if (
+                    playerCover &&
+                    image
+                ) {
+
+                    playerCover.innerHTML = `
+                        <img
+                            src="${image}"
+                            alt="${title}"
+                        >
+                    `;
+
+                }
+
+
+                /* =================================================
+                   MARCAR CANCIÓN ACTIVA
+                ================================================= */
+
+                cards.forEach(otherCard => {
+
+                    otherCard.classList.remove(
+                        "is-playing"
+                    );
+
+                    const icon =
+                        otherCard.querySelector(
+                            ".explore-play-button i"
+                        );
+
+                    if (icon) {
+
+                        icon.className =
+                            "bi bi-play-fill";
+
+                    }
+
+                });
+
+
+                card.classList.add(
+                    "is-playing"
+                );
+
+
+                const currentIcon =
+                    playButton?.querySelector(
+                        "i"
+                    );
+
+
+                if (currentIcon) {
+
+                    currentIcon.className =
+                        "bi bi-pause-fill";
+
+                }
+
+
+                try {
+
+                    await audio.play();
+
+                } catch (error) {
+
+                    console.log(
+                        "La reproducción automática fue bloqueada:",
+                        error
+                    );
+
+                }
+
+
+                savePlayerState();
+
+            }
+
+
+            card.addEventListener(
+                "click",
+                playSong
+            );
+
+
+            if (playButton) {
+
+                playButton.addEventListener(
+                    "click",
+                    playSong
+                );
+
+            }
+
+        });
+
+    }
+
+
+    /* =================================================
+       RESTAURAR ESTADO VISUAL DE EXPLORAR
+    ================================================= */
+
+    function restoreExploreSong() {
+
+        if (!audio) return;
+
+        const state =
+            getSavedPlayerState();
+
+        if (!state || !state.src) return;
+
+
+        const cards =
+            pageContainer.querySelectorAll(
+                ".explore-song-card"
+            );
+
+
+        cards.forEach(card => {
+
+            const audioFile =
+                card.dataset.audio || "";
+
+
+            if (!audioFile) return;
+
+
+            const absoluteAudio =
+                new URL(
+                    audioFile,
+                    window.location.href
+                ).href;
+
+
+            if (
+                absoluteAudio === state.src
+            ) {
+
+                card.classList.add(
+                    "is-playing"
+                );
+
+                const icon =
+                    card.querySelector(
+                        ".explore-play-button i"
+                    );
+
+                if (icon) {
+
+                    icon.className =
+                        "bi bi-pause-fill";
+
+                }
+
+            }
+
+        });
+
+    }
+
+
+    /* =================================================
+       CARGAR EXPLORAR
+    ================================================= */
+
+   async function loadExplore(
+    updateHistory = true,
+    initialFilter = "all"
+) {
+
+        try {
+
+            const response =
+                await fetch(
+                    "explorar.html"
+                );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "No se pudo cargar explorar.html"
+                );
+
+            }
+
+
+            const html =
+                await response.text();
+
+
+            const parser =
+                new DOMParser();
+
+
+            const doc =
+                parser.parseFromString(
+                    html,
+                    "text/html"
+                );
+
+
+            const explorePage =
+                doc.querySelector(
+                    ".explore-page"
+                );
+
+
+            if (!explorePage) {
+
+                throw new Error(
+                    "No se encontró .explore-page"
+                );
+
+            }
+
+
+            /*
+               Ocultar Inicio.
+            */
+
+            mainHome.style.display =
+                "none";
+
+
+            /*
+               Insertar únicamente
+               el contenido de Explorar.
+            */
+
+            pageContainer.innerHTML =
+                "";
+
+            pageContainer.appendChild(
+                explorePage
+            );
+if (typeof initExplorar === "function") {
+    initExplorar(initialFilter);
+}
+
+            /*
+               El navbar, footer,
+               reproductor, audio y modales
+               permanecen intactos.
+            */
+
+            setActivePage(
+                "explorar"
+            );
+
+
+            setupExploreSongs();
+
+
+            restoreExploreSong();
+
+
+            closeMobileMenu();
+
+
+            window.scrollTo({
+                top: 0,
+                behavior: "instant"
+            });
+
+
+            /*
+               IMPORTANTE:
+               Ya NO usamos explorar.html
+               como URL del navegador.
+
+               Al actualizar se volverá a cargar
+               index.html.
+            */
+
+            if (updateHistory) {
+
+                history.pushState(
+                    {
+                        page: "explorar"
+                    },
+                    "",
+                    "index.html?page=explorar"
+                );
+
+            }
+
+
+        } catch (error) {
+
+            console.error(
+                "Error al cargar Explorar:",
+                error
+            );
+
+        }
+
+    }
+
+
+    /* =================================================
+       VOLVER A INICIO
+    ================================================= */
+
+    function loadHome(
+        updateHistory = true
+    ) {
+
+        pageContainer.innerHTML =
+            "";
+
+        mainHome.style.display =
+            "";
+
+
+        setActivePage(
+            "inicio"
+        );
+
+
+        closeMobileMenu();
+
+
+        if (updateHistory) {
+
+            history.pushState(
+                {
+                    page: "inicio"
+                },
+                "",
+                "index.html"
+            );
+
+        }
+
+
+        window.scrollTo({
+            top: 0,
+            behavior: "instant"
+        });
+
+    }
+
+
+    /* =================================================
+       EXPLORAR
+    ================================================= */
+
+    document.addEventListener(
+        "click",
+        event => {
+
+            const link =
+                event.target.closest(
+                    '[data-page="explorar"]'
+                );
+
+
+            if (!link) return;
+
+
+            event.preventDefault();
+
+
+            loadExplore(
+                true
+            );
+
+        }
+    );
+
+
+    /* =================================================
+       INICIO
+    ================================================= */
+
+    document.addEventListener(
+        "click",
+        event => {
+
+            const link =
+                event.target.closest(
+                    '[data-page="inicio"]'
+                );
+
+
+            if (!link) return;
+
+
+            event.preventDefault();
+
+
+            loadHome(
+                true
+            );
+
+        }
+    );
+
+
+    /* =================================================
+       ARTISTAS / ÁLBUMES
+    ================================================= */
+
+    document.addEventListener(
+        "click",
+        event => {
+
+            const link =
+                event.target.closest(
+                    '.navbar-nav a[href^="#"]'
+                );
+
+
+            if (!link) return;
+
+
+            const targetId =
+                link.getAttribute(
+                    "href"
+                );
+
+
+            if (
+                targetId !== "#artistas" &&
+                targetId !== "#albumes"
+            ) {
+
+                return;
+
+            }
+
+
+            if (
+                mainHome.style.display ===
+                "none"
+            ) {
+
+                event.preventDefault();
+
+
+                loadHome(
+                    false
+                );
+
+
+                setTimeout(() => {
+
+                    const target =
+                        document.querySelector(
+                            targetId
+                        );
+
+
+                    if (target) {
+
+                        target.scrollIntoView({
+                            behavior: "smooth"
+                        });
+
+                    }
+
+                }, 50);
+
+            }
+
+        }
+    );
+
+
+    /* =================================================
+       ATRÁS / ADELANTE
+    ================================================= */
+
+    window.addEventListener(
+        "popstate",
+        () => {
+
+            const params =
+                new URLSearchParams(
+                    window.location.search
+                );
+
+
+            const page =
+                params.get(
+                    "page"
+                );
+
+
+            if (
+                page === "explorar"
+            ) {
+
+                loadExplore(
+                    false
+                );
+
+            } else {
+
+                loadHome(
+                    false
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =================================================
+       RUTA INICIAL
+    ================================================= */
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const currentPage =
+        params.get(
+            "page"
+        );
+
+
+    if (
+        currentPage === "explorar"
+    ) {
+
+        /*
+           IMPORTANTE:
+           No hacemos pushState aquí.
+           Solo cargamos Explorar.
+        */
+
+        loadExplore(
+            false
+        );
+
+    } else {
+
+        setActivePage(
+            "inicio"
+        );
+
+    }
+
+
+    /* =================================================
+       RESTAURAR REPRODUCTOR
+    ================================================= */
+
+    /*
+       Esperamos un poco para que
+       musica.js termine de inicializarse.
+    */
+
+    setTimeout(() => {
+
+        restorePlayerState();
+
+    }, 100);
+
+});
+
+</script>

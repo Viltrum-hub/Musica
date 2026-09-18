@@ -1,0 +1,1138 @@
+/* =========================================================
+   EXPLORAR — SONORA
+========================================================= */
+
+.explore-page {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    padding-top: 0;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.explore-hero {
+    position: relative;
+    overflow: hidden;
+
+    padding: 105px 0 85px;
+
+    background:
+        radial-gradient(
+            circle at 12% 20%,
+            rgba(168, 85, 247, 0.18),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 88% 30%,
+            rgba(236, 72, 153, 0.13),
+            transparent 32%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.015),
+            transparent
+        ),
+        var(--bg);
+}
+
+
+/* Línea decorativa inferior */
+
+.explore-hero::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(168, 85, 247, 0.35),
+            rgba(236, 72, 153, 0.25),
+            transparent
+        );
+
+    opacity: 0.7;
+}
+
+
+/* Contenido */
+
+.explore-hero-content {
+    position: relative;
+    z-index: 2;
+
+    max-width: 780px;
+}
+
+
+/* Etiqueta superior */
+
+.explore-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+
+    margin-bottom: 20px;
+
+    color: var(--primary);
+
+    font-size: 11px;
+    font-weight: 800;
+
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
+
+
+/* Punto decorativo */
+
+.explore-label::before {
+    content: "";
+
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: var(--primary);
+
+    box-shadow:
+        0 0 12px rgba(168, 85, 247, 0.7);
+
+    animation: explorePulse 2s ease-in-out infinite;
+}
+
+
+.explore-label i {
+    font-size: 15px;
+}
+
+
+/* Título */
+
+.explore-hero h1 {
+    margin: 0;
+
+    max-width: 800px;
+
+    font-size: clamp(2.7rem, 6vw, 5rem);
+    line-height: 1.04;
+
+    font-weight: 800;
+
+    letter-spacing: -2.5px;
+}
+
+
+/* Parte destacada */
+
+.explore-hero h1 span {
+    display: block;
+
+    background:
+        linear-gradient(
+            90deg,
+            var(--primary),
+            #c084fc,
+            var(--secondary)
+        );
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    color: transparent;
+
+    background-size: 200% auto;
+
+    animation: exploreGradient 6s ease infinite;
+}
+
+
+/* Descripción */
+
+.explore-hero p {
+    max-width: 650px;
+
+    margin: 26px 0 0;
+
+    color: var(--muted);
+
+    font-size: 16px;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   DECORACIÓN
+========================================================= */
+
+.explore-glow {
+    position: absolute;
+
+    width: 380px;
+    height: 380px;
+
+    border-radius: 50%;
+
+    filter: blur(100px);
+
+    pointer-events: none;
+
+    opacity: 0.13;
+
+    animation:
+        exploreFloat 8s ease-in-out infinite;
+}
+
+
+.explore-glow-one {
+    top: -190px;
+    left: -120px;
+
+    background: var(--primary);
+}
+
+
+.explore-glow-two {
+    right: -140px;
+    bottom: -190px;
+
+    background: var(--secondary);
+
+    animation-delay: -4s;
+}
+
+
+/* =========================================================
+   CONTENIDO
+========================================================= */
+
+.explore-content {
+    position: relative;
+
+    padding: 55px 0 140px;
+}
+
+
+/* =========================================================
+   BARRA SUPERIOR
+========================================================= */
+
+.explore-toolbar {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+
+    gap: 25px;
+
+    margin-bottom: 32px;
+}
+
+
+/* Título pequeño */
+
+.explore-toolbar .small-title {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: var(--primary);
+
+    font-size: 10px;
+    font-weight: 800;
+
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
+
+
+/* Título principal */
+
+.explore-toolbar h2 {
+    margin: 0;
+
+    font-size: 30px;
+    line-height: 1.2;
+
+    font-weight: 800;
+
+    letter-spacing: -0.6px;
+}
+
+
+/* =========================================================
+   FILTROS
+========================================================= */
+
+.genre-filters {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+}
+
+
+.genre-filter {
+    position: relative;
+
+    border: 1px solid var(--border);
+
+    background:
+        rgba(255, 255, 255, 0.025);
+
+    color: var(--muted);
+
+    padding: 8px 15px;
+
+    border-radius: 30px;
+
+    font-family: inherit;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+    transition:
+        background 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.genre-filter:hover {
+    color: var(--text);
+
+    border-color:
+        rgba(168, 85, 247, 0.35);
+
+    background:
+        rgba(168, 85, 247, 0.07);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+
+.genre-filter.active {
+    background: var(--primary);
+
+    border-color: var(--primary);
+
+    color: white;
+
+    box-shadow:
+        0 7px 20px rgba(168, 85, 247, 0.22);
+}
+
+
+/* =========================================================
+   GRID DE CANCIONES
+========================================================= */
+
+.explore-song-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 20px;
+
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   TARJETA DE CANCIÓN
+========================================================= */
+
+.explore-song-card {
+    position: relative;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255, 255, 255, 0.025),
+            transparent 55%
+        ),
+        var(--card);
+
+    border: 1px solid var(--border);
+
+    border-radius: 18px;
+
+    cursor: pointer;
+
+    isolation: isolate;
+
+    transition:
+        transform 0.3s ease,
+        border-color 0.3s ease,
+        box-shadow 0.3s ease,
+        background 0.3s ease;
+}
+
+
+/* Línea de luz superior */
+
+.explore-song-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 15%;
+    right: 15%;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(168, 85, 247, 0.6),
+            transparent
+        );
+
+    opacity: 0;
+
+    transition: opacity 0.3s ease;
+
+    z-index: 4;
+}
+
+
+.explore-song-card:hover {
+    transform: translateY(-6px);
+
+    border-color:
+        rgba(168, 85, 247, 0.38);
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(168, 85, 247, 0.035),
+            transparent 60%
+        ),
+        var(--card);
+
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.28),
+        0 0 25px rgba(168, 85, 247, 0.06);
+}
+
+
+.explore-song-card:hover::before {
+    opacity: 1;
+}
+
+
+/* =========================================================
+   IMAGEN
+========================================================= */
+
+.explore-song-image {
+    position: relative;
+
+    width: 100%;
+    height: 230px;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+    background: #101010;
+}
+
+
+/* Imagen */
+
+.explore-song-image img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    transition:
+        transform 0.55s cubic-bezier(
+            0.2,
+            0.7,
+            0.2,
+            1
+        ),
+        filter 0.4s ease;
+}
+
+
+.explore-song-card:hover
+.explore-song-image img {
+    transform: scale(1.07);
+
+    filter:
+        brightness(1.04)
+        saturate(1.08);
+}
+
+
+/* Degradado inferior de imagen */
+
+.explore-song-image::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 45%;
+
+    background:
+        linear-gradient(
+            to top,
+            rgba(0, 0, 0, 0.55),
+            transparent
+        );
+
+    z-index: 1;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   BOTÓN PLAY
+========================================================= */
+
+.explore-play-button {
+    position: absolute;
+
+    right: 13px;
+    bottom: 13px;
+
+    width: 42px;
+    height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 50%;
+
+    background: var(--primary);
+
+    color: white;
+
+    font-size: 19px;
+
+    box-shadow:
+        0 8px 22px rgba(0, 0, 0, 0.38);
+
+    opacity: 0;
+
+    transform:
+        translateY(10px)
+        scale(0.92);
+
+    cursor: pointer;
+
+    z-index: 3;
+
+    transition:
+        opacity 0.25s ease,
+        transform 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+.explore-song-card:hover
+.explore-play-button,
+.explore-song-card.is-playing
+.explore-play-button {
+    opacity: 1;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+.explore-play-button:hover {
+    background: var(--secondary);
+
+    box-shadow:
+        0 9px 25px rgba(236, 72, 153, 0.3);
+
+    transform:
+        translateY(-1px)
+        scale(1.06);
+}
+
+
+.explore-play-button:active {
+    transform: scale(0.94);
+}
+
+
+/* =========================================================
+   INFORMACIÓN DE LA CANCIÓN
+========================================================= */
+
+.explore-song-info {
+    width: 100%;
+
+    min-height: 78px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 12px;
+
+    padding: 15px;
+
+    box-sizing: border-box;
+
+    flex: 1;
+}
+
+
+.explore-song-info > div {
+    min-width: 0;
+}
+
+
+/* Título */
+
+.explore-song-info h3 {
+    margin: 0 0 5px;
+
+    color: var(--text);
+
+    font-size: 13px;
+    font-weight: 800;
+
+    line-height: 1.3;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* Artista */
+
+.explore-song-info p {
+    margin: 0;
+
+    color: var(--muted);
+
+    font-size: 11px;
+
+    line-height: 1.4;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* =========================================================
+   LABEL DEL GÉNERO
+========================================================= */
+
+.explore-song-info .song-genre {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+
+    width: auto;
+    height: auto;
+
+    margin: 0;
+
+    padding: 5px 9px;
+
+    border: 1px solid
+        rgba(168, 85, 247, 0.15);
+
+    border-radius: 20px;
+
+    background:
+        rgba(168, 85, 247, 0.09);
+
+    color: var(--primary-light);
+
+    font-family: 'Montserrat', sans-serif;
+
+    font-size: 9px;
+    font-weight: 700;
+
+    line-height: 1;
+
+    white-space: nowrap;
+
+    box-sizing: border-box;
+
+    transition:
+        background 0.25s ease,
+        border-color 0.25s ease;
+}
+
+
+.explore-song-card:hover
+.explore-song-info .song-genre {
+    background:
+        rgba(168, 85, 247, 0.14);
+
+    border-color:
+        rgba(168, 85, 247, 0.25);
+}
+
+
+/* =========================================================
+   CANCIÓN ACTIVA
+========================================================= */
+
+.explore-song-card.is-playing {
+    border-color: var(--primary);
+
+    box-shadow:
+        0 0 0 1px
+            rgba(168, 85, 247, 0.18),
+        0 18px 45px
+            rgba(168, 85, 247, 0.13);
+}
+
+
+/* Barra superior activa */
+
+.explore-song-card.is-playing::before {
+    opacity: 1;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--primary),
+            var(--secondary),
+            transparent
+        );
+}
+
+
+/* Capa sobre imagen */
+
+.explore-song-card.is-playing
+.explore-song-image::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(168, 85, 247, 0.20),
+            rgba(236, 72, 153, 0.09)
+        );
+
+    pointer-events: none;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   SIN RESULTADOS
+========================================================= */
+
+.explore-no-results {
+    padding: 70px 20px;
+
+    text-align: center;
+
+    color: var(--muted);
+}
+
+
+.explore-no-results i {
+    display: block;
+
+    margin-bottom: 13px;
+
+    color: var(--primary);
+
+    font-size: 32px;
+
+    filter:
+        drop-shadow(
+            0 0 12px rgba(168, 85, 247, 0.35)
+        );
+}
+
+
+/* =========================================================
+   ANIMACIONES
+========================================================= */
+
+@keyframes explorePulse {
+
+    0%,
+    100% {
+        opacity: 0.65;
+
+        transform: scale(0.9);
+    }
+
+    50% {
+        opacity: 1;
+
+        transform: scale(1.15);
+    }
+}
+
+
+@keyframes exploreGradient {
+
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+@keyframes exploreFloat {
+
+    0%,
+    100% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    50% {
+        transform: translate3d(0, 18px, 0);
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 1100px) {
+
+    .explore-song-grid {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+
+        gap: 18px;
+    }
+
+    .explore-song-image {
+        height: 220px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET PEQUEÑA
+========================================================= */
+
+@media (max-width: 850px) {
+
+    .explore-hero {
+        padding: 90px 0 70px;
+    }
+
+
+    .explore-toolbar {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .genre-filters {
+        justify-content: flex-start;
+    }
+
+
+    .explore-song-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 15px;
+    }
+
+
+    .explore-song-image {
+        height: 210px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVE — MÓVIL
+========================================================= */
+
+@media (max-width: 576px) {
+
+    .explore-hero {
+        padding: 75px 0 55px;
+    }
+
+
+    .explore-hero h1 {
+        font-size: 2.6rem;
+
+        letter-spacing: -1.5px;
+    }
+
+
+    .explore-hero p {
+        margin-top: 20px;
+
+        font-size: 14px;
+
+        line-height: 1.7;
+    }
+
+
+    .explore-label {
+        font-size: 10px;
+
+        letter-spacing: 2px;
+    }
+
+
+    .explore-content {
+        padding-top: 32px;
+    }
+
+
+    .explore-toolbar {
+        margin-bottom: 24px;
+    }
+
+
+    .explore-toolbar h2 {
+        font-size: 25px;
+    }
+
+
+    .genre-filters {
+        gap: 6px;
+    }
+
+
+    .genre-filter {
+        padding: 7px 12px;
+
+        font-size: 10px;
+    }
+
+
+    .explore-song-grid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 10px;
+    }
+
+
+    /* Todas las imágenes móviles
+       conservan exactamente la misma altura */
+
+    .explore-song-image {
+        width: 100%;
+        height: 150px;
+    }
+
+
+    .explore-song-info {
+        min-height: 62px;
+
+        padding: 10px;
+
+        align-items: center;
+    }
+
+
+    .explore-song-info h3 {
+        margin-bottom: 3px;
+
+        font-size: 11px;
+    }
+
+
+    .explore-song-info p {
+        font-size: 9px;
+    }
+
+
+    .explore-song-info .song-genre {
+        display: none;
+    }
+
+
+    .explore-play-button {
+        width: 34px;
+        height: 34px;
+
+        right: 8px;
+        bottom: 8px;
+
+        font-size: 16px;
+    }
+}
+
+
+/* =========================================================
+   MÓVILES MUY PEQUEÑOS
+========================================================= */
+
+@media (max-width: 380px) {
+
+    .explore-song-grid {
+        gap: 8px;
+    }
+
+
+    .explore-song-image {
+        height: 135px;
+    }
+
+
+    .explore-song-info {
+        min-height: 58px;
+
+        padding: 8px;
+    }
+
+
+    .explore-song-info h3 {
+        font-size: 10px;
+    }
+
+
+    .explore-song-info p {
+        font-size: 8px;
+    }
+
+
+    .explore-play-button {
+        width: 32px;
+        height: 32px;
+
+        right: 7px;
+        bottom: 7px;
+
+        font-size: 15px;
+    }
+}
+
+
+/* =========================================================
+   PROTECCIÓN DEL REPRODUCTOR INFERIOR
+========================================================= */
+
+.music-player {
+    position: fixed;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    z-index: 1000;
+}
+
+
+.music-player .player-song {
+    min-width: 0;
+}
+
+
+.music-player .player-cover {
+    position: relative;
+
+    width: 50px;
+    height: 50px;
+
+    min-width: 50px;
+    min-height: 50px;
+
+    overflow: hidden;
+
+    flex-shrink: 0;
+}
+
+
+.music-player .player-cover img {
+    width: 100%;
+    height: 100%;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: inherit;
+}
+
+
+.music-player .player-cover i {
+    position: absolute;
+
+    inset: 0;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+}
+
