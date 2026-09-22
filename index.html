@@ -49,6 +49,7 @@
 
     <link rel="stylesheet" href="musica.css">
     <link rel="stylesheet" href="explorar.css">
+    <link rel="stylesheet" href="artistas.css">
 
 </head>
 
@@ -148,7 +149,7 @@
 
                     <a
                         class="nav-link"
-                        href="#artistas"
+                        href="index.html?page=artistas"
                         data-page="artistas"
                     >
                         Artistas
@@ -791,10 +792,10 @@
         data-title="Every Breath You Take"
         data-artist="The police"
         data-audio="Canciones/The police.mpeg"
-        data-image="Imagenes/stranger.avif">
+        data-image="Imagenes/portada2.png">
 
         <div class="album-image">
-            <img src="Imagenes/stranger.avif" alt="Every Breath You Take">
+            <img src="Imagenes/portada2.png" alt="Every Breath You Take">
 
             <button class="play-card" type="button">
                 <i class="bi bi-play-fill"></i>
@@ -991,6 +992,15 @@
 
                 </div>
 
+                <a
+                    href="index.html?page=artistas"
+                    class="see-more"
+                    data-page="artistas"
+                >
+                    Ver todos
+                    <i class="bi bi-arrow-up-right"></i>
+                </a>
+
 
             </div>
 
@@ -1028,9 +1038,12 @@
                         <button
                             class="artist-play"
                             type="button"
+                            data-page="artistas"
+                            data-artist-id="luna"
+                            aria-label="Ver perfil de Luna"
                         >
 
-                            <i class="bi bi-play-fill"></i>
+                            <i class="bi bi-arrow-up-right"></i>
 
                         </button>
 
@@ -1067,9 +1080,12 @@
                         <button
                             class="artist-play"
                             type="button"
+                            data-page="artistas"
+                            data-artist-id="nova"
+                            aria-label="Ver perfil de Nova"
                         >
 
-                            <i class="bi bi-play-fill"></i>
+                            <i class="bi bi-arrow-up-right"></i>
 
                         </button>
 
@@ -1106,9 +1122,12 @@
                         <button
                             class="artist-play"
                             type="button"
+                            data-page="artistas"
+                            data-artist-id="echo"
+                            aria-label="Ver perfil de Echo"
                         >
 
-                            <i class="bi bi-play-fill"></i>
+                            <i class="bi bi-arrow-up-right"></i>
 
                         </button>
 
@@ -1126,28 +1145,34 @@
                     <div class="artist-card">
 
 
-                        <div class="artist-image artist-placeholder">
+                        <div class="artist-image">
 
-                            <i class="bi bi-person"></i>
+                            <img
+                                src="Imagenes/blue.webp"
+                                alt="Eiffel 65"
+                            >
 
                         </div>
 
 
                         <h3>
-                            Velvet
+                            Eiffel 65
                         </h3>
 
                         <p>
-                            R&B
+                            Electrónica · Eurodance
                         </p>
 
 
                         <button
                             class="artist-play"
                             type="button"
+                            data-page="artistas"
+                            data-artist-id="eiffel-65"
+                            aria-label="Ver perfil de Eiffel 65"
                         >
 
-                            <i class="bi bi-play-fill"></i>
+                            <i class="bi bi-arrow-up-right"></i>
 
                         </button>
 
@@ -1526,6 +1551,9 @@
 ===================================================== -->
 
 <script src="explorar.js"></script>
+
+<!-- JAVASCRIPT ARTISTAS -->
+<script src="artistas.js"></script>
 
 
 
@@ -2686,12 +2714,72 @@ if (typeof initExplorar === "function") {
 
 
     /* =================================================
+       CARGAR ARTISTAS
+    ================================================= */
+
+    async function loadArtists(
+        updateHistory = true,
+        initialArtist = ""
+    ) {
+
+        try {
+
+            const response = await fetch("artistas.html");
+
+            if (!response.ok) {
+                throw new Error("No se pudo cargar artistas.html");
+            }
+
+            const html = await response.text();
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, "text/html");
+            const artistsPage = doc.querySelector(".artists-page");
+
+            if (!artistsPage) {
+                throw new Error("No se encontró .artists-page");
+            }
+
+            mainHome.style.display = "none";
+            pageContainer.innerHTML = "";
+            pageContainer.appendChild(artistsPage);
+
+            if (typeof initArtistas === "function") {
+                initArtistas({ initialArtist });
+            }
+
+            setActivePage("artistas");
+            closeMobileMenu();
+            window.scrollTo({ top: 0, behavior: "instant" });
+
+            if (updateHistory) {
+                const query = initialArtist
+                    ? `index.html?page=artistas&artist=${encodeURIComponent(initialArtist)}`
+                    : "index.html?page=artistas";
+
+                history.pushState(
+                    { page: "artistas", artist: initialArtist },
+                    "",
+                    query
+                );
+            }
+
+        } catch (error) {
+            console.error("Error al cargar Artistas:", error);
+        }
+    }
+
+
+    /* =================================================
        VOLVER A INICIO
     ================================================= */
 
     function loadHome(
         updateHistory = true
     ) {
+
+        document.body.classList.remove(
+            "artist-profile-open"
+        );
 
         pageContainer.innerHTML =
             "";
@@ -2758,6 +2846,24 @@ if (typeof initExplorar === "function") {
 
 
     /* =================================================
+       ARTISTAS
+    ================================================= */
+
+    document.addEventListener(
+        "click",
+        event => {
+
+            const link = event.target.closest('[data-page="artistas"]');
+            if (!link) return;
+
+            event.preventDefault();
+            loadArtists(true, link.dataset.artistId || "");
+
+        }
+    );
+
+
+    /* =================================================
        INICIO
     ================================================= */
 
@@ -2786,7 +2892,7 @@ if (typeof initExplorar === "function") {
 
 
     /* =================================================
-       ARTISTAS / ÁLBUMES
+       ÁLBUMES
     ================================================= */
 
     document.addEventListener(
@@ -2809,7 +2915,6 @@ if (typeof initExplorar === "function") {
 
 
             if (
-                targetId !== "#artistas" &&
                 targetId !== "#albumes"
             ) {
 
@@ -2830,6 +2935,15 @@ if (typeof initExplorar === "function") {
                     false
                 );
 
+                history.pushState(
+                    {
+                        page: "inicio",
+                        section: "albumes"
+                    },
+                    "",
+                    "index.html#albumes"
+                );
+
 
                 setTimeout(() => {
 
@@ -2840,6 +2954,10 @@ if (typeof initExplorar === "function") {
 
 
                     if (target) {
+
+                        setActivePage(
+                            "albumes"
+                        );
 
                         target.scrollIntoView({
                             behavior: "smooth"
@@ -2883,6 +3001,15 @@ if (typeof initExplorar === "function") {
                     false
                 );
 
+            } else if (
+                page === "artistas"
+            ) {
+
+                loadArtists(
+                    false,
+                    params.get("artist") || ""
+                );
+
             } else {
 
                 loadHome(
@@ -2923,6 +3050,15 @@ if (typeof initExplorar === "function") {
 
         loadExplore(
             false
+        );
+
+    } else if (
+        currentPage === "artistas"
+    ) {
+
+        loadArtists(
+            false,
+            params.get("artist") || ""
         );
 
     } else {

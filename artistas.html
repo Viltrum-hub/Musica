@@ -1,0 +1,258 @@
+<section class="artists-page" aria-labelledby="artistsPageTitle">
+    <div class="artists-hero">
+        <div class="container">
+            <a class="artists-back" href="index.html" data-page="inicio">
+                <i class="bi bi-arrow-left"></i>
+                Volver al inicio
+            </a>
+
+            <div class="artists-hero-grid">
+                <div class="artists-hero-copy">
+                    <span class="artists-eyebrow">SONORA / SELECCIÓN MUSICAL</span>
+                    <h1 id="artistsPageTitle">Detrás de cada<br><em>gran sonido.</em></h1>
+                    <p>
+                        Encuentra una voz. Descubre un universo.
+                        Tu próxima conexión empieza aquí.
+                    </p>
+                </div>
+
+                <div class="artists-hero-visual" aria-hidden="true">
+                    <span class="artists-orbit artists-orbit-one"></span>
+                    <span class="artists-orbit artists-orbit-two"></span>
+                    <div class="artists-vinyl">
+                        <i class="bi bi-music-note-beamed"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container artists-content">
+        <div class="artists-toolbar">
+            <label class="artists-search" for="artistSearch">
+                <i class="bi bi-search"></i>
+                <input
+                    id="artistSearch"
+                    type="search"
+                    placeholder="Buscar artista o género"
+                    aria-label="Buscar artista o género"
+                    autocomplete="off"
+                >
+            </label>
+
+            <div class="artists-filters" aria-label="Filtrar artistas por género">
+                <button class="artist-filter active" type="button" data-genre="all">Todos</button>
+                <button class="artist-filter" type="button" data-genre="rock">Rock</button>
+                <button class="artist-filter" type="button" data-genre="pop">Pop</button>
+                <button class="artist-filter" type="button" data-genre="electronic">Electrónica</button>
+                <button class="artist-filter" type="button" data-genre="following">Siguiendo</button>
+            </div>
+        </div>
+
+        <article class="featured-artist" data-artist-id="the-police" data-featured-carousel>
+            <div class="featured-artist-image">
+                <div class="featured-ghost-name" aria-hidden="true" data-featured-ghost>THE POLICE</div>
+                <img src="Imagenes/portada2.png" alt="The Police" data-featured-image>
+                <span class="featured-badge"><i class="bi bi-stars"></i> Artista destacado</span>
+
+                <div class="featured-index" aria-hidden="true">
+                    <span data-featured-index>01</span>
+                    <span class="featured-index-line"></span>
+                    <span data-featured-total>04</span>
+                </div>
+            </div>
+
+            <div class="featured-artist-copy">
+                <span class="artist-genre" data-featured-genre>ROCK · NEW WAVE</span>
+                <h2 data-featured-name>The Police</h2>
+                <p data-featured-bio>
+                    El trío británico unió rock, reggae y new wave con una identidad propia.
+                </p>
+
+                <div class="featured-now">
+                    <span>NOW FEATURED</span>
+                    <strong data-featured-track>Every Breath You Take</strong>
+                </div>
+
+                <div class="featured-stats">
+                    <div><strong data-featured-number>01</strong><span>Selección actual</span></div>
+                    <div><strong data-featured-universe>Rock</strong><span>Su universo</span></div>
+                    <div><strong>SONORA</strong><span>Selección editorial</span></div>
+                </div>
+
+                <div class="featured-actions">
+                    <button
+                        class="artist-primary-action artist-song-play"
+                        type="button"
+                        data-featured-play
+                        data-title="Every Breath You Take"
+                        data-artist="The Police"
+                        data-audio="Canciones/The police.mpeg"
+                        data-image="Imagenes/portada2.png"
+                    >
+                        <i class="bi bi-play-fill"></i>
+                        <span data-play-label>Escuchar ahora</span>
+                    </button>
+
+                    <button class="artist-secondary-action artist-details-button" type="button" data-featured-profile data-artist-id="the-police">
+                        Explorar perfil
+                    </button>
+                </div>
+
+                <div class="featured-carousel-controls">
+                    <div class="featured-progress" aria-hidden="true">
+                        <span data-featured-progress></span>
+                    </div>
+
+                    <div class="featured-arrows">
+                        <button type="button" class="featured-arrow" data-featured-prev aria-label="Artista anterior">
+                            <i class="bi bi-arrow-left"></i>
+                        </button>
+                        <button type="button" class="featured-arrow" data-featured-next aria-label="Artista siguiente">
+                            <i class="bi bi-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <div class="artists-section-heading">
+            <div>
+                <span class="artists-eyebrow">DESCUBRE</span>
+                <h2>Todos los artistas</h2>
+            </div>
+            <div class="artists-catalog-controls">
+                <p id="artistResultCount" aria-live="polite">7 artistas</p>
+                <select id="artistSort" aria-label="Ordenar artistas">
+                    <option value="editorial">Selección editorial</option>
+                    <option value="az">Nombre: A–Z</option>
+                    <option value="za">Nombre: Z–A</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="artists-grid" id="artistsGrid">
+            <article class="artist-catalog-card" data-artist-id="the-police" data-name="The Police" data-genre="rock new wave">
+                <div class="artist-catalog-image">
+                    <img src="Imagenes/portada2.png" alt="The Police">
+                    <button class="artist-card-play artist-song-play" type="button" aria-label="Reproducir Every Breath You Take" data-title="Every Breath You Take" data-artist="The Police" data-audio="Canciones/The police.mpeg" data-image="Imagenes/stranger.avif">
+                        <i class="bi bi-play-fill"></i>
+                    </button>
+                </div>
+                <div class="artist-catalog-info">
+                    <span>Rock · New Wave</span>
+                    <h3>The Police</h3>
+                    <button class="artist-details-button" type="button" data-artist-id="the-police">Explorar perfil <i class="bi bi-arrow-up-right"></i></button>
+                </div>
+            </article>
+
+            <article class="artist-catalog-card" data-artist-id="scorpions" data-name="Scorpions" data-genre="rock hard rock">
+                <div class="artist-catalog-image">
+                    <img src="Imagenes/Scorpions.jpg" alt="Scorpions">
+                    <button class="artist-card-play artist-song-play" type="button" aria-label="Reproducir Wind of Change" data-title="Wind of Change" data-artist="Scorpions" data-audio="Canciones/Scorpions.mpeg" data-image="Imagenes/Scorpions.jpg">
+                        <i class="bi bi-play-fill"></i>
+                    </button>
+                </div>
+                <div class="artist-catalog-info">
+                    <span>Rock · Hard Rock</span>
+                    <h3>Scorpions</h3>
+                    <button class="artist-details-button" type="button" data-artist-id="scorpions">Explorar perfil <i class="bi bi-arrow-up-right"></i></button>
+                </div>
+            </article>
+
+            <article class="artist-catalog-card" data-artist-id="madonna" data-name="Madonna" data-genre="pop dance pop">
+    <div class="artist-catalog-image">
+        <img src="Imagenes/portada1.png" alt="Madonna">
+
+        <button class="artist-card-play artist-song-play" type="button" aria-label="Reproducir Hung Up" data-title="Hung Up" data-artist="Madonna" data-audio="Canciones/Madonna - Hung Up (Official Video) [HD] (1).mp3.mpeg" data-image="Imagenes/portada1.jpg">
+            <i class="bi bi-play-fill"></i>
+        </button>
+    </div>
+
+    <div class="artist-catalog-info">
+        <span>Pop · Dance Pop</span>
+        <h3>Madonna</h3>
+        <button  class="artist-details-button" type="button"  data-artist-id="madonna">
+            Explorar perfil
+            <i class="bi bi-arrow-up-right"></i>
+        </button>
+
+    </div>
+</article>
+
+            <article class="artist-catalog-card" data-artist-id="axl-rose" data-name="Axl Rose" data-genre="rock hard rock guns n roses">
+                <div class="artist-catalog-image">
+                    <img src="Imagenes/portada3.png" alt="Axl Rose">
+                    <button
+                        class="artist-card-play artist-song-play"
+                        type="button"
+                        aria-label="Reproducir Sweet Child O' Mine"
+                        data-title="Sweet Child O' Mine"
+                        data-artist="Guns N' Roses"
+                        data-audio="Canciones/Guns N' Roses - Sweet Child O' Mine (Official Music Video) - GunsNRosesVEVO.mp3.mpeg"
+                        data-image="Imagenes/portada3.png"
+                    >
+                        <i class="bi bi-play-fill"></i>
+                    </button>
+                </div>
+                <div class="artist-catalog-info">
+                    <span>Rock · Guns N' Roses</span>
+                    <h3>Axl Rose</h3>
+                    <button class="artist-details-button" type="button" data-artist-id="axl-rose">Explorar perfil <i class="bi bi-arrow-up-right"></i></button>
+                </div>
+            </article>
+
+            <article class="artist-catalog-card" data-artist-id="luna" data-name="Luna" data-genre="pop alternative">
+                <div class="artist-catalog-image artist-gradient artist-gradient-luna">
+                    <span aria-hidden="true">L</span>
+                </div>
+                <div class="artist-catalog-info">
+                    <span>Pop alternativo</span>
+                    <h3>Luna</h3>
+                    <button class="artist-details-button" type="button" data-artist-id="luna">Explorar perfil <i class="bi bi-arrow-up-right"></i></button>
+                </div>
+            </article>
+
+            <article class="artist-catalog-card" data-artist-id="nova" data-name="Nova" data-genre="electronic ambient">
+                <div class="artist-catalog-image artist-gradient artist-gradient-nova">
+                    <span aria-hidden="true">N</span>
+                </div>
+                <div class="artist-catalog-info">
+                    <span>Electrónica · Ambient</span>
+                    <h3>Nova</h3>
+                    <button class="artist-details-button" type="button" data-artist-id="nova">Explorar perfil <i class="bi bi-arrow-up-right"></i></button>
+                </div>
+            </article>
+
+            <article class="artist-catalog-card" data-artist-id="echo" data-name="Echo" data-genre="rock indie">
+                <div class="artist-catalog-image artist-gradient artist-gradient-echo">
+                    <span aria-hidden="true">E</span>
+                </div>
+                <div class="artist-catalog-info">
+                    <span>Indie Rock</span>
+                    <h3>Echo</h3>
+                    <button class="artist-details-button" type="button" data-artist-id="echo">Explorar perfil <i class="bi bi-arrow-up-right"></i></button>
+                </div>
+            </article>
+        </div>
+
+        <div class="artists-empty" id="artistsEmpty" hidden>
+            <i class="bi bi-music-note-list"></i>
+            <h3>No encontramos artistas</h3>
+            <p>Prueba con otro nombre o selecciona un género diferente.</p>
+            <button class="artist-secondary-action" type="button" id="artistReset">Restablecer filtros</button>
+        </div>
+        <p class="artists-demo-note">Luna, Nova y Echo son perfiles de demostración; todavía no tienen canciones cargadas.</p>
+        <p id="artistStatus" class="artist-status" role="status" aria-live="polite"></p>
+    </div>
+
+    <div class="artist-profile-overlay" id="artistProfileOverlay" aria-hidden="true">
+        <button class="artist-profile-backdrop" type="button" data-close-artist-profile aria-label="Cerrar perfil"></button>
+        <article class="artist-profile-panel" role="dialog" aria-modal="true" aria-labelledby="artistProfileName">
+            <button class="artist-profile-close" type="button" data-close-artist-profile aria-label="Cerrar perfil">
+                <i class="bi bi-x-lg"></i>
+            </button>
+            <div id="artistProfileContent"></div>
+        </article>
+    </div>
+</section>

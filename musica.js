@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     let currentSong = -1;
+    let currentUser = null;
 
 
     /* =========================
@@ -45,11 +46,12 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================= */
 
     const songs = Array.from(cards).map(card => ({
-    title: card.dataset.title || "Canción",
-    artist: card.dataset.artist || "Artista",
-    audio: card.dataset.audio || "",
-    image: card.dataset.image || ""
-}));
+        title: card.dataset.title || "Canción",
+        artist: card.dataset.artist || "Artista",
+        audio: card.dataset.audio || "",
+        image: card.dataset.image || ""
+    }));
+
 
     /* =========================
        VISUALIZADOR DE AUDIO
@@ -227,98 +229,147 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
+
     function updatePlayerCover(image) {
-    const playerCover = document.getElementById("playerCover");
 
-    if (!playerCover) return;
+        const playerCover =
+            document.getElementById(
+                "playerCover"
+            );
 
-    let imageElement = playerCover.querySelector("img");
-    const icon = playerCover.querySelector("i");
+        if (!playerCover) return;
 
-    if (image) {
+        let imageElement =
+            playerCover.querySelector("img");
 
-        if (!imageElement) {
-            imageElement = document.createElement("img");
-            playerCover.appendChild(imageElement);
+        const icon =
+            playerCover.querySelector("i");
+
+        if (image) {
+
+            if (!imageElement) {
+
+                imageElement =
+                    document.createElement(
+                        "img"
+                    );
+
+                playerCover.appendChild(
+                    imageElement
+                );
+
+            }
+
+            imageElement.src = image;
+            imageElement.alt =
+                "Portada de la canción";
+
+            if (icon) {
+                icon.style.display = "none";
+            }
+
+        } else {
+
+            if (imageElement) {
+                imageElement.remove();
+            }
+
+            if (icon) {
+                icon.style.display = "flex";
+            }
+
         }
 
-        imageElement.src = image;
-        imageElement.alt = "Portada de la canción";
-
-        if (icon) {
-            icon.style.display = "none";
-        }
-
-    } else {
-
-        if (imageElement) {
-            imageElement.remove();
-        }
-
-        if (icon) {
-            icon.style.display = "flex";
-        }
     }
-}
+
 
     /* =========================
        CARGAR CANCIÓN
     ========================= */
 
-  function loadSong(index, autoplay = true) {
-
-    if (!songs[index] || !audioPlayer) return;
-
-    currentSong = index;
-
-    const song = songs[index];
-
-    audioPlayer.src = song.audio;
-
-    if (playerTitle) {
-        playerTitle.textContent = song.title;
-    }
-
-    if (playerArtist) {
-        playerArtist.textContent = song.artist;
-    }
-
-    updatePlayerCover(song.image);
-
-    if (progressBar) {
-        progressBar.value = 0;
-    }
-
-    if (currentTimeEl) {
-        currentTimeEl.textContent = "0:00";
-    }
-
-    if (durationEl) {
-        durationEl.textContent = "0:00";
-    }
-
-    if (autoplay) {
-
-        setupAudioVisualizer();
+    function loadSong(
+        index,
+        autoplay = true
+    ) {
 
         if (
-            audioContext &&
-            audioContext.state === "suspended"
+            !songs[index] ||
+            !audioPlayer
         ) {
-            audioContext.resume();
+            return;
         }
 
-        audioPlayer.play()
-            .then(() => {
-                updatePlayButton();
-            })
-            .catch(() => {
-                console.log(
-                    "No se pudo reproducir el archivo de audio."
-                );
-            });
+        currentSong = index;
+
+        const song =
+            songs[index];
+
+        audioPlayer.src =
+            song.audio;
+
+        if (playerTitle) {
+
+            playerTitle.textContent =
+                song.title;
+
+        }
+
+        if (playerArtist) {
+
+            playerArtist.textContent =
+                song.artist;
+
+        }
+
+        updatePlayerCover(
+            song.image
+        );
+
+        if (progressBar) {
+            progressBar.value = 0;
+        }
+
+        if (currentTimeEl) {
+            currentTimeEl.textContent =
+                "0:00";
+        }
+
+        if (durationEl) {
+            durationEl.textContent =
+                "0:00";
+        }
+
+        if (autoplay) {
+
+            setupAudioVisualizer();
+
+            if (
+                audioContext &&
+                audioContext.state === "suspended"
+            ) {
+
+                audioContext.resume();
+
+            }
+
+            audioPlayer.play()
+                .then(() => {
+
+                    updatePlayButton();
+
+                })
+                .catch(() => {
+
+                    console.log(
+                        "No se pudo reproducir el archivo de audio."
+                    );
+
+                });
+
+        }
+
     }
-}
+
 
     /* =========================
        PLAY / PAUSE
@@ -335,7 +386,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 setupAudioVisualizer();
 
-
                 if (
                     audioContext &&
                     audioContext.state === "suspended"
@@ -345,22 +395,35 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 }
 
+                if (
+                    currentSong === -1
+                ) {
 
-                if (currentSong === -1) {
+                    if (
+                        songs.length > 0
+                    ) {
 
-                    if (songs.length > 0) {
-                        loadSong(0, true);
+                        loadSong(
+                            0,
+                            true
+                        );
+
                     }
 
                     return;
 
                 }
 
+                if (
+                    audioPlayer.paused
+                ) {
 
-                if (audioPlayer.paused) {
                     audioPlayer.play();
+
                 } else {
+
                     audioPlayer.pause();
+
                 }
 
             }
@@ -403,7 +466,10 @@ document.addEventListener("DOMContentLoaded", () => {
                         return;
                     }
 
-                    loadSong(index, true);
+                    loadSong(
+                        index,
+                        true
+                    );
 
                 }
             );
@@ -425,7 +491,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
                     event.stopPropagation();
 
-                    loadSong(index, true);
+                    loadSong(
+                        index,
+                        true
+                    );
 
                 }
             );
@@ -444,7 +513,9 @@ document.addEventListener("DOMContentLoaded", () => {
             "click",
             () => {
 
-                if (songs.length === 0) {
+                if (
+                    songs.length === 0
+                ) {
                     return;
                 }
 
@@ -452,9 +523,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     currentSong + 1;
 
                 if (
-                    nextSong >= songs.length
+                    nextSong >=
+                    songs.length
                 ) {
+
                     nextSong = 0;
+
                 }
 
                 loadSong(
@@ -478,16 +552,22 @@ document.addEventListener("DOMContentLoaded", () => {
             "click",
             () => {
 
-                if (songs.length === 0) {
+                if (
+                    songs.length === 0
+                ) {
                     return;
                 }
 
                 let previousSong =
                     currentSong - 1;
 
-                if (previousSong < 0) {
+                if (
+                    previousSong < 0
+                ) {
+
                     previousSong =
                         songs.length - 1;
+
                 }
 
                 loadSong(
@@ -528,10 +608,11 @@ document.addEventListener("DOMContentLoaded", () => {
             "timeupdate",
             () => {
 
-                if (!audioPlayer.duration) {
+                if (
+                    !audioPlayer.duration
+                ) {
                     return;
                 }
-
 
                 const percentage =
                     (
@@ -539,14 +620,12 @@ document.addEventListener("DOMContentLoaded", () => {
                         audioPlayer.duration
                     ) * 100;
 
-
                 if (progressBar) {
 
                     progressBar.value =
                         percentage;
 
                 }
-
 
                 if (currentTimeEl) {
 
@@ -572,13 +651,16 @@ document.addEventListener("DOMContentLoaded", () => {
             "input",
             () => {
 
-                if (!audioPlayer.duration) {
+                if (
+                    !audioPlayer.duration
+                ) {
                     return;
                 }
 
                 audioPlayer.currentTime =
                     (
-                        progressBar.value / 100
+                        progressBar.value /
+                        100
                     ) *
                     audioPlayer.duration;
 
@@ -599,7 +681,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         audioPlayer.volume =
             volumeBar.value;
-
 
         volumeBar.addEventListener(
             "input",
@@ -624,7 +705,9 @@ document.addEventListener("DOMContentLoaded", () => {
             "ended",
             () => {
 
-                if (songs.length === 0) {
+                if (
+                    songs.length === 0
+                ) {
                     return;
                 }
 
@@ -632,9 +715,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     currentSong + 1;
 
                 if (
-                    nextSong >= songs.length
+                    nextSong >=
+                    songs.length
                 ) {
+
                     nextSong = 0;
+
                 }
 
                 loadSong(
@@ -720,12 +806,10 @@ document.addEventListener("DOMContentLoaded", () => {
             theme = "electronic";
         }
 
-
         document.body.setAttribute(
             "data-theme",
             theme
         );
-
 
         if (currentThemeName) {
 
@@ -733,7 +817,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 themeNames[theme];
 
         }
-
 
         themeOptions.forEach(
             (option) => {
@@ -746,7 +829,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         );
 
-
         syncThemeCards.forEach(
             (card) => {
 
@@ -757,7 +839,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
             }
         );
-
 
         localStorage.setItem(
             "sonora-theme",
@@ -874,617 +955,1367 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     );
 
-/* =========================
-   BUSCADOR
-========================= */
 
-const openSearch =
-    document.getElementById(
-        "openSearch"
-    );
+    /* =========================
+       BUSCADOR
+    ========================= */
 
-const closeSearch =
-    document.getElementById(
-        "closeSearch"
-    );
+    const openSearch =
+        document.getElementById(
+            "openSearch"
+        );
 
-const searchOverlay =
-    document.getElementById(
-        "searchOverlay"
-    );
+    const closeSearch =
+        document.getElementById(
+            "closeSearch"
+        );
 
-const searchInput =
-    document.getElementById(
-        "searchInput"
-    );
+    const searchOverlay =
+        document.getElementById(
+            "searchOverlay"
+        );
 
-const searchResults =
-    document.getElementById(
-        "searchResults"
-    );
+    const searchInput =
+        document.getElementById(
+            "searchInput"
+        );
 
-
-/* =========================================================
-   CATÁLOGO DE CANCIONES DE EXPLORAR
-========================================================= */
-
-let exploreSearchSongs = [];
-let exploreCatalogLoaded = false;
-let exploreCatalogLoading = null;
+    const searchResults =
+        document.getElementById(
+            "searchResults"
+        );
 
 
-/* =========================================================
-   CARGAR CANCIONES DE EXPLORAR
-========================================================= */
+    /* =========================================================
+       CATÁLOGO DE CANCIONES DE EXPLORAR
+    ========================================================= */
 
-async function loadExploreSearchCatalog() {
+    let exploreSearchSongs = [];
+    let exploreCatalogLoaded = false;
+    let exploreCatalogLoading = null;
 
-    if (exploreCatalogLoaded) {
-        return exploreSearchSongs;
-    }
 
-    if (exploreCatalogLoading) {
-        return exploreCatalogLoading;
-    }
+    /* =========================================================
+       CARGAR CANCIONES DE EXPLORAR
+    ========================================================= */
 
-    exploreCatalogLoading = fetch("explorar.html")
-        .then(response => {
+    async function loadExploreSearchCatalog() {
 
-            if (!response.ok) {
-                throw new Error(
-                    "No se pudo cargar explorar.html"
-                );
-            }
-
-            return response.text();
-
-        })
-        .then(html => {
-
-            const parser =
-                new DOMParser();
-
-            const documentHTML =
-                parser.parseFromString(
-                    html,
-                    "text/html"
-                );
-
-            const cards =
-                documentHTML.querySelectorAll(
-                    ".explore-song-card"
-                );
-
-            exploreSearchSongs =
-                Array.from(cards).map(
-                    card => ({
-
-                        title:
-                            card.dataset.title ||
-                            card.querySelector("h3")?.textContent.trim() ||
-                            "Canción",
-
-                        artist:
-                            card.dataset.artist ||
-                            card.querySelector("p")?.textContent.trim() ||
-                            "Artista",
-
-                        genre:
-                            card.dataset.genre ||
-                            card.querySelector(".song-genre")?.textContent.trim() ||
-                            "",
-
-                        audio:
-                            card.dataset.audio ||
-                            "",
-
-                        image:
-                            card.dataset.image ||
-                            card.querySelector("img")?.src ||
-                            "",
-
-                        source:
-                            "explore"
-
-                    })
-                );
-
-            exploreCatalogLoaded = true;
-
+        if (exploreCatalogLoaded) {
             return exploreSearchSongs;
+        }
 
-        })
-        .catch(error => {
+        if (exploreCatalogLoading) {
+            return exploreCatalogLoading;
+        }
 
-            console.error(
-                "Error cargando canciones de Explorar:",
-                error
+        exploreCatalogLoading =
+            fetch("explorar.html")
+                .then(response => {
+
+                    if (!response.ok) {
+
+                        throw new Error(
+                            "No se pudo cargar explorar.html"
+                        );
+
+                    }
+
+                    return response.text();
+
+                })
+                .then(html => {
+
+                    const parser =
+                        new DOMParser();
+
+                    const documentHTML =
+                        parser.parseFromString(
+                            html,
+                            "text/html"
+                        );
+
+                    const cards =
+                        documentHTML.querySelectorAll(
+                            ".explore-song-card"
+                        );
+
+                    exploreSearchSongs =
+                        Array.from(cards).map(
+                            card => ({
+
+                                title:
+                                    card.dataset.title ||
+                                    card.querySelector("h3")?.textContent.trim() ||
+                                    "Canción",
+
+                                artist:
+                                    card.dataset.artist ||
+                                    card.querySelector("p")?.textContent.trim() ||
+                                    "Artista",
+
+                                genre:
+                                    card.dataset.genre ||
+                                    card.querySelector(".song-genre")?.textContent.trim() ||
+                                    "",
+
+                                audio:
+                                    card.dataset.audio ||
+                                    "",
+
+                                image:
+                                    card.dataset.image ||
+                                    card.querySelector("img")?.src ||
+                                    "",
+
+                                source:
+                                    "explore"
+
+                            })
+                        );
+
+                    exploreCatalogLoaded =
+                        true;
+
+                    return exploreSearchSongs;
+
+                })
+                .catch(error => {
+
+                    console.error(
+                        "Error cargando canciones de Explorar:",
+                        error
+                    );
+
+                    exploreSearchSongs = [];
+
+                    return [];
+
+                })
+                .finally(() => {
+
+                    exploreCatalogLoading =
+                        null;
+
+                });
+
+        return exploreCatalogLoading;
+
+    }
+
+
+    /* =========================================================
+       CERRAR BUSCADOR
+    ========================================================= */
+
+    function closeSearchOverlay() {
+
+        if (!searchOverlay) {
+            return;
+        }
+
+        searchOverlay.classList.remove(
+            "show"
+        );
+
+        if (searchInput) {
+            searchInput.value = "";
+        }
+
+        if (searchResults) {
+            searchResults.innerHTML = "";
+        }
+
+    }
+
+
+    /* =========================================================
+       MOSTRAR RESULTADOS
+    ========================================================= */
+
+    async function updateSearchResults() {
+
+        if (
+            !searchInput ||
+            !searchResults
+        ) {
+            return;
+        }
+
+        const query =
+            searchInput.value
+                .trim()
+                .toLowerCase();
+
+        searchResults.innerHTML = "";
+
+        if (!query) {
+            return;
+        }
+
+
+        /* -----------------------------------------------------
+           CANCIONES DE INICIO
+        ----------------------------------------------------- */
+
+        const homeSongs =
+            songs.map(
+                (song, index) => ({
+
+                    ...song,
+
+                    source:
+                        "home",
+
+                    index
+
+                })
             );
 
-            exploreSearchSongs = [];
 
-            return [];
+        /* -----------------------------------------------------
+           CANCIONES DE EXPLORAR
+        ----------------------------------------------------- */
 
-        })
-        .finally(() => {
+        const exploreSongs =
+            await loadExploreSearchCatalog();
 
-            exploreCatalogLoading = null;
+
+        /* -----------------------------------------------------
+           UNIR TODOS LOS RESULTADOS
+        ----------------------------------------------------- */
+
+        const allSongs = [
+            ...homeSongs,
+            ...exploreSongs
+        ];
+
+
+        /* -----------------------------------------------------
+           EVITAR CANCIONES DUPLICADAS
+        ----------------------------------------------------- */
+
+        const uniqueSongs = [];
+
+        const usedSongs =
+            new Set();
+
+
+        allSongs.forEach(song => {
+
+            const key =
+                `${song.title}`
+                    .toLowerCase()
+                    .trim()
+                +
+                "|"
+                +
+                `${song.artist}`
+                    .toLowerCase()
+                    .trim();
+
+            if (
+                !usedSongs.has(key)
+            ) {
+
+                usedSongs.add(key);
+
+                uniqueSongs.push(
+                    song
+                );
+
+            }
 
         });
 
-    return exploreCatalogLoading;
-}
 
+        /* -----------------------------------------------------
+           FILTRAR
+        ----------------------------------------------------- */
 
-/* =========================================================
-   CERRAR BUSCADOR
-========================================================= */
+        const results =
+            uniqueSongs.filter(
+                song => {
 
-function closeSearchOverlay() {
+                    const title =
+                        (
+                            song.title ||
+                            ""
+                        )
+                            .toLowerCase();
 
-    if (!searchOverlay) {
-        return;
-    }
+                    const artist =
+                        (
+                            song.artist ||
+                            ""
+                        )
+                            .toLowerCase();
 
-    searchOverlay.classList.remove(
-        "show"
-    );
+                    const genre =
+                        (
+                            song.genre ||
+                            ""
+                        )
+                            .toLowerCase();
 
-    if (searchInput) {
-        searchInput.value = "";
-    }
+                    return (
+                        title.includes(query) ||
+                        artist.includes(query) ||
+                        genre.includes(query)
+                    );
 
-    if (searchResults) {
-        searchResults.innerHTML = "";
-    }
-
-}
-
-
-/* =========================================================
-   MOSTRAR RESULTADOS
-========================================================= */
-
-async function updateSearchResults() {
-
-    if (
-        !searchInput ||
-        !searchResults
-    ) {
-        return;
-    }
-
-    const query =
-        searchInput.value
-            .trim()
-            .toLowerCase();
-
-    searchResults.innerHTML = "";
-
-    if (!query) {
-        return;
-    }
-
-
-    /* -----------------------------------------------------
-       CANCIONES DE INICIO
-    ----------------------------------------------------- */
-
-    const homeSongs =
-        songs.map(
-            (song, index) => ({
-
-                ...song,
-
-                source:
-                    "home",
-
-                index
-
-            })
-        );
-
-
-    /* -----------------------------------------------------
-       CANCIONES DE EXPLORAR
-    ----------------------------------------------------- */
-
-    const exploreSongs =
-        await loadExploreSearchCatalog();
-
-
-    /* -----------------------------------------------------
-       UNIR TODOS LOS RESULTADOS
-    ----------------------------------------------------- */
-
-    const allSongs = [
-        ...homeSongs,
-        ...exploreSongs
-    ];
-
-
-    /* -----------------------------------------------------
-       EVITAR CANCIONES DUPLICADAS
-    ----------------------------------------------------- */
-
-    const uniqueSongs = [];
-
-    const usedSongs =
-        new Set();
-
-
-    allSongs.forEach(song => {
-
-        const key =
-            `${song.title}`
-                .toLowerCase()
-                .trim()
-            + "|"
-            +
-            `${song.artist}`
-                .toLowerCase()
-                .trim();
-
-        if (!usedSongs.has(key)) {
-
-            usedSongs.add(key);
-
-            uniqueSongs.push(
-                song
+                }
             );
 
+
+        /* -----------------------------------------------------
+           SIN RESULTADOS
+        ----------------------------------------------------- */
+
+        if (!results.length) {
+
+            searchResults.innerHTML = `
+                <div class="search-no-results">
+                    <i class="bi bi-search"></i>
+                    <p>No encontramos canciones</p>
+                </div>
+            `;
+
+            return;
         }
 
-    });
 
+        /* -----------------------------------------------------
+           CREAR RESULTADOS
+        ----------------------------------------------------- */
 
-    /* -----------------------------------------------------
-       FILTRAR
-    ----------------------------------------------------- */
+        results.forEach(song => {
 
-    const results =
-        uniqueSongs.filter(
-            song => {
-
-                const title =
-                    (
-                        song.title ||
-                        ""
-                    )
-                        .toLowerCase();
-
-                const artist =
-                    (
-                        song.artist ||
-                        ""
-                    )
-                        .toLowerCase();
-
-                const genre =
-                    (
-                        song.genre ||
-                        ""
-                    )
-                        .toLowerCase();
-
-                return (
-                    title.includes(query) ||
-                    artist.includes(query) ||
-                    genre.includes(query)
+            const result =
+                document.createElement(
+                    "div"
                 );
+
+            result.className =
+                "search-result";
+
+
+            result.innerHTML = `
+
+                ${
+                    song.image
+                        ? `
+                            <img
+                                src="${song.image}"
+                                alt="${song.title}"
+                            >
+                        `
+                        : `
+                            <div class="search-result-placeholder">
+                                <i class="bi bi-music-note"></i>
+                            </div>
+                        `
+                }
+
+                <div class="search-result-info">
+
+                    <strong>
+                        ${song.title}
+                    </strong>
+
+                    <small>
+                        ${song.artist}
+                    </small>
+
+                </div>
+
+                ${
+                    song.genre
+                        ? `
+                            <span class="search-result-genre">
+                                ${song.genre}
+                            </span>
+                        `
+                        : ""
+                }
+
+                <button
+                    class="search-result-play"
+                    type="button"
+                    aria-label="Reproducir ${song.title}"
+                >
+                    <i class="bi bi-play-fill"></i>
+                </button>
+
+            `;
+
+
+            /* -------------------------------------------------
+               REPRODUCIR RESULTADO
+            ------------------------------------------------- */
+
+            result.addEventListener(
+                "click",
+                async event => {
+
+                    event.preventDefault();
+
+                    event.stopPropagation();
+
+
+                    /* -----------------------------------------
+                       CANCIÓN DE INICIO
+                    ----------------------------------------- */
+
+                    if (
+                        song.source ===
+                        "home"
+                    ) {
+
+                        loadSong(
+                            song.index,
+                            true
+                        );
+
+                    }
+
+
+                    /* -----------------------------------------
+                       CANCIÓN DE EXPLORAR
+                    ----------------------------------------- */
+
+                    else if (
+                        song.source ===
+                        "explore"
+                    ) {
+
+                        if (
+                            !audioPlayer
+                        ) {
+                            return;
+                        }
+
+                        audioPlayer.src =
+                            song.audio;
+
+
+                        if (playerTitle) {
+
+                            playerTitle.textContent =
+                                song.title;
+
+                        }
+
+                        if (playerArtist) {
+
+                            playerArtist.textContent =
+                                song.artist;
+
+                        }
+
+
+                        if (
+                            typeof updatePlayerCover ===
+                            "function"
+                        ) {
+
+                            updatePlayerCover(
+                                song.image
+                            );
+
+                        }
+
+
+                        try {
+
+                            await audioPlayer.play();
+
+                        } catch (error) {
+
+                            console.warn(
+                                "El navegador bloqueó la reproducción automática.",
+                                error
+                            );
+
+                        }
+
+                    }
+
+
+                    /* -----------------------------------------
+                       CERRAR BUSCADOR
+                    ----------------------------------------- */
+
+                    closeSearchOverlay();
+
+                }
+            );
+
+
+            searchResults.appendChild(
+                result
+            );
+
+        });
+
+    }
+
+
+    /* =========================================================
+       ABRIR BUSCADOR
+    ========================================================= */
+
+    if (
+        openSearch &&
+        closeSearch &&
+        searchOverlay &&
+        searchInput &&
+        searchResults
+    ) {
+
+        openSearch.addEventListener(
+            "click",
+            async () => {
+
+                searchOverlay.classList.add(
+                    "show"
+                );
+
+                searchInput.focus();
+
+                loadExploreSearchCatalog();
 
             }
         );
 
 
-    /* -----------------------------------------------------
-       SIN RESULTADOS
-    ----------------------------------------------------- */
+        /* =====================================================
+           CERRAR CON X
+        ===================================================== */
 
-    if (!results.length) {
-
-        searchResults.innerHTML = `
-            <div class="search-no-results">
-                <i class="bi bi-search"></i>
-                <p>No encontramos canciones</p>
-            </div>
-        `;
-
-        return;
-    }
-
-
-    /* -----------------------------------------------------
-       CREAR RESULTADOS
-    ----------------------------------------------------- */
-
-    results.forEach(song => {
-
-        const result =
-            document.createElement(
-                "div"
-            );
-
-        result.className =
-            "search-result";
-
-
-        result.innerHTML = `
-
-            ${
-                song.image
-                    ? `
-                        <img
-                            src="${song.image}"
-                            alt="${song.title}"
-                        >
-                    `
-                    : `
-                        <div class="search-result-placeholder">
-                            <i class="bi bi-music-note"></i>
-                        </div>
-                    `
-            }
-
-            <div class="search-result-info">
-
-                <strong>
-                    ${song.title}
-                </strong>
-
-                <small>
-                    ${song.artist}
-                </small>
-
-            </div>
-
-            ${
-                song.genre
-                    ? `
-                        <span class="search-result-genre">
-                            ${song.genre}
-                        </span>
-                    `
-                    : ""
-            }
-
-            <button
-                class="search-result-play"
-                type="button"
-                aria-label="Reproducir ${song.title}"
-            >
-                <i class="bi bi-play-fill"></i>
-            </button>
-
-        `;
-
-
-        /* -------------------------------------------------
-           REPRODUCIR RESULTADO
-        ------------------------------------------------- */
-
-        result.addEventListener(
+        closeSearch.addEventListener(
             "click",
-            async event => {
+            event => {
 
                 event.preventDefault();
 
                 event.stopPropagation();
 
+                closeSearchOverlay();
 
-                /* -----------------------------------------
-                   CANCIÓN DE INICIO
-                ----------------------------------------- */
+            }
+        );
+
+
+        /* =====================================================
+           CERRAR AL HACER CLIC EN EL FONDO
+        ===================================================== */
+
+        searchOverlay.addEventListener(
+            "click",
+            event => {
 
                 if (
-                    song.source ===
-                    "home"
+                    event.target ===
+                    searchOverlay
                 ) {
 
-                    loadSong(
-                        song.index,
-                        true
+                    closeSearchOverlay();
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           BUSCAR
+        ===================================================== */
+
+        searchInput.addEventListener(
+            "input",
+            () => {
+
+                updateSearchResults();
+
+            }
+        );
+
+
+        /* =====================================================
+           ESC PARA CERRAR
+        ===================================================== */
+
+        document.addEventListener(
+            "keydown",
+            event => {
+
+                if (
+                    event.key === "Escape" &&
+                    searchOverlay.classList.contains(
+                        "show"
+                    )
+                ) {
+
+                    closeSearchOverlay();
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* =========================================================
+       FAVORITOS — SUPABASE
+    ========================================================= */
+
+    let userFavorites = new Set();
+
+
+    /* ---------------------------------------------------------
+       ESTILOS VISUALES DE FAVORITOS
+    --------------------------------------------------------- */
+
+    if (
+        !document.getElementById(
+            "sonoraFavoriteStyles"
+        )
+    ) {
+
+        const favoriteStyles =
+            document.createElement(
+                "style"
+            );
+
+        favoriteStyles.id =
+            "sonoraFavoriteStyles";
+
+        favoriteStyles.textContent = `
+
+            .favorite-song-btn {
+                transition:
+                    transform 0.18s ease,
+                    opacity 0.18s ease;
+            }
+
+            .favorite-song-btn.is-favorite {
+                transform: scale(1.05);
+            }
+
+            .favorite-song-btn.favorite-pop {
+                animation:
+                    sonoraFavoritePop 0.35s ease;
+            }
+
+            .favorite-song-btn.favorite-saving {
+                pointer-events: none;
+                opacity: 0.55;
+            }
+
+            .favorite-song-btn i {
+                transition:
+                    transform 0.18s ease;
+            }
+
+            .favorite-song-btn.is-favorite i {
+                transform: scale(1.12);
+            }
+
+            @keyframes sonoraFavoritePop {
+
+                0% {
+                    transform: scale(1);
+                }
+
+                45% {
+                    transform: scale(1.28);
+                }
+
+                75% {
+                    transform: scale(0.92);
+                }
+
+                100% {
+                    transform: scale(1.05);
+                }
+
+            }
+
+        `;
+
+        document.head.appendChild(
+            favoriteStyles
+        );
+
+    }
+
+
+    /* ---------------------------------------------------------
+       IDENTIFICADOR ÚNICO DE LA CANCIÓN
+    --------------------------------------------------------- */
+
+    function getSongKey(song) {
+
+        if (!song) {
+            return "";
+        }
+
+        return [
+            song.title || "",
+            song.artist || "",
+            song.audio || ""
+        ].join("|");
+
+    }
+
+
+    /* ---------------------------------------------------------
+       OBTENER DATOS DE UNA TARJETA
+    --------------------------------------------------------- */
+
+    function getSongFromCard(card) {
+
+        if (!card) {
+            return null;
+        }
+
+        return {
+
+            title:
+                card.dataset.title ||
+                "",
+
+            artist:
+                card.dataset.artist ||
+                "",
+
+            audio:
+                card.dataset.audio ||
+                "",
+
+            image:
+                card.dataset.image ||
+                "",
+
+            genre:
+                card.dataset.genre ||
+                ""
+
+        };
+
+    }
+
+
+    /* ---------------------------------------------------------
+       CARGAR FAVORITOS DESDE SUPABASE
+    --------------------------------------------------------- */
+
+    async function loadFavorites() {
+
+        userFavorites.clear();
+
+        if (!currentUser) {
+
+            updateFavoriteButtons();
+
+            return;
+
+        }
+
+        try {
+
+            const {
+                data,
+                error
+            } =
+                await supabaseClient
+                    .from("favorites")
+                    .select("song_key")
+                    .eq(
+                        "user_id",
+                        currentUser.id
+                    );
+
+
+            if (error) {
+
+                console.error(
+                    "Error cargando favoritos:",
+                    error
+                );
+
+                return;
+
+            }
+
+
+            if (data) {
+
+                data.forEach(
+                    favorite => {
+
+                        if (
+                            favorite.song_key
+                        ) {
+
+                            userFavorites.add(
+                                favorite.song_key
+                            );
+
+                        }
+
+                    }
+                );
+
+            }
+
+
+            updateFavoriteButtons();
+
+            
+
+        } catch (error) {
+
+            console.error(
+                "Error inesperado cargando favoritos:",
+                error
+            );
+
+        }
+
+    }
+
+    async function updateProfileStats() {
+
+    const favoritesElement =
+        document.getElementById("profileFavorites");
+
+    if (!favoritesElement) return;
+
+    if (!currentUser) {
+        favoritesElement.textContent = "0";
+        return;
+    }
+
+    try {
+
+        const { count, error } =
+            await supabaseClient
+                .from("favorites")
+                .select("id", {
+                    count: "exact",
+                    head: true
+                })
+                .eq(
+                    "user_id",
+                    currentUser.id
+                );
+
+        if (error) {
+            console.error(
+                "Error obteniendo cantidad de favoritos:",
+                error
+            );
+            return;
+        }
+
+        favoritesElement.textContent =
+            count ?? 0;
+
+    } catch (error) {
+
+        console.error(
+            "Error inesperado actualizando estadísticas:",
+            error
+        );
+
+    }
+}
+
+    /* ---------------------------------------------------------
+       ACTUALIZAR TODOS LOS CORAZONES
+    --------------------------------------------------------- */
+
+    function updateFavoriteButtons() {
+
+        const buttons =
+            document.querySelectorAll(
+                ".favorite-song-btn"
+            );
+
+
+        buttons.forEach(
+            button => {
+
+                const card =
+                    button.closest(
+                        ".explore-song-card"
+                    );
+
+                if (!card) {
+                    return;
+                }
+
+
+                const song =
+                    getSongFromCard(
+                        card
+                    );
+
+                const songKey =
+                    getSongKey(
+                        song
+                    );
+
+                const icon =
+                    button.querySelector(
+                        "i"
+                    );
+
+
+                if (
+                    userFavorites.has(
+                        songKey
+                    )
+                ) {
+
+                    button.classList.add(
+                        "is-favorite"
+                    );
+
+                    button.setAttribute(
+                        "aria-label",
+                        "Quitar de favoritos"
+                    );
+
+                    button.setAttribute(
+                        "title",
+                        "Quitar de favoritos"
+                    );
+
+
+                    if (icon) {
+
+                        icon.className =
+                            "bi bi-heart-fill";
+
+                    }
+
+                } else {
+
+                    button.classList.remove(
+                        "is-favorite"
+                    );
+
+                    button.setAttribute(
+                        "aria-label",
+                        "Agregar a favoritos"
+                    );
+
+                    button.setAttribute(
+                        "title",
+                        "Agregar a favoritos"
+                    );
+
+
+                    if (icon) {
+
+                        icon.className =
+                            "bi bi-heart";
+
+                    }
+
+                }
+
+            }
+        );
+
+    }
+
+
+    /* ---------------------------------------------------------
+       EFECTO VISUAL DEL CORAZÓN
+    --------------------------------------------------------- */
+
+    function animateFavoriteButton(
+        button,
+        isFavorite
+    ) {
+
+        if (!button) {
+            return;
+        }
+
+        button.classList.remove(
+            "favorite-pop"
+        );
+
+        void button.offsetWidth;
+
+        if (isFavorite) {
+
+            button.classList.add(
+                "is-favorite"
+            );
+
+        }
+
+        button.classList.add(
+            "favorite-pop"
+        );
+
+        setTimeout(
+            () => {
+
+                button.classList.remove(
+                    "favorite-pop"
+                );
+
+            },
+            400
+        );
+
+    }
+
+
+    /* ---------------------------------------------------------
+       AGREGAR / QUITAR FAVORITO
+    --------------------------------------------------------- */
+
+    async function toggleFavorite(
+        card,
+        button = null
+    ) {
+
+        if (!card) {
+            return;
+        }
+
+
+        if (!currentUser) {
+
+            alert(
+                "Debes iniciar sesión para guardar canciones en favoritos."
+            );
+
+            return;
+
+        }
+
+
+        const song =
+            getSongFromCard(
+                card
+            );
+
+
+        if (!song) {
+            return;
+        }
+
+
+        const songKey =
+            getSongKey(
+                song
+            );
+
+
+        if (!songKey) {
+
+            console.error(
+                "No se pudo identificar la canción."
+                
+            );
+
+            return;
+
+        }
+
+
+        /* EVITAR DOBLE CLIC */
+
+        if (button) {
+
+            if (
+                button.classList.contains(
+                    "favorite-saving"
+                )
+            ) {
+
+                return;
+
+            }
+
+            button.classList.add(
+                "favorite-saving"
+            );
+
+        }
+
+
+        try {
+
+            /* -------------------------------------------------
+               QUITAR FAVORITO
+            ------------------------------------------------- */
+
+            if (
+                userFavorites.has(
+                    songKey
+                )
+            ) {
+
+                const {
+                    error
+                } =
+                    await supabaseClient
+                        .from("favorites")
+                        .delete()
+                        .eq(
+                            "user_id",
+                            currentUser.id
+                        )
+                        .eq(
+                            "song_key",
+                            songKey
+                        );
+
+
+                if (error) {
+                    throw error;
+                }
+
+
+                userFavorites.delete(
+                    songKey
+                );
+
+
+                updateFavoriteButtons();
+updateProfileStats();
+
+
+                if (button) {
+
+                    animateFavoriteButton(
+                        button,
+                        false
                     );
 
                 }
 
-
-                /* -----------------------------------------
-                   CANCIÓN DE EXPLORAR
-                ----------------------------------------- */
-
-                else if (
-                    song.source ===
-                    "explore"
-                ) {
-
-                    if (
-                        !audioPlayer
-                    ) {
-                        return;
-                    }
+            }
 
 
-                    /* Cargar canción */
-                    audioPlayer.src =
-                        song.audio;
+            /* -------------------------------------------------
+               AGREGAR FAVORITO
+            ------------------------------------------------- */
+
+            else {
+
+                const {
+                    error
+                } =
+                    await supabaseClient
+                        .from("favorites")
+                        .insert({
+
+                            user_id:
+                                currentUser.id,
+
+                            song_key:
+                                songKey,
+
+                            title:
+                                song.title,
+
+                            artist:
+                                song.artist,
+
+                            audio:
+                                song.audio,
+
+                            image:
+                                song.image,
+
+                            genre:
+                                song.genre
+
+                        });
 
 
-                    /* Actualizar información */
-                    if (playerTitle) {
-
-                        playerTitle.textContent =
-                            song.title;
-
-                    }
-
-                    if (playerArtist) {
-
-                        playerArtist.textContent =
-                            song.artist;
-
-                    }
-
-
-                    /* Actualizar portada */
-                    if (
-                        typeof updatePlayerCover ===
-                        "function"
-                    ) {
-
-                        updatePlayerCover(
-                            song.image
-                        );
-
-                    }
-
-
-                    /* Reproducir */
-                    try {
-
-                        await audioPlayer.play();
-
-                    } catch (error) {
-
-                        console.warn(
-                            "El navegador bloqueó la reproducción automática.",
-                            error
-                        );
-
-                    }
-
+                if (error) {
+                    throw error;
                 }
 
 
-                /* -----------------------------------------
-                   CERRAR BUSCADOR
-                ----------------------------------------- */
+               userFavorites.add(
+    songKey
+);
 
-                closeSearchOverlay();
+updateFavoriteButtons();
 
-            }
-        );
+await updateProfileStats();
 
 
-        searchResults.appendChild(
-            result
-        );
+if (button) {
 
-    });
+    animateFavoriteButton(
+        button,
+        true
+    );
 
 }
 
+            }
 
-/* =========================================================
-   ABRIR BUSCADOR
-========================================================= */
 
-if (
-    openSearch &&
-    closeSearch &&
-    searchOverlay &&
-    searchInput &&
-    searchResults
-) {
+            
 
-    openSearch.addEventListener(
-        "click",
-        async () => {
 
-            searchOverlay.classList.add(
-                "show"
+        } catch (error) {
+
+            console.error(
+                "Error actualizando favorito:",
+                error
             );
 
-            searchInput.focus();
-
-
-            /*
-             * Cargamos el catálogo de Explorar
-             * desde el momento en que se abre
-             * el buscador.
-             */
-            loadExploreSearchCatalog();
-
-        }
-    );
-
-
-    /* =====================================================
-       CERRAR CON X
-    ===================================================== */
-
-    closeSearch.addEventListener(
-        "click",
-        event => {
-
-            event.preventDefault();
-
-            event.stopPropagation();
-
-            closeSearchOverlay();
-
-        }
-    );
-
-
-    /* =====================================================
-       CERRAR AL HACER CLIC EN EL FONDO
-    ===================================================== */
-
-    searchOverlay.addEventListener(
-        "click",
-        event => {
 
             if (
-                event.target ===
-                searchOverlay
+                error?.code ===
+                "23505"
             ) {
 
-                closeSearchOverlay();
+                /*
+                 * Si ya existe en Supabase,
+                 * sincronizamos el estado local.
+                 */
+
+                userFavorites.add(
+                    songKey
+                );
+
+                updateFavoriteButtons();
+
+            } else {
+
+                alert(
+                    "No se pudo actualizar el favorito."
+                );
+
+            }
+
+        } finally {
+
+            if (button) {
+
+                button.classList.remove(
+                    "favorite-saving"
+                );
 
             }
 
         }
-    );
+
+    }
 
 
-    /* =====================================================
-       BUSCAR
-    ===================================================== */
+    /* ---------------------------------------------------------
+       CLIC EN FAVORITOS
+       CAPTURA ANTES DEL EVENTO DE LA TARJETA
+    --------------------------------------------------------- */
 
-    searchInput.addEventListener(
-        "input",
-        () => {
+    function setupFavoriteButtons() {
 
-            updateSearchResults();
-
+        if (
+            window.favoriteButtonsReady
+        ) {
+            return;
         }
-    );
 
 
-    /* =====================================================
-       ESC PARA CERRAR
-    ===================================================== */
+        window.favoriteButtonsReady =
+            true;
 
-    document.addEventListener(
-        "keydown",
-        event => {
 
-            if (
-                event.key === "Escape" &&
-                searchOverlay.classList.contains(
-                    "show"
-                )
-            ) {
+        document.addEventListener(
+            "click",
+            async function(event) {
 
-                closeSearchOverlay();
+                const button =
+                    event.target.closest(
+                        ".favorite-song-btn"
+                    );
+
+
+                if (!button) {
+                    return;
+                }
+
+
+                /*
+                 * IMPORTANTE:
+                 * detener aquí evita que el evento
+                 * llegue al click de la tarjeta.
+                 */
+
+                event.preventDefault();
+                event.stopPropagation();
+                event.stopImmediatePropagation();
+
+
+                const card =
+                    button.closest(
+                        ".explore-song-card"
+                    );
+
+
+                if (!card) {
+                    return;
+                }
+
+
+                await toggleFavorite(
+                    card,
+                    button
+                );
+
+            },
+            true
+        );
+
+    }
+
+
+    /* ---------------------------------------------------------
+       OBSERVAR TARJETAS DINÁMICAS
+    --------------------------------------------------------- */
+
+    const favoriteObserver =
+        new MutationObserver(
+            () => {
+
+                updateFavoriteButtons();
 
             }
+        );
 
-        }
-    );
 
-}
+    if (document.body) {
+
+        favoriteObserver.observe(
+            document.body,
+            {
+                childList: true,
+                subtree: true
+            }
+        );
+
+    }
+
+
     /* =========================
        LOGIN / REGISTRO
     ========================= */
@@ -1600,195 +2431,258 @@ if (
         );
 
     const avatarFileInput =
-       document.getElementById(
-           "avatarFileInput"
-       );
+        document.getElementById(
+            "avatarFileInput"
+        );
 
-       /* =========================
-   SUBIR AVATAR A SUPABASE
-========================= */
-
-if (avatarFileInput) {
-    avatarFileInput.addEventListener(
-        "change",
-        async () => {
-
-            const file =
-                avatarFileInput.files[0];
-
-            if (!file) {
-                return;
-            }
-
-            /* VALIDAR TIPO */
-            const allowedTypes = [
-                "image/jpeg",
-                "image/png",
-                "image/webp"
-            ];
-
-            if (!allowedTypes.includes(file.type)) {
-
-                if (profileMessage) {
-                    profileMessage.textContent =
-                        "Solo se permiten imágenes JPG, PNG o WEBP.";
-                }
-
-                avatarFileInput.value = "";
-                return;
-            }
-
-            /* VALIDAR TAMAÑO — 1 MB */
-            const maxSize =
-                1 * 1024 * 1024;
-
-            if (file.size > maxSize) {
-
-                if (profileMessage) {
-                    profileMessage.textContent =
-                        "La imagen no puede superar 1 MB.";
-                }
-
-                avatarFileInput.value = "";
-                return;
-            }
-
-            /* COMPROBAR USUARIO */
-            const {
-                data: { user },
-                error: userError
-            } =
-                await supabaseClient.auth.getUser();
-
-            if (
-                userError ||
-                !user
-            ) {
-
-                if (profileMessage) {
-                    profileMessage.textContent =
-                        "Debes iniciar sesión para cambiar tu avatar.";
-                }
-
-                return;
-            }
-
-            if (profileMessage) {
-                profileMessage.textContent =
-                    "Subiendo imagen...";
-            }
-
-            try {
-
-                /* NOMBRE ÚNICO */
-                const fileExtension =
-                    file.name
-                        .split(".")
-                        .pop()
-                        .toLowerCase();
-
-                const filePath =
-                    `${user.id}/avatar-${Date.now()}.${fileExtension}`;
-
-                /* SUBIR A STORAGE */
-                const {
-                    error: uploadError
-                } =
-                    await supabaseClient.storage
-                        .from("Viltrum")
-                        .upload(
-                            filePath,
-                            file,
-                            {
-                                cacheControl:
-                                    "3600",
-                                upsert: false
-                            }
-                        );
-
-                if (uploadError) {
-                    throw uploadError;
-                }
-
-                /* OBTENER URL PÚBLICA */
-                const {
-                    data: publicUrlData
-                } =
-                    supabaseClient.storage
-                        .from("Viltrum")
-                        .getPublicUrl(
-                            filePath
-                        );
-
-                const avatarUrl =
-                    publicUrlData.publicUrl;
-
-                /* GUARDAR URL EN PROFILE */
-                const {
-                    error: profileError
-                } =
-                    await supabaseClient
-                        .from("profiles")
-                        .update({
-                            avatar_url:
-                                avatarUrl
-                        })
-                        .eq(
-                            "id",
-                            user.id
-                        );
-
-                if (profileError) {
-                    throw profileError;
-                }
-
-                /* MOSTRAR AVATAR */
-
-                updateProfileAvatar(
-                  avatarUrl
-                      );
-
-                updateNavbarAvatar(
-                   avatarUrl,
-                   true
-                      );
-
-                /* ACTUALIZAR CAMPO URL */
-                if (profileAvatarUrl) {
-                    profileAvatarUrl.value =
-                        avatarUrl;
-                }
-
-                if (profileMessage) {
-                    profileMessage.textContent =
-                        "¡Avatar actualizado!";
-                }
-
-            } catch (error) {
-
-                console.error(
-                    "Error al subir avatar:",
-                    error
-                );
-
-                if (profileMessage) {
-                    profileMessage.textContent =
-                        "No se pudo subir el avatar.";
-                }
-
-            } finally {
-
-                avatarFileInput.value = "";
-
-            }
-        }
-    );
-}
 
     const profileMessage =
         document.getElementById(
             "profileMessage"
         );
+
+
+    /* =========================
+       SUBIR AVATAR A SUPABASE
+    ========================= */
+
+    if (avatarFileInput) {
+
+        avatarFileInput.addEventListener(
+            "change",
+            async () => {
+
+                const file =
+                    avatarFileInput.files[0];
+
+                if (!file) {
+                    return;
+                }
+
+
+                /* VALIDAR TIPO */
+
+                const allowedTypes = [
+                    "image/jpeg",
+                    "image/png",
+                    "image/webp"
+                ];
+
+
+                if (
+                    !allowedTypes.includes(
+                        file.type
+                    )
+                ) {
+
+                    if (profileMessage) {
+
+                        profileMessage.textContent =
+                            "Solo se permiten imágenes JPG, PNG o WEBP.";
+
+                    }
+
+                    avatarFileInput.value =
+                        "";
+
+                    return;
+
+                }
+
+
+                /* VALIDAR TAMAÑO — 1 MB */
+
+                const maxSize =
+                    1 * 1024 * 1024;
+
+
+                if (
+                    file.size > maxSize
+                ) {
+
+                    if (profileMessage) {
+
+                        profileMessage.textContent =
+                            "La imagen no puede superar 1 MB.";
+
+                    }
+
+                    avatarFileInput.value =
+                        "";
+
+                    return;
+
+                }
+
+
+                /* COMPROBAR USUARIO */
+
+                const {
+                    data: { user },
+                    error: userError
+                } =
+                    await supabaseClient.auth
+                        .getUser();
+
+
+                if (
+                    userError ||
+                    !user
+                ) {
+
+                    if (profileMessage) {
+
+                        profileMessage.textContent =
+                            "Debes iniciar sesión para cambiar tu avatar.";
+
+                    }
+
+                    return;
+
+                }
+
+
+                if (profileMessage) {
+
+                    profileMessage.textContent =
+                        "Subiendo imagen...";
+
+                }
+
+
+                try {
+
+                    /* NOMBRE ÚNICO */
+
+                    const fileExtension =
+                        file.name
+                            .split(".")
+                            .pop()
+                            .toLowerCase();
+
+
+                    const filePath =
+                        `${user.id}/avatar-${Date.now()}.${fileExtension}`;
+
+
+                    /* SUBIR A STORAGE */
+
+                    const {
+                        error: uploadError
+                    } =
+                        await supabaseClient.storage
+                            .from("Viltrum")
+                            .upload(
+                                filePath,
+                                file,
+                                {
+                                    cacheControl:
+                                        "3600",
+                                    upsert:
+                                        false
+                                }
+                            );
+
+
+                    if (uploadError) {
+                        throw uploadError;
+                    }
+
+
+                    /* OBTENER URL PÚBLICA */
+
+                    const {
+                        data: publicUrlData
+                    } =
+                        supabaseClient.storage
+                            .from("Viltrum")
+                            .getPublicUrl(
+                                filePath
+                            );
+
+
+                    const avatarUrl =
+                        publicUrlData.publicUrl;
+
+
+                    /* GUARDAR URL EN PROFILE */
+
+                    const {
+                        error: profileError
+                    } =
+                        await supabaseClient
+                            .from("profiles")
+                            .update({
+                                avatar_url:
+                                    avatarUrl
+                            })
+                            .eq(
+                                "id",
+                                user.id
+                            );
+
+
+                    if (profileError) {
+                        throw profileError;
+                    }
+
+
+                    /* MOSTRAR AVATAR */
+
+                    updateProfileAvatar(
+                        avatarUrl
+                    );
+
+                    updateNavbarAvatar(
+                        avatarUrl,
+                        true
+                    );
+
+
+                    /* ACTUALIZAR CAMPO URL */
+
+                    if (profileAvatarUrl) {
+
+                        profileAvatarUrl.value =
+                            avatarUrl;
+
+                    }
+
+
+                    if (profileMessage) {
+
+                        profileMessage.textContent =
+                            "¡Avatar actualizado!";
+
+                    }
+
+                } catch (error) {
+
+                    console.error(
+                        "Error al subir avatar:",
+                        error
+                    );
+
+
+                    if (profileMessage) {
+
+                        profileMessage.textContent =
+                            "No se pudo subir el avatar.";
+
+                    }
+
+                } finally {
+
+                    avatarFileInput.value =
+                        "";
+
+                }
+
+            }
+        );
+
+    }
+
 
     const saveProfileButton =
         document.getElementById(
@@ -1799,7 +2693,11 @@ if (avatarFileInput) {
         document.getElementById(
             "logoutButton"
         );
-const loginButtonContent = document.getElementById("loginButtonContent");
+
+    const loginButtonContent =
+        document.getElementById(
+            "loginButtonContent"
+        );
 
     let registerMode = false;
 
@@ -1816,8 +2714,10 @@ const loginButtonContent = document.getElementById("loginButtonContent");
 
 
         if (profileEmail) {
+
             profileEmail.textContent =
                 user.email || "-";
+
         }
 
 
@@ -1851,19 +2751,26 @@ const loginButtonContent = document.getElementById("loginButtonContent");
 
 
         if (profileName) {
+
             profileName.textContent =
                 defaultUsername;
+
         }
 
 
         if (profileUsername) {
+
             profileUsername.value =
                 defaultUsername;
+
         }
 
 
         if (profileAvatarUrl) {
-            profileAvatarUrl.value = "";
+
+            profileAvatarUrl.value =
+                "";
+
         }
 
 
@@ -1906,45 +2813,51 @@ const loginButtonContent = document.getElementById("loginButtonContent");
             ) {
 
                 if (profileName) {
+
                     profileName.textContent =
                         profile.username;
+
                 }
 
                 if (profileUsername) {
+
                     profileUsername.value =
                         profile.username;
+
                 }
 
             }
 
 
-          if (
-    profile &&
-    profile.avatar_url
-) {
+            if (
+                profile &&
+                profile.avatar_url
+            ) {
 
-    if (profileAvatarUrl) {
-        profileAvatarUrl.value =
-            profile.avatar_url;
-    }
+                if (profileAvatarUrl) {
 
-    updateProfileAvatar(
-        profile.avatar_url
-    );
+                    profileAvatarUrl.value =
+                        profile.avatar_url;
 
-    updateNavbarAvatar(
-        profile.avatar_url,
-        true
-    );
+                }
 
-} else {
+                updateProfileAvatar(
+                    profile.avatar_url
+                );
 
-    updateNavbarAvatar(
-        null,
-        true
-    );
+                updateNavbarAvatar(
+                    profile.avatar_url,
+                    true
+                );
 
-}
+            } else {
+
+                updateNavbarAvatar(
+                    null,
+                    true
+                );
+
+            }
 
         } catch (error) {
 
@@ -1956,7 +2869,6 @@ const loginButtonContent = document.getElementById("loginButtonContent");
         }
 
     }
-
 
 
     /* =========================
@@ -1979,7 +2891,9 @@ const loginButtonContent = document.getElementById("loginButtonContent");
         ) {
 
             const image =
-                document.createElement("img");
+                document.createElement(
+                    "img"
+                );
 
             image.src =
                 url.trim();
@@ -2009,40 +2923,56 @@ const loginButtonContent = document.getElementById("loginButtonContent");
 
     }
 
+
     /* =========================
-   AVATAR EN LA NAVBAR
-========================= */
+       AVATAR EN LA NAVBAR
+    ========================= */
 
-function updateNavbarAvatar(url, loggedIn = false) {
+    function updateNavbarAvatar(
+        url,
+        loggedIn = false
+    ) {
 
-    if (!loginButton || !loginButtonContent) {
-        return;
-    }
+        if (
+            !loginButton ||
+            !loginButtonContent
+        ) {
+            return;
+        }
 
-    loginButtonContent.innerHTML = `
-        <span class="navbar-profile-content">
 
-            ${
-                url && url.trim()
-                    ? `
-                        <img
-                            src="${url.trim()}"
-                            alt="Avatar"
-                            class="navbar-avatar"
-                        >
-                    `
-                    : `
-                        <i class="bi bi-person-circle navbar-default-avatar"></i>
-                    `
-            }
+        loginButtonContent.innerHTML = `
 
-            <span class="navbar-profile-text">
-                ${loggedIn ? "Mi perfil" : "Iniciar sesión"}
+            <span class="navbar-profile-content">
+
+                ${
+                    url && url.trim()
+                        ? `
+                            <img
+                                src="${url.trim()}"
+                                alt="Avatar"
+                                class="navbar-avatar"
+                            >
+                        `
+                        : `
+                            <i class="bi bi-person-circle navbar-default-avatar"></i>
+                        `
+                }
+
+                <span class="navbar-profile-text">
+                    ${
+                        loggedIn
+                            ? "Mi perfil"
+                            : "Iniciar sesión"
+                    }
+                </span>
+
             </span>
 
-        </span>
-    `;
-}
+        `;
+
+    }
+
 
     /* =========================
        BOTÓN LOGIN / PERFIL
@@ -2069,9 +2999,11 @@ function updateNavbarAvatar(url, loggedIn = false) {
                     ) {
 
                         if (authOverlay) {
+
                             authOverlay.classList.remove(
                                 "show"
                             );
+
                         }
 
 
@@ -2081,50 +3013,64 @@ function updateNavbarAvatar(url, loggedIn = false) {
 
 
                         if (profileMessage) {
+
                             profileMessage.textContent =
                                 "";
+
                         }
 
 
                         if (profileEditSection) {
+
                             profileEditSection.style.display =
                                 "none";
+
                         }
 
 
                         if (editProfileButton) {
+
                             editProfileButton.innerHTML = `
                                 <i class="bi bi-pencil"></i>
                                 Editar perfil
                             `;
+
                         }
 
 
                         if (profileOverlay) {
+
                             profileOverlay.classList.add(
                                 "show"
                             );
+
                         }
 
                     } else {
 
                         if (profileOverlay) {
+
                             profileOverlay.classList.remove(
                                 "show"
                             );
+
                         }
 
 
                         if (authMessage) {
+
                             authMessage.textContent =
                                 "";
+
                         }
 
 
                         if (authOverlay) {
+
                             authOverlay.classList.add(
                                 "show"
                             );
+
                         }
 
                     }
@@ -2205,31 +3151,41 @@ function updateNavbarAvatar(url, loggedIn = false) {
 
 
                 if (authMessage) {
+
                     authMessage.textContent =
                         "";
+
                 }
 
 
                 if (registerMode) {
 
                     if (authTitle) {
+
                         authTitle.textContent =
                             "Crear cuenta";
+
                     }
 
                     if (authSubtitle) {
+
                         authSubtitle.textContent =
                             "Únete a SONORA";
+
                     }
 
                     if (authSubmit) {
+
                         authSubmit.textContent =
                             "Registrarse";
+
                     }
 
                     if (authSwitchText) {
+
                         authSwitchText.textContent =
                             "¿Ya tienes una cuenta?";
+
                     }
 
                     authSwitch.textContent =
@@ -2238,23 +3194,31 @@ function updateNavbarAvatar(url, loggedIn = false) {
                 } else {
 
                     if (authTitle) {
+
                         authTitle.textContent =
                             "Iniciar sesión";
+
                     }
 
                     if (authSubtitle) {
+
                         authSubtitle.textContent =
                             "Entra a tu cuenta de SONORA";
+
                     }
 
                     if (authSubmit) {
+
                         authSubmit.textContent =
                             "Iniciar sesión";
+
                     }
 
                     if (authSwitchText) {
+
                         authSwitchText.textContent =
                             "¿No tienes una cuenta?";
+
                     }
 
                     authSwitch.textContent =
@@ -2297,6 +3261,7 @@ function updateNavbarAvatar(url, loggedIn = false) {
                         ? emailInput.value.trim()
                         : "";
 
+
                 const password =
                     passwordInput
                         ? passwordInput.value
@@ -2312,14 +3277,18 @@ function updateNavbarAvatar(url, loggedIn = false) {
 
 
                 if (authMessage) {
+
                     authMessage.textContent =
                         "Procesando...";
+
                 }
 
 
                 if (authSubmit) {
+
                     authSubmit.disabled =
                         true;
+
                 }
 
 
@@ -2356,8 +3325,10 @@ function updateNavbarAvatar(url, loggedIn = false) {
 
 
                         if (authMessage) {
+
                             authMessage.textContent =
                                 "Cuenta creada correctamente. Revisa tu correo para confirmar tu cuenta.";
+
                         }
 
                     } else {
@@ -2385,8 +3356,10 @@ function updateNavbarAvatar(url, loggedIn = false) {
 
 
                         if (authMessage) {
+
                             authMessage.textContent =
                                 "¡Bienvenido a SONORA!";
+
                         }
 
 
@@ -2394,9 +3367,11 @@ function updateNavbarAvatar(url, loggedIn = false) {
                             async () => {
 
                                 if (authOverlay) {
+
                                     authOverlay.classList.remove(
                                         "show"
                                     );
+
                                 }
 
 
@@ -2404,8 +3379,10 @@ function updateNavbarAvatar(url, loggedIn = false) {
 
 
                                 if (authMessage) {
+
                                     authMessage.textContent =
                                         "";
+
                                 }
 
 
@@ -2428,15 +3405,19 @@ function updateNavbarAvatar(url, loggedIn = false) {
 
 
                     if (authMessage) {
+
                         authMessage.textContent =
                             error.message;
+
                     }
 
                 } finally {
 
                     if (authSubmit) {
+
                         authSubmit.disabled =
                             false;
+
                     }
 
                 }
@@ -2448,30 +3429,56 @@ function updateNavbarAvatar(url, loggedIn = false) {
 
 
     /* =========================
-   ACTUALIZAR INTERFAZ
-========================= */
+       ACTUALIZAR INTERFAZ
+    ========================= */
 
-async function updateUserInterface(session) {
-
-    if (
-        session &&
-        session.user
+    async function updateUserInterface(
+        session
     ) {
 
-        await loadUserProfile(
+        if (
+            session &&
             session.user
-        );
+        ) {
 
-    } else {
+            currentUser =
+                session.user;
 
-        updateNavbarAvatar(
-            null,
-            false
-        );
+
+            await loadUserProfile(
+                session.user
+            );
+
+
+            await loadFavorites();
+            await updateProfileStats();
+
+
+            
+
+        } else {
+
+            currentUser =
+                null;
+
+
+            userFavorites.clear();
+
+
+            updateFavoriteButtons();
+
+
+            await updateProfileStats();
+
+
+            updateNavbarAvatar(
+                null,
+                false
+            );
+
+        }
 
     }
-
-}
 
 
     /* =========================
@@ -2540,35 +3547,34 @@ async function updateUserInterface(session) {
 
                 if (isEditing) {
 
-                    /* CERRAR */
-
                     profileEditSection.style.display =
                         "none";
+
 
                     editProfileButton.innerHTML = `
                         <i class="bi bi-pencil"></i>
                         Editar perfil
                     `;
 
+
                     if (profileMessage) {
+
                         profileMessage.textContent =
                             "";
+
                     }
 
                 } else {
 
-                    /* ABRIR */
-
                     profileEditSection.style.display =
                         "block";
+
 
                     editProfileButton.innerHTML = `
                         <i class="bi bi-x-lg"></i>
                         Cancelar
                     `;
 
-
-                    /* CARGAR VALOR ACTUAL */
 
                     if (
                         profileUsername &&
@@ -2581,13 +3587,13 @@ async function updateUserInterface(session) {
                     }
 
 
-                    /* ENFOCAR INPUT */
-
                     if (profileUsername) {
 
                         setTimeout(
                             () => {
+
                                 profileUsername.focus();
+
                             },
                             50
                         );
@@ -2601,35 +3607,45 @@ async function updateUserInterface(session) {
 
     }
 
-/* =========================
-   CAMBIAR AVATAR
-========================= */
 
-if (changeAvatarButton) {
-    changeAvatarButton.addEventListener(
-        "click",
-        () => {
+    /* =========================
+       CAMBIAR AVATAR
+    ========================= */
 
-            // Abrir selector de archivos
-            if (avatarFileInput) {
-                avatarFileInput.click();
+    if (changeAvatarButton) {
+
+        changeAvatarButton.addEventListener(
+            "click",
+            () => {
+
+                if (avatarFileInput) {
+
+                    avatarFileInput.click();
+
+                }
+
+
+                if (profileEditSection) {
+
+                    profileEditSection.style.display =
+                        "block";
+
+                }
+
+
+                if (editProfileButton) {
+
+                    editProfileButton.innerHTML = `
+                        <i class="bi bi-x-lg"></i>
+                        Cancelar
+                    `;
+
+                }
+
             }
+        );
 
-            // Mostrar sección de edición
-            if (profileEditSection) {
-                profileEditSection.style.display =
-                    "block";
-            }
-
-            if (editProfileButton) {
-                editProfileButton.innerHTML = `
-                    <i class="bi bi-x-lg"></i>
-                    Cancelar
-                `;
-            }
-        }
-    );
-}
+    }
 
 
     /* =========================
@@ -2676,8 +3692,10 @@ if (changeAvatarButton) {
                 if (!username) {
 
                     if (profileMessage) {
+
                         profileMessage.textContent =
                             "Escribe un nombre de usuario.";
+
                     }
 
                     profileUsername.focus();
@@ -2687,11 +3705,15 @@ if (changeAvatarButton) {
                 }
 
 
-                if (username.length < 3) {
+                if (
+                    username.length < 3
+                ) {
 
                     if (profileMessage) {
+
                         profileMessage.textContent =
                             "El nombre debe tener al menos 3 caracteres.";
+
                     }
 
                     profileUsername.focus();
@@ -2711,8 +3733,10 @@ if (changeAvatarButton) {
                 if (!user) {
 
                     if (profileMessage) {
+
                         profileMessage.textContent =
                             "No hay una sesión activa.";
+
                     }
 
                     return;
@@ -2725,8 +3749,10 @@ if (changeAvatarButton) {
 
 
                 if (profileMessage) {
+
                     profileMessage.textContent =
                         "Guardando...";
+
                 }
 
 
@@ -2743,7 +3769,8 @@ if (changeAvatarButton) {
                                     username,
 
                                 avatar_url:
-                                    avatarUrl || null
+                                    avatarUrl ||
+                                    null
 
                             })
                             .eq(
@@ -2758,37 +3785,47 @@ if (changeAvatarButton) {
 
 
                     if (profileName) {
+
                         profileName.textContent =
                             username;
+
                     }
 
 
                     updateProfileAvatar(
-                     avatarUrl
-                             );
+                        avatarUrl
+                    );
+
 
                     updateNavbarAvatar(
-                    avatarUrl,
-                      true
-                        );
+                        avatarUrl,
+                        true
+                    );
+
 
                     if (profileMessage) {
+
                         profileMessage.textContent =
                             "¡Perfil actualizado!";
+
                     }
 
 
                     if (profileEditSection) {
+
                         profileEditSection.style.display =
                             "none";
+
                     }
 
 
                     if (editProfileButton) {
+
                         editProfileButton.innerHTML = `
                             <i class="bi bi-pencil"></i>
                             Editar perfil
                         `;
+
                     }
 
                 } catch (error) {
@@ -2800,8 +3837,10 @@ if (changeAvatarButton) {
 
 
                     if (profileMessage) {
+
                         profileMessage.textContent =
                             "No se pudo guardar el cambio.";
+
                     }
 
                 } finally {
@@ -2855,7 +3894,9 @@ if (changeAvatarButton) {
                 }
 
 
-                updateUserInterface(null);
+                updateUserInterface(
+                    null
+                );
 
             }
         );
@@ -2879,23 +3920,29 @@ if (changeAvatarButton) {
 
 
             if (searchOverlay) {
+
                 searchOverlay.classList.remove(
                     "show"
                 );
+
             }
 
 
             if (authOverlay) {
+
                 authOverlay.classList.remove(
                     "show"
                 );
+
             }
 
 
             if (profileOverlay) {
+
                 profileOverlay.classList.remove(
                     "show"
                 );
+
             }
 
         }
@@ -2953,5 +4000,11 @@ if (changeAvatarButton) {
     ========================= */
 
     checkUserSession();
+
+    setupFavoriteButtons();
+
+    loadFavorites();
+
+    
 
 });

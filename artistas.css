@@ -1,0 +1,1729 @@
+/* =========================================================
+   ARTISTAS — SONORA
+========================================================= */
+
+.artists-page {
+    min-height: 100vh;
+    padding-bottom: 150px;
+    color: var(--text);
+    background:
+        radial-gradient(circle at 12% 8%, rgba(168, 85, 247, .12), transparent 27%),
+        radial-gradient(circle at 88% 18%, rgba(34, 211, 238, .08), transparent 24%),
+        var(--bg);
+}
+
+.artists-hero {
+    position: relative;
+    overflow: hidden;
+    padding: 135px 0 80px;
+    border-bottom: 1px solid var(--border);
+}
+
+.artists-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 38px;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.artists-back:hover { color: var(--text); }
+.artists-back i { color: var(--primary-light); font-size: 17px; }
+
+.artists-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(320px, .85fr);
+    align-items: center;
+    gap: 70px;
+}
+
+.artists-eyebrow,
+.artist-genre {
+    display: inline-block;
+    color: var(--primary-light);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.artists-hero h1 {
+    max-width: 790px;
+    margin: 16px 0 20px;
+    font-size: clamp(3rem, 6vw, 6rem);
+    font-weight: 800;
+    line-height: .94;
+    letter-spacing: -5px;
+}
+
+.artists-hero-copy > p {
+    max-width: 650px;
+    margin: 0;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+.artists-hero-visual {
+    position: relative;
+    display: grid;
+    min-height: 350px;
+    place-items: center;
+}
+
+.artists-vinyl {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    width: 230px;
+    height: 230px;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 50%;
+    place-items: center;
+    background:
+        repeating-radial-gradient(circle, transparent 0 8px, rgba(255,255,255,.035) 9px 10px),
+        radial-gradient(circle, var(--primary) 0 13%, #101018 14% 57%, #050507 58%);
+    box-shadow: 0 35px 90px rgba(0,0,0,.5), 0 0 70px rgba(168,85,247,.18);
+    animation: artistsSpin 16s linear infinite;
+}
+
+.artists-vinyl i {
+    color: white;
+    font-size: 27px;
+}
+
+.artists-orbit {
+    position: absolute;
+    border: 1px solid rgba(168,85,247,.2);
+    border-radius: 50%;
+}
+
+.artists-orbit-one { width: 310px; height: 310px; }
+.artists-orbit-two { width: 390px; height: 220px; transform: rotate(-28deg); }
+
+@keyframes artistsSpin { to { transform: rotate(360deg); } }
+
+.artists-content { padding-top: 55px; }
+
+.artists-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 50px;
+}
+
+.artists-search {
+    display: flex;
+    align-items: center;
+    width: min(100%, 390px);
+    gap: 12px;
+    padding: 0 18px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: rgba(255,255,255,.035);
+}
+
+.artists-search:focus-within {
+    border-color: color-mix(in srgb, var(--primary) 55%, transparent);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--primary) 10%, transparent);
+}
+
+.artists-search i { color: var(--primary-light); }
+
+.artists-search input {
+    width: 100%;
+    padding: 15px 0;
+    border: 0;
+    outline: 0;
+    color: var(--text);
+    background: transparent;
+    font: inherit;
+    font-size: 13px;
+}
+
+.artists-filters { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.artist-filter {
+    padding: 10px 16px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    color: var(--muted);
+    background: transparent;
+    font-size: 11px;
+    font-weight: 800;
+    transition: var(--transition);
+}
+
+.artist-filter:hover,
+.artist-filter.active {
+    border-color: transparent;
+    color: white;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+.featured-artist {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, .95fr);
+    min-height: 520px;
+    overflow: hidden;
+    margin-bottom: 85px;
+    border: 1px solid var(--border);
+    border-radius: 32px;
+    background: linear-gradient(135deg, rgba(255,255,255,.055), rgba(255,255,255,.015));
+    box-shadow: 0 35px 90px rgba(0,0,0,.22);
+}
+
+.featured-artist-image { position: relative; min-height: 420px; overflow: hidden; }
+.featured-artist-image::after {
+    position: absolute;
+    inset: 0;
+    content: "";
+    background: linear-gradient(90deg, transparent 55%, rgba(9,9,14,.9));
+}
+
+.featured-artist-image img { width: 100%; height: 100%; object-fit: cover; }
+
+.featured-badge {
+    position: absolute;
+    z-index: 2;
+    top: 22px;
+    left: 22px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 13px;
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 999px;
+    color: white;
+    background: rgba(7,7,12,.72);
+    backdrop-filter: blur(12px);
+    font-size: 10px;
+    font-weight: 800;
+}
+
+.featured-artist-copy {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 55px 55px 55px 20px;
+}
+
+.featured-artist-copy h2 { margin: 12px 0 18px; font-size: clamp(2.7rem, 5vw, 5rem); font-weight: 800; letter-spacing: -4px; }
+.featured-artist-copy > p { color: var(--muted); line-height: 1.8; }
+
+.featured-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 28px 0 32px; }
+.featured-stats div { display: flex; flex-direction: column; gap: 4px; }
+.featured-stats strong { font-size: 19px; }
+.featured-stats span { color: var(--muted); font-size: 10px; }
+
+.featured-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.artist-primary-action,
+.artist-secondary-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 46px;
+    padding: 0 20px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+    transition: var(--transition);
+}
+
+.artist-primary-action { border: 0; color: white; background: linear-gradient(135deg, var(--primary), var(--secondary)); }
+.artist-secondary-action { border: 1px solid var(--border); color: var(--text); background: transparent; }
+.artist-primary-action:hover,
+.artist-secondary-action:hover { transform: translateY(-2px); }
+
+.artists-section-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 28px; }
+.artists-section-heading h2 { margin: 8px 0 0; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 800; letter-spacing: -2px; }
+.artists-section-heading p { margin: 0; color: var(--muted); font-size: 12px; }
+
+.artists-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+
+.artist-catalog-card {
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    background: var(--card);
+    transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
+    animation: artistCardEnter .7s both;
+}
+
+.artist-catalog-card:nth-child(2) { animation-delay: .06s; }
+.artist-catalog-card:nth-child(3) { animation-delay: .12s; }
+.artist-catalog-card:nth-child(4) { animation-delay: .18s; }
+.artist-catalog-card:nth-child(5) { animation-delay: .24s; }
+.artist-catalog-card:nth-child(6) { animation-delay: .3s; }
+
+@keyframes artistCardEnter {
+    from { opacity: 0; transform: translateX(-34px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.artist-catalog-card:hover {
+    transform: translateY(-8px);
+    border-color: color-mix(in srgb, var(--primary) 38%, transparent);
+    box-shadow: 0 24px 60px rgba(0,0,0,.28);
+}
+
+.artist-catalog-card[hidden] { display: none; }
+
+.artist-catalog-image { position: relative; height: 330px; overflow: hidden; background: #111; }
+.artist-catalog-image::after { position: absolute; inset: auto 0 0; height: 45%; content: ""; background: linear-gradient(transparent, rgba(0,0,0,.75)); pointer-events: none; }
+.artist-catalog-image img { width: 100%; height: 100%; object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
+.artist-catalog-card:hover .artist-catalog-image img { transform: scale(1.045); }
+
+.artist-gradient { display: grid; place-items: center; }
+.artist-gradient span { color: rgba(255,255,255,.88); font-size: 7rem; font-weight: 800; text-shadow: 0 20px 45px rgba(0,0,0,.25); }
+.artist-gradient-luna { background: linear-gradient(145deg, #4c1d95, #ec4899); }
+.artist-gradient-nova { background: linear-gradient(145deg, #0e7490, #6d28d9); }
+.artist-gradient-echo { background: linear-gradient(145deg, #7f1d1d, #111827); }
+
+.artist-card-play {
+    position: absolute;
+    z-index: 2;
+    right: 18px;
+    bottom: 18px;
+    display: grid;
+    width: 48px;
+    height: 48px;
+    border: 0;
+    border-radius: 50%;
+    place-items: center;
+    color: white;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    box-shadow: 0 12px 28px rgba(0,0,0,.35);
+    transition: transform .25s ease;
+}
+.artist-card-play:hover { transform: scale(1.08); }
+.artist-card-play i { font-size: 19px; }
+
+.artist-catalog-info { padding: 21px 22px 24px; }
+.artist-catalog-info > span { color: var(--primary-light); font-size: 9px; font-weight: 800; letter-spacing: 1.3px; text-transform: uppercase; }
+.artist-catalog-info h3 { margin: 8px 0 15px; font-size: 20px; font-weight: 800; }
+.artist-details-button { display: inline-flex; align-items: center; gap: 7px; padding: 0; border: 0; color: var(--muted); background: transparent; font-size: 11px; font-weight: 700; transition: var(--transition); }
+.artist-details-button:hover { color: var(--text); }
+
+.artists-empty { padding: 65px 20px; text-align: center; color: var(--muted); }
+.artists-empty i { display: block; margin-bottom: 15px; color: var(--primary-light); font-size: 38px; }
+.artists-empty h3 { color: var(--text); }
+
+.artist-profile-overlay { position: fixed; z-index: 1085; inset: 0; display: grid; grid-template-columns: 1fr minmax(320px, 620px); visibility: hidden; opacity: 0; transition: opacity .3s ease, visibility .3s ease; }
+.artist-profile-overlay.open { visibility: visible; opacity: 1; }
+.artist-profile-backdrop { border: 0; background: rgba(3,3,7,.74); backdrop-filter: blur(8px); }
+.artist-profile-panel { position: relative; overflow-y: auto; padding: 72px 48px 130px; background: #0b0b12; box-shadow: -30px 0 100px rgba(0,0,0,.5); transform: translateX(100%); transition: transform .4s cubic-bezier(.2,.7,.2,1); }
+.artist-profile-overlay.open .artist-profile-panel { transform: translateX(0); }
+.artist-profile-close { position: absolute; top: 22px; right: 24px; display: grid; width: 42px; height: 42px; border: 1px solid var(--border); border-radius: 50%; place-items: center; color: var(--text); background: rgba(255,255,255,.04); }
+.artist-profile-portrait { width: 100%; height: 310px; overflow: hidden; margin-bottom: 28px; border-radius: 22px; }
+.artist-profile-portrait img { width: 100%; height: 100%; object-fit: cover; }
+.artist-profile-initial { display: grid; height: 100%; place-items: center; color: white; font-size: 7rem; font-weight: 800; background: linear-gradient(145deg, var(--primary), #111827); }
+.artist-profile-panel h2 { margin: 10px 0 12px; font-size: 3rem; font-weight: 800; letter-spacing: -3px; }
+.artist-profile-bio { color: var(--muted); line-height: 1.8; }
+.artist-profile-meta { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 30px; }
+.artist-profile-meta span { padding: 8px 12px; border: 1px solid var(--border); border-radius: 999px; color: var(--muted); font-size: 10px; font-weight: 700; }
+.artist-profile-track { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 16px 0; border-top: 1px solid var(--border); }
+.artist-profile-track small { display: block; margin-bottom: 5px; color: var(--primary-light); font-size: 9px; font-weight: 800; }
+.artist-profile-track strong { font-size: 13px; }
+.artist-profile-track .artist-card-play { position: static; flex: 0 0 auto; }
+
+body.artist-profile-open { overflow: hidden; }
+
+@media (max-width: 992px) {
+    .artists-hero-grid { grid-template-columns: 1fr; gap: 25px; }
+    .artists-hero-visual { display: none; }
+    .featured-artist { grid-template-columns: 1fr; }
+    .featured-artist-image::after { background: linear-gradient(transparent 55%, rgba(9,9,14,.92)); }
+    .featured-artist-copy { padding: 40px; }
+    .artists-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 768px) {
+    .artists-hero { padding: 115px 0 60px; }
+    .artists-hero h1 { letter-spacing: -3px; }
+    .artists-toolbar { align-items: stretch; flex-direction: column; }
+    .artists-search { width: 100%; }
+    .featured-stats { grid-template-columns: 1fr; }
+    .artists-grid { grid-template-columns: 1fr; }
+    .artist-catalog-image { height: 380px; }
+    .artist-profile-overlay { grid-template-columns: 1fr; }
+    .artist-profile-backdrop { display: none; }
+    .artist-profile-panel { padding: 70px 24px 130px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .artists-vinyl { animation: none; }
+    .artist-catalog-card,
+    .artist-catalog-image img,
+    .artist-profile-panel { transition: none; }
+    .artist-catalog-card { animation: none; }
+}
+
+/* Premium editorial edition. All overrides are isolated to Artistas. */
+.artists-page {
+    background: var(--bg);
+    color: var(--text);
+}
+.artists-page *, .artists-page *::before, .artists-page *::after { box-sizing: border-box; }
+.artists-page [hidden] { display: none !important; }
+.artists-page .container { width: min(1240px, calc(100% - 80px)); margin-inline: auto; }
+.artists-page button, .artists-page a, .artists-page select { -webkit-tap-highlight-color: transparent; }
+.artists-page button { cursor: pointer; }
+.artists-page :is(button,a,input,select):focus-visible { outline: 2px solid var(--primary-light); outline-offset: 5px; }
+.artists-page .artists-hero { padding: 126px 0 52px; }
+.artists-page .artists-back { margin-bottom: 40px; font-size: 11px; letter-spacing: .04em; }
+.artists-page .artists-hero-grid { grid-template-columns: 1.5fr .5fr; gap: 30px; }
+.artists-page .artists-eyebrow { font-size: 10px; letter-spacing: .23em; }
+.artists-page .artists-hero h1 { font-size: clamp(45px, 6.6vw, 88px); line-height: 1.04; letter-spacing: -.065em; margin: 22px 0; }
+.artists-page .artists-hero h1 em { font-family: Georgia, serif; font-weight: 400; letter-spacing: -.055em; color: var(--primary); }
+.artists-page .artists-hero-copy > p { font-size: 14px; max-width: 450px; }
+.artists-page .artists-hero-visual { min-height: 260px; }
+.artists-page .artists-vinyl {
+    width: 200px; height: 200px; animation: none; box-shadow: 0 20px 40px #0008;
+    background: repeating-radial-gradient(circle, #ffffff04 0 2px, transparent 3px 6px), radial-gradient(circle,var(--primary) 0 15%,#171819 16% 65%,#080909 66%);
+}
+.artists-page .artists-vinyl i { color: #181819; font-size: 20px; }
+.artists-page .artists-orbit { border-color: color-mix(in srgb, var(--primary) 10%, transparent); }
+.artists-page .artists-orbit-one { width: 260px; height: 260px; }
+.artists-page .artists-orbit-two { width: 290px; height: 150px; }
+.artists-page .artists-content { display: flex; flex-direction: column; padding-top: 36px; }
+.artists-page .featured-artist { order: -1; position: relative; grid-template-columns: 1fr 1fr; min-height: 410px; margin-bottom: 56px; border-radius: 8px; background: #1a1b1d; box-shadow: none; }
+.artists-page .featured-artist-image { min-height: 410px; background: #242526; }
+.artists-page .featured-artist-image img { position: absolute; inset: 0; filter: grayscale(1); }
+.artists-page .featured-artist-image::after { background: linear-gradient(90deg,transparent 55%,#1a1b1d); }
+.artists-page .featured-badge { border-radius: 3px; font-size: 9px; letter-spacing: .09em; }
+.artists-page .featured-artist-copy { padding: 40px 44px; }
+.artists-page .featured-artist-copy h2 { font-size: clamp(40px,5.3vw,68px); letter-spacing: -.055em; line-height: 1.1; }
+.artists-page .featured-artist-copy > p { font-size: 13px; max-width: 400px; }
+.artists-page .featured-stats { margin: 22px 0 28px; padding-top: 20px; border-top: 1px solid var(--border); }
+.artists-page .featured-stats strong { font-size: 14px; font-weight: 600; }
+.artists-page .featured-stats span { font-size: 10px; }
+.artists-page .artist-primary-action { background: var(--primary-light); color: #171819; border-radius: 4px; box-shadow: none; }
+.artists-page .artist-secondary-action { border: 1px solid #ffffff40; border-radius: 4px; min-height: 46px; padding: 0 20px; color: var(--text); }
+.artists-page .artists-toolbar { gap: 20px; margin-bottom: 45px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+.artists-page .artists-search { border-radius: 4px; background: #191a1c; }
+.artists-page .artists-search:focus-within { box-shadow: none; border-color: var(--primary); }
+.artists-page .artist-filter { border-radius: 4px; font-weight: 600; padding: 10px 13px; }
+.artists-page .artist-filter.active, .artists-page .artist-filter:hover { background: var(--primary-light); color: #141516; }
+.artists-page .artists-section-heading { margin-bottom: 28px; }
+.artists-page .artists-section-heading h2 { font-size: 30px; letter-spacing: -.035em; }
+.artists-catalog-controls { display: flex; align-items: center; gap: 18px; }
+.artists-page select { background: #191a1c; color: var(--text); border: 1px solid var(--border); border-radius: 4px; padding: 10px; font-size: 11px; max-width: 100%; }
+.artists-page .artists-grid { gap: 32px 24px; }
+.artists-page .artist-catalog-card { border-radius: 6px; border: 0; background: transparent; animation: artistCardEnter .55s backwards; box-shadow: none; }
+.artists-page .artist-catalog-card:hover { transform: translateY(-4px); box-shadow: none; }
+.artists-page .artist-catalog-image { height: auto; aspect-ratio: 1.16; border-radius: 6px; }
+.artists-page .artist-catalog-image img { filter: saturate(.55); }
+.artists-page .artist-catalog-info { position: relative; padding: 20px 0 14px; border-bottom: 1px solid var(--border); }
+.artists-page .artist-catalog-info h3 { font-size: 23px; letter-spacing: -.04em; margin-bottom: 18px; }
+.artists-page .artist-catalog-info > span { font-size: 9px; letter-spacing: .1em; }
+.artists-page .artist-card-play { background: var(--primary-light); color: #141516; width: 44px; height: 44px; box-shadow: none; }
+.artists-page .artist-card-play[aria-pressed="true"] { outline: 2px solid var(--primary-light); outline-offset: 4px; }
+.artists-page .artist-gradient { position: relative; }
+.artists-page .artist-gradient::before { content: "PERFIL DEMO"; position: absolute; top: 18px; left: 18px; font-size: 9px; letter-spacing: .15em; color: #ffffffa0; }
+.artists-page .artist-gradient-luna { background: radial-gradient(ellipse at 60% 90%,#aa7c88,transparent 65%),#32282e; }
+.artists-page .artist-gradient-nova { background: radial-gradient(ellipse at 65% 85%,#6d949a,transparent 65%),#1e3037; }
+.artists-page .artist-gradient-echo { background: radial-gradient(ellipse at 60% 90%,#a28b68,transparent 65%),#353129; }
+.artists-page .artist-gradient span { font-family: Georgia,serif; font-style: italic; font-weight: 400; font-size: 110px; text-shadow: none; }
+.artist-follow { border: 1px solid #ffffff35; border-radius: 4px; background: transparent; color: #f4f0e8; padding: 9px 12px; font-size: 11px; }
+.artist-follow[aria-pressed="true"] { border-color: var(--primary); color: var(--primary-light); }
+.artist-catalog-info .artist-follow { float: right; margin-top: -6px; }
+.artists-demo-note { color: #969593; font-size: 11px; margin-top: 28px; line-height: 1.7; }
+.artist-status { position: fixed; z-index: 1090; bottom: 120px; left: 50%; transform: translateX(-50%); width: max-content; max-width: calc(100% - 40px); padding: 14px 20px; border: 1px solid color-mix(in srgb, var(--primary) 38%, transparent); border-radius: 6px; background: #222325; color: #f4f0e8; box-shadow: 0 10px 30px #0006; font-size: 12px; }
+.artist-status:empty { display: none; }
+.artists-page .artist-profile-panel { background: #171819; color: var(--text); }
+.artists-page .artist-profile-portrait { border-radius: 5px; background: #27282a; }
+.artists-page .artist-profile-initial { background: linear-gradient(140deg,#544d40,#202123); font-family: Georgia,serif; font-style: italic; font-weight: 400; }
+.artists-page .artist-profile-panel h2 { letter-spacing: -.05em; }
+.artists-page .artist-profile-meta span { border-radius: 3px; }
+.artists-page .artist-profile-track { margin-bottom: 24px; }
+.artists-page .artist-profile-tracks > h3 {
+    margin: 30px 0 8px;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+.artists-page .artist-profile-tracks .artist-profile-track { margin-bottom: 0; }
+.artists-page .artist-image-unavailable { position: relative; background: repeating-radial-gradient(ellipse at 30% 70%,#ffffff06 0 1px,transparent 2px 17px),linear-gradient(130deg,#3e4141,#1a1b1d); }
+.artists-page .artist-image-unavailable::before { content: attr(data-initial); position: absolute; inset: 0; display: grid; place-items: center; font: italic 120px Georgia,serif; color: var(--primary); }
+@media(max-width: 992px) {
+    .artists-page .artists-hero-grid { grid-template-columns: 1fr; }
+    .artists-page .featured-artist { grid-template-columns: 1fr 1fr; }
+    .artists-page .featured-artist-copy { padding: 28px; }
+    .artists-page .artists-toolbar { flex-direction: column; align-items: stretch; }
+    .artists-page .artists-search { width: 100%; }
+}
+@media(max-width: 640px) {
+    .artists-page .container { width: calc(100% - 36px); }
+    .artists-page .artists-hero { padding-top: 108px; }
+    .artists-page .featured-artist { grid-template-columns: 1fr; }
+    .artists-page .featured-artist-image { min-height: 240px; }
+    .artists-page .featured-artist-image::after { background: linear-gradient(transparent 65%,#1a1b1d); }
+    .artists-page .featured-stats { grid-template-columns: repeat(3,1fr); gap: 10px; }
+    .artists-page .featured-artist-copy { padding: 28px 24px; }
+    .artists-page .artists-section-heading { align-items: flex-start; flex-direction: column; }
+    .artists-catalog-controls { justify-content: space-between; width: 100%; }
+    .artists-page .artists-grid { grid-template-columns: 1fr; }
+    .artists-page .artist-catalog-image { aspect-ratio: 1.2; }
+    .artists-page .artists-filters { gap: 6px; }
+    .artists-page .artist-filter { padding: 9px 10px; }
+}
+@media(prefers-reduced-motion: reduce) {
+    .artists-page *, .artists-page *::before, .artists-page *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+
+/* =========================================================
+   IDENTIDAD SONORA — PREMIUM MODERNO
+   Mantiene los colores del tema activo del sitio.
+========================================================= */
+
+.artists-page {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at 12% 5%, var(--theme-glow), transparent 26%),
+        radial-gradient(circle at 92% 20%, color-mix(in srgb, var(--secondary) 14%, transparent), transparent 24%),
+        var(--bg);
+}
+
+.artists-page :is(button, a, input, select):focus-visible {
+    outline-color: var(--primary-light);
+}
+
+.artists-page .artists-hero {
+    border-bottom-color: var(--border);
+}
+
+.artists-page .artists-hero h1 em {
+    font: inherit;
+    font-style: normal;
+    font-weight: 800;
+    color: transparent;
+    background: linear-gradient(100deg, var(--primary-light), var(--secondary));
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.artists-page .artists-vinyl {
+    width: 210px;
+    height: 210px;
+    border-color: color-mix(in srgb, var(--primary) 30%, transparent);
+    background:
+        repeating-radial-gradient(circle, transparent 0 8px, rgba(255,255,255,.035) 9px 10px),
+        conic-gradient(from 30deg, #080a12, var(--primary), #0a0c18, var(--secondary), #080a12);
+    box-shadow: 0 30px 70px rgba(0,0,0,.42);
+    animation: artistsSpin 18s linear infinite;
+}
+
+.artists-page .artists-vinyl::after {
+    position: absolute;
+    inset: 36%;
+    content: "";
+    border: 7px solid color-mix(in srgb, var(--primary-light) 70%, white);
+    border-radius: 50%;
+    background: var(--bg);
+}
+
+.artists-page .artists-vinyl i {
+    position: relative;
+    z-index: 2;
+    color: var(--primary-light);
+}
+
+.artists-page .artists-orbit {
+    border-color: color-mix(in srgb, var(--primary) 24%, transparent);
+}
+
+.artists-page .featured-artist {
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    background: linear-gradient(135deg, var(--card), var(--bg-secondary));
+}
+
+.artists-page .featured-artist-image {
+    background: var(--bg-secondary);
+}
+
+.artists-page .featured-artist-image img,
+.artists-page .artist-catalog-image img {
+    filter: none;
+}
+
+.artists-page .featured-artist-image::after {
+    background: linear-gradient(90deg, transparent 55%, var(--card));
+}
+
+.artists-page .featured-badge {
+    border-radius: 999px;
+    border-color: color-mix(in srgb, var(--primary) 36%, transparent);
+    background: color-mix(in srgb, var(--bg) 82%, transparent);
+}
+
+.artists-page .artist-primary-action,
+.artists-page .artist-card-play {
+    color: white;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+.artists-page .artist-primary-action,
+.artists-page .artist-secondary-action,
+.artists-page .artist-filter,
+.artists-page select,
+.artist-follow {
+    border-radius: 999px;
+}
+
+.artists-page .artists-search,
+.artists-page select {
+    border-color: var(--border);
+    background: var(--card);
+}
+
+.artists-page .artists-search {
+    border-radius: 16px;
+}
+
+.artists-page .artist-filter.active,
+.artists-page .artist-filter:hover {
+    color: white;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+.artists-page .artist-catalog-card {
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    background: color-mix(in srgb, var(--card) 88%, transparent);
+}
+
+.artists-page .artist-catalog-card:hover {
+    border-color: color-mix(in srgb, var(--primary) 45%, transparent);
+}
+
+.artists-page .artist-catalog-image {
+    border-radius: 0;
+}
+
+.artists-page .artist-catalog-info {
+    padding: 22px;
+    border-bottom: 0;
+}
+
+.artists-page .artist-card-play[aria-pressed="true"] {
+    outline-color: var(--primary-light);
+}
+
+.artists-page .artist-gradient::before {
+    color: color-mix(in srgb, var(--text) 65%, transparent);
+}
+
+.artists-page .artist-gradient-luna {
+    background:
+        radial-gradient(circle at 28% 24%, color-mix(in srgb, var(--primary-light) 65%, transparent), transparent 28%),
+        linear-gradient(145deg, var(--primary), var(--secondary));
+}
+
+.artists-page .artist-gradient-nova {
+    background:
+        radial-gradient(circle at 70% 20%, color-mix(in srgb, var(--primary-light) 60%, transparent), transparent 26%),
+        linear-gradient(145deg, var(--secondary), var(--bg-secondary));
+}
+
+.artists-page .artist-gradient-echo {
+    background:
+        radial-gradient(circle at 30% 75%, color-mix(in srgb, var(--secondary) 65%, transparent), transparent 30%),
+        linear-gradient(145deg, var(--bg-secondary), var(--primary));
+}
+
+.artists-page .artist-gradient span {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+}
+
+.artist-follow {
+    border-color: color-mix(in srgb, var(--primary) 32%, var(--border));
+    color: var(--text);
+}
+
+.artist-follow:hover,
+.artist-follow[aria-pressed="true"] {
+    border-color: var(--primary);
+    color: var(--primary-light);
+    background: color-mix(in srgb, var(--primary) 11%, transparent);
+}
+
+.artists-demo-note {
+    color: var(--muted);
+}
+
+.artist-status {
+    border-color: color-mix(in srgb, var(--primary) 55%, transparent);
+    background: var(--card);
+    color: var(--text);
+}
+
+.artists-page .artist-profile-panel {
+    background:
+        radial-gradient(circle at 100% 0, var(--theme-glow), transparent 28%),
+        var(--bg-secondary);
+}
+
+.artists-page .artist-profile-portrait {
+    border-radius: 22px;
+    background: var(--card);
+}
+
+.artists-page .artist-profile-initial {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    background: linear-gradient(145deg, var(--primary), var(--secondary));
+}
+
+.artists-page .artist-profile-meta span {
+    border-radius: 999px;
+}
+
+.artists-page .artist-image-unavailable {
+    background:
+        radial-gradient(circle at 25% 20%, var(--theme-glow), transparent 28%),
+        linear-gradient(135deg, var(--card), var(--bg-secondary));
+}
+
+.artists-page .artist-image-unavailable::before {
+    font: 800 120px 'Montserrat', sans-serif;
+    color: var(--primary-light);
+}
+
+@media (max-width: 640px) {
+    .artists-page .featured-artist-image::after {
+        background: linear-gradient(transparent 62%, var(--card));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .artists-page .artists-vinyl {
+        animation: none;
+    }
+}
+
+/* =========================================================
+   CONTROLES SONORA — SISTEMA VISUAL DE TEMAS
+========================================================= */
+
+.artists-page :is(button, input, select, a) {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.artists-page button {
+    letter-spacing: .01em;
+}
+
+.artists-page :is(
+    .artist-primary-action,
+    .artist-secondary-action,
+    .artist-filter,
+    .artist-follow,
+    .artist-details-button,
+    .artist-card-play,
+    .artist-profile-close
+) {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    transition:
+        color .25s ease,
+        background .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease,
+        transform .25s ease;
+}
+
+.artists-page :is(
+    .artist-primary-action,
+    .artist-filter.active,
+    .artist-card-play
+) {
+    border-color: transparent;
+    color: #fff;
+    background: linear-gradient(
+        135deg,
+        var(--primary),
+        var(--secondary)
+    );
+}
+
+.artists-page :is(
+    .artist-primary-action,
+    .artist-secondary-action,
+    .artist-filter,
+    .artist-follow
+) {
+    min-height: 44px;
+    padding: 0 18px;
+    border-radius: 999px;
+    font-size: 11px;
+}
+
+.artists-page .artist-primary-action {
+    box-shadow:
+        0 10px 26px
+        color-mix(in srgb, var(--primary) 24%, transparent);
+}
+
+.artists-page .artist-primary-action:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 14px 32px
+        color-mix(in srgb, var(--primary) 34%, transparent);
+}
+
+.artists-page :is(
+    .artist-secondary-action,
+    .artist-filter,
+    .artist-follow
+) {
+    border: 1px solid
+        color-mix(in srgb, var(--primary) 24%, var(--border));
+    color: var(--text);
+    background:
+        color-mix(in srgb, var(--card) 78%, transparent);
+}
+
+.artists-page :is(
+    .artist-secondary-action,
+    .artist-filter,
+    .artist-follow
+):hover {
+    transform: translateY(-2px);
+    border-color: var(--primary);
+    color: var(--primary-light);
+    background:
+        color-mix(in srgb, var(--primary) 12%, var(--card));
+}
+
+.artists-page .artist-filter.active {
+    box-shadow:
+        0 8px 22px
+        color-mix(in srgb, var(--primary) 22%, transparent);
+}
+
+.artists-page .artist-follow[aria-pressed="true"] {
+    border-color: var(--primary);
+    color: var(--primary-light);
+    background:
+        color-mix(in srgb, var(--primary) 15%, var(--card));
+}
+
+.artists-page .artist-details-button {
+    gap: 8px;
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.artists-page .artist-details-button::after {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 1px;
+    content: "";
+    background: linear-gradient(
+        90deg,
+        var(--primary),
+        var(--secondary)
+    );
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .25s ease;
+}
+
+.artists-page .artist-details-button:hover {
+    color: var(--primary-light);
+}
+
+.artists-page .artist-details-button:hover::after {
+    transform: scaleX(1);
+}
+
+.artists-page .artist-details-button i {
+    transition: transform .25s ease;
+}
+
+.artists-page .artist-details-button:hover i {
+    transform: translate(2px, -2px);
+}
+
+.artists-page .artist-card-play {
+    width: 48px;
+    height: 48px;
+    border: 0;
+    border-radius: 50%;
+    box-shadow:
+        0 10px 24px rgba(0,0,0,.32),
+        0 0 0 1px
+        color-mix(in srgb, var(--primary-light) 24%, transparent);
+}
+
+.artists-page .artist-card-play:hover {
+    transform: translateY(-2px) scale(1.06);
+    box-shadow:
+        0 14px 30px rgba(0,0,0,.36),
+        0 0 0 4px
+        color-mix(in srgb, var(--primary) 15%, transparent);
+}
+
+.artists-page .artist-card-play[aria-pressed="true"] {
+    background: var(--primary-light);
+    color: var(--bg);
+}
+
+.artists-page .artist-card-play i {
+    font-size: 20px;
+    line-height: 1;
+}
+
+.artists-page .artist-profile-close {
+    border-color:
+        color-mix(in srgb, var(--primary) 25%, var(--border));
+    color: var(--text);
+    background: color-mix(in srgb, var(--card) 80%, transparent);
+}
+
+.artists-page .artist-profile-close:hover {
+    transform: rotate(90deg);
+    border-color: var(--primary);
+    color: var(--primary-light);
+    background:
+        color-mix(in srgb, var(--primary) 14%, var(--card));
+}
+
+.artists-page .artists-back {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+.artists-page .artists-back:hover {
+    color: var(--primary-light);
+}
+
+.artists-page .artists-back i {
+    transition: transform .25s ease;
+}
+
+.artists-page .artists-back:hover i {
+    transform: translateX(-3px);
+}
+
+.artists-page select {
+    min-height: 42px;
+    padding: 0 38px 0 16px;
+    border-color:
+        color-mix(in srgb, var(--primary) 20%, var(--border));
+    border-radius: 14px;
+    color: var(--text);
+    background-color: var(--card);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* Disco temático: utiliza siempre los colores del tema activo. */
+.artists-page .artists-vinyl {
+    border: 1px solid
+        color-mix(in srgb, var(--primary-light) 36%, transparent);
+    background:
+        radial-gradient(
+            circle,
+            var(--bg) 0 8%,
+            var(--primary-light) 9% 13%,
+            transparent 14%
+        ),
+        repeating-radial-gradient(
+            circle,
+            transparent 0 9px,
+            rgba(255,255,255,.045) 10px 11px
+        ),
+        conic-gradient(
+            from 20deg,
+            var(--bg-secondary),
+            var(--primary),
+            var(--bg-secondary),
+            var(--secondary),
+            var(--bg-secondary)
+        );
+    box-shadow:
+        0 28px 65px rgba(0,0,0,.42),
+        0 0 42px
+        color-mix(in srgb, var(--primary) 16%, transparent);
+}
+
+.artists-page .artists-vinyl::before {
+    position: absolute;
+    inset: 12px;
+    content: "";
+    border: 1px solid
+        color-mix(in srgb, var(--primary-light) 20%, transparent);
+    border-radius: 50%;
+}
+
+.artists-page .artists-vinyl::after {
+    inset: 39%;
+    border: 5px solid var(--primary-light);
+    background: var(--bg);
+}
+
+.artists-page .artists-vinyl i {
+    color: var(--primary-light);
+}
+
+/* Tipografía consistente con el resto de SONORA. */
+.artists-page :is(
+    h1, h2, h3, p, span, strong, small,
+    input, select, button, a
+) {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.artists-page :is(
+    .artists-hero h1 em,
+    .artist-gradient span,
+    .artist-profile-initial,
+    .artist-image-unavailable::before
+) {
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+}
+
+@media (max-width: 640px) {
+    .artists-page :is(
+        .artist-primary-action,
+        .artist-secondary-action
+    ) {
+        width: 100%;
+    }
+
+    .artists-page .featured-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =========================================================
+   SONORA — ARTISTAS / UNIVERSOS
+   No redefinir --primary, --primary-light ni --secondary aquí.
+   Se heredan de musica.css según body[data-theme].
+========================================================= */
+
+.artists-page {
+    background:
+        radial-gradient(circle at 12% 8%, color-mix(in srgb, var(--primary) 12%, transparent), transparent 28%),
+        radial-gradient(circle at 88% 18%, color-mix(in srgb, var(--secondary) 9%, transparent), transparent 25%),
+        var(--bg);
+    color: var(--text);
+}
+
+.artists-page :is(button,a,input,select):focus-visible {
+    outline-color: var(--primary-light);
+}
+
+/* Encabezado */
+.artists-page .artists-eyebrow,
+.artists-page .artist-genre {
+    color: var(--primary-light);
+}
+
+.artists-page .artists-hero h1 em {
+    color: transparent;
+    background: linear-gradient(105deg, var(--primary-light), var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 18px color-mix(in srgb, var(--primary) 18%, transparent));
+}
+
+/* Disco */
+.artists-page .artists-vinyl {
+    border-color: color-mix(in srgb, var(--primary-light) 42%, transparent);
+    background:
+        radial-gradient(circle,
+            var(--bg) 0 7%,
+            var(--primary-light) 8% 11%,
+            var(--primary) 12% 14%,
+            transparent 15%),
+        repeating-radial-gradient(circle,
+            transparent 0 8px,
+            rgba(255,255,255,.04) 9px 10px),
+        conic-gradient(
+            from 20deg,
+            #040509,
+            color-mix(in srgb, var(--primary) 72%, #08080d),
+            #05060a,
+            color-mix(in srgb, var(--secondary) 70%, #08080d),
+            #040509,
+            color-mix(in srgb, var(--primary) 68%, #08080d),
+            #040509
+        );
+    box-shadow:
+        0 28px 65px rgba(0,0,0,.48),
+        0 0 45px color-mix(in srgb, var(--primary) 24%, transparent);
+}
+
+.artists-page .artists-vinyl i {
+    color: var(--primary-light);
+    filter: drop-shadow(0 0 10px var(--primary));
+}
+
+.artists-page .artists-orbit {
+    border-color: color-mix(in srgb, var(--primary) 25%, transparent);
+}
+
+/* Botones */
+.artists-page .artist-primary-action,
+.artists-page .artist-filter.active,
+.artists-page .artist-filter:hover,
+.artists-page .artist-catalog-image > .artist-card-play {
+    color: #fff;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+.artists-page .artist-secondary-action,
+.artists-page .artist-filter:not(.active),
+.artists-page .artist-follow {
+    color: var(--text);
+    border-color: color-mix(in srgb, var(--primary) 25%, var(--border));
+    background: color-mix(in srgb, var(--card) 92%, var(--primary) 8%);
+}
+
+.artists-page .artist-follow[aria-pressed="true"] {
+    color: var(--primary-light);
+    border-color: var(--primary);
+}
+
+/* PLAY: posición corregida en la imagen */
+.artists-page .artist-catalog-image {
+    position: relative;
+}
+
+.artists-page .artist-catalog-image > .artist-card-play {
+    position: absolute;
+    z-index: 8;
+    top: auto;
+    left: auto;
+    right: 18px;
+    bottom: 18px;
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    place-items: center;
+    border: 0;
+    border-radius: 50%;
+    transform: none;
+    box-shadow:
+        0 12px 28px rgba(0,0,0,.35),
+        0 0 22px color-mix(in srgb, var(--primary) 26%, transparent);
+}
+
+.artists-page .artist-catalog-image > .artist-card-play:hover {
+    transform: translateY(-2px) scale(1.06);
+}
+
+.artists-page .artist-catalog-image > .artist-card-play i {
+    margin: 0;
+    line-height: 1;
+    transform: translateX(1px);
+}
+
+.artists-page .artist-catalog-image > .artist-card-play[aria-pressed="true"] {
+    color: var(--bg);
+    background: var(--primary-light);
+    outline-color: var(--primary-light);
+}
+
+.artists-page .artist-image-unavailable::before {
+    color: var(--primary-light);
+}
+
+
+/* =========================================================
+   SONORA — PERFIL DE ARTISTA / ALINEACIÓN DE TRACKS
+   Mantiene todos los botones Play centrados y en la misma columna.
+========================================================= */
+
+.artists-page .artist-profile-track {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 48px;
+    align-items: center;
+    column-gap: 20px;
+    min-height: 78px;
+    padding: 14px 0;
+}
+
+.artists-page .artist-profile-track > div {
+    min-width: 0;
+    align-self: center;
+}
+
+.artists-page .artist-profile-track small {
+    margin: 0 0 6px;
+    line-height: 1.2;
+}
+
+.artists-page .artist-profile-track strong {
+    display: block;
+    margin: 0;
+    line-height: 1.35;
+}
+
+/* El Play del perfil no hereda ninguna posición de las tarjetas */
+.artists-page .artist-profile-track > .artist-card-play {
+    position: relative !important;
+    inset: auto !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    left: auto !important;
+
+    align-self: center !important;
+    justify-self: end !important;
+
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+    min-height: 48px !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: none;
+}
+
+.artists-page .artist-profile-track > .artist-card-play:hover {
+    transform: scale(1.06) !important;
+}
+
+.artists-page .artist-profile-track > .artist-card-play i {
+    display: block;
+    margin: 0;
+    line-height: 1;
+    transform: translateX(1px);
+}
+
+/* En móvil conserva la alineación */
+@media (max-width: 640px) {
+    .artists-page .artist-profile-track {
+        grid-template-columns: minmax(0, 1fr) 44px;
+        column-gap: 14px;
+        min-height: 72px;
+    }
+
+    .artists-page .artist-profile-track > .artist-card-play {
+        width: 44px !important;
+        height: 44px !important;
+        min-width: 44px !important;
+        min-height: 44px !important;
+    }
+}
+
+
+/* =========================================================
+   SONORA — BUSCADOR Y SELECT SIN RECTÁNGULO EXTRA
+========================================================= */
+
+/* Contenedores limpios: una sola superficie visual */
+.artists-page .artists-search,
+.artists-page .artists-sort {
+    position: relative;
+    overflow: visible;
+    background: transparent;
+    box-shadow: none;
+}
+
+/* Campo de búsqueda */
+.artists-page .artists-search input {
+    width: 100%;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    box-shadow: none;
+    background: color-mix(in srgb, var(--card) 88%, transparent);
+    border: 1px solid color-mix(in srgb, var(--primary) 20%, var(--border));
+    color: var(--text);
+}
+
+.artists-page .artists-search input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow:
+        0 0 0 1px color-mix(in srgb, var(--primary) 18%, transparent),
+        0 0 22px color-mix(in srgb, var(--primary) 12%, transparent);
+}
+
+/* Selector género/orden */
+.artists-page #artistSort {
+    appearance: none;
+    -webkit-appearance: none;
+    outline: none;
+    box-shadow: none;
+    color: var(--text);
+    background-color: color-mix(in srgb, var(--card) 92%, var(--primary) 8%);
+    border: 1px solid color-mix(in srgb, var(--primary) 22%, var(--border));
+}
+
+.artists-page #artistSort:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow:
+        0 0 0 1px color-mix(in srgb, var(--primary) 18%, transparent),
+        0 0 22px color-mix(in srgb, var(--primary) 12%, transparent);
+}
+
+/* Evita el rectángulo blanco/claro de las opciones nativas */
+.artists-page #artistSort option {
+    color: var(--text);
+    background: var(--bg-secondary);
+}
+
+/* Elimina pseudo-elementos antiguos que puedan crear una caja adicional */
+.artists-page .artists-search::before,
+.artists-page .artists-search::after,
+.artists-page .artists-sort::before {
+    pointer-events: none;
+}
+
+/* Autofill de Chrome sin rectángulo ajeno al tema */
+.artists-page .artists-search input:-webkit-autofill,
+.artists-page .artists-search input:-webkit-autofill:hover,
+.artists-page .artists-search input:-webkit-autofill:focus {
+    -webkit-text-fill-color: var(--text);
+    -webkit-box-shadow: 0 0 0 1000px var(--card) inset;
+    caret-color: var(--text);
+}
+
+
+/* =========================================================
+   SONORA — ELIMINACIÓN TOTAL DE CAJAS/RECTÁNGULOS DE FOCO
+   Buscador + selector de género/orden.
+========================================================= */
+
+/* Ningún contenedor crea borde, fondo, outline o glow extra */
+.artists-page .artists-toolbar,
+.artists-page .artists-search,
+.artists-page .artists-sort,
+.artists-page .artists-search:focus,
+.artists-page .artists-search:focus-within,
+.artists-page .artists-sort:focus,
+.artists-page .artists-sort:focus-within {
+    outline: 0 !important;
+    outline-offset: 0 !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+/* Elimina por completo capas decorativas que puedan aparecer como rectángulo */
+.artists-page .artists-search::before,
+.artists-page .artists-search::after,
+.artists-page .artists-sort::before,
+.artists-page .artists-sort::after {
+    content: none !important;
+    display: none !important;
+}
+
+/* INPUT: sin rectángulo de foco del navegador */
+.artists-page .artists-search input,
+.artists-page .artists-search input:hover,
+.artists-page .artists-search input:focus,
+.artists-page .artists-search input:focus-visible,
+.artists-page .artists-search input:active {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    outline: 0 !important;
+    outline-offset: 0 !important;
+    box-shadow: none !important;
+}
+
+/* SELECT: elimina el rectángulo de foco */
+.artists-page #artistSort,
+.artists-page #artistSort:hover,
+.artists-page #artistSort:focus,
+.artists-page #artistSort:focus-visible,
+.artists-page #artistSort:active {
+    outline: 0 !important;
+    outline-offset: 0 !important;
+    box-shadow: none !important;
+}
+
+/* La regla global de focus-visible NO debe afectar estos dos controles */
+.artists-page .artists-search input:focus-visible,
+.artists-page #artistSort:focus-visible {
+    outline: none !important;
+}
+
+/* Evita borde interno adicional de Firefox */
+.artists-page #artistSort::-moz-focus-inner,
+.artists-page .artists-search input::-moz-focus-inner {
+    border: 0 !important;
+}
+
+/* Quita el botón de limpiar nativo de búsqueda si genera una caja adicional */
+.artists-page .artists-search input[type="search"]::-webkit-search-decoration,
+.artists-page .artists-search input[type="search"]::-webkit-search-cancel-button,
+.artists-page .artists-search input[type="search"]::-webkit-search-results-button,
+.artists-page .artists-search input[type="search"]::-webkit-search-results-decoration {
+    -webkit-appearance: none !important;
+    appearance: none !important;
+    display: none !important;
+}
+
+/* Mantiene únicamente el propio campo SONORA */
+.artists-page .artists-search input {
+    border: 1px solid color-mix(in srgb, var(--primary) 20%, var(--border)) !important;
+    background: color-mix(in srgb, var(--card) 88%, transparent) !important;
+}
+
+.artists-page #artistSort {
+    border: 1px solid color-mix(in srgb, var(--primary) 22%, var(--border)) !important;
+    background-color: color-mix(in srgb, var(--card) 92%, var(--primary) 8%) !important;
+}
+
+/* Al enfocar solo cambia el color del borde existente.
+   No aparece una segunda caja. */
+.artists-page .artists-search input:focus,
+.artists-page #artistSort:focus {
+    border-color: var(--primary) !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+
+/* =========================================================
+   SONORA — BUSCADOR: SOLO CONSERVAR LA CÁPSULA REDONDEADA
+   El contenedor exterior desaparece visualmente.
+========================================================= */
+
+/* El rectángulo exterior no pinta absolutamente nada */
+.artists-page .artists-search {
+    position: relative !important;
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+}
+
+/* Conservamos únicamente el campo interior con forma de cápsula */
+.artists-page .artists-search input {
+    display: block !important;
+    width: 100% !important;
+    min-height: 48px !important;
+    padding: 0 18px 0 46px !important;
+
+    border: 1px solid color-mix(in srgb, var(--primary) 24%, var(--border)) !important;
+    border-radius: 999px !important;
+    outline: none !important;
+
+    color: var(--text) !important;
+    background: color-mix(in srgb, var(--card) 90%, transparent) !important;
+    box-shadow: none !important;
+}
+
+/* Al hacer clic NO aparece otro rectángulo */
+.artists-page .artists-search:focus,
+.artists-page .artists-search:focus-within,
+.artists-page .artists-search input:focus,
+.artists-page .artists-search input:focus-visible,
+.artists-page .artists-search input:active {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Solo cambia el borde de la cápsula existente */
+.artists-page .artists-search input:focus {
+    border-color: var(--primary) !important;
+}
+
+/* Icono dentro de la cápsula */
+.artists-page .artists-search > i,
+.artists-page .artists-search .fa-search,
+.artists-page .artists-search .fa-magnifying-glass {
+    position: absolute !important;
+    z-index: 2 !important;
+    left: 18px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    margin: 0 !important;
+    color: var(--primary-light) !important;
+    pointer-events: none !important;
+}
+
+/* Ninguna capa exterior puede volver a dibujar la caja rectangular */
+.artists-page .artists-search::before,
+.artists-page .artists-search::after {
+    content: none !important;
+    display: none !important;
+    border: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+}
+
+
+/* =========================================================
+   SONORA — ARTISTA DESTACADO DINÁMICO
+========================================================= */
+
+.artists-page .featured-artist {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    border: 1px solid color-mix(in srgb, var(--primary) 16%, var(--border));
+    background:
+        linear-gradient(135deg,
+            color-mix(in srgb, var(--card) 96%, var(--primary) 4%),
+            color-mix(in srgb, var(--bg-secondary) 96%, var(--secondary) 4%));
+}
+
+.artists-page .featured-artist::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 18% 35%,
+            color-mix(in srgb, var(--primary) 13%, transparent),
+            transparent 36%),
+        radial-gradient(circle at 82% 70%,
+            color-mix(in srgb, var(--secondary) 9%, transparent),
+            transparent 32%);
+}
+
+.artists-page .featured-artist-image {
+    isolation: isolate;
+}
+
+.artists-page .featured-artist-image img {
+    filter: saturate(.82) contrast(1.04);
+    transform: scale(1.025);
+    transition: transform .85s cubic-bezier(.2,.8,.2,1),
+                opacity .45s ease,
+                filter .45s ease;
+}
+
+.artists-page .featured-artist:hover .featured-artist-image img {
+    transform: scale(1.055);
+    filter: saturate(1) contrast(1.05);
+}
+
+.artists-page .featured-ghost-name {
+    position: absolute;
+    z-index: 0;
+    left: -1.5%;
+    bottom: -4%;
+    max-width: 95%;
+    overflow: hidden;
+    color: color-mix(in srgb, var(--primary-light) 9%, transparent);
+    font-size: clamp(4.2rem, 9vw, 9rem);
+    font-weight: 900;
+    line-height: .78;
+    letter-spacing: -.08em;
+    text-transform: uppercase;
+    white-space: normal;
+    pointer-events: none;
+    user-select: none;
+}
+
+.artists-page .featured-index {
+    position: absolute;
+    z-index: 5;
+    right: 22px;
+    bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: rgba(255,255,255,.78);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .16em;
+}
+
+.artists-page .featured-index-line {
+    width: 34px;
+    height: 1px;
+    background: color-mix(in srgb, var(--primary-light) 60%, transparent);
+}
+
+.artists-page .featured-now {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 18px 0 4px;
+    min-width: 0;
+}
+
+.artists-page .featured-now span {
+    flex: 0 0 auto;
+    color: var(--primary-light);
+    font-size: 9px;
+    font-weight: 900;
+    letter-spacing: .16em;
+}
+
+.artists-page .featured-now strong {
+    min-width: 0;
+    overflow: hidden;
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.artists-page .featured-carousel-controls {
+    display: grid;
+    grid-template-columns: minmax(0,1fr) auto;
+    align-items: center;
+    gap: 20px;
+    margin-top: 24px;
+}
+
+.artists-page .featured-progress {
+    position: relative;
+    height: 2px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--text) 10%, transparent);
+}
+
+.artists-page .featured-progress > span {
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 100%;
+    transform-origin: left center;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+}
+
+@keyframes sonoraFeaturedProgress {
+    from { transform: scaleX(0); }
+    to { transform: scaleX(1); }
+}
+
+.artists-page .featured-arrows {
+    display: flex;
+    gap: 8px;
+}
+
+.artists-page .featured-arrow {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: 1px solid color-mix(in srgb, var(--primary) 24%, var(--border));
+    border-radius: 50%;
+    outline: 0;
+    color: var(--text);
+    background: color-mix(in srgb, var(--card) 90%, transparent);
+    cursor: pointer;
+    transition: transform .25s ease,
+                border-color .25s ease,
+                color .25s ease,
+                background .25s ease;
+}
+
+.artists-page .featured-arrow:hover {
+    transform: translateY(-2px);
+    color: #fff;
+    border-color: var(--primary);
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+}
+
+.artists-page .featured-enter .featured-artist-image img {
+    animation: sonoraFeaturedImageIn .62s cubic-bezier(.2,.8,.2,1);
+}
+
+.artists-page .featured-enter .featured-artist-copy > :not(.featured-carousel-controls) {
+    animation: sonoraFeaturedCopyIn .55s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes sonoraFeaturedImageIn {
+    from {
+        opacity: .25;
+        transform: translateX(28px) scale(1.06);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1.025);
+    }
+}
+
+@keyframes sonoraFeaturedCopyIn {
+    from {
+        opacity: 0;
+        transform: translateX(18px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.artists-page .featured-artist[data-direction="prev"].featured-enter .featured-artist-image img {
+    animation-name: sonoraFeaturedImageInPrev;
+}
+
+@keyframes sonoraFeaturedImageInPrev {
+    from {
+        opacity: .25;
+        transform: translateX(-28px) scale(1.06);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0) scale(1.025);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .artists-page .featured-progress > span,
+    .artists-page .featured-enter .featured-artist-image img,
+    .artists-page .featured-enter .featured-artist-copy > * {
+        animation: none !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .artists-page .featured-carousel-controls {
+        gap: 14px;
+    }
+
+    .artists-page .featured-arrow {
+        width: 38px;
+        height: 38px;
+    }
+
+    .artists-page .featured-ghost-name {
+        font-size: clamp(3.5rem, 19vw, 6rem);
+    }
+
+    .artists-page .featured-now {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 5px;
+    }
+}
