@@ -135,6 +135,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 updateBars
             );
 
+            if (document.hidden || audioPlayer.paused ||
+                document.getElementById("mainHome")?.style.display === "none" ||
+                window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+                return;
+            }
+
             analyser.getByteFrequencyData(
                 frequencyData
             );
@@ -433,6 +439,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     if (audioPlayer) {
+
+        audioPlayer.addEventListener("play", () => {
+            setupAudioVisualizer();
+            if (audioContext?.state === "suspended") audioContext.resume().catch(() => {});
+            document.body.classList.toggle("home-audio-reactive", visualizerStarted);
+        });
+        audioPlayer.addEventListener("pause", () => document.body.classList.remove("home-audio-reactive"));
+        audioPlayer.addEventListener("ended", () => document.body.classList.remove("home-audio-reactive"));
 
         audioPlayer.addEventListener(
             "play",
@@ -820,6 +834,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         themeOptions.forEach(
             (option) => {
+
+                option.setAttribute("aria-pressed", String(option.dataset.theme === theme));
 
                 option.classList.toggle(
                     "active",
