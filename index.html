@@ -51,6 +51,7 @@
     <link rel="stylesheet" href="explorar.css">
     <link rel="stylesheet" href="artistas.css">
     <link rel="stylesheet" href="albumes.css?v=3">
+    <link rel="stylesheet" href="inicio-premium.css?v=1">
 
 </head>
 
@@ -426,185 +427,50 @@
          HERO
     ================================================== -->
 
-    <section
-        id="inicio"
-        class="hero"
-    >
-
-
-        <div class="hero-glow glow-one"></div>
-
-        <div class="hero-glow glow-two"></div>
-
-
-        <div class="container">
-
-
-            <div class="row align-items-center min-vh-100">
-
-
-                <!-- CONTENIDO -->
-
-                <div class="col-lg-6 hero-content">
-
-
-                    <span class="hero-label">
-
-                        <i class="bi bi-stars"></i>
-
-                        DESCUBRE NUEVOS SONIDOS
-
-                    </span>
-
-
-                    <h1>
-
-                        La música
-
-                        <span>
-                            que te hace sentir.
-                        </span>
-
-                    </h1>
-
-
-                    <p>
-
-                        Descubre artistas, álbumes y canciones que harán
-                        que cada momento tenga su propia banda sonora.
-
-                    </p>
-
-
-                    <div class="hero-buttons">
-
-
-                        <a
-                            href="#explorar"
-                            class="btn-main"
-                            data-page="explorar"
-                        >
-
-                            Explorar música
-
-                            <i class="bi bi-arrow-right"></i>
-
-                        </a>
-
-
-                        <a
-                            href="index.html?page=albumes" data-albums-link
-                            class="btn-outline"
-                        >
-
-                            Ver álbumes
-
-                        </a>
-
-
-                    </div>
-
-
-                    <div class="hero-stats">
-
-
-                        <div>
-
-                            <strong>
-                                500K+
-                            </strong>
-
-                            <span>
-                                Canciones
-                            </span>
-
-                        </div>
-
-
-                        <div>
-
-                            <strong>
-                                80K+
-                            </strong>
-
-                            <span>
-                                Artistas
-                            </span>
-
-                        </div>
-
-
-                        <div>
-
-                            <strong>
-                                120+
-                            </strong>
-
-                            <span>
-                                Géneros
-                            </span>
-
-                        </div>
-
-
-                    </div>
-
-
-                </div>
-
-
-                <!-- VISUALIZADOR -->
-
-                <div class="sound-wave">
-
-                    <div class="equalizer">
-
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-
-                    </div>
-
-                </div>
-
-
-                <!-- NOTAS -->
-
-                <div class="floating-note note-one">
-                    ♪
-                </div>
-
-                <div class="floating-note note-two">
-                    ♫
-                </div>
-
-                <div class="floating-note note-three">
-                    ♪
-                </div>
-
-
-            </div>
-
+<section id="inicio" class="hero home-hero" aria-labelledby="homeHeroTitle">
+  <div class="container home-hero-shell">
+    <div class="home-hero-grid">
+      <div class="hero-content">
+        <span class="hero-label">UN UNIVERSO DE SONIDO</span>
+        <h1 id="homeHeroTitle">La música que<br><span>te hace sentir.</span></h1>
+        <p class="hero-description">Explora artistas, álbumes y canciones en un viaje sonoro sin límites. Encuentra el universo que suena como tú.</p>
+        <div class="hero-buttons">
+          <a href="index.html?page=explorar" class="btn-main" data-page="explorar">Explorar música <i class="bi bi-arrow-right" aria-hidden="true"></i></a>
+          <a href="index.html?page=albumes" class="btn-outline" data-page="albumes">Ver álbumes</a>
         </div>
-
-    </section>
+        <div class="home-universe-note"><span class="home-universe-dots" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>Una identidad. Cinco universos.</div>
+      </div>
+      <div class="home-planet-stage">
+        <span class="home-planet-caption" aria-hidden="true">SONORA / SOUND UNIVERSE</span>
+        <img class="home-planet-art" src="assets/sonora-sound-planet.webp" alt="Planeta luminoso con órbitas y un espectro de sonido" width="1024" height="1024" fetchpriority="high">
+        <button class="home-now-playing" type="button" aria-label="Escuchar selección SONORA">
+          <span class="home-now-cover" aria-hidden="true"><i class="bi bi-soundwave"></i></span>
+          <span class="home-now-copy"><small>TU UNIVERSO EMPIEZA AQUÍ</small><strong>Encuentra tu próxima canción</strong><span>Escucha la selección SONORA</span></span>
+          <span class="home-now-icon" aria-hidden="true"><i class="bi bi-play-fill"></i></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="home-curated" aria-labelledby="homeCuratedTitle">
+  <div class="container">
+    <div class="home-curated-heading"><h2 id="homeCuratedTitle">Tu siguiente canción</h2><a href="index.html?page=explorar" data-page="explorar">Ver todo <i class="bi bi-arrow-right" aria-hidden="true"></i></a></div>
+    <div class="home-track-grid">
+      <article class="album-card home-track" data-title="Every Breath You Take" data-artist="The police" data-audio="Canciones/The police.mpeg" data-image="Imagenes/portada2.png">
+        <div class="album-image"><img src="Imagenes/portada2.png" alt="The Police" loading="lazy"><button class="play-card" type="button" aria-label="Escuchar Every Breath You Take"><i class="bi bi-play-fill" aria-hidden="true"></i></button></div>
+        <div class="home-track-info"><h3>The Police</h3><p>Every Breath You Take</p></div>
+      </article>
+      <article class="album-card home-track" data-title="Hung Up" data-artist="Madonna" data-audio="Canciones/Madonna - Hung Up (Official Video) [HD] (1).mp3.mpeg" data-image="Imagenes/portada1.png">
+        <div class="album-image"><img src="Imagenes/portada1.png" alt="Madonna" loading="lazy"><button class="play-card" type="button" aria-label="Escuchar Hung Up"><i class="bi bi-play-fill" aria-hidden="true"></i></button></div>
+        <div class="home-track-info"><h3>Madonna</h3><p>Hung Up</p></div>
+      </article>
+      <article class="album-card home-track" data-title="Sweet Child O' Mine" data-artist="Guns N' Roses" data-audio="Canciones/Guns N' Roses - Sweet Child O' Mine (Official Music Video) - GunsNRosesVEVO.mp3.mpeg" data-image="Imagenes/portada3.png">
+        <div class="album-image"><img src="Imagenes/portada3.png" alt="Guns N' Roses" loading="lazy"><button class="play-card" type="button" aria-label="Escuchar Sweet Child O' Mine"><i class="bi bi-play-fill" aria-hidden="true"></i></button></div>
+        <div class="home-track-info"><h3>Guns N' Roses</h3><p>Sweet Child O' Mine</p></div>
+      </article>
+    </div>
+  </div>
+</section>
 
 
 
@@ -1556,6 +1422,7 @@
 <!-- JAVASCRIPT ARTISTAS -->
 <script src="artistas.js"></script>
 <script src="albumes.js?v=3"></script>
+<script src="inicio-premium.js?v=1"></script>
 
 
 
@@ -2281,6 +2148,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ================================================= */
 
     function setActivePage(page) {
+        document.body.classList.toggle("sonora-home-open", page === "inicio");
         document.body.classList.toggle("sonora-albums-open", page === "albumes");
 
         navbarLinks.forEach(link => {
