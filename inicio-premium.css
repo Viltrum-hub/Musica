@@ -34,3 +34,12 @@ body.sonora-home-open .login-button{background:color-mix(in srgb,var(--card) 80%
 @media(max-width:370px){#mainHome .home-hero h1{font-size:39px}.home-now-copy strong{font-size:10px}.home-curated-heading h2{font-size:17px}}
 @media(prefers-reduced-motion:reduce){.home-planet-art{animation:none;will-change:auto}#mainHome .home-track .album-image img{transition:none}}
 .home-planet-stage{min-height:0}.home-planet-art{height:auto}
+/* A quieter composition, with one fine sound orbit instead of floating bars. */
+.home-planet-stage:before{display:none}.home-planet-art{position:relative;z-index:1;animation:sonoraPlanetFloat 14s ease-in-out infinite}
+.home-sound-ring{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}.home-ring-back{z-index:0;opacity:.4}.home-ring-front{z-index:2;opacity:.8}.home-ring-path{filter:drop-shadow(0 0 2px var(--primary))}
+.home-now-playing[hidden]{display:none}.home-now-playing{left:auto;right:10px;bottom:2%;width:260px;padding:10px 12px;grid-template-columns:32px minmax(0,1fr) 28px;gap:9px;border-radius:12px;box-shadow:none;z-index:3;background:color-mix(in srgb,var(--card) 82%,transparent)}.home-now-cover{width:32px;height:32px;border-radius:6px;font-size:16px}.home-now-copy strong{font-size:10px}.home-now-copy span{font-size:8px}.home-now-icon{width:27px;height:27px;font-size:14px}
+#mainHome .home-hero .hero-buttons .btn-outline{padding:8px 0;border:0;background:none;font-weight:500;color:var(--muted)}#mainHome .home-hero .hero-buttons{gap:23px}
+#mainHome .home-hero h1{font-size:clamp(38px,4.4vw,62px)}#mainHome .home-hero .hero-description{max-width:360px;font-size:13px;margin-top:22px}
+body .home-universe-card{background:none;border-color:transparent;box-shadow:none!important;padding:14px 10px}body .home-universe-card.active{background:none;border-color:transparent}body .home-universe-card.active strong{color:var(--primary)}.home-universes-header p,.home-universe-card small{display:none!important}.home-universes-header h2{font-size:13px;color:var(--muted);font-weight:500}.home-universe-grid{gap:10px}
+@media(max-width:650px){#mainHome .home-hero h1{font-size:43px}.home-now-playing{left:auto;right:6px;bottom:0;width:230px}.home-planet-stage{margin-top:8px}.home-sound-ring{inset:0}.home-universe-grid{grid-template-columns:repeat(5,95px)}body .home-universe-card>.theme-planet-orb{width:45px;height:45px}.home-universe-card strong{font-size:10px}}
+@media(prefers-reduced-motion:reduce){.home-planet-art{animation:none}.home-ring-path{filter:none}}

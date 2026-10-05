@@ -102,6 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
             visualizerStarted = true;
+            window.sonoraAudioAnalyser = analyser;
 
             animateVisualizer();
 
@@ -118,6 +119,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     function animateVisualizer() {
+
+        if (!equalizerBars.length) return;
 
         if (!analyser) {
             return;

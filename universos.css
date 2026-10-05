@@ -52,3 +52,5 @@ body .theme-planet-orb:before,body .planet-button-orb:before{content:'';position
 body .planet-button-orb{--mini-hue:var(--universe-hue)}body .theme-planet-orb.rock{--mini-hue:160deg}body .theme-planet-orb.pop{--mini-hue:105deg}body .theme-planet-orb.jazz{--mini-hue:85deg}body .theme-planet-orb.hiphop{--mini-hue:40deg}
 .home-planet-stage .home-wave-spectrum.equalizer{height:55px;gap:6px}.home-wave-spectrum.equalizer span{max-width:3px}
 body .genre-card{background:linear-gradient(130deg,color-mix(in srgb,var(--primary) 14%,var(--card)),color-mix(in srgb,var(--secondary) 8%,var(--card)));border-color:var(--border);color:var(--text)}
+#mainHome .home-universe-card,#mainHome .home-universe-card.active{background:none;border-color:transparent;box-shadow:none;padding:14px 10px}#mainHome .home-universe-card.active strong{color:var(--primary)}#mainHome .home-universe-card small{display:none}#mainHome .home-universe-card:hover{background:none;border-color:transparent}
+@media(max-width:650px){#mainHome .home-universe-grid{grid-template-columns:repeat(5,95px)}#mainHome .home-universe-card>.theme-planet-orb{width:45px;height:45px}}
