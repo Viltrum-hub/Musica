@@ -29,4 +29,5 @@ body.sonora-albums-open .navbar-nav .nav-link.active:after{content:'';position:a
 body.sonora-albums-open .navbar-profile-text{color:var(--text)}
 body[data-theme=rock] .sonora-albums{--sa-hue:160deg}body[data-theme=pop] .sonora-albums{--sa-hue:110deg}body[data-theme=jazz] .sonora-albums{--sa-hue:90deg}body[data-theme=hiphop] .sonora-albums{--sa-hue:40deg}
 .sonora-albums:before{filter:hue-rotate(var(--sa-hue,0deg))}
+.sa-search{display:flex;align-items:center;gap:12px}
 @media(max-width:650px){body.sonora-albums-open #playerCover{width:36px;height:36px;min-width:36px;min-height:36px}}
