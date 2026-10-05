@@ -50,6 +50,7 @@
     <link rel="stylesheet" href="musica.css">
     <link rel="stylesheet" href="explorar.css">
     <link rel="stylesheet" href="artistas.css">
+    <link rel="stylesheet" href="albumes.css?v=3">
 
 </head>
 
@@ -162,7 +163,7 @@
 
                     <a
                         class="nav-link"
-                        href="#albumes"
+                        href="index.html?page=albumes" data-albums-link
                         data-page="albumes"
                     >
                         Álbumes
@@ -492,7 +493,7 @@
 
 
                         <a
-                            href="#albumes"
+                            href="index.html?page=albumes" data-albums-link
                             class="btn-outline"
                         >
 
@@ -1554,6 +1555,7 @@
 
 <!-- JAVASCRIPT ARTISTAS -->
 <script src="artistas.js"></script>
+<script src="albumes.js?v=3"></script>
 
 
 
@@ -2279,6 +2281,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ================================================= */
 
     function setActivePage(page) {
+        document.body.classList.toggle("sonora-albums-open", page === "albumes");
 
         navbarLinks.forEach(link => {
 
@@ -2717,6 +2720,30 @@ if (typeof initExplorar === "function") {
        CARGAR ARTISTAS
     ================================================= */
 
+    async function loadAlbums(updateHistory = true) {
+        try {
+            const response = await fetch("albumes.html");
+            if (!response.ok) throw new Error("No se pudo cargar Álbumes");
+            const doc = new DOMParser().parseFromString(await response.text(), "text/html");
+            const page = doc.querySelector(".sonora-albums");
+            if (!page) throw new Error("Página de Álbumes no válida");
+            document.body.classList.remove("artist-profile-open");
+            mainHome.style.display = "none";
+            pageContainer.replaceChildren(page);
+            initAlbumes();
+            setActivePage("albumes");
+            closeMobileMenu();
+            window.scrollTo({top: 0, behavior: "instant"});
+            if (updateHistory) history.pushState({page: "albumes"}, "", "index.html?page=albumes");
+        } catch (error) { console.error(error); alert("No se pudo abrir Álbumes. Inténtalo de nuevo."); }
+    }
+    document.addEventListener("click", event => {
+        const link = event.target.closest('[data-page="albumes"], [data-albums-link]');
+        if (!link) return;
+        event.preventDefault();
+        loadAlbums();
+    });
+
     async function loadArtists(
         updateHistory = true,
         initialArtist = ""
@@ -3010,6 +3037,8 @@ if (typeof initExplorar === "function") {
                     params.get("artist") || ""
                 );
 
+            } else if (page === "albumes") {
+                loadAlbums(false);
             } else {
 
                 loadHome(
@@ -3061,6 +3090,8 @@ if (typeof initExplorar === "function") {
             params.get("artist") || ""
         );
 
+    } else if (currentPage === "albumes") {
+        loadAlbums(false);
     } else {
 
         setActivePage(
