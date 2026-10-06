@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   const levels = new Float32Array(36);
   let frequency = new Uint8Array(0), waveform = new Uint8Array(0);
-  let raf = 0, lastFrame = 0, inView = true, bass = 0, energy = 0;
+  let raf = 0, lastFrame = 0, inView = true, bass = 0, energy = 0, activity = 0;
   let clock = 0;
   const clamp = (value, lo, hi) => Math.max(lo, Math.min(hi, value));
   function point(angle, radius, wave, tilt) {
@@ -89,7 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
       for (const value of waveform) rms += ((value - 128) / 128) ** 2;
       rms = Math.sqrt(rms / waveform.length);
     }
-    const follow = (from, to) => from + (to - from) * (1 - Math.exp(-dt / (to > from ? 85 : 280)));
+    const follow = (from, to) => from + (to - from) * (1 - Math.exp(-dt / (to > from ? 55 : 180)));
+    activity = follow(activity, !audio.paused && !audio.ended && !motion.matches ? 1 : 0);
     bass = follow(bass, live ? low / Math.max(1, lowCount) : 0);
     energy = follow(energy, live ? clamp(rms * 3, 0, 1) : 0);
     for (let i = 0; i < levels.length; i++) {
@@ -99,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const b = clamp(Math.ceil(hi / hzPerBin), a, Math.max(a, frequency.length - 1));
       let sum = 0;
       if (live) for (let k = a; k <= b; k++) sum += frequency[k] / 255;
-      levels[i] = follow(levels[i], live ? (sum / (b - a + 1)) ** 1.7 : 0);
+      levels[i] = follow(levels[i], live ? clamp((sum / (b - a + 1) - .12) / .72, 0, 1) ** 1.25 : 0);
     }
   }
   function draw(dt) {
@@ -134,17 +135,18 @@ document.addEventListener('DOMContentLoaded', () => {
       const y = 338 - (x - 300) * .32;
       const edge = Math.min(1, .15 + progress * 5);
       const silhouette = (15 + progress * 50 + Math.sin(i * 1.7) ** 2 * 17) * edge;
-      const height = 3 + silhouette + levels[i] * 26 * edge;
+      const height = 3 + silhouette * .65 + levels[i] * 88 * edge;
       line.setAttribute('x1', x.toFixed(2)); line.setAttribute('x2', x.toFixed(2));
       line.setAttribute('y1', (y-height).toFixed(2)); line.setAttribute('y2', (y+height*.18).toFixed(2));
       line.style.opacity = (.48 + edge * .4).toFixed(3);
     });
     stage.style.setProperty('--planet-bass', bass.toFixed(4));
     stage.style.setProperty('--planet-energy', energy.toFixed(4));
-    // A few pixels of movement, driven by the track's smoothed energy and bass.
-    stage.style.setProperty('--planet-x', (Math.sin(clock * .001) * energy * 2.6).toFixed(3) + 'px');
-    stage.style.setProperty('--planet-y', (-bass * 3.8 + Math.sin(clock * .0007) * energy * 1.5).toFixed(3) + 'px');
-    stage.style.setProperty('--planet-tilt', (Math.sin(clock * .0008) * energy * .28).toFixed(4) + 'deg');
+    // Visible but restrained drift during playback; the audio adds lift and sway.
+    const travel = activity * (5 + energy * 5);
+    stage.style.setProperty('--planet-x', (Math.sin(clock * .0018) * travel).toFixed(3) + 'px');
+    stage.style.setProperty('--planet-y', (Math.cos(clock * .0014) * travel * .8 - bass * 3).toFixed(3) + 'px');
+    stage.style.setProperty('--planet-tilt', (Math.sin(clock * .0013) * activity * 1.1).toFixed(4) + 'deg');
     stage.dataset.audioState = audio.paused || audio.ended ? 'paused' : 'playing';
   }
   function visible() { return inView && !document.hidden && home.style.display !== 'none'; }
@@ -162,7 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
     cancelAnimationFrame(raf); raf = 0; lastFrame = 0;
     stage.dataset.motion = visible() ? 'active' : 'rest';
     if (!visible()) return;
-    if (motion.matches) { bass = energy = 0; levels.fill(0); draw(33); }
+    if (motion.matches) { bass = energy = activity = 0; levels.fill(0); draw(33); }
     else raf = requestAnimationFrame(frame);
   }
   new IntersectionObserver(entries => {
