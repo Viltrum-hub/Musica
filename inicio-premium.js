@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   sync();
 });
 
-/* One shared analyser; the orbit reads the actual track, never a second audio source. */
+/* Follow assets/sonora-design-reference.webp: fine orbits and a diagonal spectrum. */
 document.addEventListener('DOMContentLoaded', () => {
   const stage = document.querySelector('.home-planet-stage');
   const front = stage?.querySelector('.home-ring-front path');
@@ -107,14 +107,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const analyser = window.sonoraAudioAnalyser;
     const live = !!analyser && !audio.paused && !audio.ended && !reduced;
     sample(analyser, live, dt);
-    const tilt = -.32 + (reduced ? 0 : Math.sin(clock * .00017) * .025);
-    const waveAt = angle => reduced ? 0 : Math.sin(angle * 18 - clock * .0012) * (.25 + energy * 3.5)
-      + Math.sin(angle * 9 + clock * .0008) * bass * 1.5;
-    function curve(start, offset) {
+    const tilt = -.32;
+    function curve(start, offset, plane = tilt) {
       const points = [];
       for (let i = 0; i <= 120; i++) {
         const angle = start + i / 120 * Math.PI;
-        const [x,y] = point(angle, offset, waveAt(angle), tilt);
+        const [x,y] = point(angle, offset, 0, plane);
         points.push(`${i ? 'L' : 'M'}${x.toFixed(2)},${y.toFixed(2)}`);
       }
       return points.join(' ');
@@ -122,21 +120,24 @@ document.addEventListener('DOMContentLoaded', () => {
     [front, back].forEach((path, side) => {
       path.setAttribute('d', curve(side * Math.PI, 0));
       echoes[side].forEach((echo, layer) => {
-        echo.setAttribute('d', curve(side * Math.PI, (layer + 1) * (5 + energy * 7)));
-        echo.style.opacity = (.08 + energy * .2 - layer * .025).toFixed(3);
+        echo.setAttribute('d', curve(side * Math.PI, layer === 0 ? -12 : 12, layer === 0 ? -.22 : -.43));
+        echo.style.opacity = layer === 0 ? '.28' : '.16';
       });
       const angle = side * Math.PI + (reduced ? .6 : clock * .00014 % Math.PI);
-      const [x,y] = point(angle, 0, waveAt(angle), tilt);
+      const [x,y] = point(angle, 0, 0, tilt);
       lights[side].setAttribute('cx', x.toFixed(2));
       lights[side].setAttribute('cy', y.toFixed(2));
     });
     ticks.forEach((line, i) => {
-      const angle = .18 + i / 35 * (Math.PI - .36);
-      const [x,y] = point(angle, 0, waveAt(angle), tilt);
-      const height = 3 + levels[i] * 48;
+      const progress = i / (ticks.length - 1);
+      const x = 155 + progress * 290;
+      const y = 338 - (x - 300) * .32;
+      const edge = Math.min(1, .15 + progress * 5);
+      const silhouette = (15 + progress * 50 + Math.sin(i * 1.7) ** 2 * 17) * edge;
+      const height = 3 + silhouette + levels[i] * 26 * edge;
       line.setAttribute('x1', x.toFixed(2)); line.setAttribute('x2', x.toFixed(2));
       line.setAttribute('y1', (y-height).toFixed(2)); line.setAttribute('y2', (y+height*.18).toFixed(2));
-      line.style.opacity = (.3 + levels[i] * .65).toFixed(3);
+      line.style.opacity = (.48 + edge * .4).toFixed(3);
     });
     stage.style.setProperty('--planet-bass', bass.toFixed(4));
     stage.style.setProperty('--planet-energy', energy.toFixed(4));

@@ -44,15 +44,15 @@ body .home-universe-card{background:none;border-color:transparent;box-shadow:non
 @media(max-width:650px){#mainHome .home-hero h1{font-size:43px}.home-now-playing{left:auto;right:6px;bottom:0;width:230px}.home-planet-stage{margin-top:8px}.home-sound-ring{inset:0}.home-universe-grid{grid-template-columns:repeat(5,95px)}body .home-universe-card>.theme-planet-orb{width:45px;height:45px}.home-universe-card strong{font-size:10px}}
 @media(prefers-reduced-motion:reduce){.home-planet-art{animation:none}.home-ring-path{filter:none}}
 
-/* The globe and its orbit drift together; bass gently changes light and scale. */
+/* Match the approved reference: restrained motion, stable light, fine orbital lines. */
 .home-planet-stage{--planet-bass:0;--planet-energy:0}
-.home-planet-art,.home-sound-ring{animation:sonoraCelestialDrift 24s ease-in-out infinite;transform-origin:50% 50%;will-change:transform;scale:calc(1 + var(--planet-bass) * .014)}
-.home-planet-art{filter:hue-rotate(var(--home-hue,0deg)) brightness(calc(1 + var(--planet-energy) * .09))}
-.home-orbit-spectrum{opacity:.9}
-.home-ring-front{opacity:calc(.68 + var(--planet-energy) * .22)}.home-ring-back{opacity:.26}
+.home-planet-art,.home-sound-ring{animation:sonoraCelestialDrift 24s ease-in-out infinite;transform-origin:50% 50%;will-change:transform;scale:1}
+.home-planet-art{filter:hue-rotate(var(--home-hue,0deg))}
+.home-orbit-spectrum{opacity:.95;filter:drop-shadow(0 0 2px var(--secondary))}
+.home-ring-front{opacity:.7}.home-ring-back{opacity:.3}
 .home-ring-path{filter:drop-shadow(0 0 2px var(--primary))}.home-ring-echo{filter:none}
 .home-orbit-light{fill:var(--primary-light);filter:drop-shadow(0 0 4px var(--primary));opacity:.85}
 .home-ring-back .home-orbit-light{fill:var(--secondary)}
 .home-planet-stage[data-motion=rest] .home-planet-art,.home-planet-stage[data-motion=rest] .home-sound-ring{animation-play-state:paused;will-change:auto}
-@keyframes sonoraCelestialDrift{0%,100%{transform:translateY(3px) rotate(-.8deg)}50%{transform:translateY(-5px) rotate(.8deg)}}
+@keyframes sonoraCelestialDrift{0%,100%{transform:translateY(1px) rotate(-.35deg)}50%{transform:translateY(-3px) rotate(.35deg)}}
 @media(prefers-reduced-motion:reduce){.home-planet-art,.home-sound-ring{animation:none;transform:none;scale:1;will-change:auto}.home-orbit-light,.home-ring-path{filter:none}}
