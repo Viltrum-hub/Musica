@@ -141,6 +141,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     stage.style.setProperty('--planet-bass', bass.toFixed(4));
     stage.style.setProperty('--planet-energy', energy.toFixed(4));
+    // A few pixels of movement, driven by the track's smoothed energy and bass.
+    stage.style.setProperty('--planet-x', (Math.sin(clock * .001) * energy * 2.6).toFixed(3) + 'px');
+    stage.style.setProperty('--planet-y', (-bass * 3.8 + Math.sin(clock * .0007) * energy * 1.5).toFixed(3) + 'px');
+    stage.style.setProperty('--planet-tilt', (Math.sin(clock * .0008) * energy * .28).toFixed(4) + 'deg');
     stage.dataset.audioState = audio.paused || audio.ended ? 'paused' : 'playing';
   }
   function visible() { return inView && !document.hidden && home.style.display !== 'none'; }

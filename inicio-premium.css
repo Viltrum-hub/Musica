@@ -45,14 +45,21 @@ body .home-universe-card{background:none;border-color:transparent;box-shadow:non
 @media(prefers-reduced-motion:reduce){.home-planet-art{animation:none}.home-ring-path{filter:none}}
 
 /* Match the approved reference: restrained motion, stable light, fine orbital lines. */
-.home-planet-stage{--planet-bass:0;--planet-energy:0}
-.home-planet-art,.home-sound-ring{animation:sonoraCelestialDrift 24s ease-in-out infinite;transform-origin:50% 50%;will-change:transform;scale:1}
-.home-planet-art{filter:hue-rotate(var(--home-hue,0deg))}
+.home-planet-stage{--planet-bass:0;--planet-energy:0;--planet-x:0px;--planet-y:0px;--planet-tilt:0deg}
+.home-planet-art,.home-sound-ring,.home-planet-surround{animation:sonoraCelestialDrift 24s ease-in-out infinite;transform-origin:50% 50%;will-change:transform;scale:1;translate:var(--planet-x) var(--planet-y)}
+.home-planet-art{filter:hue-rotate(var(--home-hue,0deg));rotate:var(--planet-tilt)}
 .home-orbit-spectrum{opacity:.95;filter:drop-shadow(0 0 2px var(--secondary))}
 .home-ring-front{opacity:.7}.home-ring-back{opacity:.3}
 .home-ring-path{filter:drop-shadow(0 0 2px var(--primary))}.home-ring-echo{filter:none}
 .home-orbit-light{fill:var(--primary-light);filter:drop-shadow(0 0 4px var(--primary));opacity:.85}
 .home-ring-back .home-orbit-light{fill:var(--secondary)}
-.home-planet-stage[data-motion=rest] .home-planet-art,.home-planet-stage[data-motion=rest] .home-sound-ring{animation-play-state:paused;will-change:auto}
+.home-planet-stage[data-motion=rest] .home-planet-art,.home-planet-stage[data-motion=rest] .home-sound-ring,.home-planet-stage[data-motion=rest] .home-planet-surround{animation-play-state:paused;will-change:auto}
 @keyframes sonoraCelestialDrift{0%,100%{transform:translateY(1px) rotate(-.35deg)}50%{transform:translateY(-3px) rotate(.35deg)}}
-@media(prefers-reduced-motion:reduce){.home-planet-art,.home-sound-ring{animation:none;transform:none;scale:1;will-change:auto}.home-orbit-light,.home-ring-path{filter:none}}
+@media(prefers-reduced-motion:reduce){.home-planet-art,.home-sound-ring,.home-planet-surround{animation:none;transform:none;translate:none;rotate:none;scale:1;will-change:auto}.home-orbit-light,.home-ring-path{filter:none}}
+
+/* Sparse orbital details follow the approved Inicio artwork. */
+.home-planet-surround{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:visible}
+.home-space-dust{opacity:.4}
+.home-space-beacon{filter:drop-shadow(0 0 4px var(--primary));opacity:.85}
+.home-space-beacon-secondary{filter:drop-shadow(0 0 5px var(--secondary))}
+@media(prefers-reduced-motion:reduce){.home-space-beacon{filter:none}}
