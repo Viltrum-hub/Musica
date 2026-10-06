@@ -57,6 +57,7 @@
     <link rel="stylesheet" href="universos.css?v=2">
     
 
+    <link rel="stylesheet" href="reproductor-premium.css?v=1">
 </head>
 
 
@@ -1472,6 +1473,8 @@
 
 
 
+    <button id="playerFavoriteBtn" class="player-favorite favorite-song-btn" type="button" aria-label="Agregar a favoritos" aria-pressed="false" disabled><i class="bi bi-heart" aria-hidden="true"></i></button>
+
     <div class="player-controls">
 
         <div class="control-buttons">
@@ -1520,7 +1523,7 @@
 
             <input
                 type="range"
-                id="progressBar"
+                id="progressBar" aria-label="Posición de la canción"
                 min="0"
                 max="100"
                 value="0"
@@ -1537,11 +1540,11 @@
 
     <div class="player-volume">
 
-        <i class="bi bi-volume-up-fill"></i>
+        <button id="playerMuteBtn" type="button" aria-label="Silenciar" aria-pressed="false"><i class="bi bi-volume-up" aria-hidden="true"></i></button>
 
         <input
             type="range"
-            id="volumeBar"
+            id="volumeBar" aria-label="Volumen"
             min="0"
             max="1"
             step="0.01"
@@ -1633,7 +1636,7 @@
      JAVASCRIPT PRINCIPAL
 ===================================================== -->
 
-<script src="musica.js?v=universos-1"></script>
+<script src="musica.js?v=player-1"></script>
 
 
 <!-- =====================================================
@@ -2079,5 +2082,6 @@
 </div>
 
 
+<script src="reproductor-premium.js?v=1"></script>
 </body>
 </html>

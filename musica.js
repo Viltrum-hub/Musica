@@ -1591,6 +1591,7 @@ document.addEventListener("DOMContentLoaded", () => {
     ========================================================= */
 
     let userFavorites = new Set();
+    const pendingFavoriteKeys = new Set();
 
 
     /* ---------------------------------------------------------
@@ -1857,6 +1858,48 @@ document.addEventListener("DOMContentLoaded", () => {
        ACTUALIZAR TODOS LOS CORAZONES
     --------------------------------------------------------- */
 
+    // Reuse the current account's favorites, identifying tracks by their audio URL.
+    function resolveFavoriteKey(song) {
+        const key = getSongKey(song);
+        if (!song?.audio || userFavorites.has(key)) return key;
+        const normalize = path => { try { return new URL(path, document.baseURI).href; } catch (_) { return path; } };
+        const audio = normalize(song.audio);
+        for (const saved of userFavorites) {
+            const parts = saved.split('|');
+            if (parts.length === 3 && normalize(parts[2]) === audio) return saved;
+        }
+        return key;
+    }
+
+    function getPlayerFavoriteSong() {
+        const src = audioPlayer?.getAttribute('src');
+        if (!src) return null;
+        const url = new URL(src, document.baseURI).href;
+        const sameAudio = path => {
+            try { return new URL(path, document.baseURI).href === url; } catch (_) { return false; }
+        };
+        // A saved key wins across pages, even when the artist label differs.
+        for (const key of userFavorites) {
+            const parts = key.split('|');
+            if (parts.length === 3 && sameAudio(parts[2])) return {
+                title:parts[0], artist:parts[1], audio:parts[2],
+                image:document.querySelector('#playerCover img')?.getAttribute('src') || '', genre:''
+            };
+        }
+        const card = Array.from(document.querySelectorAll('.explore-song-card[data-audio],.home-track[data-audio],.artist-song-play[data-audio]')).find(el=>sameAudio(el.dataset.audio));
+        const base = new URL('.', document.baseURI);
+        const path = new URL(src, document.baseURI);
+        const relative = path.origin === base.origin && path.pathname.startsWith(base.pathname)
+            ? decodeURIComponent(path.pathname.slice(base.pathname.length)) : path.href;
+        return {
+            title:card?.dataset.title || playerTitle.textContent,
+            artist:card?.dataset.artist || playerArtist.textContent,
+            audio:card?.dataset.audio || relative,
+            image:document.querySelector('#playerCover img')?.getAttribute('src') || '',
+            genre:card?.dataset.genre || ''
+        };
+    }
+
     function updateFavoriteButtons() {
 
         const buttons =
@@ -1868,30 +1911,27 @@ document.addEventListener("DOMContentLoaded", () => {
         buttons.forEach(
             button => {
 
-                const card =
-                    button.closest(
-                        ".explore-song-card"
-                    );
+                const card = button.id === 'playerFavoriteBtn' ? button : button.closest('.explore-song-card');
 
                 if (!card) {
                     return;
                 }
 
 
-                const song =
-                    getSongFromCard(
-                        card
-                    );
+                if (button.id === 'playerFavoriteBtn') {
+                    const current = getPlayerFavoriteSong();
+                    button.disabled = !current;
+                    for (const key of ['title','artist','audio','image','genre']) button.dataset[key] = current?.[key] || '';
+                }
+                const song = getSongFromCard(card);
 
                 const songKey =
-                    getSongKey(
+                    resolveFavoriteKey(
                         song
                     );
 
-                const icon =
-                    button.querySelector(
-                        "i"
-                    );
+                button.setAttribute('aria-pressed', String(userFavorites.has(songKey)));
+                const icon = button.querySelector('i');
 
 
                 if (
@@ -2036,7 +2076,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         const songKey =
-            getSongKey(
+            resolveFavoriteKey(
                 song
             );
 
@@ -2052,6 +2092,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         }
 
+
+        // Both the song card and shared player can act on the same favorite.
+        if (pendingFavoriteKeys.has(songKey)) return;
 
         /* EVITAR DOBLE CLIC */
 
@@ -2074,6 +2117,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
+        pendingFavoriteKeys.add(songKey);
         try {
 
             /* -------------------------------------------------
@@ -2227,17 +2271,15 @@ if (button) {
             }
 
         } finally {
-
+            pendingFavoriteKeys.delete(songKey);
             if (button) {
 
                 button.classList.remove(
                     "favorite-saving"
                 );
-
             }
-
+            updateFavoriteButtons();
         }
-
     }
 
 
@@ -2285,10 +2327,7 @@ if (button) {
                 event.stopImmediatePropagation();
 
 
-                const card =
-                    button.closest(
-                        ".explore-song-card"
-                    );
+                const card = button.id === 'playerFavoriteBtn' ? button : button.closest('.explore-song-card');
 
 
                 if (!card) {
@@ -2311,6 +2350,8 @@ if (button) {
     /* ---------------------------------------------------------
        OBSERVAR TARJETAS DINÁMICAS
     --------------------------------------------------------- */
+
+    for (const event of ['loadstart','loadedmetadata','emptied','play']) audioPlayer?.addEventListener(event, updateFavoriteButtons);
 
     const favoriteObserver =
         new MutationObserver(

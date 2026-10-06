@@ -1,0 +1,35 @@
+/* Compact, horizontal SONORA player, following the approved reference. */
+body #musicPlayer.music-player{left:24px;right:24px;bottom:16px;margin:auto;max-width:1190px;height:68px;padding:11px 17px;display:grid;grid-template-columns:minmax(150px,260px) 32px 125px minmax(130px,1fr) 118px;align-items:center;gap:17px;border:1px solid var(--border);border-radius:13px;background:linear-gradient(110deg,color-mix(in srgb,var(--card) 93%,transparent),color-mix(in srgb,var(--bg-secondary) 95%,transparent));box-shadow:0 12px 35px #0004;backdrop-filter:blur(24px);color:var(--text);font-family:inherit}
+body #musicPlayer .player-song{grid-column:1;grid-row:1;display:flex;gap:10px;min-width:0}
+body #musicPlayer #playerCover{width:42px;height:42px;min-width:42px;min-height:42px;border-radius:8px;overflow:hidden;font-size:19px;background:linear-gradient(135deg,var(--primary),var(--secondary))}
+body #musicPlayer #playerCover img{width:100%;height:100%;object-fit:cover;border-radius:inherit}
+body #musicPlayer .player-song>div:last-child{min-width:0}
+body #musicPlayer #playerTitle{font-size:11px;font-weight:600;line-height:1.45;margin:0 0 3px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+body #musicPlayer #playerArtist{display:block;font-size:9px;line-height:1.4;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+body #musicPlayer button{font-family:inherit;display:grid;place-items:center;padding:0;border:0;background:transparent;color:var(--text);cursor:pointer;flex-shrink:0}
+body #musicPlayer button:focus-visible{outline:2px solid var(--primary);outline-offset:4px}
+body #musicPlayer button:disabled{opacity:.3;cursor:default}
+body #musicPlayer .player-favorite{position:static;inset:auto;box-shadow:none;backdrop-filter:none;transform:none;border-radius:0;grid-column:2;grid-row:1;width:32px;height:36px;font-size:18px;color:var(--muted)}
+body #musicPlayer .player-favorite:hover:not(:disabled),body #musicPlayer .player-favorite.is-favorite{color:var(--primary)}
+body #musicPlayer .player-controls{display:contents}
+body #musicPlayer .control-buttons{grid-column:3;grid-row:1;display:flex;align-items:center;justify-content:center;gap:14px}
+body #musicPlayer .control-buttons button{width:26px;height:32px;font-size:18px}
+body #musicPlayer .control-buttons button:hover{color:var(--primary-light)}
+body #musicPlayer .control-buttons #mainPlayBtn{width:35px;height:35px;min-width:35px;border-radius:50%;background:var(--primary-light);color:var(--bg);font-size:21px}
+body #musicPlayer .progress-container{grid-column:4;grid-row:1;display:flex;align-items:center;gap:10px;min-width:0;width:100%}
+body #musicPlayer .progress-container span{font-size:9px;font-variant-numeric:tabular-nums;min-width:28px;line-height:1;color:var(--muted)}
+body #musicPlayer .progress-container #duration{text-align:right}
+body #musicPlayer .player-volume{grid-column:5;grid-row:1;display:flex;align-items:center;justify-content:end;gap:9px;min-width:0}
+body #musicPlayer #playerMuteBtn{width:26px;height:32px;font-size:18px;color:var(--muted)}
+body #musicPlayer .player-volume input{width:78px}
+body #musicPlayer input[type=range]{--range-fill:0%;appearance:none;-webkit-appearance:none;background:transparent;min-width:0;height:20px;padding:0;margin:0;border:0;outline:0;cursor:pointer;flex:1}
+body #musicPlayer input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:10px;background:linear-gradient(90deg,var(--primary),var(--secondary)) 0 0/var(--range-fill) 100% no-repeat,color-mix(in srgb,var(--text) 17%,transparent)}
+body #musicPlayer input[type=range]::-webkit-slider-thumb{appearance:none;-webkit-appearance:none;width:9px;height:9px;margin-top:-2.5px;border:0;border-radius:50%;background:var(--primary-light);opacity:0;transition:opacity .15s}
+body #musicPlayer input[type=range]:hover::-webkit-slider-thumb,body #musicPlayer input[type=range]:focus-visible::-webkit-slider-thumb{opacity:1}
+body #musicPlayer input[type=range]::-moz-range-track{height:4px;border-radius:10px;background:color-mix(in srgb,var(--text) 17%,transparent)}
+body #musicPlayer input[type=range]::-moz-range-progress{height:4px;border-radius:10px;background:linear-gradient(90deg,var(--primary),var(--secondary))}
+body #musicPlayer input[type=range]::-moz-range-thumb{width:9px;height:9px;border:0;border-radius:50%;background:var(--primary-light)}
+body #musicPlayer input[type=range]:focus-visible{outline:2px solid var(--primary);outline-offset:4px;border-radius:10px}
+@media(max-width:1000px){body #musicPlayer.music-player{grid-template-columns:minmax(0,1fr) 32px 120px 105px;grid-template-rows:42px 16px;height:95px;gap:4px 12px;padding:11px 16px}body #musicPlayer .progress-container{grid-column:1/-1;grid-row:2}body #musicPlayer .player-volume{grid-column:4}body #musicPlayer #playerCover{width:36px;height:36px;min-width:36px;min-height:36px}}
+@media(max-width:650px){body #musicPlayer.music-player{left:10px;right:10px;bottom:10px;max-width:none;grid-template-columns:minmax(0,1fr) 30px 106px;gap:4px 8px;height:91px;padding:10px 13px;border-radius:13px}body #musicPlayer .player-volume{display:none}body #musicPlayer .control-buttons{gap:9px}body #musicPlayer .control-buttons button{width:22px;font-size:16px}body #musicPlayer .control-buttons #mainPlayBtn{width:33px;height:33px;min-width:33px}body #musicPlayer #playerCover{width:34px;height:34px;min-width:34px;min-height:34px;border-radius:7px}body #musicPlayer .player-song{gap:8px}body #musicPlayer #playerTitle{font-size:10px}body #musicPlayer #playerArtist{font-size:8px}body #musicPlayer .player-favorite{width:30px;font-size:17px}body #musicPlayer .progress-container{gap:9px}body #musicPlayer .progress-container span{font-size:8px}}
+@media(prefers-reduced-motion:reduce){body #musicPlayer *,body #musicPlayer *:before{animation:none!important;transition:none!important}}
