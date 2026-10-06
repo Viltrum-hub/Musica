@@ -179,6 +179,8 @@ cards.forEach(card => {
     }
 
     playButton.dataset.image = profile.image;
+    const portrait = card.querySelector('.artist-catalog-image img');
+    if (portrait) portrait.src = profile.image;
 });
     const resultCount = root.querySelector("#artistResultCount");
     const emptyState = root.querySelector("#artistsEmpty");
@@ -327,6 +329,7 @@ cards.forEach(card => {
     let featuredTimer = null;
     let featuredIndex = 0;
     let featuredPaused = false;
+    let featuredInView = true;
 
     const featuredDelay = 8000;
 
@@ -602,6 +605,9 @@ cards.forEach(card => {
             profileButton.dataset.artistId = id;
         }
 
+        const featuredFollow = featuredRoot.querySelector('[data-featured-follow]');
+        if (featuredFollow) featuredFollow.dataset.follow = id;
+        syncFollow();
         syncPlayback();
         restartFeaturedProgress();
     }
@@ -615,6 +621,7 @@ cards.forEach(card => {
 
         window.clearTimeout(featuredTimer);
 
+        const shouldPause = featuredPaused || !featuredInView || document.hidden;
         const bar =
             featuredRoot.querySelector(
                 "[data-featured-progress]"
@@ -626,12 +633,12 @@ cards.forEach(card => {
             void bar.offsetWidth;
 
             bar.style.animation =
-                featuredPaused
+                shouldPause
                     ? "none"
                     : `sonoraFeaturedProgress ${featuredDelay}ms linear forwards`;
         }
 
-        if (!featuredPaused) {
+        if (!shouldPause) {
             featuredTimer =
                 window.setTimeout(
                     () => changeFeatured(1),
@@ -797,6 +804,14 @@ cards.forEach(card => {
                 }
             }
         );
+
+        const viewportObserver = new IntersectionObserver(entries => {
+            featuredInView = entries[0].isIntersecting;
+            restartFeaturedProgress();
+        });
+        viewportObserver.observe(featuredRoot);
+        on(document, 'visibilitychange', restartFeaturedProgress);
+        controller.signal.addEventListener('abort', () => viewportObserver.disconnect());
 
         /* OBSERVAR UNIVERSO */
 

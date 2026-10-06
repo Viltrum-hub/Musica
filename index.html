@@ -49,7 +49,7 @@
 
     <link rel="stylesheet" href="musica.css">
     <link rel="stylesheet" href="explorar.css">
-    <link rel="stylesheet" href="artistas.css">
+    <link rel="stylesheet" href="artistas.css?v=premium-1">
     <link rel="stylesheet" href="albumes.css?v=3">
     <link rel="stylesheet" href="inicio-premium.css?v=7">
     <link rel="stylesheet" href="universos.css?v=2">
@@ -1440,7 +1440,7 @@
 <script src="explorar.js"></script>
 
 <!-- JAVASCRIPT ARTISTAS -->
-<script src="artistas.js"></script>
+<script src="artistas.js?v=premium-1"></script>
 <script src="albumes.js?v=3"></script>
 <script src="inicio-premium.js?v=7"></script>
 
@@ -2170,6 +2170,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function setActivePage(page) {
         document.body.classList.toggle("sonora-home-open", page === "inicio");
         document.body.classList.toggle("sonora-albums-open", page === "albumes");
+        document.body.classList.toggle("sonora-artists-open", page === "artistas");
 
         navbarLinks.forEach(link => {
 
@@ -2639,7 +2640,7 @@ if (typeof initExplorar === "function") {
 
         try {
 
-            const response = await fetch("artistas.html");
+            const response = await fetch("artistas.html?v=premium-1");
 
             if (!response.ok) {
                 throw new Error("No se pudo cargar artistas.html");
