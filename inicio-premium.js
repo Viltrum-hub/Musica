@@ -40,6 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
   const home = document.getElementById('mainHome');
   if (!front || !back || !audio) return;
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const spectrum = stage.querySelector('.home-orbit-spectrum');
+  const ticks = Array.from({length:36}, () => {
+    const line = document.createElementNS('http://www.w3.org/2000/svg','line');
+    spectrum?.appendChild(line); return line;
+  });
   const bins = new Uint8Array(64);
   let lastFrame = 0, staticDrawn = false;
   function curve(start, time, live) {
@@ -47,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 0; i <= 80; i++) {
       const angle = start + i / 80 * Math.PI;
       const energy = live ? bins[Math.min(bins.length - 1, Math.floor(i / 80 * 42))] / 255 : 0;
-      const wave = motion.matches ? 0 : Math.sin(angle * 24 - time * .0018) * (1.6 + energy * 7);
+      const wave = motion.matches ? 0 : Math.sin(angle * 24 - time * .0018) * (.35 + energy * 4);
       const x = (291 + wave) * Math.cos(angle), y = (105 + wave * .55) * Math.sin(angle);
       points.push(`${i ? 'L' : 'M'}${(300 + x * cos - y * sin).toFixed(2)},${(300 + x * sin + y * cos).toFixed(2)}`);
     }
@@ -63,6 +68,15 @@ document.addEventListener('DOMContentLoaded', () => {
     if (live) analyser.getByteFrequencyData(bins);
     front.setAttribute('d', curve(0, time, live));
     back.setAttribute('d', curve(Math.PI, time, live));
+    ticks.forEach((line, i) => {
+      const angle = .22 + i / 35 * 2.7;
+      const x = 300 + 291 * Math.cos(angle) * Math.cos(-.32) - 105 * Math.sin(angle) * Math.sin(-.32);
+      const y = 300 + 291 * Math.cos(angle) * Math.sin(-.32) + 105 * Math.sin(angle) * Math.cos(-.32);
+      const energy = live ? bins[i] / 255 : 0;
+      const height = 4 + Math.sin(i * 1.9) ** 2 * 14 + energy * 30;
+      line.setAttribute('x1', x.toFixed(2)); line.setAttribute('x2', x.toFixed(2));
+      line.setAttribute('y1', (y-height).toFixed(2)); line.setAttribute('y2', y.toFixed(2));
+    });
     staticDrawn = motion.matches;
   }
   motion.addEventListener('change', () => { staticDrawn = false; });
