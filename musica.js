@@ -308,6 +308,7 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
+        window.sonoraPlaybackOwner = "inicio";
         currentSong = index;
 
         const song =
@@ -1886,7 +1887,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 image:document.querySelector('#playerCover img')?.getAttribute('src') || '', genre:''
             };
         }
-        const card = Array.from(document.querySelectorAll('.explore-song-card[data-audio],.home-track[data-audio],.artist-song-play[data-audio]')).find(el=>sameAudio(el.dataset.audio));
+        const card = Array.from(document.querySelectorAll('.explore-song-card[data-audio],.home-track[data-audio],.artist-song-play[data-audio],.sl-track[data-audio]')).find(el=>sameAudio(el.dataset.audio));
         const base = new URL('.', document.baseURI);
         const path = new URL(src, document.baseURI);
         const relative = path.origin === base.origin && path.pathname.startsWith(base.pathname)
@@ -2272,6 +2273,7 @@ if (button) {
 
         } finally {
             pendingFavoriteKeys.delete(songKey);
+            window.dispatchEvent(new Event("sonora-favorites-change"));
             if (button) {
 
                 button.classList.remove(
@@ -3070,6 +3072,7 @@ if (button) {
                         await loadUserProfile(
                             session.user
                         );
+                        window.dispatchEvent(new Event("sonora-profile-open"));
 
 
                         if (profileMessage) {
@@ -3496,6 +3499,9 @@ if (button) {
         session
     ) {
 
+        const previousUserId = currentUser?.id;
+        currentUser = session?.user || null;
+        if (previousUserId !== currentUser?.id) window.dispatchEvent(new Event("sonora-account-change"));
         if (
             session &&
             session.user
@@ -4059,6 +4065,11 @@ if (button) {
        INICIAR
     ========================= */
 
+    window.sonoraAccount = {
+        get client() { return supabaseClient; },
+        get user() { return currentUser; },
+        signIn() { authOverlay?.classList.add("show"); }
+    };
     checkUserSession();
 
     setupFavoriteButtons();

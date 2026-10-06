@@ -1158,6 +1158,7 @@ cards.forEach(card => {
             return;
         }
 
+        window.sonoraPlaybackOwner = "artistas";
         const request = ++playRequest;
 
         notify("");
@@ -1637,6 +1638,7 @@ cards.forEach(card => {
         event => {
             if (
                 !root.isConnected ||
+                window.sonoraPlaybackOwner === "biblioteca" ||
                 !ownedSource ||
                 audio?.src !== ownedSource
             ) {
@@ -1726,6 +1728,7 @@ cards.forEach(card => {
         event => {
             if (
                 !root.isConnected ||
+                window.sonoraPlaybackOwner === "biblioteca" ||
                 !ownedSource ||
                 audio.src !== ownedSource ||
                 !queue.length

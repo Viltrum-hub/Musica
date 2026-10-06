@@ -58,6 +58,7 @@
     
 
     <link rel="stylesheet" href="reproductor-premium.css?v=1">
+<link rel="stylesheet" href="biblioteca.css?v=1">
 </head>
 
 
@@ -172,7 +173,8 @@
                 </li>
 
 
-            </ul>
+            <li class="nav-item"><a class="nav-link" href="index.html?page=biblioteca" data-page="biblioteca">Biblioteca</a></li>
+</ul>
 
 
             <!-- CONTROLES -->
@@ -1636,14 +1638,14 @@
      JAVASCRIPT PRINCIPAL
 ===================================================== -->
 
-<script src="musica.js?v=player-1"></script>
+<script src="musica.js?v=library-1"></script>
 
 
 <!-- =====================================================
      JAVASCRIPT EXPLORAR
 ===================================================== -->
 
-<script src="explorar.js"></script>
+<script src="explorar.js?v=library-1"></script>
 
 
 
@@ -2024,7 +2026,7 @@
                 </strong>
 
                 <span>
-                    Canciones
+                    Guardadas
                 </span>
 
             </div>
@@ -2065,6 +2067,7 @@
 
         <!-- CERRAR SESIÓN -->
 
+<section class="sl-profile-collection" aria-label="Mis playlists"><div class="sl-profile-heading"><h3>Mis playlists</h3><a href="index.html?page=biblioteca" data-page="biblioteca">Ver biblioteca <i class="bi bi-arrow-up-right"></i></a></div><div class="sl-profile-rows"><p class="sl-profile-note">Tus playlists aparecerán aquí.</p></div></section>
         <button
             type="button"
             class="logout-button"
@@ -2085,3 +2088,5 @@
 <script src="reproductor-premium.js?v=1"></script>
 </body>
 </html>
+
+<script src="biblioteca.js?v=1"></script>

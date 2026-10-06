@@ -55,6 +55,7 @@
     <link rel="stylesheet" href="universos.css?v=2">
 
     <link rel="stylesheet" href="reproductor-premium.css?v=1">
+<link rel="stylesheet" href="biblioteca.css?v=1">
 </head>
 
 
@@ -175,7 +176,8 @@
                 </li>
 
 
-            </ul>
+            <li class="nav-item"><a class="nav-link" href="index.html?page=biblioteca" data-page="biblioteca">Biblioteca</a></li>
+</ul>
 
 
             <!-- CONTROLES -->
@@ -1434,17 +1436,17 @@
      TU JAVASCRIPT
 ===================================================== -->
 
-<script src="musica.js?v=player-1"></script>
+<script src="musica.js?v=library-1"></script>
 
 <!-- =====================================================
      JAVASCRIPT EXPLORAR
 ===================================================== -->
 
-<script src="explorar.js"></script>
+<script src="explorar.js?v=library-1"></script>
 
 <!-- JAVASCRIPT ARTISTAS -->
-<script src="artistas.js?v=premium-1"></script>
-<script src="albumes.js?v=3"></script>
+<script src="artistas.js?v=library-1"></script>
+<script src="albumes.js?v=library-1"></script>
 <script src="inicio-premium.js?v=7"></script>
 
 
@@ -1827,7 +1829,7 @@
 
 
                 <span>
-                    Canciones
+                    Guardadas
                 </span>
 
 
@@ -1878,6 +1880,7 @@
 
 
 
+<section class="sl-profile-collection" aria-label="Mis playlists"><div class="sl-profile-heading"><h3>Mis playlists</h3><a href="index.html?page=biblioteca" data-page="biblioteca">Ver biblioteca <i class="bi bi-arrow-up-right"></i></a></div><div class="sl-profile-rows"><p class="sl-profile-note">Tus playlists aparecerán aquí.</p></div></section>
         <button
             type="button"
             class="logout-button"
@@ -2174,6 +2177,7 @@ document.addEventListener("DOMContentLoaded", () => {
         document.body.classList.toggle("sonora-home-open", page === "inicio");
         document.body.classList.toggle("sonora-albums-open", page === "albumes");
         document.body.classList.toggle("sonora-artists-open", page === "artistas");
+        document.body.classList.toggle("sonora-library-open", page === "biblioteca");
 
         navbarLinks.forEach(link => {
 
@@ -2234,6 +2238,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (!audio) return;
 
 
+                window.sonoraPlaybackOwner = "explorar";
                 const title =
                     card.dataset.title ||
                     "Canción";
@@ -2612,6 +2617,31 @@ if (typeof initExplorar === "function") {
        CARGAR ARTISTAS
     ================================================= */
 
+    async function loadLibrary(updateHistory = true, playlist = "") {
+        try {
+            const response = await fetch("biblioteca.html?v=1");
+            if (!response.ok) throw new Error("No se pudo cargar Biblioteca");
+            const doc = new DOMParser().parseFromString(await response.text(), "text/html");
+            const page = doc.querySelector(".sonora-library");
+            if (!page) throw new Error("Página de Biblioteca no válida");
+            document.body.classList.remove("artist-profile-open");
+            mainHome.style.display = "none";
+            pageContainer.replaceChildren(page);
+            setActivePage("biblioteca");
+            closeMobileMenu();
+            document.getElementById("profileOverlay")?.classList.remove("show");
+            window.scrollTo({top: 0, behavior: "instant"});
+            if (updateHistory) history.pushState({page: "biblioteca"}, "", "index.html?page=biblioteca" + (playlist ? "&playlist=" + encodeURIComponent(playlist) : ""));
+            initBiblioteca({playlist});
+        } catch (error) { console.error(error); alert("No se pudo abrir Biblioteca. Inténtalo de nuevo."); }
+    }
+    document.addEventListener("click", event => {
+        const link = event.target.closest('[data-page="biblioteca"]');
+        if (!link) return;
+        event.preventDefault();
+        loadLibrary(true, link.dataset.playlistId || "");
+    });
+
     async function loadAlbums(updateHistory = true) {
         try {
             const response = await fetch("albumes.html");
@@ -2929,6 +2959,8 @@ if (typeof initExplorar === "function") {
                     params.get("artist") || ""
                 );
 
+            } else if (page === "biblioteca") {
+                loadLibrary(false, params.get("playlist") || "");
             } else if (page === "albumes") {
                 loadAlbums(false);
             } else {
@@ -2982,6 +3014,8 @@ if (typeof initExplorar === "function") {
             params.get("artist") || ""
         );
 
+    } else if (currentPage === "biblioteca") {
+        loadLibrary(false, params.get("playlist") || "");
     } else if (currentPage === "albumes") {
         loadAlbums(false);
     } else {
@@ -3013,3 +3047,5 @@ if (typeof initExplorar === "function") {
 </script>
 
 <script src="reproductor-premium.js?v=1"></script>
+
+<script src="biblioteca.js?v=1"></script>

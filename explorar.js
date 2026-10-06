@@ -350,6 +350,7 @@ function initExplorar(initialFilter = "all") {
         }
 
 
+        window.sonoraPlaybackOwner = "explorar";
         currentSongIndex =
             index;
 
@@ -793,6 +794,7 @@ function initExplorar(initialFilter = "all") {
                     event => {
 
                         event.stopPropagation();
+                        window.sonoraPlaybackOwner = "explorar";
 
 
                         if (

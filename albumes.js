@@ -2,7 +2,7 @@
 (() => {
   let queue = [], position = 0, ownedSource = '';
   const audio = () => document.getElementById('audioPlayer');
-  const ownsAudio = () => ownedSource && audio()?.src === ownedSource;
+  const ownsAudio = () => window.sonoraPlaybackOwner !== 'biblioteca' && ownedSource && audio()?.src === ownedSource;
   const escape = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
   const normalize = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
   const status = message => { const el = document.querySelector('.sa-status'); if (el) el.textContent = message; };
@@ -16,6 +16,7 @@
   async function play(index) {
     const song = queue[index], player = audio();
     if (!song || !player) return;
+    window.sonoraPlaybackOwner = 'albumes';
     position = index; player.src = song.audio; ownedSource = player.src;
     for (const [id, text] of [['playerTitle', song.title], ['playerArtist', song.artist]]) { const el = document.getElementById(id); if (el) el.textContent = text; }
     const cover = document.getElementById('playerCover');
