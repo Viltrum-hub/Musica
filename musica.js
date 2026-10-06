@@ -85,10 +85,10 @@ document.addEventListener("DOMContentLoaded", () => {
             analyser =
                 audioContext.createAnalyser();
 
-            analyser.fftSize = 128;
+            analyser.fftSize = 1024;
 
             analyser.smoothingTimeConstant =
-                0.75;
+                0.82;
 
             audioSource =
                 audioContext.createMediaElementSource(
