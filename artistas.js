@@ -67,7 +67,8 @@ function initArtistas(options = {}) {
                 "artist": "Scorpions",
                 "audio": "Canciones/scorpions-rock-you-like-a-hurricane.mp3",
                 "image": "assets/andromeda/songs/scorpions-rock-you-like-a-hurricane.svg?v=2"
-            }
+            },
+            {"title": "Always Somewhere", "artist": "Scorpions", "audio": "Canciones/scorpions-always-somewhere.mp3", "image": "assets/andromeda/songs/scorpions-always-somewhere.svg?v=2"}
         ]
     },
     "eiffel-65": {

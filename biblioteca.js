@@ -68,7 +68,7 @@
   async function loadCatalog() {
     if(catalogPromise) return catalogPromise;
     catalogPromise=(async()=>{
-      const response=await fetch('explorar.html?v=andromeda-ui-3');if(!response.ok)throw new Error('Catálogo no disponible');
+      const response=await fetch('explorar.html?v=neon-8');if(!response.ok)throw new Error('Catálogo no disponible');
       const doc=new DOMParser().parseFromString(await response.text(),'text/html');
       catalog=[...doc.querySelectorAll('.explore-song-card[data-audio]')].map(card=>({...card.dataset}));
       catalog=[...new Map(catalog.map(song=>[song.audio,song])).values()];

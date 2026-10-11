@@ -136,3 +136,29 @@ body .sonora-albums .sa-card-open{margin-top:13px;}
 body .sonora-albums .sa-card-open span{color:inherit;font-size:15px;}
 @media(hover:hover){body .sonora-albums :is(.sa-card-open,[data-details]):hover{background:color-mix(in srgb,var(--primary) 18%,var(--bg-secondary));border-color:var(--primary);color:var(--text);}}
 @media(max-width:650px){body .artists-page .artist-profile-panel{width:100%;max-height:calc(100dvh - 32px);padding:16px 20px 22px;border-radius:18px;}body .artists-page .artist-profile-heading{grid-template-columns:1fr;gap:18px;}body .artists-page .artist-profile-portrait{width:180px;max-width:180px;height:180px;justify-self:center;}body .artists-page .artist-profile-panel h2{font-size:28px;}body #profileOverlay .profile-modal{padding:26px 20px 22px;}body .sonora-albums .sa-card-title{font-size:13px;}body .sonora-albums .sa-actions [data-details]{min-height:36px;padding:9px 13px;border-color:color-mix(in srgb,var(--primary) 42%,transparent);border-radius:10px;background:color-mix(in srgb,var(--primary) 10%,var(--bg-secondary));color:var(--primary-light);}}
+
+/* Universe neon accents and integrated avatar controls. */
+body{--modal-neon:color-mix(in srgb,var(--primary) 26%,transparent);}
+body .artists-page .artist-profile-panel,body :is(.sa-dialog,.sl-dialog,.auth-modal,.search-box),body #profileOverlay .profile-modal{
+ border:1px solid color-mix(in srgb,var(--primary) 42%,transparent);
+ background:radial-gradient(ellipse at 8% 0%,color-mix(in srgb,var(--primary) 10%,transparent),transparent 48%),radial-gradient(ellipse at 100% 100%,color-mix(in srgb,var(--secondary) 7%,transparent),transparent 55%),var(--bg-secondary);
+ box-shadow:0 24px 70px #0008,0 0 26px color-mix(in srgb,var(--primary) 11%,transparent),inset 0 1px 0 color-mix(in srgb,var(--secondary) 35%,transparent);
+}
+body #profileOverlay .profile-avatar-container{width:72px;height:72px;margin:0 auto 20px;}
+body #profileOverlay .profile-avatar{width:100%;height:100%;border:1px solid var(--primary);box-shadow:0 0 18px var(--modal-neon);}
+body #profileOverlay .change-avatar-button{right:-4px;bottom:-2px;width:28px;height:28px;font-size:12px;border:3px solid var(--bg-secondary);box-shadow:0 0 10px var(--modal-neon);}
+body .artists-page .artist-follow,body .artists-page .artist-catalog-info .artist-follow{
+ display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:9px 16px;border-radius:10px;
+ border:1px solid color-mix(in srgb,var(--primary) 75%,var(--secondary));
+ background:linear-gradient(120deg,var(--primary),color-mix(in srgb,var(--primary) 78%,var(--secondary)));
+ color:var(--bg);font:600 11px/1.4 Montserrat,sans-serif;box-shadow:0 4px 18px var(--modal-neon);
+}
+body .artists-page .artist-follow[aria-pressed="true"]{background:color-mix(in srgb,var(--primary) 13%,var(--bg-secondary));color:var(--primary-light);box-shadow:none;}
+body .artists-page .artist-profile-panel>.artist-follow{margin-top:20px;min-width:112px;}
+body :is(.auth-modal .auth-submit,.profile-modal .edit-profile-button,.profile-modal .save-profile-button,.sl-dialog .sl-button:not(.sl-secondary):not(.sl-danger)){
+ border:1px solid var(--primary);background:linear-gradient(120deg,var(--primary),color-mix(in srgb,var(--primary) 78%,var(--secondary)));color:var(--bg);box-shadow:0 4px 18px var(--modal-neon);font-weight:600;
+}
+body .artists-page .artist-profile-track .artist-card-play{border:1px solid color-mix(in srgb,var(--primary) 48%,transparent);background:color-mix(in srgb,var(--primary) 14%,var(--bg-secondary));color:var(--primary-light);}
+body :is(.auth-modal,.profile-modal,.search-box,.sl-dialog) :is(input,textarea):focus-visible{outline:2px solid var(--primary);outline-offset:2px;box-shadow:0 0 14px var(--modal-neon);}
+body :is(.artist-follow,.change-avatar-button,.auth-submit,.sl-button):focus-visible{outline:2px solid var(--secondary);outline-offset:4px;}
+@media(hover:hover){body .artists-page .artist-follow:hover{filter:brightness(1.12);border-color:var(--secondary);box-shadow:0 4px 22px var(--modal-neon);}body .artists-page .artist-follow[aria-pressed="true"]:hover{background:color-mix(in srgb,var(--primary) 22%,var(--bg-secondary));}}

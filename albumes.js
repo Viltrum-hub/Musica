@@ -79,7 +79,7 @@
       });
     }
     try {
-      const response = await fetch('explorar.html?v=andromeda-ui-3'); if (!response.ok) throw new Error('catalog');
+      const response = await fetch('explorar.html?v=neon-8'); if (!response.ok) throw new Error('catalog');
       const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
       const byArtist = new Map(), seen = new Set();
       doc.querySelectorAll('[data-audio][data-title][data-artist]').forEach(el => {
