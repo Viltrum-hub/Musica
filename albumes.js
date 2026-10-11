@@ -79,7 +79,7 @@
       });
     }
     try {
-      const response = await fetch('explorar.html?v=andromeda-1'); if (!response.ok) throw new Error('catalog');
+      const response = await fetch('explorar.html?v=andromeda-2'); if (!response.ok) throw new Error('catalog');
       const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
       const byArtist = new Map(), seen = new Set();
       doc.querySelectorAll('[data-audio][data-title][data-artist]').forEach(el => {
@@ -90,7 +90,7 @@
       });
       if (!root.isConnected) return;
       groups = [...byArtist.values()].sort((a, b) => b.songs.length - a.songs.length);
-      const collectionArtwork = {"The police": "assets/andromeda/albums/the-police.svg", "Scorpions": "assets/andromeda/albums/scorpions.svg", "Eiffel 65": "assets/andromeda/albums/eiffel-65.svg", "The Outfield": "assets/andromeda/albums/the-outfield.svg", "Madonna": "assets/andromeda/albums/madonna.svg", "Queen": "assets/andromeda/albums/queen.svg", "Alan Walker": "assets/andromeda/albums/alan-walker.svg", "The Notorious B.I.G.": "assets/andromeda/albums/the-notorious-b-i-g.svg", "George Michael": "assets/andromeda/albums/george-michael.svg", "Dr. Dre": "assets/andromeda/albums/dr-dre.svg", "Luis Miguel": "assets/andromeda/albums/luis-miguel.svg", "Chicago": "assets/andromeda/albums/chicago.svg", "Lady Gaga": "assets/andromeda/albums/lady-gaga.svg", "50 Cent": "assets/andromeda/albums/50-cent.svg", "Wiz Khalifa & Snoop Dogg": "assets/andromeda/albums/wiz-khalifa-snoop-dogg.svg", "Ice Cube": "assets/andromeda/albums/ice-cube.svg", "Eminem": "assets/andromeda/albums/eminem.svg", "Coolio": "assets/andromeda/albums/coolio.svg", "Snoop Dogg": "assets/andromeda/albums/snoop-dogg.svg", "2Pac & Pop Smoke": "assets/andromeda/albums/2pac-pop-smoke.svg", "Wham!": "assets/andromeda/albums/wham.svg", "Guns N' Roses": "assets/andromeda/albums/axl-rose.svg"};
+      const collectionArtwork = {"The police": "assets/andromeda/albums/the-police.svg?v=2", "Scorpions": "assets/andromeda/albums/scorpions.svg?v=2", "Eiffel 65": "assets/andromeda/albums/eiffel-65.svg?v=2", "The Outfield": "assets/andromeda/albums/the-outfield.svg?v=2", "Madonna": "assets/andromeda/albums/madonna.svg?v=2", "Queen": "assets/andromeda/albums/queen.svg?v=2", "Alan Walker": "assets/andromeda/albums/alan-walker.svg?v=2", "The Notorious B.I.G.": "assets/andromeda/albums/the-notorious-b-i-g.svg?v=2", "George Michael": "assets/andromeda/albums/george-michael.svg?v=2", "Dr. Dre": "assets/andromeda/albums/dr-dre.svg?v=2", "Luis Miguel": "assets/andromeda/albums/luis-miguel.svg?v=2", "Chicago": "assets/andromeda/albums/chicago.svg?v=2", "Lady Gaga": "assets/andromeda/albums/lady-gaga.svg?v=2", "50 Cent": "assets/andromeda/albums/50-cent.svg?v=2", "Wiz Khalifa & Snoop Dogg": "assets/andromeda/albums/wiz-khalifa-snoop-dogg.svg?v=2", "Ice Cube": "assets/andromeda/albums/ice-cube.svg?v=2", "Eminem": "assets/andromeda/albums/eminem.svg?v=2", "Coolio": "assets/andromeda/albums/coolio.svg?v=2", "Snoop Dogg": "assets/andromeda/albums/snoop-dogg.svg?v=2", "2Pac & Pop Smoke": "assets/andromeda/albums/2pac-pop-smoke.svg?v=2", "Wham!": "assets/andromeda/albums/wham.svg?v=2", "Guns N' Roses": "assets/andromeda/albums/axl-rose.svg?v=2"};
       groups.forEach(group => { if (collectionArtwork[group.artist]) group.image = collectionArtwork[group.artist]; });
       const filters = root.querySelector('.sa-filters');
       ['all', ...new Set(groups.map(group => group.genre))].forEach(value => {

@@ -1048,13 +1048,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         exploreCatalogLoading =
-            fetch("explorar.html?v=andromeda-1")
+            fetch("explorar.html?v=andromeda-2")
                 .then(response => {
 
                     if (!response.ok) {
 
                         throw new Error(
-                            "No se pudo cargar explorar.html?v=andromeda-1"
+                            "No se pudo cargar explorar.html?v=andromeda-2"
                         );
 
                     }
