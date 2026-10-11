@@ -1048,13 +1048,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         exploreCatalogLoading =
-            fetch("explorar.html")
+            fetch("explorar.html?v=andromeda-1")
                 .then(response => {
 
                     if (!response.ok) {
 
                         throw new Error(
-                            "No se pudo cargar explorar.html"
+                            "No se pudo cargar explorar.html?v=andromeda-1"
                         );
 
                     }
@@ -3251,7 +3251,7 @@ if (button) {
                     if (authSubtitle) {
 
                         authSubtitle.textContent =
-                            "Únete a SONORA";
+                            "Únete a ANDROMEDA";
 
                     }
 
@@ -3284,7 +3284,7 @@ if (button) {
                     if (authSubtitle) {
 
                         authSubtitle.textContent =
-                            "Entra a tu cuenta de SONORA";
+                            "Entra a tu cuenta de ANDROMEDA";
 
                     }
 
@@ -3439,7 +3439,7 @@ if (button) {
                         if (authMessage) {
 
                             authMessage.textContent =
-                                "¡Bienvenido a SONORA!";
+                                "¡Bienvenido a ANDROMEDA!";
 
                         }
 

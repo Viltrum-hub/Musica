@@ -1,16 +1,16 @@
-# Referencia visual de SONORA
+# Referencia visual de ANDROMEDA
 
 La imagen elegida por el usuario es la referencia fija para futuros cambios visuales del sitio:
 
 ![Referencia aprobada](assets/sonora-design-reference.webp)
 
-- Conservar la identidad futurista de SONORA y la tipografía del sitio.
+- Conservar la identidad futurista de ANDROMEDA y la tipografía del sitio.
 - Inicio: planeta oscuro azul/cian y violeta, órbitas finas y espectro diagonal sobre el globo, siguiendo el panel 01 de la imagen.
 - Mantener una composición limpia y proporcionada. Los efectos musicales deben acompañar el diseño de referencia.
 - Universos: siete planetas distintos, con sus texturas y colores, como en la franja inferior de la imagen.
 - Usar los paneles 02 y 03 como referencia al trabajar Álbumes y Mi biblioteca.
 
-La captura es una referencia de diseño; los textos, artistas y canciones deben corresponder al catálogo real de SONORA.
+La captura es una referencia de diseño; los textos, artistas y canciones deben corresponder al catálogo real de ANDROMEDA.
 
 
 - Celestial: música cristiana, ámbar (#FFB547) y blanco perla (#FFF1D9), textura luminosa de nubes y anillo fino inclinado.
@@ -18,3 +18,11 @@ La captura es una referencia de diseño; los textos, artistas y canciones deben 
 - Rock: conservar la textura volcánica original; escarlata (#FF493F), cobre (#D66B4A) y carbón. Reducir amarillo/naranja para separarlo de Celestial.
 - Las etiquetas temáticas (`data-theme-tags`) complementan el género original: una canción puede ser Rock y pertenecer también a Aurora. No clasificar canciones como cristianas por su título.
 
+
+## Marca ANDROMEDA
+
+- Logo aprobado: Pulsar, una estrella central entre dos arcos.
+- Referencia de marca: `assets/andromeda/pulsar-reference.webp`.
+- Logo principal: `assets/andromeda/logo-principal.svg`; sello: `assets/andromeda/pulsar.svg`; cierre de tráiler: `assets/andromeda/logo-trailer.svg`.
+- Mantener Montserrat y las siete paletas de los universos.
+- Las portadas son composiciones editoriales propias de ANDROMEDA. Las colecciones agrupan el catálogo disponible y no representan discos oficiales.

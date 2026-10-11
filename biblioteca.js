@@ -1,4 +1,4 @@
-/* SONORA Library: the existing account and Supabase tables are the source of truth. */
+/* ANDROMEDA Library: the existing account and Supabase tables are the source of truth. */
 (() => {
   const account = () => window.sonoraAccount;
   const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
@@ -18,7 +18,7 @@
     try { const url = new URL(image || '', document.baseURI); return ['http:','https:'].includes(url.protocol) && image ? image : 'assets/universe-electronic-v2.webp'; } catch { return 'assets/universe-electronic-v2.webp'; }
   };
   const mosaic = songs => {
-    const covers = [...new Set(songs.map(song=>song.image).filter(Boolean))].slice(0,4);
+    const covers = [...new Set(songs.map(song=>catalog.find(item=>item.audio===song.audio)?.image || song.image).filter(Boolean))].slice(0,4);
     if (!covers.length) return '<div class="sl-mosaic"><span class="sl-mosaic-empty"><i class="bi bi-music-note-beamed" aria-hidden="true"></i></span></div>';
     while(covers.length > 1 && covers.length < 4) covers.push(covers[covers.length%2]);
     return `<div class="sl-mosaic">${covers.map(cover=>`<img src="${esc(imageURL(cover))}" alt="" loading="lazy">`).join('')}</div>`;
@@ -29,6 +29,7 @@
     return `<article class="sl-playlist">${mosaic(songs)}<div class="sl-playlist-footer"><div class="sl-playlist-copy"><button type="button" data-library-open="${esc(playlist.id)}">${esc(playlist.name)}</button><p>Playlist · ${countLabel(songs.length)}</p></div><button type="button" class="sl-icon sl-round-play" data-library-playlist="${esc(playlist.id)}" ${songs.length?'':'disabled'} aria-label="Reproducir ${esc(playlist.name)}"><i class="bi bi-play-fill"></i></button><button type="button" class="sl-icon" data-library-open="${esc(playlist.id)}" aria-label="Abrir ${esc(playlist.name)}"><i class="bi bi-three-dots-vertical"></i></button></div></article>`;
   }
   function track(song, index, kind) {
+    song = {...song, image: catalog.find(item => item.audio === song.audio)?.image || song.image};
     const favorite = kind === 'favorites' ? '<button type="button" class="favorite-song-btn is-favorite" aria-label="Quitar de favoritos" aria-pressed="true"><i class="bi bi-heart-fill"></i></button>' : '';
     const remove = kind === 'playlist' ? `<button type="button" class="sl-icon" data-library-remove="${esc(song.id)}" aria-label="Quitar ${esc(song.title)} de esta playlist"><i class="bi bi-dash-lg"></i></button>` : '';
     return `<article class="sl-track ${kind==='favorites'?'explore-song-card':''}" ${songAttrs(song)} data-library-source="${esc(song.audio)}"><img src="${esc(imageURL(song.image))}" alt="" loading="lazy"><div class="sl-track-copy"><h3>${esc(song.title)}</h3><p>${esc(song.artist)}</p></div><span class="sl-track-genre">${esc(song.genre)}</span>${favorite}<button type="button" class="sl-icon" data-library-track="${index}" data-library-kind="${kind}" aria-label="Reproducir ${esc(song.title)}"><i class="bi bi-play-fill"></i></button>${remove}</article>`;
@@ -59,7 +60,7 @@
     } catch (error) {
       if(ticket!==generation) return;
       loadError='No pudimos cargar tu biblioteca. Revisa tu conexión y vuelve a intentar.';
-      console.error('SONORA Biblioteca:',error);
+      console.error('ANDROMEDA Biblioteca:',error);
     } finally {
       if(ticket===generation){loading=false;updateProfile();render();}
     }
@@ -67,13 +68,13 @@
   async function loadCatalog() {
     if(catalogPromise) return catalogPromise;
     catalogPromise=(async()=>{
-      const response=await fetch('explorar.html');if(!response.ok)throw new Error('Catálogo no disponible');
+      const response=await fetch('explorar.html?v=andromeda-1');if(!response.ok)throw new Error('Catálogo no disponible');
       const doc=new DOMParser().parseFromString(await response.text(),'text/html');
       catalog=[...doc.querySelectorAll('.explore-song-card[data-audio]')].map(card=>({...card.dataset}));
       catalog=[...new Map(catalog.map(song=>[song.audio,song])).values()];
-      const artistsResponse=await fetch('artistas.html?v=premium-1');if(!artistsResponse.ok)throw new Error('Artistas no disponibles');
+      const artistsResponse=await fetch('artistas.html?v=andromeda-1');if(!artistsResponse.ok)throw new Error('Artistas no disponibles');
       const artistsDoc=new DOMParser().parseFromString(await artistsResponse.text(),'text/html');
-      following=[...artistsDoc.querySelectorAll('.artist-catalog-card')].map(card=>({id:card.dataset.artistId,name:card.querySelector('h3')?.textContent||'',image:card.querySelector('img')?.getAttribute('src')||'',genre:card.querySelector('.artist-catalog-info>span')?.textContent||'Artista SONORA'}));
+      following=[...artistsDoc.querySelectorAll('.artist-catalog-card')].map(card=>({id:card.dataset.artistId,name:card.querySelector('h3')?.textContent||'',image:card.querySelector('img')?.getAttribute('src')||'',genre:card.querySelector('.artist-catalog-info>span')?.textContent||'Artista ANDROMEDA'}));
     })().catch(error=>{catalogPromise=null;throw error});
     return catalogPromise;
   }

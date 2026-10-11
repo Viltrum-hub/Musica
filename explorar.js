@@ -60,7 +60,7 @@ function initExplorar(initialFilter = "all") {
     if (!audioPlayer) {
 
         console.error(
-            "SONORA: No se encontró #audioPlayer."
+            "ANDROMEDA: No se encontró #audioPlayer."
         );
 
         return;
@@ -342,7 +342,7 @@ function initExplorar(initialFilter = "all") {
         if (!song.audio) {
 
             console.error(
-                "SONORA: La canción no tiene archivo de audio.",
+                "ANDROMEDA: La canción no tiene archivo de audio.",
                 song
             );
 
@@ -424,7 +424,7 @@ function initExplorar(initialFilter = "all") {
         } catch (error) {
 
             console.error(
-                "SONORA: No se pudo reproducir la canción.",
+                "ANDROMEDA: No se pudo reproducir la canción.",
                 error
             );
 
@@ -468,7 +468,7 @@ function initExplorar(initialFilter = "all") {
                     } catch (error) {
 
                         console.error(
-                            "SONORA: No se pudo continuar la reproducción.",
+                            "ANDROMEDA: No se pudo continuar la reproducción.",
                             error
                         );
                     }
@@ -764,7 +764,7 @@ function initExplorar(initialFilter = "all") {
         () => {
 
             console.error(
-                "SONORA: Error al cargar el archivo:",
+                "ANDROMEDA: Error al cargar el archivo:",
                 audioPlayer.src
             );
 
@@ -895,7 +895,7 @@ function initExplorar(initialFilter = "all") {
     const total = document.getElementById("exploreTotal");
     const artistTotal = document.getElementById("exploreArtists");
     if (total) total.textContent = songCards.length;
-    if (artistTotal) artistTotal.textContent = new Set(songs.map(song => song.artist.toLowerCase())).size;
+    if (artistTotal) artistTotal.textContent = new Set(songs.map(song => song.artist.split(" feat.")[0].toLowerCase())).size;
 
     searchInput?.addEventListener("input", () => filterSongs(activeFilter));
     sortSelect?.addEventListener("change", () => {

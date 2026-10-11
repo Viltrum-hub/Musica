@@ -1,0 +1,6 @@
+.navbar-brand {font-family:Montserrat,sans-serif;letter-spacing:.15em;font-size:1.05rem;white-space:nowrap;}
+.logo-icon {background:transparent!important;box-shadow:none!important;border:0!important;flex-shrink:0;}
+.logo-icon img {display:block;width:38px;height:38px;object-fit:contain;}
+.artist-catalog-image img {object-position:center;}
+.explore-song-image img,.sa-cover {object-position:center;}
+@media(max-width:420px){.navbar-brand{font-size:.9rem;letter-spacing:.10em;gap:.4rem!important}.logo-icon img{width:30px;height:30px}}

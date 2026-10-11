@@ -14,9 +14,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const hasTrack = !!audio.getAttribute('src');
     preview.hidden = !hasTrack;
     name.textContent = hasTrack ? title.textContent : 'Encuentra tu próxima canción';
-    subtitle.textContent = hasTrack ? artist.textContent : 'Escucha la selección SONORA';
+    subtitle.textContent = hasTrack ? artist.textContent : 'Escucha la selección ANDROMEDA';
     icon.className = hasTrack && !audio.paused ? 'bi bi-pause-fill' : 'bi bi-play-fill';
-    preview.setAttribute('aria-label', hasTrack && !audio.paused ? 'Pausar canción actual' : hasTrack ? 'Reproducir canción actual' : 'Escuchar selección SONORA');
+    preview.setAttribute('aria-label', hasTrack && !audio.paused ? 'Pausar canción actual' : hasTrack ? 'Reproducir canción actual' : 'Escuchar selección ANDROMEDA');
     const image = hasTrack && cover.querySelector('img');
     if (image) {
       const img = document.createElement('img'); img.src = image.src; img.alt = ''; artwork.replaceChildren(img);

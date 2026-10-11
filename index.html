@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>SONORA | Música que conecta</title>
+    <title>ANDROMEDA | Música que conecta</title>
 
     <!-- =========================
          BOOTSTRAP
@@ -57,7 +57,7 @@
     <link rel="stylesheet" href="reproductor-premium.css?v=1">
 <link rel="stylesheet" href="biblioteca.css?v=1">
 <link rel="stylesheet" href="explorar-premium.css?v=2">
-</head>
+<link rel="stylesheet" href="andromeda-brand.css?v=1"><link rel="icon" href="assets/andromeda/pulsar.svg" type="image/svg+xml"></head>
 
 
 <body>
@@ -82,14 +82,12 @@
             href="#inicio"
         >
 
-            <div class="logo-icon">
-
-                <i class="bi bi-soundwave"></i>
+            <div class="logo-icon"><img src="assets/andromeda/pulsar.svg" alt="" width="38" height="38">
 
             </div>
 
             <span>
-                SONORA
+                ANDROMEDA
             </span>
 
         </a>
@@ -468,9 +466,9 @@
         <svg class="home-sound-ring home-ring-back" viewBox="0 0 600 560" aria-hidden="true"><defs><linearGradient id="ring-back-color" gradientUnits="userSpaceOnUse" x1="0" x2="600"><stop stop-color="var(--primary)"/><stop offset="1" stop-color="var(--secondary)"/></linearGradient></defs><path class="home-ring-path" fill="none" stroke="url(#ring-back-color)" stroke-width="1.5" stroke-linecap="round"/></svg>
         <img class="home-planet-art" src="assets/universe-electronic-v2.webp" alt="Planeta Electronic azul y violeta con ondas de sonido animadas" width="1024" height="1024" fetchpriority="high">
         <svg class="home-sound-ring home-ring-front" viewBox="0 0 600 560" aria-hidden="true"><defs><linearGradient id="ring-front-color" gradientUnits="userSpaceOnUse" x1="0" x2="600"><stop stop-color="var(--primary)"/><stop offset="1" stop-color="var(--secondary)"/></linearGradient><linearGradient id="spectrum-color" gradientUnits="userSpaceOnUse" x1="155" x2="445"><stop stop-color="var(--primary)"/><stop offset="1" stop-color="var(--secondary)"/></linearGradient></defs><path class="home-ring-path" fill="none" stroke="url(#ring-front-color)" stroke-width="1.5" stroke-linecap="round"/><g class="home-orbit-spectrum" stroke="url(#spectrum-color)" stroke-width="2" stroke-linecap="round"/></svg>
-        <button class="home-now-playing" hidden type="button" aria-label="Escuchar selección SONORA">
+        <button class="home-now-playing" hidden type="button" aria-label="Escuchar selección ANDROMEDA">
           <span class="home-now-cover" aria-hidden="true"><i class="bi bi-soundwave"></i></span>
-          <span class="home-now-copy"><strong>Encuentra tu próxima canción</strong><span>Escucha la selección SONORA</span></span>
+          <span class="home-now-copy"><strong>Encuentra tu próxima canción</strong><span>Escucha la selección ANDROMEDA</span></span>
           <span class="home-now-icon" aria-hidden="true"><i class="bi bi-play-fill"></i></span>
         </button>
       </div>
@@ -481,16 +479,16 @@
   <div class="container">
     <div class="home-curated-heading"><h2 id="homeCuratedTitle">Tu siguiente canción</h2><a href="index.html?page=explorar" data-page="explorar">Ver todo <i class="bi bi-arrow-right" aria-hidden="true"></i></a></div>
     <div class="home-track-grid">
-      <article class="album-card home-track" data-title="Every Breath You Take" data-artist="The police" data-audio="Canciones/The police.mpeg" data-image="Imagenes/portada2.png">
-        <div class="album-image"><img src="Imagenes/portada2.png" alt="The Police" loading="lazy"><button class="play-card" type="button" aria-label="Escuchar Every Breath You Take"><i class="bi bi-play-fill" aria-hidden="true"></i></button></div>
+      <article class="album-card home-track" data-title="Every Breath You Take" data-artist="The police" data-audio="Canciones/The police.mpeg" data-image="assets/andromeda/artists/the-police.svg">
+        <div class="album-image"><img src="assets/andromeda/artists/the-police.svg" alt="The Police" loading="lazy"><button class="play-card" type="button" aria-label="Escuchar Every Breath You Take"><i class="bi bi-play-fill" aria-hidden="true"></i></button></div>
         <div class="home-track-info"><h3>The Police</h3><p>Every Breath You Take</p></div>
       </article>
-      <article class="album-card home-track" data-title="Hung Up" data-artist="Madonna" data-audio="Canciones/Madonna - Hung Up (Official Video) [HD] (1).mp3.mpeg" data-image="Imagenes/portada1.png">
-        <div class="album-image"><img src="Imagenes/portada1.png" alt="Madonna" loading="lazy"><button class="play-card" type="button" aria-label="Escuchar Hung Up"><i class="bi bi-play-fill" aria-hidden="true"></i></button></div>
+      <article class="album-card home-track" data-title="Hung Up" data-artist="Madonna" data-audio="Canciones/Madonna - Hung Up (Official Video) [HD] (1).mp3.mpeg" data-image="assets/andromeda/artists/madonna.svg">
+        <div class="album-image"><img src="assets/andromeda/artists/madonna.svg" alt="Madonna" loading="lazy"><button class="play-card" type="button" aria-label="Escuchar Hung Up"><i class="bi bi-play-fill" aria-hidden="true"></i></button></div>
         <div class="home-track-info"><h3>Madonna</h3><p>Hung Up</p></div>
       </article>
-      <article class="album-card home-track" data-title="Sweet Child O' Mine" data-artist="Guns N' Roses" data-audio="Canciones/Guns N' Roses - Sweet Child O' Mine (Official Music Video) - GunsNRosesVEVO.mp3.mpeg" data-image="Imagenes/portada3.png">
-        <div class="album-image"><img src="Imagenes/portada3.png" alt="Guns N' Roses" loading="lazy"><button class="play-card" type="button" aria-label="Escuchar Sweet Child O' Mine"><i class="bi bi-play-fill" aria-hidden="true"></i></button></div>
+      <article class="album-card home-track" data-title="Sweet Child O' Mine" data-artist="Guns N' Roses" data-audio="Canciones/Guns N' Roses - Sweet Child O' Mine (Official Music Video) - GunsNRosesVEVO.mp3.mpeg" data-image="assets/andromeda/artists/axl-rose.svg">
+        <div class="album-image"><img src="assets/andromeda/artists/axl-rose.svg" alt="Guns N' Roses" loading="lazy"><button class="play-card" type="button" aria-label="Escuchar Sweet Child O' Mine"><i class="bi bi-play-fill" aria-hidden="true"></i></button></div>
         <div class="home-track-info"><h3>Guns N' Roses</h3><p>Sweet Child O' Mine</p></div>
       </article>
     </div>
@@ -499,7 +497,7 @@
 
 
 
-<section class="home-universes" aria-labelledby="homeUniversesTitle"><div class="container"><header class="home-universes-header"><h2 id="homeUniversesTitle">Elige tu universo</h2><p>Siete formas de sentir SONORA.</p></header><div class="home-universe-grid"><button class="planet-theme-option home-universe-card" type="button" data-theme="electronic" aria-pressed="false"><span class="theme-planet-orb electronic" aria-hidden="true"></span><span class="universe-copy"><strong>Electronic</strong><small>Cian · Violeta</small></span></button><button class="planet-theme-option home-universe-card" type="button" data-theme="rock" aria-pressed="false"><span class="theme-planet-orb rock" aria-hidden="true"></span><span class="universe-copy"><strong>Rock</strong><small>Escarlata · Cobre</small></span></button><button class="planet-theme-option home-universe-card" type="button" data-theme="pop" aria-pressed="false"><span class="theme-planet-orb pop" aria-hidden="true"></span><span class="universe-copy"><strong>Pop</strong><small>Rosa · Coral</small></span></button><button class="planet-theme-option home-universe-card" type="button" data-theme="jazz" aria-pressed="false"><span class="theme-planet-orb jazz" aria-hidden="true"></span><span class="universe-copy"><strong>Jazz</strong><small>Dorado · Magenta</small></span></button><button class="planet-theme-option home-universe-card" type="button" data-theme="hiphop" aria-pressed="false"><span class="theme-planet-orb hiphop" aria-hidden="true"></span><span class="universe-copy"><strong>Hip Hop</strong><small>Violeta · Índigo</small></span></button><button class="planet-theme-option home-universe-card" type="button" data-theme="celestial" aria-pressed="false" aria-label="Seleccionar Celestial: Fe y esperanza"><span class="theme-planet-orb celestial" aria-hidden="true"></span><span class="universe-copy"><strong>Celestial</strong><small>Fe y esperanza</small></span></button><button class="planet-theme-option home-universe-card" type="button" data-theme="aurora" aria-pressed="false" aria-label="Seleccionar Aurora: Amor y emociones"><span class="theme-planet-orb aurora" aria-hidden="true"></span><span class="universe-copy"><strong>Aurora</strong><small>Amor y emociones</small></span></button></div></div></section>
+<section class="home-universes" aria-labelledby="homeUniversesTitle"><div class="container"><header class="home-universes-header"><h2 id="homeUniversesTitle">Elige tu universo</h2><p>Siete formas de sentir ANDROMEDA.</p></header><div class="home-universe-grid"><button class="planet-theme-option home-universe-card" type="button" data-theme="electronic" aria-pressed="false"><span class="theme-planet-orb electronic" aria-hidden="true"></span><span class="universe-copy"><strong>Electronic</strong><small>Cian · Violeta</small></span></button><button class="planet-theme-option home-universe-card" type="button" data-theme="rock" aria-pressed="false"><span class="theme-planet-orb rock" aria-hidden="true"></span><span class="universe-copy"><strong>Rock</strong><small>Escarlata · Cobre</small></span></button><button class="planet-theme-option home-universe-card" type="button" data-theme="pop" aria-pressed="false"><span class="theme-planet-orb pop" aria-hidden="true"></span><span class="universe-copy"><strong>Pop</strong><small>Rosa · Coral</small></span></button><button class="planet-theme-option home-universe-card" type="button" data-theme="jazz" aria-pressed="false"><span class="theme-planet-orb jazz" aria-hidden="true"></span><span class="universe-copy"><strong>Jazz</strong><small>Dorado · Magenta</small></span></button><button class="planet-theme-option home-universe-card" type="button" data-theme="hiphop" aria-pressed="false"><span class="theme-planet-orb hiphop" aria-hidden="true"></span><span class="universe-copy"><strong>Hip Hop</strong><small>Violeta · Índigo</small></span></button><button class="planet-theme-option home-universe-card" type="button" data-theme="celestial" aria-pressed="false" aria-label="Seleccionar Celestial: Fe y esperanza"><span class="theme-planet-orb celestial" aria-hidden="true"></span><span class="universe-copy"><strong>Celestial</strong><small>Fe y esperanza</small></span></button><button class="planet-theme-option home-universe-card" type="button" data-theme="aurora" aria-pressed="false" aria-label="Seleccionar Aurora: Amor y emociones"><span class="theme-planet-orb aurora" aria-hidden="true"></span><span class="universe-copy"><strong>Aurora</strong><small>Amor y emociones</small></span></button></div></div></section>
     <!-- =================================================
          EXPLORAR
     ================================================== -->
@@ -529,7 +527,7 @@
 
 
                 <a
-                    href="explorar.html"
+                    href="explorar.html?v=andromeda-1"
                     class="see-more"
                     data-page="explorar"
                 >
@@ -685,10 +683,10 @@
         data-title="Every Breath You Take"
         data-artist="The police"
         data-audio="Canciones/The police.mpeg"
-        data-image="Imagenes/portada2.png">
+        data-image="assets/andromeda/artists/the-police.svg">
 
         <div class="album-image">
-            <img src="Imagenes/portada2.png" alt="Every Breath You Take">
+            <img src="assets/andromeda/artists/the-police.svg" alt="Every Breath You Take">
 
             <button class="play-card" type="button">
                 <i class="bi bi-play-fill"></i>
@@ -726,7 +724,7 @@
 
 
                             <img
-                                src="Imagenes/Scorpions.jpg"
+                                src="assets/andromeda/artists/scorpions.svg"
                                 alt="Wind of Change"
                             >
 
@@ -797,7 +795,7 @@
 
 
                             <img
-                                src="Imagenes/blue.webp"
+                                src="assets/andromeda/artists/eiffel-65.svg"
                                 alt="Blue (Da Ba Dee)"
                             >
 
@@ -904,175 +902,25 @@
 
                 <!-- ARTISTA 1 -->
 
-                <div class="col-lg-3 col-md-6">
-
-                    <div class="artist-card">
-
-
-                        <div class="artist-image">
-
-                            <img
-                                src="img/artista1.jpg"
-                                alt="Luna"
-                            >
-
-                        </div>
-
-
-                        <h3>
-                            Luna
-                        </h3>
-
-                        <p>
-                            Pop alternativo
-                        </p>
-
-
-                        <button
-                            class="artist-play"
-                            type="button"
-                            data-page="artistas"
-                            data-artist-id="luna"
-                            aria-label="Ver perfil de Luna"
-                        >
-
-                            <i class="bi bi-arrow-up-right"></i>
-
-                        </button>
-
-
-                    </div>
-
-                </div>
+                <div class="col-lg-3 col-md-6"><div class="artist-card"><div class="artist-image"><img loading="lazy" src="assets/andromeda/artists/eminem.svg" alt="Eminem"></div><h3>Eminem</h3><p>Hip Hop</p><button class="artist-play" type="button" data-page="artistas" data-artist-id="eminem" aria-label="Ver perfil de Eminem"><i class="bi bi-arrow-up-right" aria-hidden="true"></i></button></div></div>
 
 
 
                 <!-- ARTISTA 2 -->
 
-                <div class="col-lg-3 col-md-6">
-
-                    <div class="artist-card">
-
-
-                        <div class="artist-image artist-placeholder">
-
-                            <i class="bi bi-person"></i>
-
-                        </div>
-
-
-                        <h3>
-                            Nova
-                        </h3>
-
-                        <p>
-                            Electrónica
-                        </p>
-
-
-                        <button
-                            class="artist-play"
-                            type="button"
-                            data-page="artistas"
-                            data-artist-id="nova"
-                            aria-label="Ver perfil de Nova"
-                        >
-
-                            <i class="bi bi-arrow-up-right"></i>
-
-                        </button>
-
-
-                    </div>
-
-                </div>
+                <div class="col-lg-3 col-md-6"><div class="artist-card"><div class="artist-image"><img loading="lazy" src="assets/andromeda/artists/luis-miguel.svg" alt="Luis Miguel"></div><h3>Luis Miguel</h3><p>Romántica</p><button class="artist-play" type="button" data-page="artistas" data-artist-id="luis-miguel" aria-label="Ver perfil de Luis Miguel"><i class="bi bi-arrow-up-right" aria-hidden="true"></i></button></div></div>
 
 
 
                 <!-- ARTISTA 3 -->
 
-                <div class="col-lg-3 col-md-6">
-
-                    <div class="artist-card">
-
-
-                        <div class="artist-image artist-placeholder">
-
-                            <i class="bi bi-person"></i>
-
-                        </div>
-
-
-                        <h3>
-                            Echo
-                        </h3>
-
-                        <p>
-                            Indie Rock
-                        </p>
-
-
-                        <button
-                            class="artist-play"
-                            type="button"
-                            data-page="artistas"
-                            data-artist-id="echo"
-                            aria-label="Ver perfil de Echo"
-                        >
-
-                            <i class="bi bi-arrow-up-right"></i>
-
-                        </button>
-
-
-                    </div>
-
-                </div>
+                <div class="col-lg-3 col-md-6"><div class="artist-card"><div class="artist-image"><img loading="lazy" src="assets/andromeda/artists/lady-gaga.svg" alt="Lady Gaga"></div><h3>Lady Gaga</h3><p>Pop</p><button class="artist-play" type="button" data-page="artistas" data-artist-id="lady-gaga" aria-label="Ver perfil de Lady Gaga"><i class="bi bi-arrow-up-right" aria-hidden="true"></i></button></div></div>
 
 
 
                 <!-- ARTISTA 4 -->
 
-                <div class="col-lg-3 col-md-6">
-
-                    <div class="artist-card">
-
-
-                        <div class="artist-image">
-
-                            <img
-                                src="Imagenes/blue.webp"
-                                alt="Eiffel 65"
-                            >
-
-                        </div>
-
-
-                        <h3>
-                            Eiffel 65
-                        </h3>
-
-                        <p>
-                            Electrónica · Eurodance
-                        </p>
-
-
-                        <button
-                            class="artist-play"
-                            type="button"
-                            data-page="artistas"
-                            data-artist-id="eiffel-65"
-                            aria-label="Ver perfil de Eiffel 65"
-                        >
-
-                            <i class="bi bi-arrow-up-right"></i>
-
-                        </button>
-
-
-                    </div>
-
-                </div>
+                <div class="col-lg-3 col-md-6"><div class="artist-card"><div class="artist-image"><img loading="lazy" src="assets/andromeda/artists/eiffel-65.svg" alt="Eiffel 65"></div><h3>Eiffel 65</h3><p>Electrónica</p><button class="artist-play" type="button" data-page="artistas" data-artist-id="eiffel-65" aria-label="Ver perfil de Eiffel 65"><i class="bi bi-arrow-up-right" aria-hidden="true"></i></button></div></div>
 
 
             </div>
@@ -1165,14 +1013,12 @@
                 <a class="navbar-brand footer-brand">
 
 
-                    <div class="logo-icon">
-
-                        <i class="bi bi-soundwave"></i>
+                    <div class="logo-icon"><img src="assets/andromeda/pulsar.svg" alt="" width="38" height="38">
 
                     </div>
 
 
-                    SONORA
+                    ANDROMEDA
 
 
                 </a>
@@ -1219,7 +1065,7 @@
 
 
             <span>
-                © 2026 SONORA
+                © 2026 ANDROMEDA
             </span>
 
 
@@ -1253,7 +1099,7 @@
 
     <div>
         <h4 id="playerTitle">Selecciona una canción</h4>
-        <span id="playerArtist">SONORA</span>
+        <span id="playerArtist">ANDROMEDA</span>
     </div>
 </div>
 
@@ -1445,11 +1291,11 @@
      JAVASCRIPT EXPLORAR
 ===================================================== -->
 
-<script src="explorar.js?v=premium-2"></script>
+<script src="explorar.js?v=andromeda-1"></script>
 
 <!-- JAVASCRIPT ARTISTAS -->
-<script src="artistas.js?v=library-1"></script>
-<script src="albumes.js?v=seven-worlds-1"></script>
+<script src="artistas.js?v=andromeda-1"></script>
+<script src="albumes.js?v=andromeda-1"></script>
 <script src="inicio-premium.js?v=7"></script>
 
 
@@ -1496,7 +1342,7 @@
 
 
             <p id="authSubtitle">
-                Entra a tu cuenta de SONORA
+                Entra a tu cuenta de ANDROMEDA
             </p>
 
 
@@ -2490,14 +2336,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const response =
                 await fetch(
-                    "explorar.html?v=premium-1"
+                    "explorar.html?v=andromeda-1"
                 );
 
 
             if (!response.ok) {
 
                 throw new Error(
-                    "No se pudo cargar explorar.html"
+                    "No se pudo cargar explorar.html?v=andromeda-1"
                 );
 
             }
@@ -2585,7 +2431,7 @@ if (typeof initExplorar === "function") {
 
             /*
                IMPORTANTE:
-               Ya NO usamos explorar.html
+               Ya NO usamos explorar.html?v=andromeda-1
                como URL del navegador.
 
                Al actualizar se volverá a cargar
@@ -2623,7 +2469,7 @@ if (typeof initExplorar === "function") {
 
     async function loadLibrary(updateHistory = true, playlist = "") {
         try {
-            const response = await fetch("biblioteca.html?v=1");
+            const response = await fetch("biblioteca.html?v=andromeda-1");
             if (!response.ok) throw new Error("No se pudo cargar Biblioteca");
             const doc = new DOMParser().parseFromString(await response.text(), "text/html");
             const page = doc.querySelector(".sonora-library");
@@ -2648,7 +2494,7 @@ if (typeof initExplorar === "function") {
 
     async function loadAlbums(updateHistory = true) {
         try {
-            const response = await fetch("albumes.html?v=seven-worlds-1");
+            const response = await fetch("albumes.html?v=andromeda-1");
             if (!response.ok) throw new Error("No se pudo cargar Álbumes");
             const doc = new DOMParser().parseFromString(await response.text(), "text/html");
             const page = doc.querySelector(".sonora-albums");
@@ -2677,10 +2523,10 @@ if (typeof initExplorar === "function") {
 
         try {
 
-            const response = await fetch("artistas.html?v=premium-1");
+            const response = await fetch("artistas.html?v=andromeda-1");
 
             if (!response.ok) {
-                throw new Error("No se pudo cargar artistas.html");
+                throw new Error("No se pudo cargar artistas.html?v=andromeda-1");
             }
 
             const html = await response.text();
@@ -3052,6 +2898,6 @@ if (typeof initExplorar === "function") {
 
 <script src="reproductor-premium.js?v=1"></script>
 
-<script src="biblioteca.js?v=1"></script>
+<script src="biblioteca.js?v=andromeda-1"></script>
 
 

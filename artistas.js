@@ -20,135 +20,611 @@ function initArtistas(options = {}) {
     ======================================== */
 
     const artistProfiles = {
-        "the-police": {
-            name: "The Police",
-            genre: "Rock · New Wave",
-            image: "Imagenes/portada2.png",
-            bio: "El trío británico unió rock, reggae y new wave con una identidad propia. Sus melodías tensas, ritmos precisos y la voz de Sting marcaron el sonido de finales de los setenta y los ochenta.",
-            tags: ["Reino Unido", "Desde 1977", "6 Grammy"],
-
-            track: {
-                title: "Every Breath You Take",
-                audio: "Canciones/The police.mpeg",
-                image: "Imagenes/portada2.png"
+    "the-police": {
+        "name": "The Police",
+        "genre": "Rock · New Wave",
+        "image": "assets/andromeda/artists/the-police.svg",
+        "bio": "El trío británico unió rock, reggae y new wave con una identidad propia. Sus melodías tensas, ritmos precisos y la voz de Sting marcaron el sonido de finales de los setenta y los ochenta.",
+        "tags": [
+            "Reino Unido",
+            "Desde 1977",
+            "6 Grammy"
+        ],
+        "tracks": [
+            {
+                "title": "Every Breath You Take",
+                "artist": "The police",
+                "audio": "Canciones/The police.mpeg",
+                "image": "assets/andromeda/songs/the-police-every-breath-you-take.svg"
             }
-        },
-
-        "scorpions": {
-            name: "Scorpions",
-            genre: "Rock · Hard Rock",
-            image: "Imagenes/Scorpions.jpg",
-            bio: "Una de las bandas de rock más influyentes de Alemania. Sus guitarras poderosas y grandes baladas convirtieron su música en un puente entre generaciones.",
-            tags: ["Alemania", "Desde 1965", "Hard Rock"],
-
-            track: {
-                title: "Wind of Change",
-                audio: "Canciones/Scorpions.mpeg",
-                image: "Imagenes/Scorpions.jpg"
+        ]
+    },
+    "scorpions": {
+        "name": "Scorpions",
+        "genre": "Rock · Hard Rock",
+        "image": "assets/andromeda/artists/scorpions.svg",
+        "bio": "Una de las bandas de rock más influyentes de Alemania. Sus guitarras poderosas y grandes baladas convirtieron su música en un puente entre generaciones.",
+        "tags": [
+            "Alemania",
+            "Desde 1965",
+            "Hard Rock"
+        ],
+        "tracks": [
+            {
+                "title": "Wind of Change",
+                "artist": "Scorpions",
+                "audio": "Canciones/Scorpions.mpeg",
+                "image": "assets/andromeda/songs/scorpions-wind-of-change.svg"
+            },
+            {
+                "title": "Still Loving You",
+                "artist": "Scorpions",
+                "audio": "Canciones/scorpions-still-loving-you.mp3",
+                "image": "assets/andromeda/songs/scorpions-still-loving-you.svg"
+            },
+            {
+                "title": "Rock You Like a Hurricane",
+                "artist": "Scorpions",
+                "audio": "Canciones/scorpions-rock-you-like-a-hurricane.mp3",
+                "image": "assets/andromeda/songs/scorpions-rock-you-like-a-hurricane.svg"
             }
-        },
-
-        "madonna": {
-            name: "Madonna",
-            genre: "Pop · Dance Pop",
-            image: "Imagenes/portada1.png",
-            bio: "Una de las figuras más influyentes del pop, Madonna ha construido una carrera marcada por la reinvención constante, la música dance y una identidad visual que ha acompañado distintas generaciones.",
-            tags: [
-                "Estados Unidos",
-                "Desde 1979",
-                "Pop"
-            ],
-
-            track: {
-                title: "Hung Up",
-                audio: "Canciones/Madonna - Hung Up (Official Video) [HD] (1).mp3.mpeg",
-                image: "Imagenes/portada1.png"
+        ]
+    },
+    "eiffel-65": {
+        "name": "Eiffel 65",
+        "genre": "Electrónica",
+        "image": "assets/andromeda/artists/eiffel-65.svg",
+        "bio": "Explora la selección de Eiffel 65 en ANDROMEDA. Sus canciones disponibles se reúnen aquí para escucharlas, guardarlas y volver a ellas.",
+        "tags": [
+            "Electrónica",
+            "1 canciones"
+        ],
+        "tracks": [
+            {
+                "title": "Blue (Da Ba Dee)",
+                "artist": "Eiffel 65",
+                "audio": "Canciones/65.mpeg",
+                "image": "assets/andromeda/songs/eiffel-65-blue-da-ba-dee.svg"
             }
-        },
-
-        "axl-rose": {
-            name: "Axl Rose",
-            genre: "Rock · Hard Rock",
-            image: "Imagenes/portada3.png",
-
-            bio: "Voz principal de Guns N' Roses y una de las figuras más reconocibles del hard rock. Su potencia vocal, presencia escénica y estilo convirtieron al grupo en un referente mundial.",
-
-            tags: [
-                "Estados Unidos",
-                "Guns N' Roses",
-                "Hard Rock"
-            ],
-
-            tracks: [
-                {
-                    title: "Sweet Child O' Mine",
-                    artist: "Guns N' Roses",
-                    audio: "Canciones/Guns N' Roses - Sweet Child O' Mine (Official Music Video) - GunsNRosesVEVO.mp3.mpeg",
-                    image: "Imagenes/portada3.png"
-                },
-                {
-                    title: "November Rain",
-                    artist: "Guns N' Roses",
-                    audio: "Canciones/Guns N' Roses - November Rain - GunsNRosesVEVO.mp3.mpeg",
-                    image: "Imagenes/Gun.jpg"
-                },
-                {
-                    title: "Welcome To The Jungle",
-                    artist: "Guns N' Roses",
-                    audio: "Canciones/Guns N' Roses - Welcome To The Jungle (1).mp3.mpeg",
-                    image: "Imagenes/Gun2.jpg"
-                },
-                {
-                    title: "Paradise City",
-                    artist: "Guns N' Roses",
-                    audio: "Canciones/Guns N' Roses - Paradise City (Official Music Video) (1).mp3.mpeg",
-                    image: "Imagenes/Gun2.jpg"
-                },
-                {
-                    title: "Don't Cry",
-                    artist: "Guns N' Roses",
-                    audio: "Canciones/Guns N' Roses - Don't Cry (Lyrics) (1).mp3.mpeg",
-                    image: "Imagenes/Gun.jpg"
-                },
-                {
-                    title: "Patience",
-                    artist: "Guns N' Roses",
-                    audio: "Canciones/Guns N' Roses - Patience (1).mp3.mpeg",
-                    image: "Imagenes/Gun.jpg"
-                },
-                {
-                    title: "Knockin' On Heaven's Door",
-                    artist: "Guns N' Roses",
-                    audio: "Canciones/Guns N' Roses - Knockin' On Heaven's Door (Visualizer).mp3.mpeg",
-                    image: "Imagenes/Gun.jpg"
-                }
-            ]
-        },
-
-        "luna": {
-            name: "Luna",
-            genre: "Pop alternativo",
-            initial: "L",
-            bio: "Luna convierte emociones íntimas en paisajes de pop alternativo, combinando voces cercanas, sintetizadores suaves y letras nocturnas.",
-            tags: ["Pop", "Alternativo", "Artista emergente"]
-        },
-
-        "nova": {
-            name: "Nova",
-            genre: "Electrónica · Ambient",
-            initial: "N",
-            bio: "Nova construye mundos electrónicos donde conviven pulsos de club, texturas ambientales y una sensibilidad cinematográfica.",
-            tags: ["Electrónica", "Ambient", "Productora"]
-        },
-
-        "echo": {
-            name: "Echo",
-            genre: "Indie Rock",
-            initial: "E",
-            bio: "Echo apuesta por guitarras expansivas, ritmos directos y estribillos que mezclan nostalgia con energía contemporánea.",
-            tags: ["Indie", "Rock", "Nueva escena"]
-        }
-    };
+        ]
+    },
+    "the-outfield": {
+        "name": "The Outfield",
+        "genre": "Rock",
+        "image": "assets/andromeda/artists/the-outfield.svg",
+        "bio": "Explora la selección de The Outfield en ANDROMEDA. Sus canciones disponibles se reúnen aquí para escucharlas, guardarlas y volver a ellas.",
+        "tags": [
+            "Rock",
+            "3 canciones"
+        ],
+        "tracks": [
+            {
+                "title": "Your Love",
+                "artist": "The Outfield",
+                "audio": "Canciones/The Outfield - Your Love.mp3.mpeg",
+                "image": "assets/andromeda/songs/the-outfield-your-love.svg"
+            },
+            {
+                "title": "Say It Isn't So",
+                "artist": "The Outfield",
+                "audio": "Canciones/The Outfield - Say It Isn't So (1).mp3.mpeg",
+                "image": "assets/andromeda/songs/the-outfield-say-it-isn-t-so.svg"
+            },
+            {
+                "title": "All The Love In The World",
+                "artist": "The Outfield",
+                "audio": "Canciones/The Outfield - All The Love In The World (1).mp3.mpeg",
+                "image": "assets/andromeda/songs/the-outfield-all-the-love-in-the-world.svg"
+            }
+        ]
+    },
+    "madonna": {
+        "name": "Madonna",
+        "genre": "Pop · Dance Pop",
+        "image": "assets/andromeda/artists/madonna.svg",
+        "bio": "Una de las figuras más influyentes del pop, Madonna ha construido una carrera marcada por la reinvención constante, la música dance y una identidad visual que ha acompañado distintas generaciones.",
+        "tags": [
+            "Estados Unidos",
+            "Desde 1979",
+            "Pop"
+        ],
+        "tracks": [
+            {
+                "title": "Like A Virgin",
+                "artist": "Madonna",
+                "audio": "Canciones/Madonna  - Like A Virgin (Lyrics) (1).mp3.mpeg",
+                "image": "assets/andromeda/songs/madonna-like-a-virgin.svg"
+            },
+            {
+                "title": "Hung Up",
+                "artist": "Madonna",
+                "audio": "Canciones/Madonna - Hung Up (Official Video) [HD] (1).mp3.mpeg",
+                "image": "assets/andromeda/songs/madonna-hung-up.svg"
+            },
+            {
+                "title": "Like a Prayer",
+                "artist": "Madonna",
+                "audio": "Canciones/Madonna - Like a Prayer (7  Version) (1).mp3.mpeg",
+                "image": "assets/andromeda/songs/madonna-like-a-prayer.svg"
+            },
+            {
+                "title": "Material Girl",
+                "artist": "Madonna",
+                "audio": "Canciones/Madonna - Material Girl (1).mp3.mpeg",
+                "image": "assets/andromeda/songs/madonna-material-girl.svg"
+            }
+        ]
+    },
+    "queen": {
+        "name": "Queen",
+        "genre": "Rock",
+        "image": "assets/andromeda/artists/queen.svg",
+        "bio": "Explora la selección de Queen en ANDROMEDA. Sus canciones disponibles se reúnen aquí para escucharlas, guardarlas y volver a ellas.",
+        "tags": [
+            "Rock",
+            "5 canciones"
+        ],
+        "tracks": [
+            {
+                "title": "Another One Bites the Dust",
+                "artist": "Queen",
+                "audio": "Canciones/Queen - Another One Bites the Dust (Official Video Remastered) (1).mp3.mpeg",
+                "image": "assets/andromeda/songs/queen-another-one-bites-the-dust.svg"
+            },
+            {
+                "title": "Don't Stop Me Now",
+                "artist": "Queen",
+                "audio": "Canciones/Queen - Don't Stop Me Now (Official Video) (1).mp3.mpeg",
+                "image": "assets/andromeda/songs/queen-don-t-stop-me-now.svg"
+            },
+            {
+                "title": "We Are The Champions",
+                "artist": "Queen",
+                "audio": "Canciones/Queen - We Are The Champions (Official Video Remastered) (1).mp3.mpeg",
+                "image": "assets/andromeda/songs/queen-we-are-the-champions.svg"
+            },
+            {
+                "title": "We Will Rock You",
+                "artist": "Queen",
+                "audio": "Canciones/Queen - We Will Rock You (Lyrics) (1).mp3.mpeg",
+                "image": "assets/andromeda/songs/queen-we-will-rock-you.svg"
+            },
+            {
+                "title": "Bohemian Rhapsody",
+                "artist": "Queen",
+                "audio": "Canciones/Queen – Bohemian Rhapsody (Official Video Remastered) (1).mp3.mpeg",
+                "image": "assets/andromeda/songs/queen-bohemian-rhapsody.svg"
+            }
+        ]
+    },
+    "alan-walker": {
+        "name": "Alan Walker",
+        "genre": "Electrónica",
+        "image": "assets/andromeda/artists/alan-walker.svg",
+        "bio": "Explora la selección de Alan Walker en ANDROMEDA. Sus canciones disponibles se reúnen aquí para escucharlas, guardarlas y volver a ellas.",
+        "tags": [
+            "Electrónica",
+            "4 canciones"
+        ],
+        "tracks": [
+            {
+                "title": "Alone",
+                "artist": "Alan Walker",
+                "audio": "Canciones/Alan Walker - Alone (1).mp3.mpeg",
+                "image": "assets/andromeda/songs/alan-walker-alone.svg"
+            },
+            {
+                "title": "Faded",
+                "artist": "Alan Walker",
+                "audio": "Canciones/Alan Walker - Faded (1).mp3.mpeg",
+                "image": "assets/andromeda/songs/alan-walker-faded.svg"
+            },
+            {
+                "title": "Sing Me To Sleep",
+                "artist": "Alan Walker",
+                "audio": "Canciones/Alan Walker - Sing Me To Sleep (1).mp3.mpeg",
+                "image": "assets/andromeda/songs/alan-walker-sing-me-to-sleep.svg"
+            },
+            {
+                "title": "The Spectre",
+                "artist": "Alan Walker",
+                "audio": "Canciones/Alan Walker - The Spectre (1).mp3.mpeg",
+                "image": "assets/andromeda/songs/alan-walker-the-spectre.svg"
+            }
+        ]
+    },
+    "the-notorious-b-i-g": {
+        "name": "The Notorious B.I.G.",
+        "genre": "Hip Hop",
+        "image": "assets/andromeda/artists/the-notorious-b-i-g.svg",
+        "bio": "Narración, cadencia y una voz profunda que dejó huella en el hip hop.",
+        "tags": [
+            "Hip Hop",
+            "1 canciones"
+        ],
+        "tracks": [
+            {
+                "title": "Big Poppa",
+                "artist": "The Notorious B.I.G.",
+                "audio": "Canciones/the-notorious-b-i-g-big-poppa.mp3",
+                "image": "assets/andromeda/songs/the-notorious-b-i-g-big-poppa.svg"
+            }
+        ]
+    },
+    "george-michael": {
+        "name": "George Michael",
+        "genre": "Pop",
+        "image": "assets/andromeda/artists/george-michael.svg",
+        "bio": "Una voz expresiva que conecta el pop con el soul y las baladas.",
+        "tags": [
+            "Pop",
+            "1 canciones"
+        ],
+        "tracks": [
+            {
+                "title": "Careless Whisper",
+                "artist": "George Michael",
+                "audio": "Canciones/george-michael-careless-whisper.mp3",
+                "image": "assets/andromeda/songs/george-michael-careless-whisper.svg"
+            }
+        ]
+    },
+    "dr-dre": {
+        "name": "Dr. Dre",
+        "genre": "Hip Hop",
+        "image": "assets/andromeda/artists/dr-dre.svg",
+        "bio": "Ritmos de la Costa Oeste y una producción que acompaña algunas de las voces más reconocidas del hip hop.",
+        "tags": [
+            "Hip Hop",
+            "1 canciones"
+        ],
+        "tracks": [
+            {
+                "title": "Still D.R.E.",
+                "artist": "Dr. Dre feat. Snoop Dogg",
+                "audio": "Canciones/dr-dre-still-d-r-e.mp3",
+                "image": "assets/andromeda/songs/dr-dre-still-d-r-e.svg"
+            }
+        ]
+    },
+    "luis-miguel": {
+        "name": "Luis Miguel",
+        "genre": "Romántica",
+        "image": "assets/andromeda/artists/luis-miguel.svg",
+        "bio": "Baladas, boleros y pop en español reunidos alrededor de una voz reconocible entre generaciones.",
+        "tags": [
+            "Romántica",
+            "5 canciones"
+        ],
+        "tracks": [
+            {
+                "title": "Sabor a Mí",
+                "artist": "Luis Miguel",
+                "audio": "Canciones/luis-miguel-sabor-a-mi.mp3",
+                "image": "assets/andromeda/songs/luis-miguel-sabor-a-mi.svg"
+            },
+            {
+                "title": "Ahora te puedes marchar",
+                "artist": "Luis Miguel",
+                "audio": "Canciones/luis-miguel-ahora-te-puedes-marchar.mp3",
+                "image": "assets/andromeda/songs/luis-miguel-ahora-te-puedes-marchar.svg"
+            },
+            {
+                "title": "La Incondicional",
+                "artist": "Luis Miguel",
+                "audio": "Canciones/luis-miguel-la-incondicional.mp3",
+                "image": "assets/andromeda/songs/luis-miguel-la-incondicional.svg"
+            },
+            {
+                "title": "Culpable o no (Miénteme como siempre)",
+                "artist": "Luis Miguel",
+                "audio": "Canciones/luis-miguel-culpable-o-no-mienteme-como-siempre.mp3",
+                "image": "assets/andromeda/songs/luis-miguel-culpable-o-no-mienteme-como-siempre.svg"
+            },
+            {
+                "title": "La mentira",
+                "artist": "Luis Miguel",
+                "audio": "Canciones/luis-miguel-la-mentira.mp3",
+                "image": "assets/andromeda/songs/luis-miguel-la-mentira.svg"
+            }
+        ]
+    },
+    "chicago": {
+        "name": "Chicago",
+        "genre": "Rock",
+        "image": "assets/andromeda/artists/chicago.svg",
+        "bio": "Arreglos melódicos y baladas de rock para escuchar con calma.",
+        "tags": [
+            "Rock",
+            "1 canciones"
+        ],
+        "tracks": [
+            {
+                "title": "Hard to Say I’m Sorry",
+                "artist": "Chicago",
+                "audio": "Canciones/chicago-hard-to-say-im-sorry.mp3",
+                "image": "assets/andromeda/songs/chicago-hard-to-say-im-sorry.svg"
+            }
+        ]
+    },
+    "lady-gaga": {
+        "name": "Lady Gaga",
+        "genre": "Pop",
+        "image": "assets/andromeda/artists/lady-gaga.svg",
+        "bio": "Pop, dance y una identidad artística marcada por la teatralidad y la reinvención.",
+        "tags": [
+            "Pop",
+            "4 canciones"
+        ],
+        "tracks": [
+            {
+                "title": "Paparazzi",
+                "artist": "Lady Gaga",
+                "audio": "Canciones/lady-gaga-paparazzi.mp3",
+                "image": "assets/andromeda/songs/lady-gaga-paparazzi.svg"
+            },
+            {
+                "title": "Poker Face",
+                "artist": "Lady Gaga",
+                "audio": "Canciones/lady-gaga-poker-face.mp3",
+                "image": "assets/andromeda/songs/lady-gaga-poker-face.svg"
+            },
+            {
+                "title": "Bad Romance",
+                "artist": "Lady Gaga",
+                "audio": "Canciones/lady-gaga-bad-romance.mp3",
+                "image": "assets/andromeda/songs/lady-gaga-bad-romance.svg"
+            },
+            {
+                "title": "Just Dance",
+                "artist": "Lady Gaga feat. Colby O’Donis",
+                "audio": "Canciones/lady-gaga-just-dance.mp3",
+                "image": "assets/andromeda/songs/lady-gaga-just-dance.svg"
+            }
+        ]
+    },
+    "50-cent": {
+        "name": "50 Cent",
+        "genre": "Hip Hop",
+        "image": "assets/andromeda/artists/50-cent.svg",
+        "bio": "Rap de pulso directo, estribillos reconocibles y el sonido de club de sus grandes éxitos.",
+        "tags": [
+            "Hip Hop",
+            "4 canciones"
+        ],
+        "tracks": [
+            {
+                "title": "Candy Shop",
+                "artist": "50 Cent feat. Olivia",
+                "audio": "Canciones/50-cent-candy-shop.mp3",
+                "image": "assets/andromeda/songs/50-cent-candy-shop.svg"
+            },
+            {
+                "title": "P.I.M.P.",
+                "artist": "50 Cent",
+                "audio": "Canciones/50-cent-p-i-m-p.mp3",
+                "image": "assets/andromeda/songs/50-cent-p-i-m-p.svg"
+            },
+            {
+                "title": "21 Questions",
+                "artist": "50 Cent feat. Nate Dogg",
+                "audio": "Canciones/50-cent-21-questions.mp3",
+                "image": "assets/andromeda/songs/50-cent-21-questions.svg"
+            },
+            {
+                "title": "In Da Club",
+                "artist": "50 Cent",
+                "audio": "Canciones/50-cent-in-da-club.mp3",
+                "image": "assets/andromeda/songs/50-cent-in-da-club.svg"
+            }
+        ]
+    },
+    "wiz-khalifa-snoop-dogg": {
+        "name": "Wiz Khalifa & Snoop Dogg",
+        "genre": "Hip Hop",
+        "image": "assets/andromeda/artists/wiz-khalifa-snoop-dogg.svg",
+        "bio": "Dos voces unidas por un flow relajado y una atmósfera de hip hop de la Costa Oeste.",
+        "tags": [
+            "Hip Hop",
+            "1 canciones"
+        ],
+        "tracks": [
+            {
+                "title": "That Good",
+                "artist": "Wiz Khalifa & Snoop Dogg",
+                "audio": "Canciones/wiz-khalifa-snoop-dogg-that-good.mp3",
+                "image": "assets/andromeda/songs/wiz-khalifa-snoop-dogg-that-good.svg"
+            }
+        ]
+    },
+    "ice-cube": {
+        "name": "Ice Cube",
+        "genre": "Hip Hop",
+        "image": "assets/andromeda/artists/ice-cube.svg",
+        "bio": "Un referente del hip hop de la Costa Oeste, con relatos urbanos y una presencia vocal inconfundible.",
+        "tags": [
+            "Hip Hop",
+            "2 canciones"
+        ],
+        "tracks": [
+            {
+                "title": "It Was a Good Day",
+                "artist": "Ice Cube",
+                "audio": "Canciones/ice-cube-it-was-a-good-day.mp3",
+                "image": "assets/andromeda/songs/ice-cube-it-was-a-good-day.svg"
+            },
+            {
+                "title": "You Know How We Do It",
+                "artist": "Ice Cube",
+                "audio": "Canciones/ice-cube-you-know-how-we-do-it.mp3",
+                "image": "assets/andromeda/songs/ice-cube-you-know-how-we-do-it.svg"
+            }
+        ]
+    },
+    "eminem": {
+        "name": "Eminem",
+        "genre": "Hip Hop",
+        "image": "assets/andromeda/artists/eminem.svg",
+        "bio": "Una voz incisiva y un estilo de rap que combina energía, narración y juegos de palabras.",
+        "tags": [
+            "Hip Hop",
+            "4 canciones"
+        ],
+        "tracks": [
+            {
+                "title": "Superman",
+                "artist": "Eminem feat. Dina Rae",
+                "audio": "Canciones/eminem-superman.mp3",
+                "image": "assets/andromeda/songs/eminem-superman.svg"
+            },
+            {
+                "title": "Lose Yourself",
+                "artist": "Eminem",
+                "audio": "Canciones/eminem-lose-yourself.mp3",
+                "image": "assets/andromeda/songs/eminem-lose-yourself.svg"
+            },
+            {
+                "title": "Stan",
+                "artist": "Eminem feat. Dido",
+                "audio": "Canciones/eminem-stan.mp3",
+                "image": "assets/andromeda/songs/eminem-stan.svg"
+            },
+            {
+                "title": "The Real Slim Shady",
+                "artist": "Eminem",
+                "audio": "Canciones/eminem-the-real-slim-shady.mp3",
+                "image": "assets/andromeda/songs/eminem-the-real-slim-shady.svg"
+            }
+        ]
+    },
+    "coolio": {
+        "name": "Coolio",
+        "genre": "Hip Hop",
+        "image": "assets/andromeda/artists/coolio.svg",
+        "bio": "Rap melódico y relatos urbanos presentes en esta selección de ANDROMEDA.",
+        "tags": [
+            "Hip Hop",
+            "1 canciones"
+        ],
+        "tracks": [
+            {
+                "title": "Gangsta’s Paradise",
+                "artist": "Coolio feat. L.V.",
+                "audio": "Canciones/coolio-gangstas-paradise.mp3",
+                "image": "assets/andromeda/songs/coolio-gangstas-paradise.svg"
+            }
+        ]
+    },
+    "snoop-dogg": {
+        "name": "Snoop Dogg",
+        "genre": "Hip Hop",
+        "image": "assets/andromeda/artists/snoop-dogg.svg",
+        "bio": "Flow relajado, ritmos de la Costa Oeste y colaboraciones llenas de personalidad.",
+        "tags": [
+            "Hip Hop",
+            "1 canciones"
+        ],
+        "tracks": [
+            {
+                "title": "Drop It Like It’s Hot",
+                "artist": "Snoop Dogg feat. Pharrell Williams",
+                "audio": "Canciones/snoop-dogg-drop-it-like-its-hot.mp3",
+                "image": "assets/andromeda/songs/snoop-dogg-drop-it-like-its-hot.svg"
+            }
+        ]
+    },
+    "2pac-pop-smoke": {
+        "name": "2Pac & Pop Smoke",
+        "genre": "Hip Hop",
+        "image": "assets/andromeda/artists/2pac-pop-smoke.svg",
+        "bio": "Mashup de Thug Theory con 2Pac, Pop Smoke, Biggie, DMX, Eazy-E, Ice Cube, Dr. Dre, N.W.A., Nipsey Hussle y Snoop Dogg.",
+        "tags": [
+            "Hip Hop",
+            "1 canciones"
+        ],
+        "tracks": [
+            {
+                "title": "Write This Down (Mashup)",
+                "artist": "2Pac & Pop Smoke",
+                "audio": "Canciones/2pac-pop-smoke-write-this-down-mashup.mp3",
+                "image": "assets/andromeda/songs/2pac-pop-smoke-write-this-down-mashup.svg"
+            }
+        ]
+    },
+    "wham": {
+        "name": "Wham!",
+        "genre": "Pop",
+        "image": "assets/andromeda/artists/wham.svg",
+        "bio": "Pop luminoso y melodías que siguen acompañando distintas generaciones.",
+        "tags": [
+            "Pop",
+            "1 canciones"
+        ],
+        "tracks": [
+            {
+                "title": "Last Christmas",
+                "artist": "Wham!",
+                "audio": "Canciones/wham-last-christmas.mp3",
+                "image": "assets/andromeda/songs/wham-last-christmas.svg"
+            }
+        ]
+    },
+    "axl-rose": {
+        "name": "Axl Rose",
+        "genre": "Rock · Hard Rock",
+        "image": "assets/andromeda/artists/axl-rose.svg",
+        "bio": "Voz principal de Guns N' Roses y una de las figuras más reconocibles del hard rock. Su potencia vocal, presencia escénica y estilo convirtieron al grupo en un referente mundial.",
+        "tags": [
+            "Estados Unidos",
+            "Guns N' Roses",
+            "Hard Rock"
+        ],
+        "tracks": [
+            {
+                "title": "Knockin' On Heaven's Door",
+                "artist": "Guns N' Roses",
+                "audio": "Canciones/Guns N' Roses - Knockin' On Heaven's Door (Visualizer).mp3.mpeg",
+                "image": "assets/andromeda/songs/guns-n-roses-knockin-on-heaven-s-door.svg"
+            },
+            {
+                "title": "Don't Cry",
+                "artist": "Guns N' Roses",
+                "audio": "Canciones/Guns N' Roses - Don't Cry (Lyrics) (1).mp3.mpeg",
+                "image": "assets/andromeda/songs/guns-n-roses-don-t-cry.svg"
+            },
+            {
+                "title": "Sweet Child O' Mine",
+                "artist": "Guns N' Roses",
+                "audio": "Canciones/Guns N' Roses - Sweet Child O' Mine (Official Music Video) - GunsNRosesVEVO.mp3.mpeg",
+                "image": "assets/andromeda/songs/guns-n-roses-sweet-child-o-mine.svg"
+            },
+            {
+                "title": "November Rain",
+                "artist": "Guns N' Roses",
+                "audio": "Canciones/Guns N' Roses - November Rain - GunsNRosesVEVO.mp3.mpeg",
+                "image": "assets/andromeda/songs/guns-n-roses-november-rain.svg"
+            },
+            {
+                "title": "Welcome To The Jungle",
+                "artist": "Guns N' Roses",
+                "audio": "Canciones/Guns N' Roses - Welcome To The Jungle (1).mp3.mpeg",
+                "image": "assets/andromeda/songs/guns-n-roses-welcome-to-the-jungle.svg"
+            },
+            {
+                "title": "Paradise City",
+                "artist": "Guns N' Roses",
+                "audio": "Canciones/Guns N' Roses - Paradise City (Official Music Video) (1).mp3.mpeg",
+                "image": "assets/andromeda/songs/guns-n-roses-paradise-city.svg"
+            },
+            {
+                "title": "Patience",
+                "artist": "Guns N' Roses",
+                "audio": "Canciones/Guns N' Roses - Patience (1).mp3.mpeg",
+                "image": "assets/andromeda/songs/guns-n-roses-patience.svg"
+            }
+        ]
+    }
+};
 
     /* ========================================
        ELEMENTOS
@@ -337,53 +813,13 @@ cards.forEach(card => {
        ARTISTAS DEL CARRUSEL
     ======================================== */
 
-    const featuredIds = [
-        "the-police",
-        "scorpions",
-        "madonna",
-        "axl-rose"
-    ];
+    const featuredIds = ["the-police", "scorpions", "eiffel-65", "the-outfield", "madonna", "queen", "alan-walker", "the-notorious-b-i-g", "george-michael", "dr-dre", "luis-miguel", "chicago", "lady-gaga", "50-cent", "wiz-khalifa-snoop-dogg", "ice-cube", "eminem", "coolio", "snoop-dogg", "2pac-pop-smoke", "wham", "axl-rose"];
 
     /* ========================================
        ORDEN SEGÚN UNIVERSO
     ======================================== */
 
-    const themeFeatured = {
-        electronic: [
-            "madonna",
-            "the-police",
-            "scorpions",
-            "axl-rose"
-        ],
-
-        rock: [
-            "the-police",
-            "scorpions",
-            "axl-rose",
-            "madonna"
-        ],
-
-        pop: [
-            "madonna",
-            "the-police",
-            "axl-rose",
-            "scorpions"
-        ],
-
-        jazz: [
-            "the-police",
-            "scorpions",
-            "madonna",
-            "axl-rose"
-        ],
-
-        hiphop: [
-            "axl-rose",
-            "the-police",
-            "madonna",
-            "scorpions"
-        ]
-    };
+    const themeFeatured = {"electronic": ["alan-walker", "eiffel-65"], "rock": ["scorpions", "axl-rose", "queen", "the-police", "chicago", "the-outfield"], "pop": ["lady-gaga", "madonna", "george-michael", "wham"], "hiphop": ["eminem", "50-cent", "snoop-dogg", "ice-cube", "dr-dre", "coolio", "the-notorious-b-i-g", "2pac-pop-smoke", "wiz-khalifa-snoop-dogg"], "aurora": ["luis-miguel", "george-michael", "chicago", "scorpions"]};
 
     function getFeaturedOrder() {
         const theme =
@@ -431,6 +867,7 @@ cards.forEach(card => {
             return "Hip Hop";
         }
 
+        if (genre.includes("románt") || genre.includes("romant")) return "Aurora";
         return "Rock";
     }
 
@@ -516,7 +953,7 @@ cards.forEach(card => {
          *
          * De esta forma puedes tener:
          *
-         * profile.image = foto SONORA del artista
+         * profile.image = foto ANDROMEDA del artista
          * track.image   = portada de la canción
          */
 
