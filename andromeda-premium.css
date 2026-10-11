@@ -83,3 +83,11 @@ body .explore-page .explore-song-card .favorite-song-btn,body .sonora-library .s
 body :is(.sa-dialog,.sl-dialog){height:fit-content;}
 @media(max-width:650px){body .artists-page :is(.artist-card-play,.artist-profile-track .artist-card-play){width:48px;height:48px;min-width:48px;min-height:48px;}}
 body :is(.artist-profile-panel,.sa-dialog,.sl-dialog,.auth-modal,.profile-modal,.search-box){color-scheme:dark;scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--primary) 25%,var(--muted)) transparent;}
+body #searchOverlay{align-items:center;justify-content:center;padding:24px;z-index:11000!important;background:color-mix(in srgb,var(--bg) 80%,transparent)!important;height:100dvh!important;}
+body #searchOverlay #searchInput{background:var(--bg-secondary)!important;color:var(--text)!important;border-color:var(--control-line)!important;}
+body #searchOverlay #closeSearch{width:44px;height:44px;background:var(--card)!important;border-color:var(--control-line)!important;color:var(--text)!important;}
+body #searchOverlay .search-result-play{width:48px;height:48px;min-width:48px;min-height:48px;background:linear-gradient(120deg,var(--primary),var(--secondary))!important;color:var(--bg)!important;}
+body #searchOverlay .search-result{background:var(--card)!important;border-color:var(--control-line)!important;}
+body #searchOverlay .search-result-info strong{color:var(--text)!important;}
+body #searchOverlay .search-result-info small{color:var(--muted)!important;}
+@media(max-width:650px){body #searchOverlay{padding:16px;}}
