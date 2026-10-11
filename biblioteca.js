@@ -68,11 +68,11 @@
   async function loadCatalog() {
     if(catalogPromise) return catalogPromise;
     catalogPromise=(async()=>{
-      const response=await fetch('explorar.html?v=andromeda-2');if(!response.ok)throw new Error('Catálogo no disponible');
+      const response=await fetch('explorar.html?v=andromeda-ui-3');if(!response.ok)throw new Error('Catálogo no disponible');
       const doc=new DOMParser().parseFromString(await response.text(),'text/html');
       catalog=[...doc.querySelectorAll('.explore-song-card[data-audio]')].map(card=>({...card.dataset}));
       catalog=[...new Map(catalog.map(song=>[song.audio,song])).values()];
-      const artistsResponse=await fetch('artistas.html?v=andromeda-2');if(!artistsResponse.ok)throw new Error('Artistas no disponibles');
+      const artistsResponse=await fetch('artistas.html?v=andromeda-ui-3');if(!artistsResponse.ok)throw new Error('Artistas no disponibles');
       const artistsDoc=new DOMParser().parseFromString(await artistsResponse.text(),'text/html');
       following=[...artistsDoc.querySelectorAll('.artist-catalog-card')].map(card=>({id:card.dataset.artistId,name:card.querySelector('h3')?.textContent||'',image:card.querySelector('img')?.getAttribute('src')||'',genre:card.querySelector('.artist-catalog-info>span')?.textContent||'Artista ANDROMEDA'}));
     })().catch(error=>{catalogPromise=null;throw error});

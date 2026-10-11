@@ -7,7 +7,7 @@ La imagen elegida por el usuario es la referencia fija para futuros cambios visu
 - Conservar la identidad futurista de ANDROMEDA y la tipografía del sitio.
 - Inicio: planeta oscuro azul/cian y violeta, órbitas finas y espectro diagonal sobre el globo, siguiendo el panel 01 de la imagen.
 - Mantener una composición limpia y proporcionada. Los efectos musicales deben acompañar el diseño de referencia.
-- Universos: siete planetas distintos, con sus texturas y colores, como en la franja inferior de la imagen.
+- Universos: seis planetas distintos, con sus texturas y colores, como en la franja inferior de la imagen.
 - Usar los paneles 02 y 03 como referencia al trabajar Álbumes y Mi biblioteca.
 
 La captura es una referencia de diseño; los textos, artistas y canciones deben corresponder al catálogo real de ANDROMEDA.
@@ -24,5 +24,5 @@ La captura es una referencia de diseño; los textos, artistas y canciones deben 
 - Logo aprobado: Pulsar, una estrella central entre dos arcos.
 - Referencia de marca: `assets/andromeda/pulsar-reference.webp`.
 - Logo principal: `assets/andromeda/logo-principal.svg`; sello: `assets/andromeda/pulsar.svg`; cierre de tráiler: `assets/andromeda/logo-trailer.svg`.
-- Mantener Montserrat y las siete paletas de los universos.
+- Mantener Montserrat y las seis paletas de los universos.
 - Las portadas son composiciones editoriales propias de ANDROMEDA. Las colecciones agrupan el catálogo disponible y no representan discos oficiales.

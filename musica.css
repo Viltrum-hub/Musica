@@ -80,25 +80,6 @@ body[data-theme="rock"] {
 
 
 /* =========================
-   JAZZ — VELVET JAZZ
-   ========================= */
-body[data-theme="jazz"] {
-    --bg: #170910;
-    --bg-secondary: #21101A;
-    --card: #2C1422;
-
-    --text: #FFF7FB;
-    --muted: #CFAEBC;
-
-    --primary: #D946EF;
-    --primary-light: #FF5DA2;
-    --secondary: #E6A65D;
-
-    --border: rgba(217, 70, 239, 0.22);
-}
-
-
-/* =========================
    HIP HOP — ELECTRIC VIOLET
    ========================= */
 body[data-theme="hiphop"] {
@@ -120,7 +101,6 @@ body[data-theme="hiphop"] {
 body[data-theme="pop"] .hero-glow.glow-one,
 body[data-theme="rock"] .hero-glow.glow-one,
 body[data-theme="electronic"] .hero-glow.glow-one,
-body[data-theme="jazz"] .hero-glow.glow-one,
 body[data-theme="hiphop"] .hero-glow.glow-one {
     background: var(--primary);
     box-shadow: 0 0 100px var(--theme-glow);
@@ -129,7 +109,6 @@ body[data-theme="hiphop"] .hero-glow.glow-one {
 body[data-theme="pop"] .hero-glow.glow-two,
 body[data-theme="rock"] .hero-glow.glow-two,
 body[data-theme="electronic"] .hero-glow.glow-two,
-body[data-theme="jazz"] .hero-glow.glow-two,
 body[data-theme="hiphop"] .hero-glow.glow-two {
     background: var(--secondary);
     box-shadow: 0 0 110px var(--theme-glow);
@@ -327,13 +306,6 @@ body[data-theme="hiphop"] .hero-glow.glow-two {
         linear-gradient(135deg, #ff2b2b, #ff6a00);
 }
 
-.theme-planet-orb.jazz {
-    color: #d946ef;
-    background:
-        radial-gradient(circle at 30% 25%, #ffffff, transparent 9%),
-        linear-gradient(135deg, #d946ef, #e6a65d);
-}
-
 .theme-planet-orb.hiphop {
     color: #a855f7;
     background:
@@ -344,17 +316,14 @@ body[data-theme="hiphop"] .hero-glow.glow-two {
 body[data-theme="pop"] .logo-icon,
 body[data-theme="rock"] .logo-icon,
 body[data-theme="electronic"] .logo-icon,
-body[data-theme="jazz"] .logo-icon,
 body[data-theme="hiphop"] .logo-icon,
 body[data-theme="pop"] .btn-main,
 body[data-theme="rock"] .btn-main,
 body[data-theme="electronic"] .btn-main,
-body[data-theme="jazz"] .btn-main,
 body[data-theme="hiphop"] .btn-main,
 body[data-theme="pop"] .artist-play,
 body[data-theme="rock"] .artist-play,
 body[data-theme="electronic"] .artist-play,
-body[data-theme="jazz"] .artist-play,
 body[data-theme="hiphop"] .artist-play {
     background: linear-gradient(135deg,var(--primary),var(--secondary));
 }
@@ -362,7 +331,6 @@ body[data-theme="hiphop"] .artist-play {
 body[data-theme="pop"] .main-play,
 body[data-theme="rock"] .main-play,
 body[data-theme="electronic"] .main-play,
-body[data-theme="jazz"] .main-play,
 body[data-theme="hiphop"] .main-play {
     background: var(--primary);
     color: var(--bg);
@@ -371,7 +339,6 @@ body[data-theme="hiphop"] .main-play {
 body[data-theme="pop"] .album-disc,
 body[data-theme="rock"] .album-disc,
 body[data-theme="electronic"] .album-disc,
-body[data-theme="jazz"] .album-disc,
 body[data-theme="hiphop"] .album-disc {
     box-shadow:
         0 0 0 18px rgba(255,255,255,.02),
@@ -382,7 +349,6 @@ body[data-theme="hiphop"] .album-disc {
 body[data-theme="pop"] .album-disc .disc-center,
 body[data-theme="rock"] .album-disc .disc-center,
 body[data-theme="electronic"] .album-disc .disc-center,
-body[data-theme="jazz"] .album-disc .disc-center,
 body[data-theme="hiphop"] .album-disc .disc-center {
     background: linear-gradient(135deg,var(--primary),var(--secondary));
 }
@@ -390,7 +356,6 @@ body[data-theme="hiphop"] .album-disc .disc-center {
 body[data-theme="pop"] .hero h1 span,
 body[data-theme="rock"] .hero h1 span,
 body[data-theme="electronic"] .hero h1 span,
-body[data-theme="jazz"] .hero h1 span,
 body[data-theme="hiphop"] .hero h1 span {
     background: linear-gradient(90deg,var(--primary),var(--secondary),var(--primary-light));
     -webkit-background-clip: text;
@@ -400,7 +365,6 @@ body[data-theme="hiphop"] .hero h1 span {
 body[data-theme="pop"] .genre-card,
 body[data-theme="rock"] .genre-card,
 body[data-theme="electronic"] .genre-card,
-body[data-theme="jazz"] .genre-card,
 body[data-theme="hiphop"] .genre-card {
     border-color: rgba(255,255,255,.08);
 }
@@ -1427,17 +1391,6 @@ button {
             135deg,
             #8b5cf6,
             #4c1d95
-        );
-}
-
-
-.genre-jazz {
-
-    background:
-        linear-gradient(
-            135deg,
-            #06b6d4,
-            #155e75
         );
 }
 

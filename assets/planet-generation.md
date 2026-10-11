@@ -1,8 +1,8 @@
 # SONORA — recursos de universos v2
 
-Recursos generados con la herramienta integrada de imágenes, usando `Tres propuestas visuales para SONORA.png` como referencia visual. WebP con transparencia: Electronic a 960 px; Rock, Pop, Jazz y Hip Hop a 320 px. Los anillos y el espectro son SVG animados por el sitio, separados de las imágenes.
+Recursos generados con la herramienta integrada de imágenes, usando `Tres propuestas visuales para SONORA.png` como referencia visual. WebP con transparencia: Electronic a 960 px; Rock, Pop y Hip Hop a 320 px. Los anillos y el espectro son SVG animados por el sitio, separados de las imágenes.
 
-Archivos: `assets/universe-electronic-v2.webp`, `assets/universe-rock-v2.webp`, `assets/universe-pop-v2.webp`, `assets/universe-jazz-v2.webp`, `assets/universe-hiphop-v2.webp`.
+Archivos: `assets/universe-electronic-v2.webp`, `assets/universe-rock-v2.webp`, `assets/universe-pop-v2.webp`, `assets/universe-hiphop-v2.webp`.
 
 ## Prompt compartido
 
@@ -24,9 +24,6 @@ Create ONE isolated small planet asset matching the ROCK planet along the bottom
 
 Create ONE isolated small planet asset matching POP planet along bottom of reference: soft glowing pink/coral sphere, dreamy flowing blush clouds, darker magenta cloud folds, delicate warm pink rim. Sphere occupies 76% of square centered. Refined miniature cinematic 3D.
 
-## Jazz
-
-Create ONE isolated small planet asset matching JAZZ planet along bottom of reference: shadowy plum sphere, flowing violet and muted amber surface, magenta light upper left, elegant bright golden rim at right. Sphere occupies 76% of square centered. Refined miniature cinematic 3D.
 
 ## Hip Hop
 

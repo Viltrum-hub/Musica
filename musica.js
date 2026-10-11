@@ -813,7 +813,7 @@ document.addEventListener("DOMContentLoaded", () => {
         electronic: "ELECTRONIC",
         pop: "POP",
         rock: "ROCK",
-        jazz: "JAZZ",
+
         hiphop: "HIP HOP",
         celestial: "CELESTIAL",
         aurora: "AURORA"
@@ -836,7 +836,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const artwork = {
                 electronic: ["assets/universe-electronic-v2.webp", "Planeta Electronic azul y violeta"],
                 pop: ["assets/universe-pop-v3.webp", "Planeta Pop rosa y coral"],
-                jazz: ["assets/universe-jazz-v3.webp", "Planeta Jazz dorado y magenta"],
+
                 hiphop: ["assets/universe-hiphop-v3.webp", "Planeta Hip Hop violeta e índigo"],
                 rock: ["assets/universe-rock-v3.webp", "Planeta Rock volcánico en escarlata y cobre"],
                 celestial: ["assets/universe-celestial-v2.webp", "Planeta Celestial ámbar y blanco perla con anillo luminoso"],
@@ -1048,13 +1048,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         exploreCatalogLoading =
-            fetch("explorar.html?v=andromeda-2")
+            fetch("explorar.html?v=andromeda-ui-3")
                 .then(response => {
 
                     if (!response.ok) {
 
                         throw new Error(
-                            "No se pudo cargar explorar.html?v=andromeda-2"
+                            "No se pudo cargar explorar.html?v=andromeda-ui-3"
                         );
 
                     }

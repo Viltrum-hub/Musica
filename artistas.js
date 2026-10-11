@@ -859,10 +859,6 @@ cards.forEach(card => {
             return "Pop";
         }
 
-        if (genre.includes("jazz")) {
-            return "Jazz";
-        }
-
         if (genre.includes("hip")) {
             return "Hip Hop";
         }
@@ -1825,8 +1821,7 @@ cards.forEach(card => {
                 `;
 
         profileContent.innerHTML = `
-            ${portrait}
-
+            <div class="artist-profile-heading">${portrait}<div class="artist-profile-summary">
             <span class="artist-genre">
                 ${profile.genre}
             </span>
@@ -1848,6 +1843,7 @@ cards.forEach(card => {
                     .join("")}
             </div>
 
+            </div></div>
             ${trackList}
         `;
 

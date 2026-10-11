@@ -47,7 +47,7 @@
     const descriptions = {"Guns N' Roses": 'De Sweet Child O’ Mine a November Rain. Siete canciones para perderte en la energía de Guns N’ Roses.', 'Madonna': 'Actitud, ritmo y una voz que redefinió el pop. Entra en el universo de Madonna.', 'Alan Walker': 'Melodías que brillan en la oscuridad. Una selección para viajar con los ojos cerrados.'};
     const savedFilter = root.querySelector('.sa-saved-filter');
     savedFilter.onclick = () => { savedOnly = !savedOnly; savedFilter.setAttribute('aria-pressed', String(savedOnly)); render(); };
-    const labels = {rock:'Rock',pop:'Pop',electronic:'Electrónica',jazz:'Jazz',hiphop:'Hip hop',aurora:'Romántica',celestial:'Celestial'};
+    const labels = {rock:'Rock',pop:'Pop',electronic:'Electrónica',hiphop:'Hip hop',aurora:'Romántica',celestial:'Celestial'};
     function listen(group, index = 0) { queue = group.songs.map(song => ({...song})); play(index); }
     function details(group) {
       root.querySelector('.sa-detail').innerHTML = `<div class="sa-detail-heading"><img src="${escape(group.image)}" alt="${escape(group.artist)}"><div><span class="sa-eyebrow">SELECCIÓN ANDROMEDA</span><h2 id="sa-detail-title">${escape(group.artist)}</h2><p class="sa-meta">${group.songs.length} canciones de Explorar</p></div></div>${group.songs.map((song, i) => `<button class="sa-track" data-index="${i}" data-source="${escape(song.audio)}"><span>${String(i+1).padStart(2,'0')}</span><span>${escape(song.title)}</span><i class="bi bi-play-fill" aria-hidden="true"></i></button>`).join('')}`;
@@ -79,7 +79,7 @@
       });
     }
     try {
-      const response = await fetch('explorar.html?v=andromeda-2'); if (!response.ok) throw new Error('catalog');
+      const response = await fetch('explorar.html?v=andromeda-ui-3'); if (!response.ok) throw new Error('catalog');
       const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
       const byArtist = new Map(), seen = new Set();
       doc.querySelectorAll('[data-audio][data-title][data-artist]').forEach(el => {

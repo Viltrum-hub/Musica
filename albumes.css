@@ -27,7 +27,7 @@ body.sonora-albums-open .navbar-nav .nav-link.active:after{content:'';position:a
 @media(max-width:650px){body.sonora-albums-open .music-player{left:10px;right:10px;bottom:10px;padding:12px 14px;display:grid;grid-template-columns:minmax(0,1fr) auto;height:94px;gap:6px 14px}body.sonora-albums-open .player-controls{display:contents}body.sonora-albums-open .control-buttons{grid-column:2;grid-row:1;gap:10px}body.sonora-albums-open .progress-container{grid-column:1/-1;grid-row:2}body.sonora-albums-open .player-cover{width:36px;height:36px;border-radius:8px}body.sonora-albums-open .player-song{gap:8px}body.sonora-albums-open .player-song>div:last-child{min-width:0}body.sonora-albums-open .player-song h4{font-size:10px}body.sonora-albums-open .player-song span{font-size:8px}body.sonora-albums-open .main-play{width:34px;height:34px}body.sonora-albums-open .player-volume{display:none}body.sonora-albums-open .music-player .control-buttons button{font-size:15px}}
 @media(prefers-reduced-motion:reduce){.sa-art .sa-cover{transition:none}}
 body.sonora-albums-open .navbar-profile-text{color:var(--text)}
-body[data-theme=rock] .sonora-albums{--sa-hue:160deg}body[data-theme=pop] .sonora-albums{--sa-hue:110deg}body[data-theme=jazz] .sonora-albums{--sa-hue:90deg}body[data-theme=hiphop] .sonora-albums{--sa-hue:40deg}
+body[data-theme=rock] .sonora-albums{--sa-hue:160deg}body[data-theme=pop] .sonora-albums{--sa-hue:110deg}body[data-theme=hiphop] .sonora-albums{--sa-hue:40deg}
 .sonora-albums:before{filter:hue-rotate(var(--sa-hue,0deg))}
 .sa-search{display:flex;align-items:center;gap:12px}
 @media(max-width:650px){body.sonora-albums-open #playerCover{width:36px;height:36px;min-width:36px;min-height:36px}}

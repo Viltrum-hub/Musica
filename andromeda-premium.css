@@ -1,0 +1,84 @@
+/* ANDROMEDA: spacious controls and centered, theme-aware dialogs. */
+body{--control-line:color-mix(in srgb,var(--text) 16%,transparent);--modal-surface:color-mix(in srgb,var(--card) 78%,var(--bg-secondary));}
+body button,body input,body select,body textarea{font-family:Montserrat,sans-serif;}
+body :is(button,a,input,select,textarea):focus-visible{outline:2px solid var(--primary-light);outline-offset:4px;}
+body :is(.genre-filter,.artist-filter,.sa-chip,.sa-saved-filter,.sl-tabs button){min-height:44px;padding:12px 18px;font-size:12px;line-height:1.35;}
+body :is(.genre-filters,.artists-filters,.sa-filters){gap:10px;}
+body :is(.btn-main,.btn-outline,.artist-primary-action,.artist-secondary-action,.artist-follow,.sa-button,.sl-button,.auth-submit,.profile-edit-btn,.profile-logout-btn){min-height:48px;padding:13px 22px;font-size:13px;line-height:1.4;border-radius:14px;}
+body :is(.artist-details-button,.sa-card-open,.sl-playlist-copy button){min-height:44px;font-size:13px;line-height:1.5;}
+body .artists-page .artist-catalog-info{padding:20px;gap:12px;}
+body .artists-page .artist-catalog-info .artist-details-button{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%;padding:11px 14px;border:1px solid var(--control-line);border-radius:12px;background:color-mix(in srgb,var(--primary) 5%,var(--card));color:var(--text);font-size:12px;}
+body .artists-page .artist-catalog-info .artist-follow{width:100%;min-height:44px;font-size:12px;}
+body .artists-page .artist-catalog-info h3{font-size:17px;line-height:1.3;}
+body .artists-page .artist-catalog-info>span{font-size:10px;}
+body :is(.explore-play-button,.artist-card-play,.play-card,.sa-card-play){width:52px;height:52px;min-width:52px;min-height:52px;font-size:22px;border-radius:50%;display:grid;place-items:center;box-shadow:0 8px 24px #0005;}
+body .artists-page .artist-card-play{right:16px;bottom:16px;}
+body :is(.favorite-song-btn,.sa-save,.sa-arrow,.featured-arrow,.sl-icon,.close-search,.auth-close,.profile-close,.artist-profile-close,.sa-close){width:44px;height:44px;min-width:44px;min-height:44px;font-size:18px;display:inline-grid;place-items:center;border-radius:50%;border:1px solid var(--control-line);background:color-mix(in srgb,var(--card) 90%,transparent);color:var(--text);}
+body .favorite-song-btn{background:color-mix(in srgb,var(--bg) 86%,transparent);}
+body .explore-song-card .favorite-song-btn{top:16px;right:16px;}
+body :is(.open-search,.profile-btn,.login-button){min-height:44px;min-width:44px;}
+body #mainNavbar .nav-link{min-height:44px;display:flex;align-items:center;font-size:13px;}
+body :is(#openSearch,#loginButton){min-height:44px;min-width:44px;}
+body :is(#artistSort,#exploreSort,.sl-search input,.artists-search,.explore-search){min-height:48px;font-size:13px;}
+body :is(.sa-track,.sl-track,.artist-profile-track){min-height:72px;gap:16px;}
+body .sa-track{padding:16px;font-size:14px;border-radius:12px;}
+body .sl-track h3{font-size:13px;line-height:1.4;}
+body .sl-track p{font-size:11px;}
+body .sl-playlist-footer{gap:12px;}
+body .sl-tabs{gap:24px;}
+body .sl-tabs button{padding:12px 4px;}
+body .planet-theme-menu{z-index:1200;width:360px;border-radius:24px;padding:18px;}
+body .planet-theme-menu .planet-theme-option{min-height:64px;gap:16px;padding:12px 14px;border-radius:16px;}
+body .planet-theme-menu .planet-theme-option strong{font-size:13px;}
+body .planet-theme-menu .theme-planet-orb{width:42px;height:42px;min-width:42px;}
+body #mainHome .home-universe-grid{grid-template-columns:repeat(6,minmax(0,1fr));max-width:1040px;gap:20px;}
+/* All overlays share one balanced viewport position; scroll stays inside the panel. */
+body :is(.auth-overlay,.profile-overlay,.search-overlay){position:fixed;inset:0;z-index:11000;align-items:center;justify-content:center;padding:24px;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(16px);}
+body :is(.auth-modal,.profile-modal,.search-box){position:relative;inset:auto;margin:0;width:min(580px,100%);max-height:calc(100dvh - 48px);overflow:auto;overscroll-behavior:contain;padding:40px;border:1px solid var(--control-line);border-radius:28px;background:linear-gradient(155deg,color-mix(in srgb,var(--primary) 5%,var(--modal-surface)),var(--modal-surface));color:var(--text);box-shadow:0 36px 100px #0009;}
+body .search-box{width:min(760px,100%);padding-top:68px;}
+body :is(.search-box,.auth-modal,.profile-modal) h2{font-size:28px;line-height:1.2;letter-spacing:-.7px;}
+body :is(.close-search,.auth-close,.profile-close){top:16px;right:16px;}
+body .search-input{min-height:54px;border:1px solid var(--control-line);background:var(--bg-secondary);border-radius:16px;}
+body .search-input input{font-size:15px;}
+body .artists-page .artist-profile-overlay{position:fixed;inset:0;z-index:11000;display:grid;grid-template-columns:minmax(0,1fr);place-items:center;padding:24px;}
+body .artists-page .artist-profile-backdrop{position:absolute;inset:0;width:100%;height:100%;border-radius:0;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(16px);}
+body .artists-page .artist-profile-panel{position:relative;width:min(860px,100%);max-height:calc(100dvh - 48px);overflow:auto;overscroll-behavior:contain;margin:0;padding:24px 34px 34px;border:1px solid var(--control-line);border-radius:28px;background:linear-gradient(155deg,color-mix(in srgb,var(--primary) 5%,var(--modal-surface)),var(--modal-surface));box-shadow:0 36px 100px #0009;transform:translateY(18px) scale(.98);}
+body .artists-page .artist-profile-overlay.open .artist-profile-panel{transform:none;}
+body .artists-page .artist-profile-close{position:sticky;top:0;display:grid;margin-left:auto;margin-bottom:18px;z-index:3;width:44px;height:44px;font-size:18px;background:var(--card);right:auto;}
+body .artists-page .artist-profile-heading{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:30px;align-items:center;margin-bottom:30px;}
+body .artists-page .artist-profile-portrait{height:auto;aspect-ratio:1;margin:0;border-radius:20px;}
+body .artists-page .artist-profile-panel h2{font-size:clamp(28px,3vw,40px);line-height:1.1;margin:12px 0 18px;}
+body .artists-page .artist-profile-bio{font-size:14px;line-height:1.8;}
+body .artists-page .artist-profile-meta{margin:20px 0 0;gap:10px;}
+body .artists-page .artist-profile-meta span{font-size:11px;padding:9px 12px;}
+body .artists-page .artist-profile-track strong{font-size:14px;line-height:1.45;}
+body .artists-page .artist-profile-tracks h3{font-size:18px;margin-bottom:14px;}
+body .artists-page .artist-profile-track .artist-card-play{position:static;}
+body :is(.sa-dialog,.sl-dialog){position:fixed;inset:0;margin:auto;width:min(760px,calc(100% - 48px));max-height:calc(100dvh - 48px);overflow:auto;overscroll-behavior:contain;padding:34px;border-radius:28px;border:1px solid var(--control-line);background:linear-gradient(155deg,color-mix(in srgb,var(--primary) 5%,var(--modal-surface)),var(--modal-surface));color:var(--text);box-shadow:0 36px 100px #0009;}
+body :is(.sa-dialog,.sl-dialog)::backdrop{background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(16px);}
+body .sa-close{position:sticky;top:0;margin-left:auto;margin-bottom:18px;display:grid;right:auto;background:var(--card);}
+body .sa-detail-heading{margin-right:0;gap:24px;}
+body .sa-detail-heading img{width:132px;border-radius:18px;}
+body .sl-dialog-heading{align-items:start;gap:20px;}
+body .sl-dialog label{font-size:13px;}
+body .sl-dialog :is(input,textarea){min-height:50px;font-size:14px;padding:14px;border-radius:14px;}
+body .sl-dialog-actions{gap:12px;padding-top:20px;}
+body #musicPlayer.music-player{grid-template-columns:minmax(180px,1fr) 44px 168px minmax(140px,1fr) 126px;gap:16px;min-height:100px;height:auto;padding:18px 22px;border-radius:22px;}
+body #musicPlayer :is(#previousBtn,#nextBtn,#playerFavoriteBtn,#playerMuteBtn){width:44px;height:44px;min-width:44px;font-size:20px;}
+body #musicPlayer .control-buttons{gap:8px;}
+body #musicPlayer .control-buttons #mainPlayBtn{width:52px;height:52px;min-width:52px;}
+body #musicPlayer .player-song h4{font-size:13px;line-height:1.3;}
+body #musicPlayer .player-song span{font-size:11px;}
+body #musicPlayer input[type=range]{height:32px;}
+body #musicPlayer input[type=range]::-webkit-slider-thumb{width:14px;height:14px;margin-top:-5px;opacity:1;}
+body #musicPlayer input[type=range]::-moz-range-thumb{width:14px;height:14px;}
+@media(hover:hover){body :is(.artist-details-button,.artist-follow,.sa-button,.sl-button,.sl-icon,.sa-arrow,.featured-arrow,.favorite-song-btn,.artist-profile-close,.sa-close,.close-search,.auth-close,.profile-close):hover{border-color:var(--primary);background:color-mix(in srgb,var(--primary) 12%,var(--card));color:var(--text);}body .artists-page .artist-catalog-info .artist-details-button:hover{border-color:var(--primary);}}
+@media(max-width:1000px){body #musicPlayer.music-player{grid-template-columns:minmax(0,1fr) 44px 168px;grid-template-rows:56px 28px;gap:8px 14px;padding:14px 18px;}body #musicPlayer .player-volume{display:none;}body #musicPlayer .progress-container{grid-column:1/-1;grid-row:2;}}
+@media(max-width:650px){body :is(.genre-filter,.artist-filter,.sa-chip,.sa-saved-filter){min-height:44px;padding:11px 15px;font-size:12px;}body :is(.genre-filters,.artists-filters){flex-wrap:wrap;gap:8px;}body .artists-page .artists-grid{gap:16px;}body .artists-page .artist-catalog-info{padding:14px;}body .artists-page .artist-catalog-info h3{font-size:15px;}body .artists-page .featured-actions{flex-wrap:wrap;gap:10px;}body .artists-page .featured-actions>*{flex:1 1 auto;}body .artists-page .artist-catalog-info .artist-details-button{font-size:12px;padding:11px 12px;}body .artists-page #artistSort{max-width:100%;font-size:12px;padding:12px;}body :is(.explore-play-button,.artist-card-play,.play-card,.sa-card-play){width:48px;height:48px;min-width:48px;min-height:48px;}body .artists-page .artist-card-play{right:12px;bottom:12px;}body .sl-track{gap:10px;padding:14px 8px;}body .sl-track>img{width:44px;height:44px;}body .sl-track .favorite-song-btn{width:44px;}body .sl-detail-actions{flex-wrap:wrap;}body .sa-actions{flex-wrap:wrap;gap:10px;padding-bottom:28px;}body .sa-actions [data-details]{min-height:44px;padding:11px 14px;border:1px solid var(--control-line);border-radius:14px;}body .sa-card-open{font-size:14px;}body #mainHome .home-universe-grid{grid-template-columns:repeat(3,minmax(0,1fr));overflow:visible;gap:14px;}body .planet-theme-menu{position:fixed;top:82px;left:16px;right:16px;width:auto;max-height:calc(100dvh - 105px);}body :is(.auth-overlay,.profile-overlay,.search-overlay),body .artists-page .artist-profile-overlay{padding:16px;}body :is(.auth-modal,.profile-modal,.search-box){padding:64px 24px 28px;width:100%;max-height:calc(100dvh - 32px);border-radius:24px;}body .artists-page .artist-profile-panel{padding:18px 22px 26px;max-height:calc(100dvh - 32px);border-radius:24px;}body .artists-page .artist-profile-heading{grid-template-columns:1fr;gap:22px;}body .artists-page .artist-profile-portrait{max-width:320px;width:100%;justify-self:center;aspect-ratio:1;}body :is(.sa-dialog,.sl-dialog){width:calc(100% - 32px);max-height:calc(100dvh - 32px);padding:24px 20px;border-radius:24px;}body .sa-detail-heading{gap:16px;}body .sa-detail-heading img{width:96px;}body #musicPlayer.music-player{grid-template-columns:minmax(0,1fr) 44px;grid-template-rows:44px 52px 26px;gap:8px;padding:12px 16px;border-radius:20px;}body #musicPlayer .player-song{grid-column:1;grid-row:1;}body #musicPlayer #playerFavoriteBtn{grid-column:2;grid-row:1;}body #musicPlayer .control-buttons{grid-column:1/-1;grid-row:2;justify-content:center;}body #musicPlayer .progress-container{grid-column:1/-1;grid-row:3;}body #musicPlayer #playerCover{width:44px;height:44px;min-width:44px;min-height:44px;}body #musicPlayer .player-song h4{font-size:13px;}body #musicPlayer .player-song span{font-size:11px;}body :is(.artists-page,.sonora-albums,.sonora-library,.explore-page){padding-bottom:220px;}}
+@media(prefers-reduced-motion:reduce){body .artists-page .artist-profile-panel{transition:none;transform:none;}}
+body button{min-width:44px;min-height:44px;}
+body :is(.edit-profile-button,.save-profile-button,.logout-button,.auth-switch button){min-height:44px;padding:12px 18px;font-size:13px;}
+body .artists-page :is(.artist-card-play,.artist-profile-track .artist-card-play){width:52px;height:52px;min-width:52px;min-height:52px;font-size:22px;}
+body .explore-page .explore-song-card .favorite-song-btn,body .sonora-library .sl-track :is(.sl-icon,.favorite-song-btn){width:44px;height:44px;min-width:44px;min-height:44px;font-size:18px;}
+body :is(.sa-dialog,.sl-dialog){height:fit-content;}
+@media(max-width:650px){body .artists-page :is(.artist-card-play,.artist-profile-track .artist-card-play){width:48px;height:48px;min-width:48px;min-height:48px;}}

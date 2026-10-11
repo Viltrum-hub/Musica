@@ -1,9 +1,8 @@
-/* One SONORA identity, seven complete color systems. Shared by every route. */
+/* One SONORA identity, six complete color systems. Shared by every route. */
 :root{--muted:#a0abc5;--primary-light:#a0f5ff}
 body[data-theme=electronic]{--bg:#060a16;--bg-secondary:#0c1324;--card:#111b30;--text:#f4f7ff;--muted:#a0abc5;--primary:#00e5ff;--primary-light:#a0f5ff;--secondary:#8b3dff;--universe-hue:0deg}
 body[data-theme=rock]{--bg:#10090b;--bg-secondary:#1a1012;--card:#29191c;--text:#fff6f1;--muted:#c9aaa5;--primary:#ff493f;--primary-light:#ffc0b5;--secondary:#d66b4a;--universe-hue:170deg}
 body[data-theme=pop]{--bg:#130914;--bg-secondary:#20101c;--card:#2b1728;--text:#fff4fc;--muted:#c9a8bf;--primary:#ff52b3;--primary-light:#ffc0e3;--secondary:#ff927e;--universe-hue:105deg}
-body[data-theme=jazz]{--bg:#120d14;--bg-secondary:#1c151e;--card:#2b202c;--text:#fff8ef;--muted:#c2a9ba;--primary:#efb957;--primary-light:#ffe0a4;--secondary:#c75fe8;--universe-hue:85deg}
 body[data-theme=hiphop]{--bg:#090715;--bg-secondary:#110d21;--card:#1c1631;--text:#f8f4ff;--muted:#b4a5ca;--primary:#a77aff;--primary-light:#dac4ff;--secondary:#633dff;--universe-hue:40deg}
 body[data-theme]{--border:color-mix(in srgb,var(--primary) 15%,transparent);--theme-glow:color-mix(in srgb,var(--primary) 25%,transparent);--planet-1:var(--primary);--planet-2:var(--secondary);background-color:var(--bg);color:var(--text)}
 body .navbar{background:color-mix(in srgb,var(--bg) 90%,transparent);border-bottom:1px solid color-mix(in srgb,var(--text) 6%,transparent);backdrop-filter:blur(20px)}
@@ -51,8 +50,6 @@ body[data-theme=rock]{--universe-art:url('assets/universe-rock-v3.webp')}
 body .theme-planet-orb.rock{--orb-art:url('assets/universe-rock-v3.webp')}
 body[data-theme=pop]{--universe-art:url('assets/universe-pop-v3.webp')}
 body .theme-planet-orb.pop{--orb-art:url('assets/universe-pop-v3.webp')}
-body[data-theme=jazz]{--universe-art:url('assets/universe-jazz-v3.webp')}
-body .theme-planet-orb.jazz{--orb-art:url('assets/universe-jazz-v3.webp')}
 body[data-theme=hiphop]{--universe-art:url('assets/universe-hiphop-v3.webp')}
 body .theme-planet-orb.hiphop{--orb-art:url('assets/universe-hiphop-v3.webp')}
 body .theme-planet-orb,body .planet-button-orb{position:relative;isolation:isolate;flex-shrink:0;width:43px;height:43px;border:0;background:none;box-shadow:none;overflow:visible;border-radius:50%}
@@ -67,8 +64,8 @@ body .theme-planet-orb:after,body .planet-button-orb:after{display:none}
 #mainHome .home-universe-card strong:after{content:'';display:block;width:25px;height:2px;border-radius:2px;margin:8px auto 0;background:var(--orb-a,var(--primary));opacity:.6}
 #mainHome .home-universe-card.active strong:after{opacity:1}
 #mainHome .home-universe-card:focus-visible{outline:2px solid var(--primary);outline-offset:3px}
-body .theme-planet-orb.electronic{--orb-a:#00e5ff}body .theme-planet-orb.rock{--orb-a:#ff493f}body .theme-planet-orb.pop{--orb-a:#ff52b3}body .theme-planet-orb.jazz{--orb-a:#efb957}body .theme-planet-orb.hiphop{--orb-a:#a77aff}
-#mainHome .home-universe-card[data-theme=electronic]{--orb-a:#00e5ff}#mainHome .home-universe-card[data-theme=rock]{--orb-a:#ff493f}#mainHome .home-universe-card[data-theme=pop]{--orb-a:#ff52b3}#mainHome .home-universe-card[data-theme=jazz]{--orb-a:#efb957}#mainHome .home-universe-card[data-theme=hiphop]{--orb-a:#a77aff}
+body .theme-planet-orb.electronic{--orb-a:#00e5ff}body .theme-planet-orb.rock{--orb-a:#ff493f}body .theme-planet-orb.pop{--orb-a:#ff52b3}body .theme-planet-orb.hiphop{--orb-a:#a77aff}
+#mainHome .home-universe-card[data-theme=electronic]{--orb-a:#00e5ff}#mainHome .home-universe-card[data-theme=rock]{--orb-a:#ff493f}#mainHome .home-universe-card[data-theme=pop]{--orb-a:#ff52b3}#mainHome .home-universe-card[data-theme=hiphop]{--orb-a:#a77aff}
 @media(max-width:650px){#mainHome .home-universe-grid{gap:6px}#mainHome .home-universe-card>.theme-planet-orb{width:46px;height:46px}#mainHome .home-universe-card strong{font-size:9px}}
 @media(prefers-reduced-motion:reduce){#mainHome .home-universe-card{transition:none}#mainHome .home-universe-card:hover{transform:none}}
 
@@ -80,7 +77,7 @@ body .theme-planet-orb.celestial{--orb-art:url('assets/universe-celestial-v2.web
 body .theme-planet-orb.aurora{--orb-art:url('assets/universe-aurora-v2.webp');--orb-a:#f43f68}
 #mainHome .home-universe-card[data-theme=celestial]{--orb-a:#ffb547}
 #mainHome .home-universe-card[data-theme=aurora]{--orb-a:#f43f68}
-#mainHome .home-universe-grid{max-width:900px;grid-template-columns:repeat(7,minmax(0,1fr));gap:14px}
+#mainHome .home-universe-grid{max-width:900px;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
 body[data-theme=celestial] .logo-icon,body[data-theme=aurora] .logo-icon{background:linear-gradient(120deg,var(--primary),var(--secondary));color:var(--bg);box-shadow:none}
 body[data-theme=rock] #mainHome .home-hero .btn-main,body[data-theme=celestial] #mainHome .home-hero .btn-main,body[data-theme=aurora] #mainHome .home-hero .btn-main{color:var(--bg)}
 body .genre-grid{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
