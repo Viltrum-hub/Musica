@@ -112,3 +112,27 @@ body #musicPlayer input[type=range]:hover::-webkit-slider-thumb,body #musicPlaye
 @media(pointer:coarse){body :is(.sa-arrow,.featured-arrow,.sl-icon,#previousBtn,#nextBtn,#playerFavoriteBtn,#playerMuteBtn){position:relative;}body :is(.genre-filter,.artist-filter,.sa-chip){position:relative;}body :is(.genre-filter,.artist-filter,.sa-chip,.artist-card-play,.explore-play-button,.sa-card-play,.favorite-song-btn,.sa-arrow,.featured-arrow,.sl-icon,.artist-profile-close,.sa-close,.close-search,.auth-close,.profile-close,#previousBtn,#nextBtn,#mainPlayBtn,#playerFavoriteBtn,#playerMuteBtn)::after{content:"";position:absolute;inset:-6px;pointer-events:auto;}}
 @media(pointer:coarse){body :is(.artist-follow,.artist-details-button,.sa-button,.sl-button,.artist-primary-action,.artist-secondary-action){position:relative;}body :is(.artist-follow,.artist-details-button,.sa-button,.sl-button,.artist-primary-action,.artist-secondary-action)::after{content:"";position:absolute;inset:-5px -2px;pointer-events:auto;}}
 @media(pointer:coarse) and (max-width:650px){body #musicPlayer.music-player{grid-template-columns:minmax(0,1fr) 32px 124px;gap:5px 12px;}body #musicPlayer .control-buttons{gap:12px;}}
+/* Lighter profile cards and explicit collection actions. */
+body .artists-page .artist-profile-panel{width:min(740px,100%);max-height:min(82dvh,780px);padding:18px 26px 24px;border-radius:20px;background:var(--bg-secondary);border-color:color-mix(in srgb,var(--text) 11%,transparent);box-shadow:0 20px 65px #0006;}
+body .artists-page .artist-profile-close{margin-bottom:14px;background:transparent;}
+body .artists-page .artist-profile-heading{grid-template-columns:220px minmax(0,1fr);gap:24px;margin-bottom:22px;}
+body .artists-page .artist-profile-portrait{width:220px;max-width:220px;height:220px;aspect-ratio:1;border-radius:14px;}
+body .artists-page .artist-profile-panel h2{font-size:32px;font-weight:700;letter-spacing:-.8px;margin:10px 0 14px;}
+body .artists-page .artist-profile-bio{font-size:13px;line-height:1.75;margin-bottom:0;}
+body .artists-page .artist-profile-meta{gap:7px;margin-top:14px;}
+body .artists-page .artist-profile-meta span{font-size:10px;padding:6px 9px;}
+body .artists-page .artist-profile-tracks h3{font-size:16px;margin-bottom:10px;}
+body .artists-page .artist-profile-track{min-height:56px;padding:10px 0;}
+body #profileOverlay .profile-modal{width:min(410px,100%);padding:26px 24px 24px;border-radius:20px;background:var(--bg-secondary);border-color:color-mix(in srgb,var(--text) 11%,transparent);box-shadow:0 20px 65px #0006;}
+body #profileOverlay .profile-avatar{width:72px;height:72px;font-size:30px;box-shadow:none;}
+body #profileOverlay .profile-info{padding:11px 13px;margin-bottom:16px;border-radius:10px;background:transparent;}
+body #profileOverlay .profile-stat{padding:11px 6px;background:transparent;}
+body #profileOverlay .profile-stat strong{font-size:16px;}
+body #mainNavbar .navbar-nav .nav-link.active{position:relative;color:var(--text);}
+body #mainNavbar .navbar-nav .nav-link.active::after{content:"";position:absolute;left:12px;right:12px;bottom:1px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--primary),var(--secondary));}
+body .sonora-albums .sa-card-title{font:600 14px/1.45 Montserrat,sans-serif;color:var(--text);margin:13px 0 4px;letter-spacing:-.15px;}
+body .sonora-albums :is(.sa-card-open,[data-details]){display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:36px;width:fit-content;max-width:100%;padding:9px 13px;border:1px solid color-mix(in srgb,var(--primary) 42%,transparent);border-radius:10px;background:color-mix(in srgb,var(--primary) 10%,var(--bg-secondary));color:var(--primary-light);font:600 11px/1.4 Montserrat,sans-serif;text-align:center;}
+body .sonora-albums .sa-card-open{margin-top:13px;}
+body .sonora-albums .sa-card-open span{color:inherit;font-size:15px;}
+@media(hover:hover){body .sonora-albums :is(.sa-card-open,[data-details]):hover{background:color-mix(in srgb,var(--primary) 18%,var(--bg-secondary));border-color:var(--primary);color:var(--text);}}
+@media(max-width:650px){body .artists-page .artist-profile-panel{width:100%;max-height:calc(100dvh - 32px);padding:16px 20px 22px;border-radius:18px;}body .artists-page .artist-profile-heading{grid-template-columns:1fr;gap:18px;}body .artists-page .artist-profile-portrait{width:180px;max-width:180px;height:180px;justify-self:center;}body .artists-page .artist-profile-panel h2{font-size:28px;}body #profileOverlay .profile-modal{padding:26px 20px 22px;}body .sonora-albums .sa-card-title{font-size:13px;}body .sonora-albums .sa-actions [data-details]{min-height:36px;padding:9px 13px;border-color:color-mix(in srgb,var(--primary) 42%,transparent);border-radius:10px;background:color-mix(in srgb,var(--primary) 10%,var(--bg-secondary));color:var(--primary-light);}}

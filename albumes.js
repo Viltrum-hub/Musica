@@ -73,7 +73,7 @@
       grid.replaceChildren();
       matches.forEach(group => {
         const card = document.createElement('article'); card.className = 'sa-card';
-        card.innerHTML = `<div class="sa-art"><img class="sa-cover" loading="lazy" src="${escape(group.image)}" alt="${escape(group.artist)}"><span class="sa-card-label">${escape(labels[group.genre] || group.genre)}</span><button class="sa-card-play" aria-label="Escuchar ${escape(group.artist)}"><i class="bi bi-play-fill" aria-hidden="true"></i></button></div><button class="sa-card-open" aria-label="Ver canciones de ${escape(group.artist)}">${escape(collectionNames[group.artist] || group.artist)} <span aria-hidden="true">↗</span></button><p>${escape(group.artist)}</p><div class="sa-card-subtitle">Selección ANDROMEDA · ${group.songs.length} canciones</div>`;
+        card.innerHTML = `<div class="sa-art"><img class="sa-cover" loading="lazy" src="${escape(group.image)}" alt="${escape(group.artist)}"><span class="sa-card-label">${escape(labels[group.genre] || group.genre)}</span><button class="sa-card-play" aria-label="Escuchar ${escape(group.artist)}"><i class="bi bi-play-fill" aria-hidden="true"></i></button></div><h3 class="sa-card-title">${escape(collectionNames[group.artist] || group.artist)}</h3><p>${escape(group.artist)}</p><div class="sa-card-subtitle">Selección ANDROMEDA · ${group.songs.length} ${group.songs.length === 1 ? "canción" : "canciones"}</div><button class="sa-card-open" aria-label="Ver canciones de ${escape(group.artist)}">Ver canciones <span aria-hidden="true">↗</span></button>`;
         card.querySelector('.sa-card-play').onclick = () => listen(group);
         card.querySelector('.sa-card-open').onclick = () => details(group); grid.appendChild(card);
       });

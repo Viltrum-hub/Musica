@@ -57,7 +57,7 @@
     <link rel="stylesheet" href="reproductor-premium.css?v=andromeda-ui-3">
 <link rel="stylesheet" href="biblioteca.css?v=1">
 <link rel="stylesheet" href="explorar-premium.css?v=2">
-<link rel="stylesheet" href="andromeda-brand.css?v=1"><link rel="icon" href="assets/andromeda/pulsar.svg" type="image/svg+xml"><link rel="stylesheet" href="andromeda-premium.css?v=6">
+<link rel="stylesheet" href="andromeda-brand.css?v=1"><link rel="icon" href="assets/andromeda/pulsar.svg" type="image/svg+xml"><link rel="stylesheet" href="andromeda-premium.css?v=7">
 </head>
 
 
@@ -1264,7 +1264,7 @@
 
 <!-- JAVASCRIPT ARTISTAS -->
 <script src="artistas.js?v=andromeda-ui-3"></script>
-<script src="albumes.js?v=andromeda-ui-3"></script>
+<script src="albumes.js?v=refined-7"></script>
 <script src="inicio-premium.js?v=andromeda-ui-3"></script>
 
 
@@ -1993,6 +1993,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     function setActivePage(page) {
         document.body.classList.toggle("sonora-home-open", page === "inicio");
+        document.body.classList.toggle("sonora-explore-open", page === "explorar");
         document.body.classList.toggle("sonora-albums-open", page === "albumes");
         document.body.classList.toggle("sonora-artists-open", page === "artistas");
         document.body.classList.toggle("sonora-library-open", page === "biblioteca");
