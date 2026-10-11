@@ -1,4 +1,4 @@
-/* One SONORA identity, five complete color systems. Shared by every route. */
+/* One SONORA identity, seven complete color systems. Shared by every route. */
 :root{--muted:#a0abc5;--primary-light:#a0f5ff}
 body[data-theme=electronic]{--bg:#060a16;--bg-secondary:#0c1324;--card:#111b30;--text:#f4f7ff;--muted:#a0abc5;--primary:#00e5ff;--primary-light:#a0f5ff;--secondary:#8b3dff;--universe-hue:0deg}
 body[data-theme=rock]{--bg:#100708;--bg-secondary:#1a0c0d;--card:#281416;--text:#fff6f1;--muted:#c2a3a0;--primary:#ff503b;--primary-light:#ffb19e;--secondary:#ff9f43;--universe-hue:160deg}
@@ -71,3 +71,19 @@ body .theme-planet-orb.electronic{--orb-a:#00e5ff}body .theme-planet-orb.rock{--
 #mainHome .home-universe-card[data-theme=electronic]{--orb-a:#00e5ff}#mainHome .home-universe-card[data-theme=rock]{--orb-a:#ff503b}#mainHome .home-universe-card[data-theme=pop]{--orb-a:#ff52b3}#mainHome .home-universe-card[data-theme=jazz]{--orb-a:#efb957}#mainHome .home-universe-card[data-theme=hiphop]{--orb-a:#a77aff}
 @media(max-width:650px){#mainHome .home-universe-grid{gap:6px}#mainHome .home-universe-card>.theme-planet-orb{width:46px;height:46px}#mainHome .home-universe-card strong{font-size:9px}}
 @media(prefers-reduced-motion:reduce){#mainHome .home-universe-card{transition:none}#mainHome .home-universe-card:hover{transform:none}}
+
+
+/* Celestial: sapphire, pearl and pale gold. Aurora: burgundy, copper and champagne. */
+body[data-theme=celestial]{--bg:#07101e;--bg-secondary:#0d1c30;--card:#14273d;--text:#faf7ef;--muted:#afbed0;--primary:#9bbdec;--primary-light:#f8f1e4;--secondary:#e4c58c;--universe-hue:0deg;--universe-art:url('assets/universe-celestial-v1.webp')}
+body[data-theme=aurora]{--bg:#13090e;--bg-secondary:#201016;--card:#321822;--text:#fff5e9;--muted:#ccafb2;--primary:#cf946f;--primary-light:#f1dfc5;--secondary:#e7caa1;--universe-hue:145deg;--universe-art:url('assets/universe-aurora-v1.webp')}
+body .theme-planet-orb.celestial{--orb-art:url('assets/universe-celestial-v1.webp');--orb-a:#e4c58c}
+body .theme-planet-orb.aurora{--orb-art:url('assets/universe-aurora-v1.webp');--orb-a:#cf946f}
+#mainHome .home-universe-card[data-theme=celestial]{--orb-a:#e4c58c}
+#mainHome .home-universe-card[data-theme=aurora]{--orb-a:#cf946f}
+#mainHome .home-universe-grid{max-width:900px;grid-template-columns:repeat(7,minmax(0,1fr));gap:14px}
+body[data-theme=celestial] .logo-icon,body[data-theme=aurora] .logo-icon{background:linear-gradient(120deg,var(--primary),var(--secondary));color:var(--bg);box-shadow:none}
+body[data-theme=celestial] #mainHome .home-hero .btn-main,body[data-theme=aurora] #mainHome .home-hero .btn-main{color:var(--bg)}
+body .genre-grid{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
+@media(max-width:650px){#mainHome .home-universe-grid{grid-template-columns:repeat(8,minmax(0,1fr));gap:14px 6px}#mainHome .home-universe-card{grid-column:span 2}#mainHome .home-universe-card:nth-child(5){grid-column:2/span 2}#mainHome .home-universe-card:nth-child(6){grid-column:4/span 2}#mainHome .home-universe-card:nth-child(7){grid-column:6/span 2}#mainHome .home-universe-card>.theme-planet-orb{width:52px;height:52px}#mainHome .home-universe-card strong{font-size:10px}body .genre-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+body[data-theme=celestial] .sonora-albums{--sa-hue:0deg}body[data-theme=aurora] .sonora-albums{--sa-hue:145deg}

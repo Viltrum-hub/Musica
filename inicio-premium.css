@@ -63,3 +63,7 @@ body .home-universe-card{background:none;border-color:transparent;box-shadow:non
 .home-space-beacon{filter:drop-shadow(0 0 4px var(--primary));opacity:.85}
 .home-space-beacon-secondary{filter:drop-shadow(0 0 5px var(--secondary))}
 @media(prefers-reduced-motion:reduce){.home-space-beacon{filter:none}}
+
+
+body[data-theme=celestial] .home-planet-art{filter:hue-rotate(-10deg) saturate(.65) brightness(1.06)}
+body[data-theme=aurora] .home-planet-art{filter:hue-rotate(145deg) saturate(.72) brightness(.8)}

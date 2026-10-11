@@ -814,7 +814,9 @@ document.addEventListener("DOMContentLoaded", () => {
         pop: "POP",
         rock: "ROCK",
         jazz: "JAZZ",
-        hiphop: "HIP HOP"
+        hiphop: "HIP HOP",
+        celestial: "CELESTIAL",
+        aurora: "AURORA"
     };
 
 
@@ -4079,3 +4081,4 @@ if (button) {
     
 
 });
+

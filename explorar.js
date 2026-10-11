@@ -925,9 +925,11 @@ function initExplorar(initialFilter = "all") {
                     );
 
 
+                const themes = (card.dataset.themeTags || "").split(/\s+/);
                 const show =
                     activeFilter === "all" ||
-                    cardGenre === activeFilter;
+                    cardGenre === activeFilter ||
+                    themes.includes(activeFilter);
 
 
                 if (show) {
@@ -993,6 +995,10 @@ function initExplorar(initialFilter = "all") {
 
 
         if (noResults) {
+            const heading = noResults.querySelector("h3");
+            const description = noResults.querySelector("p");
+            if (heading) heading.textContent = activeFilter === "celestial" ? "Celestial está esperando su primera canción" : "No encontramos canciones";
+            if (description) description.textContent = activeFilter === "celestial" ? "Aún no hay canciones cristianas en el catálogo. Pronto podrás descubrirlas aquí." : "Intenta buscar otro título, artista o género.";
 
             noResults.style.display =
                 visibleSongs === 0
@@ -1041,4 +1047,5 @@ function initExplorar(initialFilter = "all") {
 
     updatePlayButton();
 }
+
 

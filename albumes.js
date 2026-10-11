@@ -79,7 +79,7 @@
       });
     }
     try {
-      const response = await fetch('explorar.html'); if (!response.ok) throw new Error('catalog');
+      const response = await fetch('explorar.html?v=seven-worlds-1'); if (!response.ok) throw new Error('catalog');
       const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
       const byArtist = new Map(), seen = new Set();
       doc.querySelectorAll('[data-audio][data-title][data-artist]').forEach(el => {
@@ -101,3 +101,4 @@
     } catch { if (root.isConnected) { root.querySelector('.sa-status').textContent = 'No se pudo cargar el catálogo. Recarga la página para intentarlo de nuevo.'; } }
   };
 })();
+
