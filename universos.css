@@ -49,12 +49,12 @@ body[data-theme=electronic]{--universe-art:url('assets/universe-electronic-v2.we
 body .theme-planet-orb.electronic{--orb-art:url('assets/universe-electronic-v2.webp')}
 body[data-theme=rock]{--universe-art:url('assets/universe-rock-v3.webp')}
 body .theme-planet-orb.rock{--orb-art:url('assets/universe-rock-v3.webp')}
-body[data-theme=pop]{--universe-art:url('assets/universe-pop-v2.webp')}
-body .theme-planet-orb.pop{--orb-art:url('assets/universe-pop-v2.webp')}
-body[data-theme=jazz]{--universe-art:url('assets/universe-jazz-v2.webp')}
-body .theme-planet-orb.jazz{--orb-art:url('assets/universe-jazz-v2.webp')}
-body[data-theme=hiphop]{--universe-art:url('assets/universe-hiphop-v2.webp')}
-body .theme-planet-orb.hiphop{--orb-art:url('assets/universe-hiphop-v2.webp')}
+body[data-theme=pop]{--universe-art:url('assets/universe-pop-v3.webp')}
+body .theme-planet-orb.pop{--orb-art:url('assets/universe-pop-v3.webp')}
+body[data-theme=jazz]{--universe-art:url('assets/universe-jazz-v3.webp')}
+body .theme-planet-orb.jazz{--orb-art:url('assets/universe-jazz-v3.webp')}
+body[data-theme=hiphop]{--universe-art:url('assets/universe-hiphop-v3.webp')}
+body .theme-planet-orb.hiphop{--orb-art:url('assets/universe-hiphop-v3.webp')}
 body .theme-planet-orb,body .planet-button-orb{position:relative;isolation:isolate;flex-shrink:0;width:43px;height:43px;border:0;background:none;box-shadow:none;overflow:visible;border-radius:50%}
 body .planet-button-orb{width:31px;height:31px;--orb-art:var(--universe-art)}
 body .theme-planet-orb:before,body .planet-button-orb:before{content:'';position:absolute;inset:-15%;background-image:var(--orb-art);background-position:center;background-size:contain;background-repeat:no-repeat;border-radius:0;filter:none;box-shadow:none;z-index:0}

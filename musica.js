@@ -835,9 +835,9 @@ document.addEventListener("DOMContentLoaded", () => {
         if (homePlanet) {
             const artwork = {
                 electronic: ["assets/universe-electronic-v2.webp", "Planeta Electronic azul y violeta"],
-                pop: ["assets/universe-pop-v2.webp", "Planeta Pop rosa y coral"],
-                jazz: ["assets/universe-jazz-v2.webp", "Planeta Jazz dorado y magenta"],
-                hiphop: ["assets/universe-hiphop-v2.webp", "Planeta Hip Hop violeta e índigo"],
+                pop: ["assets/universe-pop-v3.webp", "Planeta Pop rosa y coral"],
+                jazz: ["assets/universe-jazz-v3.webp", "Planeta Jazz dorado y magenta"],
+                hiphop: ["assets/universe-hiphop-v3.webp", "Planeta Hip Hop violeta e índigo"],
                 rock: ["assets/universe-rock-v3.webp", "Planeta Rock volcánico en escarlata y cobre"],
                 celestial: ["assets/universe-celestial-v2.webp", "Planeta Celestial ámbar y blanco perla con anillo luminoso"],
                 aurora: ["assets/universe-aurora-v2.webp", "Planeta Aurora rubí y champán"]
