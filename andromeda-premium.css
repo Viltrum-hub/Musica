@@ -82,3 +82,4 @@ body .artists-page :is(.artist-card-play,.artist-profile-track .artist-card-play
 body .explore-page .explore-song-card .favorite-song-btn,body .sonora-library .sl-track :is(.sl-icon,.favorite-song-btn){width:44px;height:44px;min-width:44px;min-height:44px;font-size:18px;}
 body :is(.sa-dialog,.sl-dialog){height:fit-content;}
 @media(max-width:650px){body .artists-page :is(.artist-card-play,.artist-profile-track .artist-card-play){width:48px;height:48px;min-width:48px;min-height:48px;}}
+body :is(.artist-profile-panel,.sa-dialog,.sl-dialog,.auth-modal,.profile-modal,.search-box){color-scheme:dark;scrollbar-width:thin;scrollbar-color:color-mix(in srgb,var(--primary) 25%,var(--muted)) transparent;}
