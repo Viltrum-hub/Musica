@@ -14,7 +14,7 @@ body[data-theme=electronic] #mainHome .home-hero .btn-main{color:#030b18}
 .home-planet-stage{position:relative;min-width:0;aspect-ratio:1.05;display:grid;place-items:center;isolation:isolate}
 .home-planet-stage:before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 19% 24%,var(--primary) 0 1px,transparent 2px),radial-gradient(circle at 75% 16%,var(--secondary) 0 1px,transparent 2px),radial-gradient(circle at 93% 55%,var(--primary-light) 0 1px,transparent 2px),radial-gradient(circle at 32% 78%,var(--secondary) 0 1px,transparent 2px);opacity:.5;z-index:-1}
 .home-planet-art{width:84%;max-width:none;display:block;filter:hue-rotate(var(--home-hue,0deg));animation:sonoraPlanetFloat 10s ease-in-out infinite;will-change:transform;pointer-events:none;user-select:none}
-body[data-theme=rock]{--home-hue:160deg}body[data-theme=pop]{--home-hue:105deg}body[data-theme=jazz]{--home-hue:85deg}body[data-theme=hiphop]{--home-hue:40deg}
+body[data-theme=rock]{--home-hue:170deg}body[data-theme=pop]{--home-hue:105deg}body[data-theme=jazz]{--home-hue:85deg}body[data-theme=hiphop]{--home-hue:40deg}
 .home-planet-caption{position:absolute;top:12px;right:20px;color:var(--muted);font-size:8px;letter-spacing:2px;display:flex;align-items:center;gap:7px}.home-planet-caption:before{content:'';width:4px;height:4px;border-radius:50%;background:var(--primary)}
 .home-now-playing{position:absolute;left:8%;right:0;bottom:5%;padding:13px 15px;display:grid;grid-template-columns:43px minmax(0,1fr) 35px;align-items:center;gap:12px;text-align:left;color:var(--text);background:color-mix(in srgb,var(--card) 80%,transparent);border:1px solid color-mix(in srgb,var(--primary) 22%,transparent);border-radius:15px;backdrop-filter:blur(24px);box-shadow:0 18px 50px #0005;font-family:inherit;cursor:pointer;z-index:2}
 .home-now-cover{display:grid;place-items:center;width:43px;height:43px;overflow:hidden;border-radius:9px;background:linear-gradient(135deg,var(--primary),var(--secondary));color:var(--text);font-size:22px}.home-now-cover img{width:100%;height:100%;object-fit:cover}.home-now-copy{min-width:0}.home-now-copy small{display:block;color:var(--primary-light);font-size:8px;letter-spacing:.5px;margin-bottom:4px}.home-now-copy strong{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12px;font-weight:700}.home-now-copy span{display:block;font-size:9px;color:var(--muted);margin-top:2px}.home-now-icon{color:var(--primary);display:grid;place-items:center;width:32px;height:32px;border:1px solid color-mix(in srgb,var(--primary) 28%,transparent);border-radius:50%;font-size:17px}.home-now-playing:hover{border-color:var(--primary)}.home-now-playing:focus-visible{outline:2px solid var(--primary);outline-offset:4px}
@@ -65,5 +65,6 @@ body .home-universe-card{background:none;border-color:transparent;box-shadow:non
 @media(prefers-reduced-motion:reduce){.home-space-beacon{filter:none}}
 
 
-body[data-theme=celestial] .home-planet-art{filter:hue-rotate(-10deg) saturate(.65) brightness(1.06)}
-body[data-theme=aurora] .home-planet-art{filter:hue-rotate(145deg) saturate(.72) brightness(.8)}
+body:is([data-theme=celestial],[data-theme=aurora],[data-theme=rock]) .home-planet-art{filter:none}
+body[data-theme=celestial] .home-planet-art{width:110%}
+

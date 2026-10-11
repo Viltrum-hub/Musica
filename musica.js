@@ -831,6 +831,21 @@ document.addEventListener("DOMContentLoaded", () => {
             theme
         );
 
+        const homePlanet = document.querySelector(".home-planet-art");
+        if (homePlanet) {
+            const artwork = {
+                rock: ["assets/universe-rock-v3.webp", "Planeta Rock volcánico en escarlata y cobre"],
+                celestial: ["assets/universe-celestial-v2.webp", "Planeta Celestial ámbar y blanco perla con anillo luminoso"],
+                aurora: ["assets/universe-aurora-v2.webp", "Planeta Aurora rubí y champán"]
+            };
+            const [src, alt] = artwork[theme] || [
+                "assets/universe-electronic-v2.webp",
+                `Planeta ${themeNames[theme]} con ondas de sonido animadas`
+            ];
+            homePlanet.setAttribute("src", src);
+            homePlanet.setAttribute("alt", alt);
+        }
+
         if (currentThemeName) {
 
             currentThemeName.textContent =
@@ -4081,4 +4096,5 @@ if (button) {
     
 
 });
+
 
