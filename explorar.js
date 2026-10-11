@@ -888,6 +888,65 @@ function initExplorar(initialFilter = "all") {
     let activeFilter =
         "all";
 
+    const searchInput = document.getElementById("exploreSearch");
+    const sortSelect = document.getElementById("exploreSort");
+    const grid = document.getElementById("exploreSongGrid");
+    const resultCount = document.getElementById("exploreResultCount");
+    const total = document.getElementById("exploreTotal");
+    const artistTotal = document.getElementById("exploreArtists");
+    if (total) total.textContent = songCards.length;
+    if (artistTotal) artistTotal.textContent = new Set(songs.map(song => song.artist.toLowerCase())).size;
+
+    searchInput?.addEventListener("input", () => filterSongs(activeFilter));
+    sortSelect?.addEventListener("change", () => {
+        const ordered = [...songCards];
+        const key = sortSelect.value;
+        if (key !== "original") ordered.sort((a,b) => (a.dataset[key] || "").localeCompare(b.dataset[key] || "", "es", {sensitivity:"base"}));
+        ordered.forEach(card => grid.appendChild(card));
+    });
+    document.querySelectorAll("[data-explore-view]").forEach(button => {
+        button.addEventListener("click", () => {
+            grid.classList.toggle("explore-list", button.dataset.exploreView === "list");
+            document.querySelectorAll("[data-explore-view]").forEach(control => {
+                const active = control === button;
+                control.classList.toggle("active",active);
+                control.setAttribute("aria-pressed",String(active));
+            });
+        });
+    });
+
+    let featuredIndex = 0;
+    const featuredButton = document.getElementById("exploreFeaturePlay");
+    function syncFeaturedPlayback() {
+        if (!featuredButton) return;
+        const playing = songs[featuredIndex]?.audio && audioPlayer.src === new URL(songs[featuredIndex].audio,document.baseURI).href && !audioPlayer.paused;
+        featuredButton.querySelector("i").className = playing ? "bi bi-pause-fill" : "bi bi-play-fill";
+        featuredButton.querySelector("span").textContent = playing ? "Pausar" : "Escuchar";
+        featuredButton.setAttribute("aria-label",`${playing ? "Pausar" : "Reproducir"} ${songs[featuredIndex]?.title || "canción"}`);
+        document.querySelector(".explore-feature")?.classList.toggle("is-playing",playing);
+    }
+    function updateFeaturedSong() {
+        if (!document.getElementById("exploreFeatureTitle")) return;
+        const theme = document.body.dataset.theme || "electronic";
+        const match = songCards.findIndex(card => card.dataset.genre === theme || (card.dataset.themeTags || "").split(/\s+/).includes(theme));
+        featuredIndex = Math.max(0,match);
+        const song = songs[featuredIndex];
+        if (!song || !featuredButton) return;
+        document.getElementById("exploreFeatureTitle").textContent = song.title;
+        document.getElementById("exploreFeatureArtist").textContent = song.artist;
+        document.getElementById("exploreFeatureGenre").textContent = songCards[featuredIndex].querySelector(".song-genre")?.textContent || song.genre;
+        const image = document.getElementById("exploreFeatureImage");
+        image.src = song.image;
+        image.alt = `Portada de ${song.title}`;
+        syncFeaturedPlayback();
+    }
+    featuredButton?.addEventListener("click",() => songCards[featuredIndex].querySelector(".explore-play-button")?.click());
+    ["play","pause","loadedmetadata","emptied"].forEach(event => audioPlayer.addEventListener(event,syncFeaturedPlayback));
+    window.sonoraExploreThemeObserver?.disconnect();
+    window.sonoraExploreThemeObserver = new MutationObserver(updateFeaturedSong);
+    window.sonoraExploreThemeObserver.observe(document.body,{attributes:true,attributeFilter:["data-theme"]});
+    updateFeaturedSong();
+
 
     function normalizeGenre(value) {
 
@@ -926,10 +985,12 @@ function initExplorar(initialFilter = "all") {
 
 
                 const themes = (card.dataset.themeTags || "").split(/\s+/);
-                const show =
+                const matchesGenre =
                     activeFilter === "all" ||
                     cardGenre === activeFilter ||
                     themes.includes(activeFilter);
+                const query = normalizeGenre(searchInput?.value);
+                const show = matchesGenre && normalizeGenre(`${card.dataset.title} ${card.dataset.artist}`).includes(query);
 
 
                 if (show) {
@@ -997,14 +1058,16 @@ function initExplorar(initialFilter = "all") {
         if (noResults) {
             const heading = noResults.querySelector("h3");
             const description = noResults.querySelector("p");
-            if (heading) heading.textContent = activeFilter === "celestial" ? "Celestial está esperando su primera canción" : "No encontramos canciones";
-            if (description) description.textContent = activeFilter === "celestial" ? "Aún no hay canciones cristianas en el catálogo. Pronto podrás descubrirlas aquí." : "Intenta buscar otro título, artista o género.";
+            const emptyCelestial = activeFilter === "celestial" && !searchInput?.value;
+            if (heading) heading.textContent = emptyCelestial ? "Celestial está esperando su primera canción" : "No encontramos canciones";
+            if (description) description.textContent = emptyCelestial ? "Aún no hay canciones cristianas en el catálogo. Pronto podrás descubrirlas aquí." : "Prueba otro título, artista o género.";
 
             noResults.style.display =
                 visibleSongs === 0
                     ? "block"
                     : "none";
         }
+        if (resultCount) resultCount.textContent = `${visibleSongs} ${visibleSongs === 1 ? "canción disponible" : "canciones disponibles"}`;
     }
 
 
@@ -1047,5 +1110,11 @@ function initExplorar(initialFilter = "all") {
 
     updatePlayButton();
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    if (document.querySelector(".explore-page") && !document.getElementById("mainHome")) {
+        initExplorar();
+    }
+});
 
 

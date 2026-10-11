@@ -48,7 +48,7 @@
     ========================== -->
 
     <link rel="stylesheet" href="musica.css">
-    <link rel="stylesheet" href="explorar.css">
+    <link rel="stylesheet" href="explorar.css?v=premium-1">
     <link rel="stylesheet" href="artistas.css?v=premium-1">
     <link rel="stylesheet" href="albumes.css?v=3">
     <link rel="stylesheet" href="inicio-premium.css?v=10">
@@ -56,6 +56,7 @@
 
     <link rel="stylesheet" href="reproductor-premium.css?v=1">
 <link rel="stylesheet" href="biblioteca.css?v=1">
+<link rel="stylesheet" href="explorar-premium.css?v=1">
 </head>
 
 
@@ -1444,7 +1445,7 @@
      JAVASCRIPT EXPLORAR
 ===================================================== -->
 
-<script src="explorar.js?v=seven-worlds-1"></script>
+<script src="explorar.js?v=premium-1"></script>
 
 <!-- JAVASCRIPT ARTISTAS -->
 <script src="artistas.js?v=library-1"></script>
@@ -2489,7 +2490,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const response =
                 await fetch(
-                    "explorar.html?v=seven-worlds-1"
+                    "explorar.html?v=premium-1"
                 );
 
 
@@ -2553,6 +2554,8 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 if (typeof initExplorar === "function") {
     initExplorar(initialFilter);
+} else {
+    setupExploreSongs();
 }
 
             /*
@@ -2566,7 +2569,6 @@ if (typeof initExplorar === "function") {
             );
 
 
-            setupExploreSongs();
 
 
             restoreExploreSong();

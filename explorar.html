@@ -53,12 +53,13 @@
          CSS EXCLUSIVO EXPLORAR
     ========================== -->
 
-    <link rel="stylesheet" href="explorar.css">
+    <link rel="stylesheet" href="explorar.css?v=premium-1">
     <link rel="stylesheet" href="universos.css?v=5">
     
 
     <link rel="stylesheet" href="reproductor-premium.css?v=1">
 <link rel="stylesheet" href="biblioteca.css?v=1">
+<link rel="stylesheet" href="explorar-premium.css?v=1">
 </head>
 
 
@@ -428,42 +429,28 @@
          HERO EXPLORAR
     ========================== -->
 
-    <section class="explore-hero">
-
-        <div class="explore-glow explore-glow-one"></div>
-        <div class="explore-glow explore-glow-two"></div>
-
-        <div class="container">
-
+    <section class="explore-hero" aria-labelledby="exploreTitle">
+        <div class="container explore-hero-layout">
             <div class="explore-hero-content">
-
-                <span class="explore-label">
-
-                    <i class="bi bi-compass"></i>
-
-                    EXPLORA SONORA
-
-                </span>
-
-
-                <h1>
-                    Encuentra tu
-                    <span>
-                        próxima canción.
-                    </span>
-                </h1>
-
-
-                <p>
-                    Explora toda la música disponible en SONORA,
-                    descubre nuevos sonidos y encuentra canciones
-                    para cada momento.
-                </p>
-
+                <span class="explore-label">DESCUBRE SONORA</span>
+                <h1 id="exploreTitle">Tu próxima<br><span>gran conexión.</span></h1>
+                <p>Un clásico que vuelve. Un sonido que descubres.<br>Encuentra la música que te mueve.</p>
+                <div class="explore-hero-actions">
+                    <a class="explore-primary" href="#exploreCatalog">Explorar canciones <i class="bi bi-arrow-down"></i></a>
+                    <a class="explore-secondary" href="index.html?page=biblioteca"><i class="bi bi-collection"></i> Mi biblioteca</a>
+                </div>
+                <div class="explore-stats"><span><strong id="exploreTotal">26</strong> canciones</span><span><strong id="exploreArtists">7</strong> artistas</span><span>7 universos</span></div>
             </div>
-
+            <article class="explore-feature" aria-labelledby="exploreFeatureTitle">
+                <div class="explore-feature-art"><img id="exploreFeatureImage" src="Imagenes/stranger.avif" alt="Portada de Every Breath You Take"><div class="explore-feature-orbit" aria-hidden="true"></div></div>
+                <div class="explore-feature-copy">
+                    <span class="explore-feature-label">SELECCIÓN SONORA</span>
+                    <h2 id="exploreFeatureTitle">Every Breath You Take</h2>
+                    <p id="exploreFeatureArtist">The Police</p>
+                    <div class="explore-feature-bottom"><span id="exploreFeatureGenre">Rock</span><button id="exploreFeaturePlay" class="explore-primary" type="button"><i class="bi bi-play-fill"></i><span>Escuchar</span></button></div>
+                </div>
+            </article>
         </div>
-
     </section>
 
 
@@ -472,7 +459,7 @@
          CONTENIDO
     ========================== -->
 
-    <section class="explore-content">
+    <section class="explore-content" id="exploreCatalog" aria-labelledby="exploreCatalogTitle">
 
         <div class="container">
 
@@ -486,12 +473,11 @@
                 <div>
 
                     <span class="small-title">
-                        BIBLIOTECA
+                        EL CATÁLOGO
                     </span>
 
-                    <h2>
-                        Todas las canciones
-                    </h2>
+                    <h2 id="exploreCatalogTitle">Encuentra tu sonido</h2>
+                    <p class="explore-result-count" id="exploreResultCount" role="status" aria-live="polite"></p>
 
                 </div>
 
@@ -549,6 +535,14 @@
                 </div>
 
             </div>
+            <div class="explore-discovery-bar">
+                <label class="explore-search"><i class="bi bi-search" aria-hidden="true"></i><input id="exploreSearch" type="search" placeholder="Buscar canción o artista" aria-label="Buscar canción o artista" autocomplete="off"></label>
+                <div class="explore-display-controls">
+                    <label class="explore-sort">Ordenar <select id="exploreSort" aria-label="Ordenar canciones"><option value="original">Selección Sonora</option><option value="title">Canción A–Z</option><option value="artist">Artista A–Z</option></select></label>
+                    <div class="explore-view-switch" role="group" aria-label="Vista del catálogo"><button class="active" type="button" data-explore-view="grid" aria-label="Vista de portadas" aria-pressed="true"><i class="bi bi-grid"></i></button><button type="button" data-explore-view="list" aria-label="Vista de lista" aria-pressed="false"><i class="bi bi-list-ul"></i></button></div>
+                </div>
+            </div>
+
 
 
 
@@ -575,7 +569,7 @@
    
                 <div class="explore-song-image">
 
-                <img src="Imagenes/stranger.avif" alt="Every Breath You Take">
+                <img loading="lazy" decoding="async" src="Imagenes/stranger.avif" alt="Every Breath You Take">
 
                 <button class="explore-play-button" type="button" aria-label="Reproducir Every Breath You Take">
                      <i class="bi bi-play-fill"></i>
@@ -609,7 +603,7 @@
                 >
 
                     <div class="explore-song-image">
-                    <img src="Imagenes/Scorpions.jpg" alt="Wind of Change">
+                    <img loading="lazy" decoding="async" src="Imagenes/Scorpions.jpg" alt="Wind of Change">
                     <button class="explore-play-button" type="button" aria-label="Reproducir Wind of Change">
                         <i class="bi bi-play-fill"></i>
                     </button>
@@ -638,7 +632,7 @@
                 >
 
                     <div class="explore-song-image">
-                 <img src="Imagenes/blue.webp" alt="Blue (Da Ba Dee)">
+                 <img loading="lazy" decoding="async" src="Imagenes/blue.webp" alt="Blue (Da Ba Dee)">
                  <button class="explore-play-button" type="button" aria-label="Reproducir Blue (Da Ba Dee)">
                  <i class="bi bi-play-fill"></i>
                  </button>
@@ -666,7 +660,7 @@
 
                     <div class="explore-song-image">
 
-                <img src="Imagenes/love.jpg"alt="Your Love">
+                <img loading="lazy" decoding="async" src="Imagenes/love.jpg"alt="Your Love">
                 <button class="explore-play-button" type="button" aria-label="Reproducir Your Love">
                             <i class="bi bi-play-fill"></i>
                         </button>
@@ -697,7 +691,7 @@
 
                     <div class="explore-song-image">
 
-                <img src="Imagenes/love.jpg">
+                <img loading="lazy" decoding="async" src="Imagenes/love.jpg">
                 <button class="explore-play-button" type="button" aria-label="Reproducir Say It Isn't So">
                             <i class="bi bi-play-fill"></i>
                         </button>
@@ -728,7 +722,7 @@
 
                     <div class="explore-song-image">
 
-                <img src="Imagenes/love.jpg">
+                <img loading="lazy" decoding="async" src="Imagenes/love.jpg">
                 <button class="explore-play-button" type="button" aria-label="Reproducir All The Love In The World">
                             <i class="bi bi-play-fill"></i>
                         </button>
@@ -759,7 +753,7 @@
 
                 <div class="explore-song-image">
 
-                <img src="Imagenes/Gun.jpg">
+                <img loading="lazy" decoding="async" src="Imagenes/Gun.jpg">
 
                 <button class="explore-play-button" type="button" aria-label="Reproducir Knockin' On Heaven's Door">
                      <i class="bi bi-play-fill"></i>
@@ -788,7 +782,7 @@
 
                 <div class="explore-song-image">
 
-                <img src="Imagenes/Gun.jpg">
+                <img loading="lazy" decoding="async" src="Imagenes/Gun.jpg">
 
                 <button class="explore-play-button" type="button" aria-label="Reproducir Don't Cry">
                      <i class="bi bi-play-fill"></i>
@@ -817,7 +811,7 @@
 
                 <div class="explore-song-image">
 
-                <img src="Imagenes/Gun2.jpg">
+                <img loading="lazy" decoding="async" src="Imagenes/Gun2.jpg">
 
                 <button class="explore-play-button" type="button" aria-label="Reproducir Sweet Child O' Mine">
                      <i class="bi bi-play-fill"></i>
@@ -846,7 +840,7 @@
 
                 <div class="explore-song-image">
 
-                <img src="Imagenes/Gun.jpg">
+                <img loading="lazy" decoding="async" src="Imagenes/Gun.jpg">
 
                 <button class="explore-play-button" type="button" aria-label="Reproducir November Rain">
                      <i class="bi bi-play-fill"></i>
@@ -875,7 +869,7 @@
 
                 <div class="explore-song-image">
 
-                <img src="Imagenes/Gun2.jpg">
+                <img loading="lazy" decoding="async" src="Imagenes/Gun2.jpg">
 
                 <button class="explore-play-button" type="button" aria-label="Reproducir Welcome To The Jungle">
                      <i class="bi bi-play-fill"></i>
@@ -904,7 +898,7 @@
 
                 <div class="explore-song-image">
 
-                <img src="Imagenes/Gun2.jpg">
+                <img loading="lazy" decoding="async" src="Imagenes/Gun2.jpg">
 
                 <button class="explore-play-button" type="button" aria-label="Reproducir Paradise City">
                      <i class="bi bi-play-fill"></i>
@@ -933,7 +927,7 @@
 
                 <div class="explore-song-image">
 
-                <img src="Imagenes/Gun.jpg" alt="Patience">
+                <img loading="lazy" decoding="async" src="Imagenes/Gun.jpg" alt="Patience">
 
                 <button class="explore-play-button" type="button" aria-label=" Reproducir Patience">
                      <i class="bi bi-play-fill"></i>
@@ -962,7 +956,7 @@
 
                 <div class="explore-song-image">
 
-                <img src="Imagenes/madonna.jpg" alt="Like A Virgin">
+                <img loading="lazy" decoding="async" src="Imagenes/madonna.jpg" alt="Like A Virgin">
 
                 <button class="explore-play-button" type="button" aria-label="Reproducir Like A Virgin">
                      <i class="bi bi-play-fill"></i>
@@ -991,7 +985,7 @@
 
                 <div class="explore-song-image">
 
-                <img src="Imagenes/madonna.jpg" alt="Hung Up">
+                <img loading="lazy" decoding="async" src="Imagenes/madonna.jpg" alt="Hung Up">
 
                 <button class="explore-play-button" type="button" aria-label="Reproducir Hung Up">
                      <i class="bi bi-play-fill"></i>
@@ -1020,7 +1014,7 @@
 
                 <div class="explore-song-image">
 
-                <img src="Imagenes/madonna.jpg" alt="Like a Prayer">
+                <img loading="lazy" decoding="async" src="Imagenes/madonna.jpg" alt="Like a Prayer">
 
                 <button class="explore-play-button" type="button" aria-label="Reproducir Like a Prayer">
                      <i class="bi bi-play-fill"></i>
@@ -1049,7 +1043,7 @@
 
                 <div class="explore-song-image">
 
-                <img src="Imagenes/madonna.jpg" alt="Material Girl">
+                <img loading="lazy" decoding="async" src="Imagenes/madonna.jpg" alt="Material Girl">
 
                 <button class="explore-play-button" type="button" aria-label="Material Girl">
                      <i class="bi bi-play-fill"></i>
@@ -1078,7 +1072,7 @@
 
                 <div class="explore-song-image">
 
-                <img src="Imagenes/queen.jpg" alt="Another One Bites the Dust">
+                <img loading="lazy" decoding="async" src="Imagenes/queen.jpg" alt="Another One Bites the Dust">
 
                 <button class="explore-play-button" type="button" aria-label="Reproducir Another One Bites the Dust">
                      <i class="bi bi-play-fill"></i>
@@ -1107,7 +1101,7 @@
 
                 <div class="explore-song-image">
 
-                <img src="Imagenes/queen.jpg" alt="Don't Stop Me Now">
+                <img loading="lazy" decoding="async" src="Imagenes/queen.jpg" alt="Don't Stop Me Now">
 
                 <button class="explore-play-button" type="button" aria-label="Reproducir Don't Stop Me Now">
                      <i class="bi bi-play-fill"></i>
@@ -1136,7 +1130,7 @@
 
                 <div class="explore-song-image">
 
-                <img src="Imagenes/queen.jpg" alt="We Are The Champions">
+                <img loading="lazy" decoding="async" src="Imagenes/queen.jpg" alt="We Are The Champions">
 
                 <button class="explore-play-button" type="button" aria-label="Reproducir We Are The Champions">
                      <i class="bi bi-play-fill"></i>
@@ -1165,7 +1159,7 @@
 
                 <div class="explore-song-image">
 
-                <img src="Imagenes/queen.jpg" alt="We Will Rock You">
+                <img loading="lazy" decoding="async" src="Imagenes/queen.jpg" alt="We Will Rock You">
 
                 <button class="explore-play-button" type="button" aria-label="Reproducir We Will Rock You">
                      <i class="bi bi-play-fill"></i>
@@ -1195,7 +1189,7 @@
 
                 <div class="explore-song-image">
 
-                <img src="Imagenes/queen2.jpg" alt="Bohemian Rhapsody">
+                <img loading="lazy" decoding="async" src="Imagenes/queen2.jpg" alt="Bohemian Rhapsody">
 
                 <button class="explore-play-button" type="button" aria-label="Reproducir Bohemian Rhapsody">
                      <i class="bi bi-play-fill"></i>
@@ -1225,7 +1219,7 @@
 
                 <div class="explore-song-image">
 
-                <img src="Imagenes/alan.jpg" alt="Alone">
+                <img loading="lazy" decoding="async" src="Imagenes/alan.jpg" alt="Alone">
 
                 <button class="explore-play-button" type="button" aria-label="Reproducir Alone">
                      <i class="bi bi-play-fill"></i>
@@ -1255,7 +1249,7 @@
 
                 <div class="explore-song-image">
 
-                <img src="Imagenes/alan.jpg" alt="Faded">
+                <img loading="lazy" decoding="async" src="Imagenes/alan.jpg" alt="Faded">
 
                 <button class="explore-play-button" type="button" aria-label="Reproducir Faded">
                      <i class="bi bi-play-fill"></i>
@@ -1285,7 +1279,7 @@
 
                 <div class="explore-song-image">
 
-                <img src="Imagenes/alan.jpg" alt="Sing Me To Sleep">
+                <img loading="lazy" decoding="async" src="Imagenes/alan.jpg" alt="Sing Me To Sleep">
 
                 <button class="explore-play-button" type="button" aria-label="Reproducir Sing Me To Sleep">
                      <i class="bi bi-play-fill"></i>
@@ -1315,7 +1309,7 @@
 
                 <div class="explore-song-image">
 
-                <img src="Imagenes/alan.jpg" alt="The Spectre">
+                <img loading="lazy" decoding="async" src="Imagenes/alan.jpg" alt="The Spectre">
 
                 <button class="explore-play-button" type="button" aria-label="Reproducir The Spectre">
                      <i class="bi bi-play-fill"></i>
@@ -1647,7 +1641,7 @@
      JAVASCRIPT EXPLORAR
 ===================================================== -->
 
-<script src="explorar.js?v=seven-worlds-1"></script>
+<script src="explorar.js?v=premium-1"></script>
 
 
 
