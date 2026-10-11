@@ -1111,10 +1111,5 @@ function initExplorar(initialFilter = "all") {
     updatePlayButton();
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-    if (document.querySelector(".explore-page") && !document.getElementById("mainHome")) {
-        initExplorar();
-    }
-});
 
 
