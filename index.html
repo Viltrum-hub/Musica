@@ -2489,7 +2489,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const response =
                 await fetch(
-                    "explorar.html"
+                    "explorar.html?v=seven-worlds-1"
                 );
 
 
@@ -2646,7 +2646,7 @@ if (typeof initExplorar === "function") {
 
     async function loadAlbums(updateHistory = true) {
         try {
-            const response = await fetch("albumes.html");
+            const response = await fetch("albumes.html?v=seven-worlds-1");
             if (!response.ok) throw new Error("No se pudo cargar Álbumes");
             const doc = new DOMParser().parseFromString(await response.text(), "text/html");
             const page = doc.querySelector(".sonora-albums");
