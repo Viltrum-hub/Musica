@@ -445,7 +445,7 @@ function initExplorar(initialFilter = "all") {
             async () => {
 
                 if (
-                    currentSongIndex === -1
+                    !audioPlayer.getAttribute("src")
                 ) {
 
                     await loadExploreSong(

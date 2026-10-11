@@ -406,7 +406,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
                 if (
-                    currentSong === -1
+                    !audioPlayer.getAttribute("src")
                 ) {
 
                     if (
