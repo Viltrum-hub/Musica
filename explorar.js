@@ -1,9 +1,8 @@
 
 function initExplorar(initialFilter = "all") {
 
-    /* =====================================================
-       ELEMENTOS
-    ===================================================== */
+    /* ELEMENTOS */
+
 
     const audioPlayer =
         document.getElementById("audioPlayer");
@@ -53,9 +52,8 @@ function initExplorar(initialFilter = "all") {
         );
 
 
-    /* =====================================================
-       COMPROBAR REPRODUCTOR
-    ===================================================== */
+    /* COMPROBAR REPRODUCTOR */
+
 
     if (!audioPlayer) {
 
@@ -67,9 +65,8 @@ function initExplorar(initialFilter = "all") {
     }
 
 
-    /* =====================================================
-       EVITAR DUPLICAR EVENTOS
-    ===================================================== */
+    /* EVITAR DUPLICAR EVENTOS */
+
 
     let playButton =
         originalPlayButton;
@@ -81,10 +78,8 @@ function initExplorar(initialFilter = "all") {
         originalNextButton;
 
 
-    /*
-     * Si initExplorar() se ejecuta nuevamente,
-     * evitamos duplicar los eventos del reproductor.
-     */
+
+
 
     if (originalPlayButton) {
 
@@ -119,16 +114,14 @@ function initExplorar(initialFilter = "all") {
     }
 
 
-    /* =====================================================
-       ESTADO
-    ===================================================== */
+    /* ESTADO */
+
 
     let currentSongIndex = -1;
 
 
-    /* =====================================================
-       LISTA DE CANCIONES
-    ===================================================== */
+    /* LISTA DE CANCIONES */
+
 
     const songs =
         songCards.map(card => {
@@ -164,9 +157,8 @@ function initExplorar(initialFilter = "all") {
         });
 
 
-    /* =====================================================
-       FORMATO DE TIEMPO
-    ===================================================== */
+    /* FORMATO DE TIEMPO */
+
 
     function formatTime(seconds) {
 
@@ -193,9 +185,8 @@ function initExplorar(initialFilter = "all") {
     }
 
 
-    /* =====================================================
-       ACTUALIZAR BOTÓN PLAY / PAUSA
-    ===================================================== */
+    /* Actualizar botón de reproducción / pausa */
+
 
     function updatePlayButton() {
 
@@ -233,9 +224,8 @@ function initExplorar(initialFilter = "all") {
     }
 
 
-    /* =====================================================
-       MARCAR CANCIÓN ACTIVA
-    ===================================================== */
+    /* MARCAR CANCIÓN ACTIVA */
+
 
     function updateActiveCard() {
 
@@ -253,9 +243,8 @@ function initExplorar(initialFilter = "all") {
     }
 
 
-    /* =====================================================
-       ACTUALIZAR PORTADA
-    ===================================================== */
+    /* ACTUALIZAR PORTADA */
+
 
     function updatePlayerCover(image) {
 
@@ -322,9 +311,8 @@ function initExplorar(initialFilter = "all") {
     }
 
 
-    /* =====================================================
-       CARGAR CANCIÓN
-    ===================================================== */
+    /* CARGAR CANCIÓN */
+
 
     async function loadExploreSong(
         index,
@@ -434,9 +422,8 @@ function initExplorar(initialFilter = "all") {
     }
 
 
-    /* =====================================================
-       PLAY / PAUSA
-    ===================================================== */
+    /* PLAY / PAUSA */
+
 
     if (playButton) {
 
@@ -486,9 +473,8 @@ function initExplorar(initialFilter = "all") {
     }
 
 
-    /* =====================================================
-       EVENTOS DEL AUDIO
-    ===================================================== */
+    /* EVENTOS DEL AUDIO */
+
 
     audioPlayer.addEventListener(
         "play",
@@ -523,9 +509,8 @@ function initExplorar(initialFilter = "all") {
     );
 
 
-    /* =====================================================
-       METADATOS
-    ===================================================== */
+    /* METADATOS */
+
 
     audioPlayer.addEventListener(
         "loadedmetadata",
@@ -542,9 +527,8 @@ function initExplorar(initialFilter = "all") {
     );
 
 
-    /* =====================================================
-       PROGRESO
-    ===================================================== */
+    /* PROGRESO */
+
 
     audioPlayer.addEventListener(
         "timeupdate",
@@ -585,9 +569,8 @@ function initExplorar(initialFilter = "all") {
     );
 
 
-    /* =====================================================
-       BARRA DE PROGRESO
-    ===================================================== */
+    /* BARRA DE PROGRESO */
+
 
     if (progressBar) {
 
@@ -616,9 +599,8 @@ function initExplorar(initialFilter = "all") {
     }
 
 
-    /* =====================================================
-       VOLUMEN
-    ===================================================== */
+    /* VOLUMEN */
+
 
     if (volumeBar) {
 
@@ -641,9 +623,8 @@ function initExplorar(initialFilter = "all") {
     }
 
 
-    /* =====================================================
-       SIGUIENTE
-    ===================================================== */
+    /* SIGUIENTE */
+
 
     if (nextButton) {
 
@@ -680,9 +661,8 @@ function initExplorar(initialFilter = "all") {
     }
 
 
-    /* =====================================================
-       ANTERIOR
-    ===================================================== */
+    /* ANTERIOR */
+
 
     if (previousButton) {
 
@@ -719,9 +699,8 @@ function initExplorar(initialFilter = "all") {
     }
 
 
-    /* =====================================================
-       CUANDO TERMINA UNA CANCIÓN
-    ===================================================== */
+    /* CUANDO TERMINA UNA CANCIÓN */
+
 
     audioPlayer.addEventListener(
         "ended",
@@ -755,9 +734,8 @@ function initExplorar(initialFilter = "all") {
     );
 
 
-    /* =====================================================
-       ERROR DE AUDIO
-    ===================================================== */
+    /* ERROR DE AUDIO */
+
 
     audioPlayer.addEventListener(
         "error",
@@ -774,9 +752,8 @@ function initExplorar(initialFilter = "all") {
     );
 
 
-    /* =====================================================
-       BOTONES DE LAS CANCIONES
-    ===================================================== */
+    /* BOTONES DE LAS CANCIONES */
+
 
     songCards.forEach(
         (card, index) => {
@@ -881,9 +858,8 @@ function initExplorar(initialFilter = "all") {
     );
 
 
-    /* =====================================================
-       FILTRO DE GÉNEROS
-    ===================================================== */
+    /* FILTRO DE GÉNEROS */
+
 
     let activeFilter =
         "all";
@@ -1071,9 +1047,8 @@ function initExplorar(initialFilter = "all") {
     }
 
 
-    /* =====================================================
-       EVENTOS DE FILTROS
-    ===================================================== */
+    /* EVENTOS DE FILTROS */
+
 
     genreButtons.forEach(
         button => {
@@ -1100,9 +1075,8 @@ function initExplorar(initialFilter = "all") {
     );
 
 
-    /* =====================================================
-       INICIO
-    ===================================================== */
+    /* INICIO */
+
 
     filterSongs(
         initialFilter

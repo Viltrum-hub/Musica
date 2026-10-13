@@ -1,4 +1,4 @@
-/* ANDROMEDA Library: the existing account and Supabase tables are the source of truth. */
+/* Biblioteca y playlists de la cuenta. */
 (() => {
   const account = () => window.sonoraAccount;
   const {escapeHTML: esc, normalizeText: normalize} = window.andromedaCore;
@@ -13,7 +13,7 @@
   const report = error => error?.code === '23505' ? 'Esta canción ya está en la playlist.' : 'No se pudo guardar el cambio. Inténtalo de nuevo.';
   const songAttrs = song => `data-title="${esc(song.title)}" data-artist="${esc(song.artist)}" data-audio="${esc(song.audio)}" data-image="${esc(song.image)}" data-genre="${esc(song.genre)}"`;
   const imageURL = image => {
-    // Saved values must remain URLs, never HTML or script content.
+    /* Validar las URL guardadas antes de mostrarlas. */
     try { const url = new URL(image || '', document.baseURI); return ['http:','https:'].includes(url.protocol) && image ? image : 'assets/universe-electronic-v2.webp'; } catch { return 'assets/universe-electronic-v2.webp'; }
   };
   const mosaic = songs => {

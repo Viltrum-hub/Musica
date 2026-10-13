@@ -1,4 +1,4 @@
-/* ANDROMEDA: refined controls and centered, theme-aware dialogs. */
+/* Controles y modales por universo. */
 body{--control-line:color-mix(in srgb,var(--text) 16%,transparent);--modal-surface:color-mix(in srgb,var(--card) 78%,var(--bg-secondary));}
 body button,body input,body select,body textarea{font-family:Montserrat,sans-serif;}
 body :is(button,a,input,select,textarea):focus-visible{outline:2px solid var(--primary-light);outline-offset:4px;}
@@ -32,7 +32,7 @@ body .planet-theme-menu .planet-theme-option{min-height:56px;gap:12px;padding:10
 body .planet-theme-menu .planet-theme-option strong{font-size:13px;}
 body .planet-theme-menu .theme-planet-orb{width:36px;height:36px;min-width:36px;}
 body #mainHome .home-universe-grid{grid-template-columns:repeat(6,minmax(0,1fr));max-width:1040px;gap:20px;}
-/* All overlays share one balanced viewport position; scroll stays inside the panel. */
+/* Modales centrados con desplazamiento interno. */
 body :is(.auth-overlay,.profile-overlay,.search-overlay){position:fixed;inset:0;z-index:11000;align-items:center;justify-content:center;padding:24px;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(16px);}
 body :is(.auth-modal,.profile-modal,.search-box){position:relative;inset:auto;margin:0;width:min(580px,100%);max-height:calc(100dvh - 48px);overflow:auto;overscroll-behavior:contain;padding:40px;border:1px solid var(--control-line);border-radius:28px;background:linear-gradient(155deg,color-mix(in srgb,var(--primary) 5%,var(--modal-surface)),var(--modal-surface));color:var(--text);box-shadow:0 36px 100px #0009;}
 body .search-box{width:min(760px,100%);padding-top:68px;}
@@ -92,7 +92,7 @@ body #searchOverlay .search-result-info strong{color:var(--text)!important;}
 body #searchOverlay .search-result-info small{color:var(--muted)!important;}
 @media(max-width:650px){body #searchOverlay{padding:16px;}}
 
-/* Compact silhouettes; extra invisible hit area on touch devices. */
+/* Área táctil ampliada sin aumentar el tamaño visual. */
 body .artists-page .artist-profile-close,body :is(.sa-close,.close-search,.auth-close,.profile-close){width:36px;height:36px;min-width:36px;min-height:36px;font-size:16px;}
 body .artists-page .artist-profile-track .artist-card-play{width:36px;height:36px;min-width:36px;min-height:36px;font-size:17px;box-shadow:none;}
 body .artists-page .artist-catalog-info .artist-details-button{min-height:34px;font-size:11px;}
@@ -112,7 +112,7 @@ body #musicPlayer input[type=range]:hover::-webkit-slider-thumb,body #musicPlaye
 @media(pointer:coarse){body :is(.sa-arrow,.featured-arrow,.sl-icon,#previousBtn,#nextBtn,#playerFavoriteBtn,#playerMuteBtn){position:relative;}body :is(.genre-filter,.artist-filter,.sa-chip){position:relative;}body :is(.genre-filter,.artist-filter,.sa-chip,.artist-card-play,.explore-play-button,.sa-card-play,.favorite-song-btn,.sa-arrow,.featured-arrow,.sl-icon,.artist-profile-close,.sa-close,.close-search,.auth-close,.profile-close,#previousBtn,#nextBtn,#mainPlayBtn,#playerFavoriteBtn,#playerMuteBtn)::after{content:"";position:absolute;inset:-6px;pointer-events:auto;}}
 @media(pointer:coarse){body :is(.artist-follow,.artist-details-button,.sa-button,.sl-button,.artist-primary-action,.artist-secondary-action){position:relative;}body :is(.artist-follow,.artist-details-button,.sa-button,.sl-button,.artist-primary-action,.artist-secondary-action)::after{content:"";position:absolute;inset:-5px -2px;pointer-events:auto;}}
 @media(pointer:coarse) and (max-width:650px){body #musicPlayer.music-player{grid-template-columns:minmax(0,1fr) 32px 124px;gap:5px 12px;}body #musicPlayer .control-buttons{gap:12px;}}
-/* Lighter profile cards and explicit collection actions. */
+/* Tarjetas del perfil y botones de colecciones. */
 body .artists-page .artist-profile-panel{width:min(740px,100%);max-height:min(82dvh,780px);padding:18px 26px 24px;border-radius:20px;background:var(--bg-secondary);border-color:color-mix(in srgb,var(--text) 11%,transparent);box-shadow:0 20px 65px #0006;}
 body .artists-page .artist-profile-close{margin-bottom:14px;background:transparent;}
 body .artists-page .artist-profile-heading{grid-template-columns:220px minmax(0,1fr);gap:24px;margin-bottom:22px;}
@@ -137,7 +137,7 @@ body .sonora-albums .sa-card-open span{color:inherit;font-size:15px;}
 @media(hover:hover){body .sonora-albums :is(.sa-card-open,[data-details]):hover{background:color-mix(in srgb,var(--primary) 18%,var(--bg-secondary));border-color:var(--primary);color:var(--text);}}
 @media(max-width:650px){body .artists-page .artist-profile-panel{width:100%;max-height:calc(100dvh - 32px);padding:16px 20px 22px;border-radius:18px;}body .artists-page .artist-profile-heading{grid-template-columns:1fr;gap:18px;}body .artists-page .artist-profile-portrait{width:180px;max-width:180px;height:180px;justify-self:center;}body .artists-page .artist-profile-panel h2{font-size:28px;}body #profileOverlay .profile-modal{padding:26px 20px 22px;}body .sonora-albums .sa-card-title{font-size:13px;}body .sonora-albums .sa-actions [data-details]{min-height:36px;padding:9px 13px;border-color:color-mix(in srgb,var(--primary) 42%,transparent);border-radius:10px;background:color-mix(in srgb,var(--primary) 10%,var(--bg-secondary));color:var(--primary-light);}}
 
-/* Universe neon accents and integrated avatar controls. */
+/* Colores del universo y controles del avatar. */
 body{--modal-neon:color-mix(in srgb,var(--primary) 26%,transparent);}
 body .artists-page .artist-profile-panel,body :is(.sa-dialog,.sl-dialog,.auth-modal,.search-box),body #profileOverlay .profile-modal{
  border:1px solid color-mix(in srgb,var(--primary) 42%,transparent);
@@ -163,7 +163,7 @@ body :is(.auth-modal,.profile-modal,.search-box,.sl-dialog) :is(input,textarea):
 body :is(.artist-follow,.change-avatar-button,.auth-submit,.sl-button):focus-visible{outline:2px solid var(--secondary);outline-offset:4px;}
 @media(hover:hover){body .artists-page .artist-follow:hover{filter:brightness(1.12);border-color:var(--secondary);box-shadow:0 4px 22px var(--modal-neon);}body .artists-page .artist-follow[aria-pressed="true"]:hover{background:color-mix(in srgb,var(--primary) 22%,var(--bg-secondary));}}
 
-/* Clear library entry point, coordinated with the selected universe. */
+/* Botón Mi biblioteca. */
 body .explore-page .explore-library-button{
  display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:40px;
  padding:11px 17px;border:1px solid color-mix(in srgb,var(--primary) 70%,var(--secondary));border-radius:12px;

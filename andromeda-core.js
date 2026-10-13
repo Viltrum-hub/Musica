@@ -1,4 +1,4 @@
-/* Shared presentation helpers and read-only catalog loading. */
+/* Funciones compartidas y carga del catálogo. */
 (() => {
   const documents = new Map();
   const entities = {'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'};
@@ -28,7 +28,7 @@
       if (!song.audio || (keep === 'first' && songs.has(song.audio))) return;
       songs.set(song.audio, song);
     });
-    // Each consumer receives its own data so collection metadata cannot leak into playlists.
+    /* Cada módulo recibe una copia independiente del catálogo. */
     return [...songs.values()];
   }
 

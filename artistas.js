@@ -15,9 +15,8 @@ function initArtistas(options = {}) {
         });
     };
 
-    /* ========================================
-       PERFILES DE ARTISTAS
-    ======================================== */
+    /* PERFILES DE ARTISTAS */
+
 
     const artistProfiles = {
     "the-police": {
@@ -627,9 +626,8 @@ function initArtistas(options = {}) {
     }
 };
 
-    /* ========================================
-       ELEMENTOS
-    ======================================== */
+    /* ELEMENTOS */
+
 
     const searchInput = root.querySelector("#artistSearch");
 
@@ -642,9 +640,8 @@ function initArtistas(options = {}) {
     ];
 
 
-/* ========================================
-   IMAGEN DEL ARTISTA EN TARJETAS
-======================================== */
+/* IMAGEN DEL ARTISTA EN TARJETAS */
+
 
 cards.forEach(card => {
     const artistId = card.dataset.artistId;
@@ -678,9 +675,8 @@ cards.forEach(card => {
     let ownedSource = "";
     let playRequest = 0;
 
-    /* ========================================
-       ARTISTAS SEGUIDOS
-    ======================================== */
+    /* ARTISTAS SEGUIDOS */
+
 
     try {
         const saved = JSON.parse(
@@ -706,9 +702,8 @@ cards.forEach(card => {
 
 
 
-    /* ========================================
-       COLA GLOBAL DE CANCIONES
-    ======================================== */
+    /* COLA GLOBAL DE CANCIONES */
+
 
     const queue = Object.values(artistProfiles)
     .flatMap(profile => {
@@ -720,13 +715,12 @@ cards.forEach(card => {
             ...track,
             artist: track.artist || profile.name,
 
-            // Artistas siempre usa la imagen principal del artista
+
             image: profile.image || track.image || ""
         }));
     });
-    /* ========================================
-       SINCRONIZAR REPRODUCCIÓN
-    ======================================== */
+    /* SINCRONIZAR REPRODUCCIÓN */
+
 
     function syncPlayback() {
         root.querySelectorAll(".artist-song-play")
@@ -796,9 +790,8 @@ cards.forEach(card => {
         }
     }
 
-    /* ========================================
-       ARTISTA DESTACADO — CARRUSEL
-    ======================================== */
+    /* ARTISTA DESTACADO — CARRUSEL */
+
 
     const featuredRoot =
         root.querySelector("[data-featured-carousel]");
@@ -810,15 +803,13 @@ cards.forEach(card => {
 
     const featuredDelay = 8000;
 
-    /* ========================================
-       ARTISTAS DEL CARRUSEL
-    ======================================== */
+    /* ARTISTAS DEL CARRUSEL */
+
 
     const featuredIds = ["the-police", "scorpions", "eiffel-65", "the-outfield", "madonna", "queen", "alan-walker", "the-notorious-b-i-g", "george-michael", "dr-dre", "luis-miguel", "chicago", "lady-gaga", "50-cent", "wiz-khalifa-snoop-dogg", "ice-cube", "eminem", "coolio", "snoop-dogg", "2pac-pop-smoke", "wham", "axl-rose"];
 
-    /* ========================================
-       ORDEN SEGÚN UNIVERSO
-    ======================================== */
+    /* ORDEN SEGÚN UNIVERSO */
+
 
     const themeFeatured = {"electronic": ["alan-walker", "eiffel-65"], "rock": ["scorpions", "axl-rose", "queen", "the-police", "chicago", "the-outfield"], "pop": ["lady-gaga", "madonna", "george-michael", "wham"], "hiphop": ["eminem", "50-cent", "snoop-dogg", "ice-cube", "dr-dre", "coolio", "the-notorious-b-i-g", "2pac-pop-smoke", "wiz-khalifa-snoop-dogg"], "aurora": ["luis-miguel", "george-michael", "chicago", "scorpions"]};
 
@@ -830,9 +821,8 @@ cards.forEach(card => {
         return themeFeatured[theme] || featuredIds;
     }
 
-    /* ========================================
-       CANCIÓN PRINCIPAL
-    ======================================== */
+    /* CANCIÓN PRINCIPAL */
+
 
     function getFeaturedTrack(profile) {
         if (!profile) return null;
@@ -844,9 +834,8 @@ cards.forEach(card => {
         );
     }
 
-    /* ========================================
-       UNIVERSO DEL ARTISTA
-    ======================================== */
+    /* UNIVERSO DEL ARTISTA */
+
 
     function getUniverse(profile) {
         const genre =
@@ -868,9 +857,8 @@ cards.forEach(card => {
         return "Rock";
     }
 
-    /* ========================================
-       MOSTRAR ARTISTA DESTACADO
-    ======================================== */
+    /* MOSTRAR ARTISTA DESTACADO */
+
 
     function renderFeatured(
         id,
@@ -944,15 +932,8 @@ cards.forEach(card => {
             );
         }
 
-        /*
-         * IMPORTANTE:
-         * el carrusel prioriza profile.image.
-         *
-         * De esta forma puedes tener:
-         *
-         * profile.image = foto ANDROMEDA del artista
-         * track.image   = portada de la canción
-         */
+
+
 
         if (image) {
             image.src =
@@ -1009,7 +990,7 @@ cards.forEach(card => {
                     .padStart(2, "0");
         }
 
-        /* BOTÓN PLAY */
+        /* Botón de reproducción */
 
         if (play) {
             play.dataset.title =
@@ -1022,14 +1003,12 @@ cards.forEach(card => {
             play.dataset.audio =
                 track.audio;
 
-            /*
-             * El reproductor sí utiliza
-             * la portada de la canción.
-             */
+
+
             play.dataset.image =
             profile.image ||
                 track.image ||
-                
+
                 "";
         }
 
@@ -1046,9 +1025,8 @@ cards.forEach(card => {
         restartFeaturedProgress();
     }
 
-    /* ========================================
-       PROGRESO DEL CARRUSEL
-    ======================================== */
+    /* PROGRESO DEL CARRUSEL */
+
 
     function restartFeaturedProgress() {
         if (!featuredRoot) return;
@@ -1081,21 +1059,16 @@ cards.forEach(card => {
         }
     }
 
-    /* ========================================
-       CAMBIAR ARTISTA
-    ======================================== */
+    /* CAMBIAR ARTISTA */
+
 
     function changeFeatured(step) {
         const order = getFeaturedOrder();
 
         if (!order.length) return;
 
-        /*
-         * Calculamos la posición actual
-         * usando el artista realmente mostrado.
-         * Esto evita errores después de cambiar
-         * de universo.
-         */
+
+
 
         const currentId =
             featuredRoot?.dataset.artistId;
@@ -1120,9 +1093,8 @@ cards.forEach(card => {
         );
     }
 
-    /* ========================================
-       CAMBIO DE UNIVERSO
-    ======================================== */
+    /* CAMBIO DE UNIVERSO */
+
 
     function syncFeaturedToTheme() {
         const order = getFeaturedOrder();
@@ -1138,9 +1110,8 @@ cards.forEach(card => {
         );
     }
 
-    /* ========================================
-       EVENTOS DEL CARRUSEL
-    ======================================== */
+    /* EVENTOS DEL CARRUSEL */
+
 
     if (featuredRoot) {
         on(
@@ -1165,7 +1136,7 @@ cards.forEach(card => {
             }
         );
 
-        /* PAUSAR CON MOUSE */
+        /* Pausa al pasar el cursor */
 
         on(
             featuredRoot,
@@ -1200,7 +1171,7 @@ cards.forEach(card => {
             }
         );
 
-        /* PAUSAR CON TECLADO */
+        /* Pausa al enfocar con el teclado */
 
         on(
             featuredRoot,
@@ -1289,9 +1260,8 @@ cards.forEach(card => {
         syncFeaturedToTheme();
     }
 
-    /* ========================================
-       SEGUIR ARTISTAS
-    ======================================== */
+    /* SEGUIR ARTISTAS */
+
 
     function syncFollow() {
         root.querySelectorAll("[data-follow]")
@@ -1336,10 +1306,8 @@ cards.forEach(card => {
 
         if (!info) return;
 
-        /*
-         * Evita duplicar el botón si
-         * initArtistas se ejecuta otra vez.
-         */
+
+
 
         if (
             info.querySelector("[data-follow]")
@@ -1359,9 +1327,8 @@ cards.forEach(card => {
         info.append(button);
     });
 
-    /* ========================================
-       IMÁGENES NO DISPONIBLES
-    ======================================== */
+    /* IMÁGENES NO DISPONIBLES */
+
 
     function imageFallback(event) {
         const img = event.target;
@@ -1404,9 +1371,8 @@ cards.forEach(card => {
             }
         });
 
-    /* ========================================
-       BÚSQUEDA Y FILTROS
-    ======================================== */
+    /* BÚSQUEDA Y FILTROS */
+
 
     function normalize(value) {
         return (value || "")
@@ -1576,9 +1542,8 @@ cards.forEach(card => {
         }
     );
 
-    /* ========================================
-       REPRODUCIR / PAUSAR
-    ======================================== */
+    /* REPRODUCIR / PAUSAR */
+
 
     async function playSong(button) {
         if (
@@ -1709,9 +1674,8 @@ cards.forEach(card => {
         }
     }
 
-    /* ========================================
-       PERFIL DEL ARTISTA
-    ======================================== */
+    /* PERFIL DEL ARTISTA */
+
 
     function openProfile(id, trigger) {
         const profile =
@@ -1729,10 +1693,8 @@ cards.forEach(card => {
             trigger ||
             document.activeElement;
 
-        /*
-         * El perfil utiliza profile.image,
-         * igual que el carrusel.
-         */
+
+
 
         const portrait =
             profile.image
@@ -1928,9 +1890,8 @@ cards.forEach(card => {
         );
     }
 
-    /* ========================================
-       CLICK GENERAL
-    ======================================== */
+    /* Eventos de tarjetas */
+
 
     on(
         root,
@@ -2013,9 +1974,8 @@ cards.forEach(card => {
         }
     );
 
-    /* ========================================
-       ACCESIBILIDAD PERFIL
-    ======================================== */
+    /* ACCESIBILIDAD PERFIL */
+
 
     on(
         overlay,
@@ -2062,9 +2022,8 @@ cards.forEach(card => {
         }
     );
 
-    /* ========================================
-       REPRODUCTOR GLOBAL
-    ======================================== */
+    /* REPRODUCTOR GLOBAL */
+
 
     on(
         document,
@@ -2215,9 +2174,8 @@ cards.forEach(card => {
         }
     );
 
-    /* ========================================
-       LIMPIEZA
-    ======================================== */
+    /* LIMPIEZA */
+
 
     const observer =
         new MutationObserver(() => {
@@ -2252,9 +2210,8 @@ cards.forEach(card => {
     window.sonoraArtistsCleanup =
         cleanup;
 
-    /* ========================================
-       INICIALIZACIÓN
-    ======================================== */
+    /* INICIALIZACIÓN */
+
 
     syncFollow();
     syncPlayback();

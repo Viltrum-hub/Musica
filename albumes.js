@@ -1,4 +1,4 @@
-/* Collections use the live Explore catalog; no duplicate song database. */
+/* Colecciones del catálogo de Explorar. */
 (() => {
   let queue = [], position = 0, ownedSource = '';
   const audio = () => document.getElementById('audioPlayer');

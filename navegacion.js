@@ -13,9 +13,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const playerCover = document.getElementById("playerCover");
 
 
-    /* =================================================
-       ESTADO DEL REPRODUCTOR
-    ================================================= */
+    /* ESTADO DEL REPRODUCTOR */
+
 
     const PLAYER_STORAGE_KEY = "sonora-player-state";
 
@@ -103,12 +102,8 @@ document.addEventListener("DOMContentLoaded", () => {
         if (!state.src) return;
 
 
-        /*
-           Restauramos únicamente los datos.
-           La reproducción automática después
-           de una actualización puede ser bloqueada
-           por el navegador.
-        */
+        /* Restaurar los datos sin activar reproducción automática. */
+
 
         audio.src = state.src;
 
@@ -168,10 +163,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /*
-       Guardamos periódicamente el progreso
-       de la canción.
-    */
+
+
 
     if (audio) {
 
@@ -207,9 +200,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =================================================
-       CERRAR MENÚ MÓVIL
-    ================================================= */
+    /* CERRAR MENÚ MÓVIL */
+
 
     function closeMobileMenu() {
 
@@ -261,9 +253,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =================================================
-       MENÚ ACTIVO
-    ================================================= */
+    /* MENÚ ACTIVO */
+
 
     function setActivePage(page) {
         document.body.classList.toggle("sonora-home-open", page === "inicio");
@@ -298,9 +289,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =================================================
-       REPRODUCIR CANCIÓN DE EXPLORAR
-    ================================================= */
+    /* REPRODUCIR CANCIÓN DE EXPLORAR */
+
 
     function setupExploreSongs() {
 
@@ -355,10 +345,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (!audioFile) return;
 
 
-                /*
-                   Si es la misma canción que ya está
-                   cargada, no la reiniciamos.
-                */
+                /* Conservar el progreso de la canción actual. */
+
 
                 const currentSource =
                     audio.currentSrc ||
@@ -402,9 +390,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
 
-                /* =================================================
-                   PORTADA
-                ================================================= */
+                /* PORTADA */
+
 
                 if (
                     playerCover &&
@@ -421,9 +408,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
 
-                /* =================================================
-                   MARCAR CANCIÓN ACTIVA
-                ================================================= */
+                /* MARCAR CANCIÓN ACTIVA */
+
 
                 cards.forEach(otherCard => {
 
@@ -504,9 +490,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =================================================
-       RESTAURAR ESTADO VISUAL DE EXPLORAR
-    ================================================= */
+    /* RESTAURAR ESTADO VISUAL DE EXPLORAR */
+
 
     function restoreExploreSong() {
 
@@ -567,9 +552,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =================================================
-       CARGAR EXPLORAR
-    ================================================= */
+    /* CARGAR EXPLORAR */
+
 
    async function loadExplore(
     updateHistory = true,
@@ -623,18 +607,15 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
 
-            /*
-               Ocultar Inicio.
-            */
+
+
 
             mainHome.style.display =
                 "none";
 
 
-            /*
-               Insertar únicamente
-               el contenido de Explorar.
-            */
+
+
 
             pageContainer.innerHTML =
                 "";
@@ -648,11 +629,8 @@ if (typeof initExplorar === "function") {
     setupExploreSongs();
 }
 
-            /*
-               El navbar, footer,
-               reproductor, audio y modales
-               permanecen intactos.
-            */
+
+
 
             setActivePage(
                 "explorar"
@@ -673,14 +651,8 @@ if (typeof initExplorar === "function") {
             });
 
 
-            /*
-               IMPORTANTE:
-               Ya NO usamos explorar.html?v=refactor-11
-               como URL del navegador.
+            /* Mantener la ruta de Explorar dentro de index.html. */
 
-               Al actualizar se volverá a cargar
-               index.html.
-            */
 
             if (updateHistory) {
 
@@ -707,9 +679,8 @@ if (typeof initExplorar === "function") {
     }
 
 
-    /* =================================================
-       CARGAR ARTISTAS
-    ================================================= */
+    /* CARGAR ARTISTAS */
+
 
     async function loadLibrary(updateHistory = true, playlist = "") {
         try {
@@ -812,9 +783,8 @@ if (typeof initExplorar === "function") {
     }
 
 
-    /* =================================================
-       VOLVER A INICIO
-    ================================================= */
+    /* VOLVER A INICIO */
+
 
     function loadHome(
         updateHistory = true
@@ -860,9 +830,8 @@ if (typeof initExplorar === "function") {
     }
 
 
-    /* =================================================
-       EXPLORAR
-    ================================================= */
+    /* EXPLORAR */
+
 
     document.addEventListener(
         "click",
@@ -888,9 +857,8 @@ if (typeof initExplorar === "function") {
     );
 
 
-    /* =================================================
-       ARTISTAS
-    ================================================= */
+    /* ARTISTAS */
+
 
     document.addEventListener(
         "click",
@@ -906,9 +874,8 @@ if (typeof initExplorar === "function") {
     );
 
 
-    /* =================================================
-       INICIO
-    ================================================= */
+    /* INICIO */
+
 
     document.addEventListener(
         "click",
@@ -934,9 +901,8 @@ if (typeof initExplorar === "function") {
     );
 
 
-    /* =================================================
-       ÁLBUMES
-    ================================================= */
+    /* ÁLBUMES */
+
 
     document.addEventListener(
         "click",
@@ -1016,9 +982,8 @@ if (typeof initExplorar === "function") {
     );
 
 
-    /* =================================================
-       ATRÁS / ADELANTE
-    ================================================= */
+    /* ATRÁS / ADELANTE */
+
 
     window.addEventListener(
         "popstate",
@@ -1069,9 +1034,8 @@ if (typeof initExplorar === "function") {
     );
 
 
-    /* =================================================
-       RUTA INICIAL
-    ================================================= */
+    /* RUTA INICIAL */
+
 
     const params =
         new URLSearchParams(
@@ -1089,11 +1053,8 @@ if (typeof initExplorar === "function") {
         currentPage === "explorar"
     ) {
 
-        /*
-           IMPORTANTE:
-           No hacemos pushState aquí.
-           Solo cargamos Explorar.
-        */
+        /* Restaurar la ruta sin añadir entradas al historial. */
+
 
         loadExplore(
             false
@@ -1121,14 +1082,11 @@ if (typeof initExplorar === "function") {
     }
 
 
-    /* =================================================
-       RESTAURAR REPRODUCTOR
-    ================================================= */
+    /* RESTAURAR REPRODUCTOR */
 
-    /*
-       Esperamos un poco para que
-       musica.js termine de inicializarse.
-    */
+
+    /* Restaurar el reproductor después de inicializar musica.js. */
+
 
     setTimeout(() => {
 

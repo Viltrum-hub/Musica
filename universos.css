@@ -1,4 +1,4 @@
-/* One SONORA identity, six complete color systems. Shared by every route. */
+/* Paletas de los seis universos. */
 :root{--muted:#a0abc5;--primary-light:#a0f5ff}
 body[data-theme=electronic]{--bg:#060a16;--bg-secondary:#0c1324;--card:#111b30;--text:#f4f7ff;--muted:#a0abc5;--primary:#00e5ff;--primary-light:#a0f5ff;--secondary:#8b3dff;--universe-hue:0deg}
 body[data-theme=rock]{--bg:#10090b;--bg-secondary:#1a1012;--card:#29191c;--text:#fff6f1;--muted:#c9aaa5;--primary:#ff493f;--primary-light:#ffc0b5;--secondary:#d66b4a;--universe-hue:170deg}
@@ -13,7 +13,7 @@ body .planet-theme-option{padding:11px 12px;gap:17px;border-radius:14px}body .pl
 body .planet-theme-option.active{background:color-mix(in srgb,var(--primary) 9%,transparent);border-color:color-mix(in srgb,var(--primary) 28%,transparent)}body .planet-theme-option:hover{background:color-mix(in srgb,var(--primary) 6%,transparent);border-color:var(--primary)}
 .home-universes{padding:0 0 50px}.home-universes .container{max-width:1220px;padding:0 36px}.home-universes-header{text-align:center;margin-bottom:20px}.home-universes-header h2{font-size:19px;font-weight:700;margin:0 0 8px}.home-universes-header p{font-size:10px;color:var(--muted);margin:0}.home-universe-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:15px}
 body .home-universe-card{display:flex;flex-direction:column;gap:9px;align-items:center;text-align:center;padding:21px 12px 16px;border:1px solid var(--border);background:color-mix(in srgb,var(--card) 45%,transparent);border-radius:18px;color:var(--text)}body .home-universe-card>.theme-planet-orb{width:63px;height:63px;margin-bottom:7px}body .home-universe-card>.theme-planet-orb:after{inset:-8px}body .home-universe-card>.universe-copy{display:flex;flex-direction:column;gap:6px}.home-universe-card strong{font-size:12px}.home-universe-card small{font-size:9px;color:var(--muted)}body .home-universe-card.active{border-color:var(--primary);background:color-mix(in srgb,var(--primary) 7%,var(--bg));box-shadow:inset 0 -2px var(--primary)}
-/* Keep every route, including player and dialogs, inside its selected palette. */
+/* Colores compartidos de páginas, reproductor y modales. */
 body .login-button,body .search-button,body .icon-button{background:color-mix(in srgb,var(--card) 85%,transparent);color:var(--text);border:1px solid var(--border)}body .navbar-profile-text{color:var(--text)}
 body :is(.btn-main,.artist-primary-action,.profile-main-button,.explore-play-button,.artist-play,.play-card){background:linear-gradient(115deg,var(--primary),var(--secondary));color:var(--bg);border-color:var(--border)}
 body :is(.btn-outline,.artist-secondary-action,.artist-follow,.artist-filter,.genre-filter,.genre-pill,.artist-sort,.artist-card-follow){color:var(--text);border-color:var(--border);background:color-mix(in srgb,var(--card) 78%,transparent)}
@@ -30,7 +30,7 @@ body input::placeholder{color:var(--muted)}body :is(.see-more,.artists-back,.pro
 body .music-player{background:color-mix(in srgb,var(--card) 90%,transparent);border-color:var(--border);max-width:1190px;margin:auto;left:24px;right:24px;bottom:16px;border-radius:16px;backdrop-filter:blur(24px)}body input[type=range]{accent-color:var(--primary)}
 body :is(.player-song span,.featured-stats span,.artist-stats span,.explore-song-info p,.artist-card-meta){color:var(--muted)}
 body :is(button,a,input,select):focus-visible{outline:2px solid var(--primary-light);outline-offset:4px}
-/* The moving spectrum follows the same analyser already used by SONORA. */
+/* Espectro sincronizado con el analizador de audio. */
 .home-planet-stage .home-wave-spectrum.equalizer{position:absolute;left:17%;right:12%;bottom:24%;width:auto;height:80px;gap:5px;display:flex;align-items:center;justify-content:center;z-index:1;transform:rotate(-12deg);pointer-events:none;mask-image:linear-gradient(90deg,transparent,#000 12% 88%,transparent)}
 .home-wave-spectrum.equalizer:after,.home-wave-spectrum.equalizer span:before,.home-wave-spectrum.equalizer span:after{display:none}
 .home-wave-spectrum.equalizer span{flex:1;min-width:2px;max-width:5px;height:var(--wave-height,50px);border-radius:4px;background:linear-gradient(0deg,var(--primary),var(--secondary));box-shadow:0 0 7px var(--theme-glow);animation:sonoraWavePulse var(--wave-speed,1.5s) ease-in-out var(--wave-delay,0s) infinite alternate;transform-origin:center;opacity:.75}
@@ -42,7 +42,7 @@ body.home-audio-reactive .home-wave-spectrum.equalizer span{animation:none;trans
 body .genre-card{background:linear-gradient(130deg,color-mix(in srgb,var(--primary) 14%,var(--card)),color-mix(in srgb,var(--secondary) 8%,var(--card)));border-color:var(--border);color:var(--text)}
 #mainHome .home-universe-card,#mainHome .home-universe-card.active{background:none;border-color:transparent;box-shadow:none;padding:14px 10px}#mainHome .home-universe-card.active strong{color:var(--primary)}#mainHome .home-universe-card small{display:none}#mainHome .home-universe-card:hover{background:none;border-color:transparent}
 @media(max-width:650px){#mainHome .home-universe-grid{grid-template-columns:repeat(5,95px)}#mainHome .home-universe-card>.theme-planet-orb{width:45px;height:45px}}
-/* Individual artwork from the approved visual reference. */
+/* Imágenes de los planetas. */
 body{--universe-art:url('assets/universe-electronic-v2.webp')}
 body[data-theme=electronic]{--universe-art:url('assets/universe-electronic-v2.webp')}
 body .theme-planet-orb.electronic{--orb-art:url('assets/universe-electronic-v2.webp')}
@@ -70,7 +70,7 @@ body .theme-planet-orb.electronic{--orb-a:#00e5ff}body .theme-planet-orb.rock{--
 @media(prefers-reduced-motion:reduce){#mainHome .home-universe-card{transition:none}#mainHome .home-universe-card:hover{transform:none}}
 
 
-/* Approved pair: Celestial amber / pearl with ring; Aurora ruby / champagne. */
+/* Celestial: ámbar y perla. Aurora: rubí y champán. */
 body[data-theme=celestial]{--bg:#100c08;--bg-secondary:#1d160e;--card:#2c2115;--text:#fff8ed;--muted:#cab79e;--primary:#ffb547;--primary-light:#fff1d9;--secondary:#fff1d9;--universe-hue:85deg;--universe-art:url('assets/universe-celestial-v2.webp')}
 body[data-theme=aurora]{--bg:#14080e;--bg-secondary:#220d17;--card:#341421;--text:#fff5ec;--muted:#d0abb8;--primary:#f43f68;--primary-light:#ffe6cb;--secondary:#ffe6cb;--universe-hue:130deg;--universe-art:url('assets/universe-aurora-v2.webp')}
 body .theme-planet-orb.celestial{--orb-art:url('assets/universe-celestial-v2.webp');--orb-a:#ffb547}
@@ -86,6 +86,6 @@ body .genre-grid{grid-template-columns:repeat(auto-fit,minmax(140px,1fr))}
 body[data-theme=celestial] .sonora-albums{--sa-hue:85deg}body[data-theme=aurora] .sonora-albums{--sa-hue:130deg}
 
 
-/* Give the ring space while keeping the globe aligned with the other worlds. */
+/* Espacio del anillo de Celestial. */
 body .theme-planet-orb.celestial:before,body[data-theme=celestial] .planet-button-orb:before{inset:-40%}
 body[data-theme=rock] .sonora-albums{--sa-hue:170deg}

@@ -1,8 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-    /* =========================
-       ELEMENTOS — REPRODUCTOR
-    ========================= */
+    /* ELEMENTOS — REPRODUCTOR */
+
 
     const audioPlayer = document.getElementById("audioPlayer");
     const mainPlayBtn = document.getElementById("mainPlayBtn");
@@ -19,9 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const playButtons = document.querySelectorAll(".play-card");
 
 
-    /* =========================
-       SUPABASE
-    ========================= */
+    /* SUPABASE */
+
 
     const SUPABASE_URL =
         "https://tiqwiqwtobuldmncrnrp.supabase.co";
@@ -41,9 +39,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentUser = null;
 
 
-    /* =========================
-       LISTA DE CANCIONES
-    ========================= */
+    /* LISTA DE CANCIONES */
+
 
     const songs = Array.from(cards).map(card => ({
         title: card.dataset.title || "Canción",
@@ -53,9 +50,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }));
 
 
-    /* =========================
-       VISUALIZADOR DE AUDIO
-    ========================= */
+    /* VISUALIZADOR DE AUDIO */
+
 
     const equalizerBars =
         document.querySelectorAll(".equalizer span");
@@ -188,9 +184,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================
-       FORMATO DE TIEMPO
-    ========================= */
+    /* FORMATO DE TIEMPO */
+
 
     function formatTime(seconds) {
 
@@ -211,9 +206,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================
-       ACTUALIZAR BOTÓN PLAY
-    ========================= */
+    /* Actualizar botón de reproducción */
+
 
     function updatePlayButton() {
 
@@ -292,9 +286,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================
-       CARGAR CANCIÓN
-    ========================= */
+    /* CARGAR CANCIÓN */
+
 
     function loadSong(
         index,
@@ -381,9 +374,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================
-       PLAY / PAUSE
-    ========================= */
+    /* Reproducir / pausar */
+
 
     if (
         mainPlayBtn &&
@@ -465,9 +457,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================
-       CARDS
-    ========================= */
+    /* Tarjetas */
+
 
     cards.forEach(
         (card, index) => {
@@ -496,9 +487,8 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    /* =========================
-       BOTONES PLAY
-    ========================= */
+    /* Botones de reproducción */
+
 
     playButtons.forEach(
         (button, index) => {
@@ -521,9 +511,8 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    /* =========================
-       SIGUIENTE
-    ========================= */
+    /* SIGUIENTE */
+
 
     if (nextBtn) {
 
@@ -560,9 +549,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================
-       ANTERIOR
-    ========================= */
+    /* ANTERIOR */
+
 
     if (previousBtn) {
 
@@ -599,9 +587,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================
-       PROGRESO
-    ========================= */
+    /* PROGRESO */
+
 
     if (audioPlayer) {
 
@@ -688,9 +675,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================
-       VOLUMEN
-    ========================= */
+    /* VOLUMEN */
+
 
     if (
         audioPlayer &&
@@ -713,9 +699,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================
-       CUANDO TERMINA
-    ========================= */
+    /* CUANDO TERMINA */
+
 
     if (audioPlayer) {
 
@@ -752,9 +737,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================
-       NAVBAR SCROLL
-    ========================= */
+    /* NAVBAR SCROLL */
+
 
     const navbar =
         document.getElementById(
@@ -779,9 +763,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================
-       PLANETAS — SELECTOR
-    ========================= */
+    /* PLANETAS — SELECTOR */
+
 
     const planetThemeButton =
         document.getElementById(
@@ -994,9 +977,8 @@ document.addEventListener("DOMContentLoaded", () => {
     );
 
 
-    /* =========================
-       BUSCADOR
-    ========================= */
+    /* BUSCADOR */
+
 
     const openSearch =
         document.getElementById(
@@ -1024,18 +1006,16 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-    /* =========================================================
-       CATÁLOGO DE CANCIONES DE EXPLORAR
-    ========================================================= */
+    /* CATÁLOGO DE CANCIONES DE EXPLORAR */
+
 
     let exploreSearchSongs = [];
     let exploreCatalogLoaded = false;
     let exploreCatalogLoading = null;
 
 
-    /* =========================================================
-       CARGAR CANCIONES DE EXPLORAR
-    ========================================================= */
+    /* CARGAR CANCIONES DE EXPLORAR */
+
 
     async function loadExploreSearchCatalog() {
 
@@ -1142,9 +1122,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================================================
-       CERRAR BUSCADOR
-    ========================================================= */
+    /* CERRAR BUSCADOR */
+
 
     function closeSearchOverlay() {
 
@@ -1167,9 +1146,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================================================
-       MOSTRAR RESULTADOS
-    ========================================================= */
+    /* MOSTRAR RESULTADOS */
+
 
     async function updateSearchResults() {
 
@@ -1192,9 +1170,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        /* -----------------------------------------------------
-           CANCIONES DE INICIO
-        ----------------------------------------------------- */
+        /* CANCIONES DE INICIO */
+
 
         const homeSongs =
             songs.map(
@@ -1211,17 +1188,15 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
 
-        /* -----------------------------------------------------
-           CANCIONES DE EXPLORAR
-        ----------------------------------------------------- */
+        /* CANCIONES DE EXPLORAR */
+
 
         const exploreSongs =
             await loadExploreSearchCatalog();
 
 
-        /* -----------------------------------------------------
-           UNIR TODOS LOS RESULTADOS
-        ----------------------------------------------------- */
+        /* UNIR TODOS LOS RESULTADOS */
+
 
         const allSongs = [
             ...homeSongs,
@@ -1229,9 +1204,8 @@ document.addEventListener("DOMContentLoaded", () => {
         ];
 
 
-        /* -----------------------------------------------------
-           EVITAR CANCIONES DUPLICADAS
-        ----------------------------------------------------- */
+        /* EVITAR CANCIONES DUPLICADAS */
+
 
         const uniqueSongs = [];
 
@@ -1267,9 +1241,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
 
-        /* -----------------------------------------------------
-           FILTRAR
-        ----------------------------------------------------- */
+        /* FILTRAR */
+
 
         const results =
             uniqueSongs.filter(
@@ -1306,9 +1279,8 @@ document.addEventListener("DOMContentLoaded", () => {
             );
 
 
-        /* -----------------------------------------------------
-           SIN RESULTADOS
-        ----------------------------------------------------- */
+        /* SIN RESULTADOS */
+
 
         if (!results.length) {
 
@@ -1323,9 +1295,8 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        /* -----------------------------------------------------
-           CREAR RESULTADOS
-        ----------------------------------------------------- */
+        /* CREAR RESULTADOS */
+
 
         results.forEach(song => {
 
@@ -1388,9 +1359,8 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
 
 
-            /* -------------------------------------------------
-               REPRODUCIR RESULTADO
-            ------------------------------------------------- */
+            /* REPRODUCIR RESULTADO */
+
 
             result.addEventListener(
                 "click",
@@ -1401,9 +1371,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     event.stopPropagation();
 
 
-                    /* -----------------------------------------
-                       CANCIÓN DE INICIO
-                    ----------------------------------------- */
+                    /* CANCIÓN DE INICIO */
+
 
                     if (
                         song.source ===
@@ -1418,9 +1387,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
 
 
-                    /* -----------------------------------------
-                       CANCIÓN DE EXPLORAR
-                    ----------------------------------------- */
+                    /* CANCIÓN DE EXPLORAR */
+
 
                     else if (
                         song.source ===
@@ -1480,9 +1448,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
 
 
-                    /* -----------------------------------------
-                       CERRAR BUSCADOR
-                    ----------------------------------------- */
+                    /* CERRAR BUSCADOR */
+
 
                     closeSearchOverlay();
 
@@ -1499,9 +1466,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================================================
-       ABRIR BUSCADOR
-    ========================================================= */
+    /* ABRIR BUSCADOR */
+
 
     if (
         openSearch &&
@@ -1527,9 +1493,8 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-        /* =====================================================
-           CERRAR CON X
-        ===================================================== */
+        /* CERRAR CON X */
+
 
         closeSearch.addEventListener(
             "click",
@@ -1545,9 +1510,8 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-        /* =====================================================
-           CERRAR AL HACER CLIC EN EL FONDO
-        ===================================================== */
+        /* CERRAR AL HACER CLIC EN EL FONDO */
+
 
         searchOverlay.addEventListener(
             "click",
@@ -1566,9 +1530,8 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-        /* =====================================================
-           BUSCAR
-        ===================================================== */
+        /* BUSCAR */
+
 
         searchInput.addEventListener(
             "input",
@@ -1580,9 +1543,8 @@ document.addEventListener("DOMContentLoaded", () => {
         );
 
 
-        /* =====================================================
-           ESC PARA CERRAR
-        ===================================================== */
+        /* ESC PARA CERRAR */
+
 
         document.addEventListener(
             "keydown",
@@ -1605,17 +1567,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================================================
-       FAVORITOS — SUPABASE
-    ========================================================= */
+    /* FAVORITOS — SUPABASE */
+
 
     let userFavorites = new Set();
     const pendingFavoriteKeys = new Set();
 
 
-    /* ---------------------------------------------------------
-       ESTILOS VISUALES DE FAVORITOS
-    --------------------------------------------------------- */
+    /* ESTILOS VISUALES DE FAVORITOS */
+
 
     if (
         !document.getElementById(
@@ -1691,9 +1651,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* ---------------------------------------------------------
-       IDENTIFICADOR ÚNICO DE LA CANCIÓN
-    --------------------------------------------------------- */
+    /* IDENTIFICADOR ÚNICO DE LA CANCIÓN */
+
 
     function getSongKey(song) {
 
@@ -1710,9 +1669,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* ---------------------------------------------------------
-       OBTENER DATOS DE UNA TARJETA
-    --------------------------------------------------------- */
+    /* OBTENER DATOS DE UNA TARJETA */
+
 
     function getSongFromCard(card) {
 
@@ -1747,9 +1705,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* ---------------------------------------------------------
-       CARGAR FAVORITOS DESDE SUPABASE
-    --------------------------------------------------------- */
+    /* CARGAR FAVORITOS DESDE SUPABASE */
+
 
     async function loadFavorites() {
 
@@ -1813,7 +1770,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             updateFavoriteButtons();
 
-            
+
 
         } catch (error) {
 
@@ -1873,11 +1830,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 }
 
-    /* ---------------------------------------------------------
-       ACTUALIZAR TODOS LOS CORAZONES
-    --------------------------------------------------------- */
+    /* ACTUALIZAR TODOS LOS CORAZONES */
 
-    // Reuse the current account's favorites, identifying tracks by their audio URL.
+
+    /* Favoritos identificados por la URL del audio. */
     function resolveFavoriteKey(song) {
         const key = getSongKey(song);
         if (!song?.audio || userFavorites.has(key)) return key;
@@ -1897,7 +1853,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const sameAudio = path => {
             try { return new URL(path, document.baseURI).href === url; } catch (_) { return false; }
         };
-        // A saved key wins across pages, even when the artist label differs.
+        /* Conservar la clave guardada aunque cambie el nombre del artista. */
         for (const key of userFavorites) {
             const parts = key.split('|');
             if (parts.length === 3 && sameAudio(parts[2])) return {
@@ -2013,9 +1969,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* ---------------------------------------------------------
-       EFECTO VISUAL DEL CORAZÓN
-    --------------------------------------------------------- */
+    /* EFECTO VISUAL DEL CORAZÓN */
+
 
     function animateFavoriteButton(
         button,
@@ -2058,9 +2013,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* ---------------------------------------------------------
-       AGREGAR / QUITAR FAVORITO
-    --------------------------------------------------------- */
+    /* AGREGAR / QUITAR FAVORITO */
+
 
     async function toggleFavorite(
         card,
@@ -2104,7 +2058,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             console.error(
                 "No se pudo identificar la canción."
-                
+
             );
 
             return;
@@ -2112,7 +2066,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        // Both the song card and shared player can act on the same favorite.
+        /* Favoritos de tarjetas y reproductor. */
         if (pendingFavoriteKeys.has(songKey)) return;
 
         /* EVITAR DOBLE CLIC */
@@ -2139,9 +2093,8 @@ document.addEventListener("DOMContentLoaded", () => {
         pendingFavoriteKeys.add(songKey);
         try {
 
-            /* -------------------------------------------------
-               QUITAR FAVORITO
-            ------------------------------------------------- */
+            /* QUITAR FAVORITO */
+
 
             if (
                 userFavorites.has(
@@ -2191,9 +2144,8 @@ updateProfileStats();
             }
 
 
-            /* -------------------------------------------------
-               AGREGAR FAVORITO
-            ------------------------------------------------- */
+            /* AGREGAR FAVORITO */
+
 
             else {
 
@@ -2254,7 +2206,7 @@ if (button) {
             }
 
 
-            
+
 
 
         } catch (error) {
@@ -2270,10 +2222,8 @@ if (button) {
                 "23505"
             ) {
 
-                /*
-                 * Si ya existe en Supabase,
-                 * sincronizamos el estado local.
-                 */
+
+
 
                 userFavorites.add(
                     songKey
@@ -2303,10 +2253,8 @@ if (button) {
     }
 
 
-    /* ---------------------------------------------------------
-       CLIC EN FAVORITOS
-       CAPTURA ANTES DEL EVENTO DE LA TARJETA
-    --------------------------------------------------------- */
+    /* CLIC EN FAVORITOS CAPTURA ANTES DEL EVENTO DE LA TARJETA */
+
 
     function setupFavoriteButtons() {
 
@@ -2336,11 +2284,8 @@ if (button) {
                 }
 
 
-                /*
-                 * IMPORTANTE:
-                 * detener aquí evita que el evento
-                 * llegue al click de la tarjeta.
-                 */
+                /* Evitar que el clic en favoritos reproduzca la tarjeta. */
+
 
                 event.preventDefault();
                 event.stopPropagation();
@@ -2367,9 +2312,8 @@ if (button) {
     }
 
 
-    /* ---------------------------------------------------------
-       OBSERVAR TARJETAS DINÁMICAS
-    --------------------------------------------------------- */
+    /* OBSERVAR TARJETAS DINÁMICAS */
+
 
     for (const event of ['loadstart','loadedmetadata','emptied','play']) audioPlayer?.addEventListener(event, updateFavoriteButtons);
 
@@ -2396,9 +2340,8 @@ if (button) {
     }
 
 
-    /* =========================
-       LOGIN / REGISTRO
-    ========================= */
+    /* LOGIN / REGISTRO */
+
 
     const loginButton =
         document.getElementById(
@@ -2451,9 +2394,8 @@ if (button) {
         );
 
 
-    /* =========================
-       ELEMENTOS DEL PERFIL
-    ========================= */
+    /* ELEMENTOS DEL PERFIL */
+
 
     const profileOverlay =
         document.getElementById(
@@ -2522,9 +2464,8 @@ if (button) {
         );
 
 
-    /* =========================
-       SUBIR AVATAR A SUPABASE
-    ========================= */
+    /* SUBIR AVATAR A SUPABASE */
+
 
     if (avatarFileInput) {
 
@@ -2782,9 +2723,8 @@ if (button) {
     let registerMode = false;
 
 
-    /* =========================
-       CARGAR PERFIL
-    ========================= */
+    /* CARGAR PERFIL */
+
 
     async function loadUserProfile(user) {
 
@@ -2951,9 +2891,8 @@ if (button) {
     }
 
 
-    /* =========================
-       MOSTRAR AVATAR
-    ========================= */
+    /* MOSTRAR AVATAR */
+
 
     function updateProfileAvatar(url) {
 
@@ -3004,9 +2943,8 @@ if (button) {
     }
 
 
-    /* =========================
-       AVATAR EN LA NAVBAR
-    ========================= */
+    /* AVATAR EN LA NAVBAR */
+
 
     function updateNavbarAvatar(
         url,
@@ -3054,9 +2992,8 @@ if (button) {
     }
 
 
-    /* =========================
-       BOTÓN LOGIN / PERFIL
-    ========================= */
+    /* BOTÓN LOGIN / PERFIL */
+
 
     if (loginButton) {
 
@@ -3171,9 +3108,8 @@ if (button) {
     }
 
 
-    /* =========================
-       CERRAR LOGIN
-    ========================= */
+    /* CERRAR LOGIN */
+
 
     if (
         authClose &&
@@ -3217,9 +3153,8 @@ if (button) {
     }
 
 
-    /* =========================
-       CAMBIAR LOGIN / REGISTRO
-    ========================= */
+    /* CAMBIAR LOGIN / REGISTRO */
+
 
     if (authSwitch) {
 
@@ -3313,9 +3248,8 @@ if (button) {
     }
 
 
-    /* =========================
-       REGISTRO / INICIO DE SESIÓN
-    ========================= */
+    /* REGISTRO / INICIO DE SESIÓN */
+
 
     if (authForm) {
 
@@ -3509,9 +3443,8 @@ if (button) {
     }
 
 
-    /* =========================
-       ACTUALIZAR INTERFAZ
-    ========================= */
+    /* ACTUALIZAR INTERFAZ */
+
 
     async function updateUserInterface(
         session
@@ -3538,7 +3471,7 @@ if (button) {
             await updateProfileStats();
 
 
-            
+
 
         } else {
 
@@ -3565,9 +3498,8 @@ if (button) {
     }
 
 
-    /* =========================
-       CERRAR PERFIL
-    ========================= */
+    /* CERRAR PERFIL */
+
 
     if (
         profileClose &&
@@ -3611,9 +3543,8 @@ if (button) {
     }
 
 
-    /* =========================
-       EDITAR PERFIL
-    ========================= */
+    /* EDITAR PERFIL */
+
 
     if (
         editProfileButton &&
@@ -3692,9 +3623,8 @@ if (button) {
     }
 
 
-    /* =========================
-       CAMBIAR AVATAR
-    ========================= */
+    /* CAMBIAR AVATAR */
+
 
     if (changeAvatarButton) {
 
@@ -3732,9 +3662,8 @@ if (button) {
     }
 
 
-    /* =========================
-       PREVISUALIZAR AVATAR
-    ========================= */
+    /* PREVISUALIZAR AVATAR */
+
 
     if (profileAvatarUrl) {
 
@@ -3752,9 +3681,8 @@ if (button) {
     }
 
 
-    /* =========================
-       GUARDAR PERFIL
-    ========================= */
+    /* GUARDAR PERFIL */
+
 
     if (
         saveProfileButton &&
@@ -3940,9 +3868,8 @@ if (button) {
     }
 
 
-    /* =========================
-       CERRAR SESIÓN
-    ========================= */
+    /* CERRAR SESIÓN */
+
 
     if (logoutButton) {
 
@@ -3988,9 +3915,8 @@ if (button) {
     }
 
 
-    /* =========================
-       ESC — CERRAR MODALES
-    ========================= */
+    /* ESC — CERRAR MODALES */
+
 
     document.addEventListener(
         "keydown",
@@ -4033,9 +3959,8 @@ if (button) {
     );
 
 
-    /* =========================
-       COMPROBAR SESIÓN
-    ========================= */
+    /* COMPROBAR SESIÓN */
+
 
     async function checkUserSession() {
 
@@ -4064,9 +3989,8 @@ if (button) {
     }
 
 
-    /* =========================
-       CAMBIOS DE SESIÓN
-    ========================= */
+    /* CAMBIOS DE SESIÓN */
+
 
     supabaseClient.auth.onAuthStateChange(
         (event, session) => {
@@ -4079,9 +4003,8 @@ if (button) {
     );
 
 
-    /* =========================
-       INICIAR
-    ========================= */
+    /* INICIAR */
+
 
     window.sonoraAccount = {
         get client() { return supabaseClient; },
@@ -4094,7 +4017,7 @@ if (button) {
 
     loadFavorites();
 
-    
+
 
 });
 

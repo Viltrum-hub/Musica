@@ -18,9 +18,7 @@
 
 
 
-/* =========================================
-   PLANET THEMES — SONORA
-   ========================================= */
+/* PLANET THEMES */
 
 body {
     --theme-primary: var(--primary);
@@ -60,9 +58,7 @@ body[data-theme="pop"] {
     --planet-2: #ff7a45;
 }
 
-/* =========================
-   ROCK — INFERNO ROCK
-   ========================= */
+/* ROCK */
 body[data-theme="rock"] {
     --bg: #120606;
     --bg-secondary: #1C0808;
@@ -79,9 +75,7 @@ body[data-theme="rock"] {
 }
 
 
-/* =========================
-   HIP HOP — ELECTRIC VIOLET
-   ========================= */
+/* HIP HOP */
 body[data-theme="hiphop"] {
     --bg: #080512;
     --bg-secondary: #100820;
@@ -114,7 +108,7 @@ body[data-theme="hiphop"] .hero-glow.glow-two {
     box-shadow: 0 0 110px var(--theme-glow);
 }
 
-/* Planet selector */
+/* Selector de universos. */
 .planet-theme-selector {
     position: relative;
 }
@@ -281,9 +275,7 @@ body[data-theme="hiphop"] .hero-glow.glow-two {
     background: rgba(255,255,255,.32);
 }
 
-/* =========================================
-   PLANETAS DEL SELECTOR DE ESTILOS
-   ========================================= */
+/* PLANETAS DEL SELECTOR DE ESTILOS */
 
 .theme-planet-orb.electronic {
     color: #00eaff;
@@ -420,9 +412,7 @@ button {
 }
 
 
-/* =========================
-   NAVBAR
-========================= */
+/* Barra de navegación */
 
 .navbar {
 
@@ -534,9 +524,7 @@ button {
 }
 
 
-/* =========================
-   HERO
-========================= */
+/* Portada */
 
 .hero {
     min-height: 100vh;
@@ -668,7 +656,7 @@ button {
 }
 
 
-/* HERO STATS */
+/* Estadísticas de la portada */
 
 .hero-stats {
     display: flex;
@@ -695,7 +683,7 @@ button {
 }
 
 
-/* HERO DISC */
+/* Disco de la portada */
 .hero-player {
     height: 500px;
     display: flex;
@@ -704,9 +692,7 @@ button {
     position: relative;
 }
 
-/* ==============================
-   VISUALIZADOR DE AUDIO
-   ============================== */
+/* VISUALIZADOR DE AUDIO */
 .sound-wave {
     width: 450px;
     height: 450px;
@@ -816,9 +802,7 @@ button {
 }
 
 
-/* ==============================
-   FORMA DE LA ONDA
-   ============================== */
+/* FORMA DE LA ONDA */
 
 .equalizer span:nth-child(1) {
     height: 55px;
@@ -926,9 +910,7 @@ button {
 }
 
 
-/* ==============================
-   ANIMACIÓN
-   ============================== */
+/* ANIMACIÓN */
 
 @keyframes musicBars {
     0%, 100% {
@@ -953,9 +935,7 @@ button {
 }
 
 
-/* ==============================
-   REFLEJO
-   ============================== */
+/* REFLEJO */
 
 .equalizer::after {
     content: "";
@@ -971,9 +951,7 @@ button {
 }
 
 
-/* ==============================
-   RESPONSIVE
-   ============================== */
+/* Adaptación de pantallas */
 @media (max-width: 991px) {
     .sound-wave {
         width: 350px;
@@ -1007,9 +985,7 @@ button {
     }
 }
 
-/* =========================================
-   NOTAS MUSICALES
-   ========================================= */
+/* NOTAS MUSICALES */
 .music-symbol {
     position: absolute;
     z-index: 7;
@@ -1045,9 +1021,7 @@ button {
     animation-delay: 2s;
 }
 
-/* =========================================
-   ANIMACIONES
-   ========================================= */
+/* ANIMACIONES */
 
 @keyframes galaxyFloat {
     0%, 100% {
@@ -1141,9 +1115,7 @@ button {
     }
 }
 
-/* =========================================
-   MÓVIL
-   ========================================= */
+/* MÓVIL */
 
 @media (max-width: 576px) {
 
@@ -1235,9 +1207,7 @@ button {
 }
 
 
-/* =========================
-   SECTIONS
-========================= */
+/* Secciones */
 
 .section-space {
 
@@ -1291,9 +1261,7 @@ button {
 }
 
 
-/* =========================
-   GENRES
-========================= */
+/* Géneros */
 
 .genre-grid {
 
@@ -1395,9 +1363,7 @@ button {
 }
 
 
-/* =========================
-   ALBUMS
-========================= */
+/* Álbumes */
 
 .album-card {
 
@@ -1517,9 +1483,7 @@ button {
 }
 
 
-/* =========================
-   ARTISTAS
-========================= */
+/* ARTISTAS */
 
 .artist-card {
 
@@ -1634,9 +1598,7 @@ button {
 }
 
 
-/* =========================
-   NEWSLETTER
-========================= */
+/* Suscripción */
 
 .newsletter-section {
 
@@ -1730,9 +1692,7 @@ button {
 }
 
 
-/* =========================
-   FOOTER
-========================= */
+/* Pie de página */
 
 footer {
 
@@ -1829,9 +1789,7 @@ footer {
 }
 
 
-/* =========================
-   PLAYER
-========================= */
+/* Reproductor */
 
 .music-player {
 
@@ -2039,9 +1997,7 @@ input[type="range"] {
 }
 
 
-/* =========================
-   SEARCH
-========================= */
+/* Buscador */
 
 .search-overlay {
 
@@ -2166,9 +2122,7 @@ input[type="range"] {
 }
 
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* Adaptación de pantallas */
 
 @media (max-width: 992px) {
 
@@ -2361,9 +2315,7 @@ input[type="range"] {
 
 }
 
-/* =========================================
-   ÓRBITAS DE LAS NOTAS MUSICALES
-   ========================================= */
+/* ÓRBITAS DE LAS NOTAS MUSICALES */
 
 @keyframes musicOrbitOne {
 
@@ -2424,9 +2376,7 @@ input[type="range"] {
     }
 }
 
-/* =========================================
-   AUTENTICACIÓN — SONORA
-========================================= */
+/* AUTENTICACIÓN */
 
 .auth-overlay {
     position: fixed;
@@ -2714,9 +2664,7 @@ input[type="range"] {
     text-decoration: underline;
 }
 
-/* =========================================
-   MÓVIL
-========================================= */
+/* MÓVIL */
 
 @media (max-width: 500px) {
 
@@ -2736,9 +2684,7 @@ input[type="range"] {
     }
 }
 
-/* =========================================
-   PERFIL DE USUARIO — SONORA
-========================================= */
+/* PERFIL DE USUARIO */
 
 .profile-overlay {
     position: fixed;
@@ -2785,9 +2731,7 @@ input[type="range"] {
 }
 
 
-/* =========================================
-   CERRAR
-========================================= */
+/* CERRAR */
 
 .profile-close {
     position: absolute;
@@ -2812,9 +2756,7 @@ input[type="range"] {
 }
 
 
-/* =========================================
-   AVATAR PRINCIPAL
-========================================= */
+/* AVATAR PRINCIPAL */
 
 .profile-icon {
     width: 86px;
@@ -2843,9 +2785,7 @@ input[type="range"] {
 }
 
 
-/* =========================================
-   NOMBRE
-========================================= */
+/* NOMBRE */
 
 .profile-modal h2 {
     margin: 0 0 8px;
@@ -2855,9 +2795,7 @@ input[type="range"] {
 }
 
 
-/* =========================================
-   CORREO
-========================================= */
+/* CORREO */
 
 .profile-email {
     margin: 0 0 25px;
@@ -2867,9 +2805,7 @@ input[type="range"] {
 }
 
 
-/* =========================================
-   INFORMACIÓN
-========================================= */
+/* INFORMACIÓN */
 
 .profile-info {
     display: flex;
@@ -2906,9 +2842,7 @@ input[type="range"] {
 }
 
 
-/* =========================================
-   ESTADÍSTICAS
-========================================= */
+/* ESTADÍSTICAS */
 
 .profile-stats {
     display: grid;
@@ -2950,9 +2884,7 @@ input[type="range"] {
 }
 
 
-/* =========================================
-   BOTONES
-========================================= */
+/* BOTONES */
 
 .profile-actions {
     display: flex;
@@ -2972,9 +2904,7 @@ input[type="range"] {
 }
 
 
-/* =========================================
-   EDITAR
-========================================= */
+/* EDITAR */
 
 .edit-profile-button {
     width: 100%;
@@ -3020,9 +2950,7 @@ input[type="range"] {
 }
 
 
-/* =========================================
-   CERRAR SESIÓN
-========================================= */
+/* CERRAR SESIÓN */
 
 .logout-button {
     border: none;
@@ -3053,9 +2981,7 @@ input[type="range"] {
 }
 
 
-/* =========================================
-   PERFIL — EDICIÓN
-========================================= */
+/* PERFIL — EDICIÓN */
 
 .profile-avatar-container {
     position: relative;
@@ -3111,9 +3037,7 @@ input[type="range"] {
 }
 
 
-/* =========================================
-   BOTÓN CAMBIAR AVATAR
-========================================= */
+/* BOTÓN CAMBIAR AVATAR */
 
 .change-avatar-button {
     position: absolute;
@@ -3146,9 +3070,7 @@ input[type="range"] {
 }
 
 
-/* =========================================
-   SECCIÓN DE EDICIÓN
-========================================= */
+/* SECCIÓN DE EDICIÓN */
 
 .profile-edit-section {
     width: 100%;
@@ -3158,9 +3080,7 @@ input[type="range"] {
 }
 
 
-/* =========================================
-   CAMPOS
-========================================= */
+/* CAMPOS */
 
 .profile-edit-field {
     margin-top: 18px;
@@ -3225,9 +3145,7 @@ input[type="range"] {
 }
 
 
-/* =========================================
-   MENSAJE
-========================================= */
+/* MENSAJE */
 
 .profile-message {
     min-height: 18px;
@@ -3238,9 +3156,7 @@ input[type="range"] {
 }
 
 
-/* =========================================
-   GUARDAR
-========================================= */
+/* GUARDAR */
 
 .save-profile-button {
     width: 100%;
@@ -3286,9 +3202,7 @@ input[type="range"] {
 }
 
 
-/* =========================================
-   MÓVIL
-========================================= */
+/* MÓVIL */
 
 @media (max-width: 500px) {
 
@@ -3323,9 +3237,7 @@ input[type="range"] {
     }
 }
 
-/* =========================================
-   PERFIL EN LA NAVBAR
-========================================= */
+/* PERFIL EN LA NAVBAR */
 
 #loginButtonContent {
     display: inline-flex;
@@ -3380,9 +3292,7 @@ input[type="range"] {
     line-height: 1;
 }
 
-/* =========================================================
-   PORTADA DEL REPRODUCTOR
-========================================================= */
+/* PORTADA DEL REPRODUCTOR */
 
 #playerCover {
     position: relative;
@@ -3417,9 +3327,7 @@ input[type="range"] {
     font-size: 20px;
 }
 
-/* =========================================================
-   BUSCADOR — VENTANA SUPERPUESTA
-========================================================= */
+/* BUSCADOR — VENTANA SUPERPUESTA */
 
 #searchOverlay {
     position: fixed !important;
@@ -3469,9 +3377,7 @@ input[type="range"] {
         0 25px 80px rgba(0, 0, 0, 0.55);
 }
 
-/* =========================================================
-   BOTÓN X
-========================================================= */
+/* BOTÓN X */
 
 #searchOverlay #closeSearch {
     position: absolute !important;
@@ -3510,9 +3416,7 @@ input[type="range"] {
     transform: scale(1.06);
 }
 
-/* =========================================================
-   CAMPO DE BÚSQUEDA
-========================================================= */
+/* CAMPO DE BÚSQUEDA */
 
 #searchOverlay #searchInput {
     width: 100%;
@@ -3545,9 +3449,7 @@ input[type="range"] {
         0 0 0 3px rgba(255, 255, 255, 0.04);
 }
 
-/* =========================================================
-   RESULTADOS — SCROLL INTERNO
-========================================================= */
+/* RESULTADOS — SCROLL INTERNO */
 
 #searchOverlay #searchResults {
     width: 100%;
@@ -3569,7 +3471,7 @@ input[type="range"] {
     scrollbar-width: thin;
 }
 
-/* Scrollbar */
+/* Barra de desplazamiento */
 #searchOverlay #searchResults::-webkit-scrollbar {
     width: 6px;
 }
@@ -3587,9 +3489,7 @@ input[type="range"] {
     background: #66667a;
 }
 
-/* =========================================================
-   RESULTADOS
-========================================================= */
+/* RESULTADOS */
 
 #searchOverlay .search-result {
     min-height: 70px;
@@ -3704,9 +3604,7 @@ input[type="range"] {
     transform: scale(1.08);
 }
 
-/* =========================================================
-   MÓVIL
-========================================================= */
+/* MÓVIL */
 
 @media (max-width: 576px) {
 
@@ -3744,9 +3642,7 @@ input[type="range"] {
     }
 }
 
-/* =========================================================
-   BUSCADOR — COLORES FIJOS
-========================================================= */
+/* BUSCADOR — COLORES FIJOS */
 
 #searchOverlay {
     background: rgba(8, 8, 12, 0.96) !important;

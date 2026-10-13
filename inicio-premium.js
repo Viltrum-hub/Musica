@@ -1,4 +1,4 @@
-/* The Home preview follows the existing shared audio player. */
+/* Sincronización de Inicio con el reproductor. */
 document.addEventListener('DOMContentLoaded', () => {
   const preview = document.querySelector('.home-now-playing');
   const audio = document.getElementById('audioPlayer');
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   sync();
 });
 
-/* Follow assets/sonora-design-reference.webp: fine orbits and a diagonal spectrum. */
+/* Órbitas y espectro del planeta. */
 document.addEventListener('DOMContentLoaded', () => {
   const stage = document.querySelector('.home-planet-stage');
   const front = stage?.querySelector('.home-ring-front path');
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     stage.style.setProperty('--planet-bass', bass.toFixed(4));
     stage.style.setProperty('--planet-energy', energy.toFixed(4));
-    // Visible but restrained drift during playback; the audio adds lift and sway.
+    /* Movimiento del planeta durante la reproducción. */
     const travel = activity * (5 + energy * 5);
     stage.style.setProperty('--planet-x', (Math.sin(clock * .0018) * travel).toFixed(3) + 'px');
     stage.style.setProperty('--planet-y', (Math.cos(clock * .0014) * travel * .8 - bass * 3).toFixed(3) + 'px');

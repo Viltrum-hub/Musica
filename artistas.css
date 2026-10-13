@@ -1,4 +1,4 @@
-/* SONORA Artists — follows DESIGN.md and the approved visual reference. */
+/* Catálogo de artistas. */
 .artists-page{min-height:100vh;padding-bottom:150px;background:radial-gradient(ellipse at 78% 12%,color-mix(in srgb,var(--secondary) 7%,transparent),transparent 38%),var(--bg);color:var(--text);font-family:inherit}
 .artists-page .container{max-width:1220px;padding-left:36px;padding-right:36px}
 .artists-page :is(button,input,select){font-family:inherit}
@@ -95,7 +95,7 @@
 .artists-page .artists-empty p{font-size:12px}
 .artists-page .artist-status{position:fixed;bottom:125px;left:50%;translate:-50% 0;z-index:1100;width:max-content;max-width:calc(100% - 30px);padding:12px 18px;border:1px solid var(--border);border-radius:14px;background:var(--bg-secondary);color:var(--text);font-size:11px;box-shadow:0 15px 45px #0006}
 .artists-page .artist-status:empty{display:none}
-/* Artist profiles retain the shared player and accessible dialog behavior. */
+/* Modal del perfil de artista. */
 .artists-page .artist-profile-overlay{position:fixed;inset:0;z-index:1085;display:grid;grid-template-columns:1fr minmax(320px,580px);opacity:0;visibility:hidden;transition:opacity .25s,visibility .25s}
 .artists-page .artist-profile-overlay.open{opacity:1;visibility:visible}
 .artists-page .artist-profile-backdrop{background:#030713b8;backdrop-filter:blur(8px);border:0}

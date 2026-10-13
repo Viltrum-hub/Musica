@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // The standalone Explore page needs its playback controller initialized too.
+  /* Inicializar el reproductor al abrir Explorar directamente. */
   if (!document.getElementById('mainHome') && document.querySelector('.explore-page') && typeof window.initExplorar === 'function') window.initExplorar();
   const audio = document.getElementById('audioPlayer');
   const progress = document.getElementById('progressBar');
