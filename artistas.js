@@ -73,7 +73,7 @@ function initArtistas(options = {}) {
     "eiffel-65": {
         "name": "Eiffel 65",
         "genre": "Electrónica",
-        "image": "assets/andromeda/artists/eiffel-65.svg?v=2",
+        "image": "assets/andromeda/songs/eiffel-65-blue-da-ba-dee-v3.svg?v=1",
         "bio": "Explora la selección de Eiffel 65 en ANDROMEDA. Sus canciones disponibles se reúnen aquí para escucharlas, guardarlas y volver a ellas.",
         "tags": [
             "Electrónica",

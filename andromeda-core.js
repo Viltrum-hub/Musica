@@ -21,7 +21,7 @@
   }
 
   async function loadSongs({selector = '.explore-song-card[data-audio]', keep = 'last'} = {}) {
-    const document = await loadDocument('explorar.html?v=artwork-12');
+    const document = await loadDocument('explorar.html?v=artwork-13');
     const songs = new Map();
     document.querySelectorAll(selector).forEach(element => {
       const song = {...element.dataset};
@@ -33,7 +33,7 @@
   }
 
   async function loadArtists() {
-    const document = await loadDocument('artistas.html?v=artwork-12');
+    const document = await loadDocument('artistas.html?v=artwork-13');
     return [...document.querySelectorAll('.artist-catalog-card')].map(card => ({
       id: card.dataset.artistId,
       name: card.querySelector('h3')?.textContent || '',
