@@ -84,7 +84,7 @@ function initArtistas(options = {}) {
                 "title": "Blue (Da Ba Dee)",
                 "artist": "Eiffel 65",
                 "audio": "Canciones/65.mpeg",
-                "image": "assets/andromeda/songs/eiffel-65-blue-da-ba-dee.svg?v=2"
+                "image": "assets/andromeda/songs/eiffel-65-blue-da-ba-dee-v3.svg?v=1"
             }
         ]
     },
