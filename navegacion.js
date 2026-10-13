@@ -580,14 +580,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const response =
                 await fetch(
-                    "explorar.html?v=refactor-10"
+                    "explorar.html?v=refactor-11"
                 );
 
 
             if (!response.ok) {
 
                 throw new Error(
-                    "No se pudo cargar explorar.html?v=refactor-10"
+                    "No se pudo cargar explorar.html?v=refactor-11"
                 );
 
             }
@@ -675,7 +675,7 @@ if (typeof initExplorar === "function") {
 
             /*
                IMPORTANTE:
-               Ya NO usamos explorar.html?v=refactor-10
+               Ya NO usamos explorar.html?v=refactor-11
                como URL del navegador.
 
                Al actualizar se volverá a cargar

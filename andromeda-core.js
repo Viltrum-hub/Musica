@@ -21,7 +21,7 @@
   }
 
   async function loadSongs({selector = '.explore-song-card[data-audio]', keep = 'last'} = {}) {
-    const document = await loadDocument('explorar.html?v=refactor-10');
+    const document = await loadDocument('explorar.html?v=refactor-11');
     const songs = new Map();
     document.querySelectorAll(selector).forEach(element => {
       const song = {...element.dataset};
