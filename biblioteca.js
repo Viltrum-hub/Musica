@@ -1,8 +1,7 @@
 /* ANDROMEDA Library: the existing account and Supabase tables are the source of truth. */
 (() => {
   const account = () => window.sonoraAccount;
-  const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-  const normalize = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase();
+  const {escapeHTML: esc, normalizeText: normalize} = window.andromedaCore;
   const key = song => [song.title,song.artist,song.audio].join('|');
   let root, playlists = [], favorites = [], catalog = [], following = [], loadedUser = null;
   let tab = 'favorites', selected = null, search = '', generation = 0, loading = false, loadError = '';
@@ -68,13 +67,8 @@
   async function loadCatalog() {
     if(catalogPromise) return catalogPromise;
     catalogPromise=(async()=>{
-      const response=await fetch('explorar.html?v=neon-8');if(!response.ok)throw new Error('Catálogo no disponible');
-      const doc=new DOMParser().parseFromString(await response.text(),'text/html');
-      catalog=[...doc.querySelectorAll('.explore-song-card[data-audio]')].map(card=>({...card.dataset}));
-      catalog=[...new Map(catalog.map(song=>[song.audio,song])).values()];
-      const artistsResponse=await fetch('artistas.html?v=andromeda-ui-3');if(!artistsResponse.ok)throw new Error('Artistas no disponibles');
-      const artistsDoc=new DOMParser().parseFromString(await artistsResponse.text(),'text/html');
-      following=[...artistsDoc.querySelectorAll('.artist-catalog-card')].map(card=>({id:card.dataset.artistId,name:card.querySelector('h3')?.textContent||'',image:card.querySelector('img')?.getAttribute('src')||'',genre:card.querySelector('.artist-catalog-info>span')?.textContent||'Artista ANDROMEDA'}));
+      catalog = await window.andromedaCore.loadSongs();
+      following = await window.andromedaCore.loadArtists();
     })().catch(error=>{catalogPromise=null;throw error});
     return catalogPromise;
   }

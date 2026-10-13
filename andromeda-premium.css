@@ -162,3 +162,18 @@ body .artists-page .artist-profile-track .artist-card-play{border:1px solid colo
 body :is(.auth-modal,.profile-modal,.search-box,.sl-dialog) :is(input,textarea):focus-visible{outline:2px solid var(--primary);outline-offset:2px;box-shadow:0 0 14px var(--modal-neon);}
 body :is(.artist-follow,.change-avatar-button,.auth-submit,.sl-button):focus-visible{outline:2px solid var(--secondary);outline-offset:4px;}
 @media(hover:hover){body .artists-page .artist-follow:hover{filter:brightness(1.12);border-color:var(--secondary);box-shadow:0 4px 22px var(--modal-neon);}body .artists-page .artist-follow[aria-pressed="true"]:hover{background:color-mix(in srgb,var(--primary) 22%,var(--bg-secondary));}}
+
+/* Clear library entry point, coordinated with the selected universe. */
+body .explore-page .explore-library-button{
+ display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:40px;
+ padding:11px 17px;border:1px solid color-mix(in srgb,var(--primary) 70%,var(--secondary));border-radius:12px;
+ background:linear-gradient(115deg,color-mix(in srgb,var(--primary) 20%,var(--bg-secondary)),color-mix(in srgb,var(--secondary) 9%,var(--bg-secondary)));
+ color:var(--text);font:600 12px/1.4 Montserrat,sans-serif;
+ box-shadow:0 0 18px color-mix(in srgb,var(--primary) 13%,transparent),inset 0 1px 0 color-mix(in srgb,var(--secondary) 20%,transparent);
+ transition:border-color .2s,background .2s,box-shadow .2s;
+}
+body .explore-page .explore-library-button i{font-size:15px;color:var(--primary-light);}
+body .explore-page .explore-library-button:focus-visible{outline:2px solid var(--secondary);outline-offset:4px;}
+@media(hover:hover){body .explore-page .explore-library-button:hover{border-color:var(--secondary);background:color-mix(in srgb,var(--primary) 26%,var(--bg-secondary));box-shadow:0 0 22px color-mix(in srgb,var(--primary) 20%,transparent);}}
+@media(max-width:650px){body .explore-page .explore-hero-actions{gap:12px;}body .explore-page .explore-library-button{padding:10px 15px;}}
+@media(prefers-reduced-motion:reduce){body .explore-page .explore-library-button{transition:none;}}

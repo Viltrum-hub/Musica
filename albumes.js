@@ -3,8 +3,7 @@
   let queue = [], position = 0, ownedSource = '';
   const audio = () => document.getElementById('audioPlayer');
   const ownsAudio = () => window.sonoraPlaybackOwner !== 'biblioteca' && ownedSource && audio()?.src === ownedSource;
-  const escape = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
-  const normalize = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const {escapeHTML: escape, normalizeText: normalize} = window.andromedaCore;
   const status = message => { const el = document.querySelector('.sa-status'); if (el) el.textContent = message; };
   function sync() {
     if (!ownsAudio()) return;
@@ -79,13 +78,18 @@
       });
     }
     try {
-      const response = await fetch('explorar.html?v=neon-8'); if (!response.ok) throw new Error('catalog');
-      const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
-      const byArtist = new Map(), seen = new Set();
-      doc.querySelectorAll('[data-audio][data-title][data-artist]').forEach(el => {
-        const song = {...el.dataset}; song.collectionArtist = song.artist.split(" feat.")[0]; if (!song.audio || seen.has(song.audio)) return; seen.add(song.audio);
+      const songs = await window.andromedaCore.loadSongs({
+        selector: '[data-audio][data-title][data-artist]',
+        keep: 'first'
+      });
+      const byArtist = new Map();
+      songs.forEach(song => {
+        song.collectionArtist = song.artist.split(" feat.")[0];
         let group = byArtist.get(song.collectionArtist);
-        if (!group) { group = {artist:song.collectionArtist, genre:song.genre || 'rock', image:song.image, songs:[]}; byArtist.set(song.collectionArtist, group); }
+        if (!group) {
+          group = {artist: song.collectionArtist, genre: song.genre || 'rock', image: song.image, songs: []};
+          byArtist.set(song.collectionArtist, group);
+        }
         group.songs.push(song);
       });
       if (!root.isConnected) return;
