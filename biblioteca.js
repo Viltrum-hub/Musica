@@ -54,8 +54,8 @@
       ]);
       if (ticket !== generation || account()?.user?.id !== user.id) return;
       for (const result of results) if (result.error) throw result.error;
-      playlists=(results[0].data||[]).map(p=>({...p,playlist_songs:(p.playlist_songs||[]).sort((a,b)=>String(a.added_at).localeCompare(String(b.added_at))||a.id-b.id)}));
-      favorites=results[1].data||[]; loadedUser=user.id;
+      playlists=(results[0].data||[]).map(p=>({...p,playlist_songs:(p.playlist_songs||[]).filter(song => !window.andromedaCore.isRetiredAudio(song.audio)).sort((a,b)=>String(a.added_at).localeCompare(String(b.added_at))||a.id-b.id)}));
+      favorites=(results[1].data||[]).filter(song => !window.andromedaCore.isRetiredAudio(song.audio)); loadedUser=user.id;
     } catch (error) {
       if(ticket!==generation) return;
       loadError='No pudimos cargar tu biblioteca. Revisa tu conexión y vuelve a intentar.';

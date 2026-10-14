@@ -99,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
 
-        if (!state.src) return;
+        if (!state.src || window.andromedaCore.isRetiredAudio(state.src)) return;
 
 
         /* Restaurar los datos sin activar reproducción automática. */
@@ -564,14 +564,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const response =
                 await fetch(
-                    "explorar.html?v=catalog-14"
+                    "explorar.html?v=artists-15"
                 );
 
 
             if (!response.ok) {
 
                 throw new Error(
-                    "No se pudo cargar explorar.html?v=catalog-14"
+                    "No se pudo cargar explorar.html?v=artists-15"
                 );
 
             }
@@ -738,10 +738,10 @@ if (typeof initExplorar === "function") {
 
         try {
 
-            const response = await fetch("artistas.html?v=catalog-14");
+            const response = await fetch("artistas.html?v=artists-15");
 
             if (!response.ok) {
-                throw new Error("No se pudo cargar artistas.html?v=catalog-14");
+                throw new Error("No se pudo cargar artistas.html?v=artists-15");
             }
 
             const html = await response.text();

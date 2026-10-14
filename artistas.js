@@ -96,7 +96,7 @@ function initArtistas(options = {}) {
     "the-outfield": {
         "name": "The Outfield",
         "genre": "Rock",
-        "image": "assets/andromeda/artists/the-outfield.svg?v=2",
+        "image": "assets/andromeda/artists/the-outfield.svg?v=space-15",
         "bio": "Explora la selección de The Outfield en ANDROMEDA. Sus canciones disponibles se reúnen aquí para escucharlas, guardarlas y volver a ellas.",
         "tags": [
             "Rock",
@@ -182,7 +182,7 @@ function initArtistas(options = {}) {
     "queen": {
         "name": "Queen",
         "genre": "Rock",
-        "image": "assets/andromeda/artists/queen.svg?v=2",
+        "image": "assets/andromeda/artists/queen.svg?v=space-15",
         "bio": "Explora la selección de Queen en ANDROMEDA. Sus canciones disponibles se reúnen aquí para escucharlas, guardarlas y volver a ellas.",
         "tags": [
             "Rock",
@@ -224,7 +224,7 @@ function initArtistas(options = {}) {
     "alan-walker": {
         "name": "Alan Walker",
         "genre": "Electrónica",
-        "image": "assets/andromeda/artists/alan-walker.svg?v=2",
+        "image": "assets/andromeda/artists/alan-walker.svg?v=space-15",
         "bio": "Explora la selección de Alan Walker en ANDROMEDA. Sus canciones disponibles se reúnen aquí para escucharlas, guardarlas y volver a ellas.",
         "tags": [
             "Electrónica",
@@ -651,7 +651,7 @@ function initArtistas(options = {}) {
     "cristian-castro": {
         "name": "Cristian Castro",
         "genre": "Romántica · Balada pop",
-        "image": "assets/andromeda/artists/cristian-castro.svg?v=1",
+        "image": "assets/andromeda/artists/cristian-castro.svg?v=space-15",
         "bio": "Descubre la selección de Cristian Castro en ANDROMEDA. Reúne sus canciones en tu biblioteca y vuelve a tus favoritas desde su perfil.",
         "tags": [
             "Romántica",
@@ -687,7 +687,7 @@ function initArtistas(options = {}) {
     "elton-john": {
         "name": "Elton John",
         "genre": "Pop · Pop rock",
-        "image": "assets/andromeda/artists/elton-john.svg?v=1",
+        "image": "assets/andromeda/artists/elton-john.svg?v=space-15",
         "bio": "Descubre la selección de Elton John en ANDROMEDA. Reúne sus canciones en tu biblioteca y vuelve a tus favoritas desde su perfil.",
         "tags": [
             "Pop",
@@ -705,7 +705,7 @@ function initArtistas(options = {}) {
     "felipe-garibo": {
         "name": "Felipe Garibo",
         "genre": "Cristiana",
-        "image": "assets/andromeda/artists/felipe-garibo.svg?v=1",
+        "image": "assets/andromeda/artists/felipe-garibo.svg?v=space-15",
         "bio": "Descubre la selección de Felipe Garibo en ANDROMEDA. Reúne sus canciones en tu biblioteca y vuelve a tus favoritas desde su perfil.",
         "tags": [
             "Cristiana",
@@ -747,7 +747,7 @@ function initArtistas(options = {}) {
     "marco-antonio-solis": {
         "name": "Marco Antonio Solís",
         "genre": "Romántica · Balada latina",
-        "image": "assets/andromeda/artists/marco-antonio-solis.svg?v=1",
+        "image": "assets/andromeda/artists/marco-antonio-solis.svg?v=space-15",
         "bio": "Descubre la selección de Marco Antonio Solís en ANDROMEDA. Reúne sus canciones en tu biblioteca y vuelve a tus favoritas desde su perfil.",
         "tags": [
             "Romántica",
@@ -777,24 +777,6 @@ function initArtistas(options = {}) {
                 "artist": "Mark Ronson feat. Bruno Mars",
                 "audio": "Canciones/mark-ronson-uptown-funk.mp3",
                 "image": "assets/andromeda/songs/mark-ronson-uptown-funk.svg?v=1"
-            }
-        ]
-    },
-    "phil-collins": {
-        "name": "Phil Collins",
-        "genre": "Romántica · Soft rock",
-        "image": "assets/andromeda/artists/phil-collins.svg?v=1",
-        "bio": "Descubre la selección de Phil Collins en ANDROMEDA. Reúne sus canciones en tu biblioteca y vuelve a tus favoritas desde su perfil.",
-        "tags": [
-            "Romántica",
-            "1 canciones"
-        ],
-        "tracks": [
-            {
-                "title": "One More Night",
-                "artist": "Phil Collins",
-                "audio": "Canciones/phil-collins-one-more-night.mp3",
-                "image": "assets/andromeda/songs/phil-collins-one-more-night.svg?v=1"
             }
         ]
     }
@@ -980,12 +962,12 @@ cards.forEach(card => {
     /* ARTISTAS DEL CARRUSEL */
 
 
-    const featuredIds = ["the-police", "scorpions", "eiffel-65", "the-outfield", "madonna", "queen", "alan-walker", "the-notorious-b-i-g", "george-michael", "dr-dre", "luis-miguel", "chicago", "lady-gaga", "50-cent", "wiz-khalifa-snoop-dogg", "ice-cube", "eminem", "coolio", "snoop-dogg", "2pac-pop-smoke", "wham", "axl-rose", "cristian-castro", "daft-punk", "elton-john", "felipe-garibo", "demi-lovato", "marco-antonio-solis", "mark-ronson", "phil-collins"];
+    const featuredIds = ["the-police", "scorpions", "eiffel-65", "the-outfield", "madonna", "queen", "alan-walker", "the-notorious-b-i-g", "george-michael", "dr-dre", "luis-miguel", "chicago", "lady-gaga", "50-cent", "wiz-khalifa-snoop-dogg", "ice-cube", "eminem", "coolio", "snoop-dogg", "2pac-pop-smoke", "wham", "axl-rose", "cristian-castro", "daft-punk", "elton-john", "felipe-garibo", "demi-lovato", "marco-antonio-solis", "mark-ronson"];
 
     /* ORDEN SEGÚN UNIVERSO */
 
 
-    const themeFeatured = {"electronic": ["alan-walker", "eiffel-65", "daft-punk"], "rock": ["scorpions", "axl-rose", "queen", "the-police", "chicago", "the-outfield"], "pop": ["lady-gaga", "madonna", "george-michael", "wham", "elton-john", "demi-lovato", "mark-ronson"], "hiphop": ["eminem", "50-cent", "snoop-dogg", "ice-cube", "dr-dre", "coolio", "the-notorious-b-i-g", "2pac-pop-smoke", "wiz-khalifa-snoop-dogg"], "aurora": ["luis-miguel", "george-michael", "chicago", "scorpions", "cristian-castro", "marco-antonio-solis", "phil-collins"], "celestial": ["felipe-garibo"]};
+    const themeFeatured = {"electronic": ["alan-walker", "eiffel-65", "daft-punk"], "rock": ["scorpions", "axl-rose", "queen", "the-police", "chicago", "the-outfield"], "pop": ["lady-gaga", "madonna", "george-michael", "wham", "elton-john", "demi-lovato", "mark-ronson"], "hiphop": ["eminem", "50-cent", "snoop-dogg", "ice-cube", "dr-dre", "coolio", "the-notorious-b-i-g", "2pac-pop-smoke", "wiz-khalifa-snoop-dogg"], "aurora": ["luis-miguel", "george-michael", "chicago", "scorpions", "cristian-castro", "marco-antonio-solis"], "celestial": ["felipe-garibo"]};
 
     function getFeaturedOrder() {
         const theme =

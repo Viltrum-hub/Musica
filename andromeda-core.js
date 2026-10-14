@@ -5,6 +5,8 @@
   const escapeHTML = value => String(value ?? '').replace(/[&<>"']/g, character => entities[character]);
   const normalizeText = value => String(value || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
 
+  const isRetiredAudio = value => String(value || "").split(/[?#]/)[0].endsWith("/phil-collins-one-more-night.mp3");
+
   async function loadDocument(url) {
     if (!documents.has(url)) {
       const request = (async () => {
@@ -21,7 +23,7 @@
   }
 
   async function loadSongs({selector = '.explore-song-card[data-audio]', keep = 'last'} = {}) {
-    const document = await loadDocument('explorar.html?v=catalog-14');
+    const document = await loadDocument('explorar.html?v=artists-15');
     const songs = new Map();
     document.querySelectorAll(selector).forEach(element => {
       const song = {...element.dataset};
@@ -33,7 +35,7 @@
   }
 
   async function loadArtists() {
-    const document = await loadDocument('artistas.html?v=catalog-14');
+    const document = await loadDocument('artistas.html?v=artists-15');
     return [...document.querySelectorAll('.artist-catalog-card')].map(card => ({
       id: card.dataset.artistId,
       name: card.querySelector('h3')?.textContent || '',
@@ -42,5 +44,5 @@
     }));
   }
 
-  window.andromedaCore = Object.freeze({escapeHTML, normalizeText, loadSongs, loadArtists});
+  window.andromedaCore = Object.freeze({escapeHTML, normalizeText, loadSongs, loadArtists, isRetiredAudio});
 })();
