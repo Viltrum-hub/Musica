@@ -67,7 +67,12 @@ function initArtistas(options = {}) {
                 "audio": "Canciones/scorpions-rock-you-like-a-hurricane.mp3",
                 "image": "assets/andromeda/songs/scorpions-rock-you-like-a-hurricane.svg?v=2"
             },
-            {"title": "Always Somewhere", "artist": "Scorpions", "audio": "Canciones/scorpions-always-somewhere.mp3", "image": "assets/andromeda/songs/scorpions-always-somewhere.svg?v=2"}
+            {
+                "title": "Always Somewhere",
+                "artist": "Scorpions",
+                "audio": "Canciones/scorpions-always-somewhere.mp3",
+                "image": "assets/andromeda/songs/scorpions-always-somewhere.svg?v=2"
+            }
         ]
     },
     "eiffel-65": {
@@ -126,7 +131,8 @@ function initArtistas(options = {}) {
         "tags": [
             "Estados Unidos",
             "Desde 1979",
-            "Pop"
+            "Pop",
+            "7 canciones"
         ],
         "tracks": [
             {
@@ -152,6 +158,24 @@ function initArtistas(options = {}) {
                 "artist": "Madonna",
                 "audio": "Canciones/Madonna - Material Girl (1).mp3.mpeg",
                 "image": "assets/andromeda/songs/madonna-material-girl.svg?v=2"
+            },
+            {
+                "title": "Into the Groove",
+                "artist": "Madonna",
+                "audio": "Canciones/madonna-into-the-groove.mp3",
+                "image": "assets/andromeda/songs/madonna-into-the-groove.svg?v=1"
+            },
+            {
+                "title": "Lucky Star",
+                "artist": "Madonna",
+                "audio": "Canciones/madonna-lucky-star.mp3",
+                "image": "assets/andromeda/songs/madonna-lucky-star.svg?v=1"
+            },
+            {
+                "title": "Papa Don’t Preach",
+                "artist": "Madonna",
+                "audio": "Canciones/madonna-papa-dont-preach.mp3",
+                "image": "assets/andromeda/songs/madonna-papa-dont-preach.svg?v=1"
             }
         ]
     },
@@ -623,6 +647,156 @@ function initArtistas(options = {}) {
                 "image": "assets/andromeda/songs/guns-n-roses-patience.svg?v=2"
             }
         ]
+    },
+    "cristian-castro": {
+        "name": "Cristian Castro",
+        "genre": "Romántica · Balada pop",
+        "image": "assets/andromeda/artists/cristian-castro.svg?v=1",
+        "bio": "Descubre la selección de Cristian Castro en ANDROMEDA. Reúne sus canciones en tu biblioteca y vuelve a tus favoritas desde su perfil.",
+        "tags": [
+            "Romántica",
+            "1 canciones"
+        ],
+        "tracks": [
+            {
+                "title": "No podrás",
+                "artist": "Cristian Castro",
+                "audio": "Canciones/cristian-castro-no-podras.mp3",
+                "image": "assets/andromeda/songs/cristian-castro-no-podras.svg?v=1"
+            }
+        ]
+    },
+    "daft-punk": {
+        "name": "Daft Punk",
+        "genre": "Electrónica · Disco funk",
+        "image": "assets/andromeda/artists/daft-punk.svg?v=1",
+        "bio": "Descubre la selección de Daft Punk en ANDROMEDA. Reúne sus canciones en tu biblioteca y vuelve a tus favoritas desde su perfil.",
+        "tags": [
+            "Electrónica",
+            "1 canciones"
+        ],
+        "tracks": [
+            {
+                "title": "Get Lucky",
+                "artist": "Daft Punk",
+                "audio": "Canciones/daft-punk-get-lucky.mp3",
+                "image": "assets/andromeda/songs/daft-punk-get-lucky.svg?v=1"
+            }
+        ]
+    },
+    "elton-john": {
+        "name": "Elton John",
+        "genre": "Pop · Pop rock",
+        "image": "assets/andromeda/artists/elton-john.svg?v=1",
+        "bio": "Descubre la selección de Elton John en ANDROMEDA. Reúne sus canciones en tu biblioteca y vuelve a tus favoritas desde su perfil.",
+        "tags": [
+            "Pop",
+            "1 canciones"
+        ],
+        "tracks": [
+            {
+                "title": "I’m Still Standing",
+                "artist": "Elton John",
+                "audio": "Canciones/elton-john-im-still-standing.mp3",
+                "image": "assets/andromeda/songs/elton-john-im-still-standing.svg?v=1"
+            }
+        ]
+    },
+    "felipe-garibo": {
+        "name": "Felipe Garibo",
+        "genre": "Cristiana",
+        "image": "assets/andromeda/artists/felipe-garibo.svg?v=1",
+        "bio": "Descubre la selección de Felipe Garibo en ANDROMEDA. Reúne sus canciones en tu biblioteca y vuelve a tus favoritas desde su perfil.",
+        "tags": [
+            "Cristiana",
+            "2 canciones"
+        ],
+        "tracks": [
+            {
+                "title": "Bienvenido",
+                "artist": "Felipe Garibo",
+                "audio": "Canciones/felipe-garibo-bienvenido.mp3",
+                "image": "assets/andromeda/songs/felipe-garibo-bienvenido.svg?v=1"
+            },
+            {
+                "title": "Renacer",
+                "artist": "Felipe Garibo",
+                "audio": "Canciones/felipe-garibo-renacer.mp3",
+                "image": "assets/andromeda/songs/felipe-garibo-renacer.svg?v=1"
+            }
+        ]
+    },
+    "demi-lovato": {
+        "name": "Demi Lovato",
+        "genre": "Pop · Disco",
+        "image": "assets/andromeda/artists/demi-lovato.svg?v=1",
+        "bio": "Descubre la selección de Demi Lovato en ANDROMEDA. Reúne sus canciones en tu biblioteca y vuelve a tus favoritas desde su perfil.",
+        "tags": [
+            "Pop",
+            "1 canciones"
+        ],
+        "tracks": [
+            {
+                "title": "I Will Survive",
+                "artist": "Demi Lovato",
+                "audio": "Canciones/demi-lovato-i-will-survive.mp3",
+                "image": "assets/andromeda/songs/demi-lovato-i-will-survive.svg?v=1"
+            }
+        ]
+    },
+    "marco-antonio-solis": {
+        "name": "Marco Antonio Solís",
+        "genre": "Romántica · Balada latina",
+        "image": "assets/andromeda/artists/marco-antonio-solis.svg?v=1",
+        "bio": "Descubre la selección de Marco Antonio Solís en ANDROMEDA. Reúne sus canciones en tu biblioteca y vuelve a tus favoritas desde su perfil.",
+        "tags": [
+            "Romántica",
+            "1 canciones"
+        ],
+        "tracks": [
+            {
+                "title": "Mi eterno amor secreto",
+                "artist": "Marco Antonio Solís",
+                "audio": "Canciones/marco-antonio-solis-mi-eterno-amor-secreto.mp3",
+                "image": "assets/andromeda/songs/marco-antonio-solis-mi-eterno-amor-secreto.svg?v=1"
+            }
+        ]
+    },
+    "mark-ronson": {
+        "name": "Mark Ronson",
+        "genre": "Pop · Funk",
+        "image": "assets/andromeda/artists/mark-ronson.svg?v=1",
+        "bio": "Descubre la selección de Mark Ronson en ANDROMEDA. Reúne sus canciones en tu biblioteca y vuelve a tus favoritas desde su perfil.",
+        "tags": [
+            "Pop",
+            "1 canciones"
+        ],
+        "tracks": [
+            {
+                "title": "Uptown Funk",
+                "artist": "Mark Ronson feat. Bruno Mars",
+                "audio": "Canciones/mark-ronson-uptown-funk.mp3",
+                "image": "assets/andromeda/songs/mark-ronson-uptown-funk.svg?v=1"
+            }
+        ]
+    },
+    "phil-collins": {
+        "name": "Phil Collins",
+        "genre": "Romántica · Soft rock",
+        "image": "assets/andromeda/artists/phil-collins.svg?v=1",
+        "bio": "Descubre la selección de Phil Collins en ANDROMEDA. Reúne sus canciones en tu biblioteca y vuelve a tus favoritas desde su perfil.",
+        "tags": [
+            "Romántica",
+            "1 canciones"
+        ],
+        "tracks": [
+            {
+                "title": "One More Night",
+                "artist": "Phil Collins",
+                "audio": "Canciones/phil-collins-one-more-night.mp3",
+                "image": "assets/andromeda/songs/phil-collins-one-more-night.svg?v=1"
+            }
+        ]
     }
 };
 
@@ -806,12 +980,12 @@ cards.forEach(card => {
     /* ARTISTAS DEL CARRUSEL */
 
 
-    const featuredIds = ["the-police", "scorpions", "eiffel-65", "the-outfield", "madonna", "queen", "alan-walker", "the-notorious-b-i-g", "george-michael", "dr-dre", "luis-miguel", "chicago", "lady-gaga", "50-cent", "wiz-khalifa-snoop-dogg", "ice-cube", "eminem", "coolio", "snoop-dogg", "2pac-pop-smoke", "wham", "axl-rose"];
+    const featuredIds = ["the-police", "scorpions", "eiffel-65", "the-outfield", "madonna", "queen", "alan-walker", "the-notorious-b-i-g", "george-michael", "dr-dre", "luis-miguel", "chicago", "lady-gaga", "50-cent", "wiz-khalifa-snoop-dogg", "ice-cube", "eminem", "coolio", "snoop-dogg", "2pac-pop-smoke", "wham", "axl-rose", "cristian-castro", "daft-punk", "elton-john", "felipe-garibo", "demi-lovato", "marco-antonio-solis", "mark-ronson", "phil-collins"];
 
     /* ORDEN SEGÚN UNIVERSO */
 
 
-    const themeFeatured = {"electronic": ["alan-walker", "eiffel-65"], "rock": ["scorpions", "axl-rose", "queen", "the-police", "chicago", "the-outfield"], "pop": ["lady-gaga", "madonna", "george-michael", "wham"], "hiphop": ["eminem", "50-cent", "snoop-dogg", "ice-cube", "dr-dre", "coolio", "the-notorious-b-i-g", "2pac-pop-smoke", "wiz-khalifa-snoop-dogg"], "aurora": ["luis-miguel", "george-michael", "chicago", "scorpions"]};
+    const themeFeatured = {"electronic": ["alan-walker", "eiffel-65", "daft-punk"], "rock": ["scorpions", "axl-rose", "queen", "the-police", "chicago", "the-outfield"], "pop": ["lady-gaga", "madonna", "george-michael", "wham", "elton-john", "demi-lovato", "mark-ronson"], "hiphop": ["eminem", "50-cent", "snoop-dogg", "ice-cube", "dr-dre", "coolio", "the-notorious-b-i-g", "2pac-pop-smoke", "wiz-khalifa-snoop-dogg"], "aurora": ["luis-miguel", "george-michael", "chicago", "scorpions", "cristian-castro", "marco-antonio-solis", "phil-collins"], "celestial": ["felipe-garibo"]};
 
     function getFeaturedOrder() {
         const theme =
@@ -841,6 +1015,10 @@ cards.forEach(card => {
         const genre =
             (profile?.genre || "").toLowerCase();
 
+        if (genre.includes("crist")) return "Celestial";
+
+        if (genre.includes("románt") || genre.includes("romant")) return "Aurora";
+
         if (genre.includes("electr")) {
             return "Electronic";
         }
@@ -853,7 +1031,6 @@ cards.forEach(card => {
             return "Hip Hop";
         }
 
-        if (genre.includes("románt") || genre.includes("romant")) return "Aurora";
         return "Rock";
     }
 
