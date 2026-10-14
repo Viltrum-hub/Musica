@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             playerCover.innerHTML = `
                 <img
-                    src="${state.image}"
+                    src="${window.andromedaCore.resolveSongArtwork({audio: state.src, image: state.image})}"
                     alt="${state.title || "Portada"}"
                 >
             `;
@@ -564,14 +564,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const response =
                 await fetch(
-                    "explorar.html?v=artists-15"
+                    "explorar.html?v=cosmic-16"
                 );
 
 
             if (!response.ok) {
 
                 throw new Error(
-                    "No se pudo cargar explorar.html?v=artists-15"
+                    "No se pudo cargar explorar.html?v=cosmic-16"
                 );
 
             }
@@ -738,10 +738,10 @@ if (typeof initExplorar === "function") {
 
         try {
 
-            const response = await fetch("artistas.html?v=artists-15");
+            const response = await fetch("artistas.html?v=cosmic-16");
 
             if (!response.ok) {
-                throw new Error("No se pudo cargar artistas.html?v=artists-15");
+                throw new Error("No se pudo cargar artistas.html?v=cosmic-16");
             }
 
             const html = await response.text();

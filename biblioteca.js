@@ -13,6 +13,7 @@
   const report = error => error?.code === '23505' ? 'Esta canción ya está en la playlist.' : 'No se pudo guardar el cambio. Inténtalo de nuevo.';
   const songAttrs = song => `data-title="${esc(song.title)}" data-artist="${esc(song.artist)}" data-audio="${esc(song.audio)}" data-image="${esc(song.image)}" data-genre="${esc(song.genre)}"`;
   const imageURL = image => {
+    image = window.andromedaCore.resolveArtwork(image);
     /* Validar las URL guardadas antes de mostrarlas. */
     try { const url = new URL(image || '', document.baseURI); return ['http:','https:'].includes(url.protocol) && image ? image : 'assets/universe-electronic-v2.webp'; } catch { return 'assets/universe-electronic-v2.webp'; }
   };
@@ -54,8 +55,8 @@
       ]);
       if (ticket !== generation || account()?.user?.id !== user.id) return;
       for (const result of results) if (result.error) throw result.error;
-      playlists=(results[0].data||[]).map(p=>({...p,playlist_songs:(p.playlist_songs||[]).filter(song => !window.andromedaCore.isRetiredAudio(song.audio)).sort((a,b)=>String(a.added_at).localeCompare(String(b.added_at))||a.id-b.id)}));
-      favorites=(results[1].data||[]).filter(song => !window.andromedaCore.isRetiredAudio(song.audio)); loadedUser=user.id;
+      playlists=(results[0].data||[]).map(p=>({...p,playlist_songs:(p.playlist_songs||[]).filter(song => !window.andromedaCore.isRetiredAudio(song.audio)).map(song => ({...song, image: window.andromedaCore.resolveSongArtwork(song)})).sort((a,b)=>String(a.added_at).localeCompare(String(b.added_at))||a.id-b.id)}));
+      favorites=(results[1].data||[]).filter(song => !window.andromedaCore.isRetiredAudio(song.audio)).map(song => ({...song, image: window.andromedaCore.resolveSongArtwork(song)})); loadedUser=user.id;
     } catch (error) {
       if(ticket!==generation) return;
       loadError='No pudimos cargar tu biblioteca. Revisa tu conexión y vuelve a intentar.';

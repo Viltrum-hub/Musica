@@ -96,7 +96,7 @@ function initArtistas(options = {}) {
     "the-outfield": {
         "name": "The Outfield",
         "genre": "Rock",
-        "image": "assets/andromeda/artists/the-outfield.svg?v=space-15",
+        "image": "assets/andromeda/artists/the-outfield.svg?v=cosmic-16",
         "bio": "Explora la selección de The Outfield en ANDROMEDA. Sus canciones disponibles se reúnen aquí para escucharlas, guardarlas y volver a ellas.",
         "tags": [
             "Rock",
@@ -107,19 +107,19 @@ function initArtistas(options = {}) {
                 "title": "Your Love",
                 "artist": "The Outfield",
                 "audio": "Canciones/The Outfield - Your Love.mp3.mpeg",
-                "image": "assets/andromeda/songs/the-outfield-your-love.svg?v=2"
+                "image": "assets/andromeda/artists/the-outfield.svg?v=cosmic-16"
             },
             {
                 "title": "Say It Isn't So",
                 "artist": "The Outfield",
                 "audio": "Canciones/The Outfield - Say It Isn't So (1).mp3.mpeg",
-                "image": "assets/andromeda/songs/the-outfield-say-it-isn-t-so.svg?v=2"
+                "image": "assets/andromeda/artists/the-outfield.svg?v=cosmic-16"
             },
             {
                 "title": "All The Love In The World",
                 "artist": "The Outfield",
                 "audio": "Canciones/The Outfield - All The Love In The World (1).mp3.mpeg",
-                "image": "assets/andromeda/songs/the-outfield-all-the-love-in-the-world.svg?v=2"
+                "image": "assets/andromeda/artists/the-outfield.svg?v=cosmic-16"
             }
         ]
     },
@@ -182,7 +182,7 @@ function initArtistas(options = {}) {
     "queen": {
         "name": "Queen",
         "genre": "Rock",
-        "image": "assets/andromeda/artists/queen.svg?v=space-15",
+        "image": "assets/andromeda/artists/queen.svg?v=cosmic-16",
         "bio": "Explora la selección de Queen en ANDROMEDA. Sus canciones disponibles se reúnen aquí para escucharlas, guardarlas y volver a ellas.",
         "tags": [
             "Rock",
@@ -193,38 +193,38 @@ function initArtistas(options = {}) {
                 "title": "Another One Bites the Dust",
                 "artist": "Queen",
                 "audio": "Canciones/Queen - Another One Bites the Dust (Official Video Remastered) (1).mp3.mpeg",
-                "image": "assets/andromeda/songs/queen-another-one-bites-the-dust.svg?v=2"
+                "image": "assets/andromeda/artists/queen.svg?v=cosmic-16"
             },
             {
                 "title": "Don't Stop Me Now",
                 "artist": "Queen",
                 "audio": "Canciones/Queen - Don't Stop Me Now (Official Video) (1).mp3.mpeg",
-                "image": "assets/andromeda/songs/queen-don-t-stop-me-now.svg?v=2"
+                "image": "assets/andromeda/artists/queen.svg?v=cosmic-16"
             },
             {
                 "title": "We Are The Champions",
                 "artist": "Queen",
                 "audio": "Canciones/Queen - We Are The Champions (Official Video Remastered) (1).mp3.mpeg",
-                "image": "assets/andromeda/songs/queen-we-are-the-champions.svg?v=2"
+                "image": "assets/andromeda/artists/queen.svg?v=cosmic-16"
             },
             {
                 "title": "We Will Rock You",
                 "artist": "Queen",
                 "audio": "Canciones/Queen - We Will Rock You (Lyrics) (1).mp3.mpeg",
-                "image": "assets/andromeda/songs/queen-we-will-rock-you.svg?v=2"
+                "image": "assets/andromeda/artists/queen.svg?v=cosmic-16"
             },
             {
                 "title": "Bohemian Rhapsody",
                 "artist": "Queen",
                 "audio": "Canciones/Queen – Bohemian Rhapsody (Official Video Remastered) (1).mp3.mpeg",
-                "image": "assets/andromeda/songs/queen-bohemian-rhapsody.svg?v=2"
+                "image": "assets/andromeda/artists/queen.svg?v=cosmic-16"
             }
         ]
     },
     "alan-walker": {
         "name": "Alan Walker",
         "genre": "Electrónica",
-        "image": "assets/andromeda/artists/alan-walker.svg?v=space-15",
+        "image": "assets/andromeda/artists/alan-walker.svg?v=cosmic-16",
         "bio": "Explora la selección de Alan Walker en ANDROMEDA. Sus canciones disponibles se reúnen aquí para escucharlas, guardarlas y volver a ellas.",
         "tags": [
             "Electrónica",
@@ -235,25 +235,25 @@ function initArtistas(options = {}) {
                 "title": "Alone",
                 "artist": "Alan Walker",
                 "audio": "Canciones/Alan Walker - Alone (1).mp3.mpeg",
-                "image": "assets/andromeda/songs/alan-walker-alone.svg?v=2"
+                "image": "assets/andromeda/artists/alan-walker.svg?v=cosmic-16"
             },
             {
                 "title": "Faded",
                 "artist": "Alan Walker",
                 "audio": "Canciones/Alan Walker - Faded (1).mp3.mpeg",
-                "image": "assets/andromeda/songs/alan-walker-faded.svg?v=2"
+                "image": "assets/andromeda/artists/alan-walker.svg?v=cosmic-16"
             },
             {
                 "title": "Sing Me To Sleep",
                 "artist": "Alan Walker",
                 "audio": "Canciones/Alan Walker - Sing Me To Sleep (1).mp3.mpeg",
-                "image": "assets/andromeda/songs/alan-walker-sing-me-to-sleep.svg?v=2"
+                "image": "assets/andromeda/artists/alan-walker.svg?v=cosmic-16"
             },
             {
                 "title": "The Spectre",
                 "artist": "Alan Walker",
                 "audio": "Canciones/Alan Walker - The Spectre (1).mp3.mpeg",
-                "image": "assets/andromeda/songs/alan-walker-the-spectre.svg?v=2"
+                "image": "assets/andromeda/artists/alan-walker.svg?v=cosmic-16"
             }
         ]
     },
@@ -651,7 +651,7 @@ function initArtistas(options = {}) {
     "cristian-castro": {
         "name": "Cristian Castro",
         "genre": "Romántica · Balada pop",
-        "image": "assets/andromeda/artists/cristian-castro.svg?v=space-15",
+        "image": "assets/andromeda/artists/cristian-castro.svg?v=cosmic-16",
         "bio": "Descubre la selección de Cristian Castro en ANDROMEDA. Reúne sus canciones en tu biblioteca y vuelve a tus favoritas desde su perfil.",
         "tags": [
             "Romántica",
@@ -662,7 +662,7 @@ function initArtistas(options = {}) {
                 "title": "No podrás",
                 "artist": "Cristian Castro",
                 "audio": "Canciones/cristian-castro-no-podras.mp3",
-                "image": "assets/andromeda/songs/cristian-castro-no-podras.svg?v=1"
+                "image": "assets/andromeda/artists/cristian-castro.svg?v=cosmic-16"
             }
         ]
     },
@@ -687,7 +687,7 @@ function initArtistas(options = {}) {
     "elton-john": {
         "name": "Elton John",
         "genre": "Pop · Pop rock",
-        "image": "assets/andromeda/artists/elton-john.svg?v=space-15",
+        "image": "assets/andromeda/artists/elton-john.svg?v=cosmic-16",
         "bio": "Descubre la selección de Elton John en ANDROMEDA. Reúne sus canciones en tu biblioteca y vuelve a tus favoritas desde su perfil.",
         "tags": [
             "Pop",
@@ -698,14 +698,14 @@ function initArtistas(options = {}) {
                 "title": "I’m Still Standing",
                 "artist": "Elton John",
                 "audio": "Canciones/elton-john-im-still-standing.mp3",
-                "image": "assets/andromeda/songs/elton-john-im-still-standing.svg?v=1"
+                "image": "assets/andromeda/artists/elton-john.svg?v=cosmic-16"
             }
         ]
     },
     "felipe-garibo": {
         "name": "Felipe Garibo",
         "genre": "Cristiana",
-        "image": "assets/andromeda/artists/felipe-garibo.svg?v=space-15",
+        "image": "assets/andromeda/artists/felipe-garibo.svg?v=cosmic-16",
         "bio": "Descubre la selección de Felipe Garibo en ANDROMEDA. Reúne sus canciones en tu biblioteca y vuelve a tus favoritas desde su perfil.",
         "tags": [
             "Cristiana",
@@ -716,13 +716,13 @@ function initArtistas(options = {}) {
                 "title": "Bienvenido",
                 "artist": "Felipe Garibo",
                 "audio": "Canciones/felipe-garibo-bienvenido.mp3",
-                "image": "assets/andromeda/songs/felipe-garibo-bienvenido.svg?v=1"
+                "image": "assets/andromeda/artists/felipe-garibo.svg?v=cosmic-16"
             },
             {
                 "title": "Renacer",
                 "artist": "Felipe Garibo",
                 "audio": "Canciones/felipe-garibo-renacer.mp3",
-                "image": "assets/andromeda/songs/felipe-garibo-renacer.svg?v=1"
+                "image": "assets/andromeda/artists/felipe-garibo.svg?v=cosmic-16"
             }
         ]
     },
@@ -747,7 +747,7 @@ function initArtistas(options = {}) {
     "marco-antonio-solis": {
         "name": "Marco Antonio Solís",
         "genre": "Romántica · Balada latina",
-        "image": "assets/andromeda/artists/marco-antonio-solis.svg?v=space-15",
+        "image": "assets/andromeda/artists/marco-antonio-solis.svg?v=cosmic-16",
         "bio": "Descubre la selección de Marco Antonio Solís en ANDROMEDA. Reúne sus canciones en tu biblioteca y vuelve a tus favoritas desde su perfil.",
         "tags": [
             "Romántica",
@@ -758,7 +758,7 @@ function initArtistas(options = {}) {
                 "title": "Mi eterno amor secreto",
                 "artist": "Marco Antonio Solís",
                 "audio": "Canciones/marco-antonio-solis-mi-eterno-amor-secreto.mp3",
-                "image": "assets/andromeda/songs/marco-antonio-solis-mi-eterno-amor-secreto.svg?v=1"
+                "image": "assets/andromeda/artists/marco-antonio-solis.svg?v=cosmic-16"
             }
         ]
     },
