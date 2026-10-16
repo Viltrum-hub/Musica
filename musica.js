@@ -3900,11 +3900,12 @@ if (button) {
 
     supabaseClient.auth.onAuthStateChange(
         (event, session) => {
-
-            updateUserInterface(
-                session
-            );
-
+            /* Cargar el perfil después de liberar el bloqueo de Auth. */
+            setTimeout(() => {
+                updateUserInterface(session).catch(error => {
+                    console.error("No se pudo actualizar la cuenta:", error);
+                });
+            }, 0);
         }
     );
 

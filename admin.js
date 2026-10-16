@@ -227,6 +227,8 @@ where user_id in (
     db.auth.onAuthStateChange(()=>{setTimeout(()=>checkAccess(),0);});
     checkAccess();
     window.addEventListener('focus',()=>checkAccess());
-    permissionTimer=setInterval(()=>{if(root?.isConnected)checkAccess();},45000);
+    window.addEventListener('sonora-profile-open',()=>checkAccess());
+    document.addEventListener('visibilitychange',()=>{if(!document.hidden)checkAccess();});
+    permissionTimer=setInterval(()=>{if(verifiedUser || window.sonoraAccount?.user || root?.isConnected)checkAccess();},45000);
   });
 })();

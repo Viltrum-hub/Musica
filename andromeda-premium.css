@@ -194,3 +194,29 @@ body #playbackStatus[hidden]{display:none;}
 /* Evitar desplazamientos pendientes al filtrar y abrir perfiles. */
 html:has(.artists-page){scroll-behavior:auto;}
 body .artists-page .artist-profile-overlay:not(.open){visibility:hidden;transition:none;}
+
+/* Áreas táctiles independientes del reproductor. */
+body #musicPlayer button{position:relative;touch-action:manipulation;}
+body #musicPlayer button::after{content:none;pointer-events:none;}
+body #musicPlayer button>i{pointer-events:none;}
+@media(pointer:coarse){
+ body #musicPlayer .control-buttons{width:132px;gap:0;}
+ body #musicPlayer :is(#previousBtn,#nextBtn,#mainPlayBtn,#playerFavoriteBtn,#playerMuteBtn){width:44px;height:44px;min-width:44px;min-height:44px;flex:0 0 44px;}
+ body #musicPlayer .control-buttons #mainPlayBtn{background:radial-gradient(circle at center,var(--primary-light) 0 19px,transparent 20px);}
+ body #musicPlayer input[type=range]{height:28px;}
+ body #musicPlayer input[type=range]::-webkit-slider-thumb{width:12px;height:12px;margin-top:-4px;opacity:1;}
+ body #musicPlayer input[type=range]::-moz-range-thumb{width:12px;height:12px;}
+ body #musicPlayer.music-player{bottom:calc(10px + env(safe-area-inset-bottom,0px));}
+}
+@media(pointer:coarse) and (min-width:1001px){
+ body #musicPlayer.music-player{grid-template-columns:minmax(100px,1fr) 44px 132px minmax(130px,1fr) 132px;}
+}
+@media(pointer:coarse) and (max-width:1000px){
+ body #musicPlayer.music-player{height:104px;grid-template-columns:minmax(0,1fr) 44px 132px;grid-template-rows:44px 24px;gap:6px;padding:10px;}
+ body #musicPlayer .player-favorite{grid-column:2;grid-row:1;}
+ body #musicPlayer .control-buttons{grid-column:3;grid-row:1;}
+ body #musicPlayer .progress-container{grid-column:1/-1;grid-row:2;}
+ body #musicPlayer .player-song{overflow:hidden;}
+ body #musicPlayer #playerCover{width:32px;height:32px;min-width:32px;min-height:32px;}
+ body #playbackStatus{bottom:calc(124px + env(safe-area-inset-bottom,0px));}
+}
