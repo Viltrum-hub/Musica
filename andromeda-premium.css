@@ -190,3 +190,7 @@ body #playbackStatus[hidden]{display:none;}
 @media(max-width:650px){body #playbackStatus{bottom:120px;}body .sa-track>span:nth-child(2){min-width:0;overflow-wrap:anywhere;}body .sl-intro h1,body .sa-heading h1{overflow-wrap:break-word;}}
 
 @media(max-width:650px){body .sonora-albums .sa-card-subtitle,body .sonora-albums .sa-card-label,body .sonora-library .sl-track p{font-size:10px;line-height:1.5;}body .sonora-albums .sa-meta{font-size:11px;line-height:1.65;}}
+
+/* Evitar desplazamientos pendientes al filtrar y abrir perfiles. */
+html:has(.artists-page){scroll-behavior:auto;}
+body .artists-page .artist-profile-overlay:not(.open){visibility:hidden;transition:none;}
