@@ -177,3 +177,16 @@ body .explore-page .explore-library-button:focus-visible{outline:2px solid var(-
 @media(hover:hover){body .explore-page .explore-library-button:hover{border-color:var(--secondary);background:color-mix(in srgb,var(--primary) 26%,var(--bg-secondary));box-shadow:0 0 22px color-mix(in srgb,var(--primary) 20%,transparent);}}
 @media(max-width:650px){body .explore-page .explore-hero-actions{gap:12px;}body .explore-page .explore-library-button{padding:10px 15px;}}
 @media(prefers-reduced-motion:reduce){body .explore-page .explore-library-button{transition:none;}}
+
+/* Cierre inmediato del área interactiva de los modales. */
+body .artist-profile-overlay:not(.open),body :is(.auth-overlay,.profile-overlay,.search-overlay):not(.show){pointer-events:none;}
+body #playbackStatus{position:fixed;z-index:12000;left:50%;bottom:112px;transform:translateX(-50%);width:max-content;max-width:calc(100% - 32px);padding:12px 18px;margin:0;border:1px solid var(--primary);border-radius:12px;background:var(--bg-secondary);color:var(--text);font:500 12px/1.6 Montserrat,sans-serif;box-shadow:0 12px 35px #0005;}
+body #playbackStatus[hidden]{display:none;}
+.page-load-error{max-width:760px;margin:130px auto 150px;padding:36px 24px;text-align:center;}
+.page-load-error h1{font-size:clamp(25px,4vw,38px);font-weight:700;}
+.page-load-error p{color:var(--muted);font-size:14px;}
+.page-load-error button{margin-top:16px;padding:11px 22px;border:1px solid var(--primary);border-radius:12px;background:var(--card);color:var(--text);font:600 12px Montserrat,sans-serif;}
+@media(hover:none){body #musicPlayer input[type=range]::-webkit-slider-thumb{opacity:1;}}
+@media(max-width:650px){body #playbackStatus{bottom:120px;}body .sa-track>span:nth-child(2){min-width:0;overflow-wrap:anywhere;}body .sl-intro h1,body .sa-heading h1{overflow-wrap:break-word;}}
+
+@media(max-width:650px){body .sonora-albums .sa-card-subtitle,body .sonora-albums .sa-card-label,body .sonora-library .sl-track p{font-size:10px;line-height:1.5;}body .sonora-albums .sa-meta{font-size:11px;line-height:1.65;}}

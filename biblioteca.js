@@ -116,7 +116,7 @@
   }
   async function play(index) {
     const song=queue[index], player=audio();if(!song||!player)return;
-    position=index;window.sonoraPlaybackOwner='biblioteca';player.src=song.audio;ownedSource=player.src;
+    position=index;window.sonoraPlaybackOwner='biblioteca';window.andromedaCore.setPlaybackQueue(queue,index,'biblioteca');player.src=song.audio;ownedSource=player.src;
     document.getElementById('playerTitle').textContent=song.title;document.getElementById('playerArtist').textContent=song.artist;
     const img=document.createElement('img');img.src=imageURL(song.image);img.alt=song.title;document.getElementById('playerCover').replaceChildren(img);
     try{await player.play();status('');}catch{status('No se pudo reproducir esta canción. Intenta de nuevo.');}syncPlayback();

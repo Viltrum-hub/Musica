@@ -7,6 +7,17 @@ document.addEventListener("DOMContentLoaded", () => {
         ".navbar-nav .nav-link"
     );
 
+    let navigationRequest = 0;
+    function showNavigationError(page) {
+        mainHome.style.display = "none";
+        const section = document.createElement("section");
+        section.className = "page-load-error"; section.setAttribute("role", "alert");
+        const title = document.createElement("h1"); title.textContent = "No pudimos abrir este apartado";
+        const copy = document.createElement("p"); copy.textContent = "Revisa tu conexión y vuelve a intentarlo.";
+        const retry = document.createElement("button"); retry.type = "button";
+        retry.dataset.page = page; retry.textContent = "Reintentar";
+        section.append(title, copy, retry); pageContainer.replaceChildren(section);
+    }
     const audio = document.getElementById("audioPlayer");
     const playerTitle = document.getElementById("playerTitle");
     const playerArtist = document.getElementById("playerArtist");
@@ -35,10 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
             volume: Number(audio.volume)
         };
 
-        localStorage.setItem(
-            PLAYER_STORAGE_KEY,
-            JSON.stringify(state)
-        );
+        try { localStorage.setItem(PLAYER_STORAGE_KEY, JSON.stringify(state)); } catch {}
 
     }
 
@@ -106,6 +114,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
         audio.src = state.src;
+        window.sonoraPlaybackOwner = "restaurado";
+        window.andromedaCore.setPlaybackQueue([{audio: state.src, title: state.title, artist: state.artist, image: state.image}], 0, "restaurado");
+        window.andromedaCore.loadSongs().then(songs => {
+            if (audio.src === state.src && window.sonoraPlaybackOwner === "restaurado") {
+                window.andromedaCore.setPlaybackQueue(songs, 0, "restaurado");
+            }
+        }).catch(() => {});
 
 
         if (playerTitle) {
@@ -129,12 +144,10 @@ document.addEventListener("DOMContentLoaded", () => {
             state.image
         ) {
 
-            playerCover.innerHTML = `
-                <img
-                    src="${window.andromedaCore.resolveSongArtwork({audio: state.src, image: state.image})}"
-                    alt="${state.title || "Portada"}"
-                >
-            `;
+            const image = document.createElement("img");
+            image.src = window.andromedaCore.resolveSongArtwork({audio: state.src, image: state.image});
+            image.alt = state.title || "Portada";
+            playerCover.replaceChildren(image);
 
         }
 
@@ -144,6 +157,7 @@ document.addEventListener("DOMContentLoaded", () => {
             () => {
 
                 if (
+                    audio.src === state.src &&
                     typeof state.time === "number" &&
                     state.time > 0 &&
                     state.time < audio.duration
@@ -167,15 +181,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     if (audio) {
-
-        audio.addEventListener(
-            "timeupdate",
-            () => {
-
-                savePlayerState();
-
-            }
-        );
+        let lastSavedAt = 0;
+        audio.addEventListener("timeupdate", () => {
+            if (Date.now() - lastSavedAt < 1000) return;
+            lastSavedAt = Date.now();
+            savePlayerState();
+        });
+        audio.addEventListener("pause", savePlayerState);
+        document.addEventListener("visibilitychange", () => {
+            if (document.hidden) savePlayerState();
+        });
 
 
         audio.addEventListener(
@@ -265,9 +280,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         navbarLinks.forEach(link => {
 
-            link.classList.remove(
-                "active"
-            );
+            link.classList.remove("active");
+            link.removeAttribute("aria-current");
 
         });
 
@@ -280,9 +294,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (active) {
 
-            active.classList.add(
-                "active"
-            );
+            active.classList.add("active");
+            active.setAttribute("aria-current", "page");
 
         }
 
@@ -560,18 +573,19 @@ document.addEventListener("DOMContentLoaded", () => {
     initialFilter = "all"
 ) {
 
+        const request = ++navigationRequest;
         try {
 
             const response =
                 await fetch(
-                    "explorar.html?v=catalog-23"
+                    "explorar.html?v=catalog-24"
                 );
 
 
             if (!response.ok) {
 
                 throw new Error(
-                    "No se pudo cargar explorar.html?v=catalog-23"
+                    "No se pudo cargar explorar.html?v=catalog-24"
                 );
 
             }
@@ -610,6 +624,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+            if (request !== navigationRequest) return;
             mainHome.style.display =
                 "none";
 
@@ -639,7 +654,7 @@ if (typeof initExplorar === "function") {
 
 
 
-            restoreExploreSong();
+            if (!audio?.paused) restoreExploreSong();
 
 
             closeMobileMenu();
@@ -668,6 +683,8 @@ if (typeof initExplorar === "function") {
 
 
         } catch (error) {
+            if (request !== navigationRequest) return;
+            showNavigationError("explorar");
 
             console.error(
                 "Error al cargar Explorar:",
@@ -683,6 +700,7 @@ if (typeof initExplorar === "function") {
 
 
     async function loadLibrary(updateHistory = true, playlist = "") {
+        const request = ++navigationRequest;
         try {
             const response = await fetch("biblioteca.html?v=andromeda-ui-3");
             if (!response.ok) throw new Error("No se pudo cargar Biblioteca");
@@ -690,6 +708,7 @@ if (typeof initExplorar === "function") {
             const page = doc.querySelector(".sonora-library");
             if (!page) throw new Error("Página de Biblioteca no válida");
             document.body.classList.remove("artist-profile-open");
+            if (request !== navigationRequest) return;
             mainHome.style.display = "none";
             pageContainer.replaceChildren(page);
             setActivePage("biblioteca");
@@ -698,7 +717,9 @@ if (typeof initExplorar === "function") {
             window.scrollTo({top: 0, behavior: "instant"});
             if (updateHistory) history.pushState({page: "biblioteca"}, "", "index.html?page=biblioteca" + (playlist ? "&playlist=" + encodeURIComponent(playlist) : ""));
             initBiblioteca({playlist});
-        } catch (error) { console.error(error); alert("No se pudo abrir Biblioteca. Inténtalo de nuevo."); }
+        } catch (error) {
+            if (request !== navigationRequest) return;
+            showNavigationError("biblioteca"); console.error(error);  }
     }
     document.addEventListener("click", event => {
         const link = event.target.closest('[data-page="biblioteca"]');
@@ -708,6 +729,7 @@ if (typeof initExplorar === "function") {
     });
 
     async function loadAlbums(updateHistory = true) {
+        const request = ++navigationRequest;
         try {
             const response = await fetch("albumes.html?v=andromeda-ui-3");
             if (!response.ok) throw new Error("No se pudo cargar Álbumes");
@@ -715,6 +737,7 @@ if (typeof initExplorar === "function") {
             const page = doc.querySelector(".sonora-albums");
             if (!page) throw new Error("Página de Álbumes no válida");
             document.body.classList.remove("artist-profile-open");
+            if (request !== navigationRequest) return;
             mainHome.style.display = "none";
             pageContainer.replaceChildren(page);
             initAlbumes();
@@ -722,7 +745,9 @@ if (typeof initExplorar === "function") {
             closeMobileMenu();
             window.scrollTo({top: 0, behavior: "instant"});
             if (updateHistory) history.pushState({page: "albumes"}, "", "index.html?page=albumes");
-        } catch (error) { console.error(error); alert("No se pudo abrir Álbumes. Inténtalo de nuevo."); }
+        } catch (error) {
+            if (request !== navigationRequest) return;
+            showNavigationError("albumes"); console.error(error);  }
     }
     document.addEventListener("click", event => {
         const link = event.target.closest('[data-page="albumes"], [data-albums-link]');
@@ -736,12 +761,13 @@ if (typeof initExplorar === "function") {
         initialArtist = ""
     ) {
 
+        const request = ++navigationRequest;
         try {
 
-            const response = await fetch("artistas.html?v=catalog-23");
+            const response = await fetch("artistas.html?v=catalog-24");
 
             if (!response.ok) {
-                throw new Error("No se pudo cargar artistas.html?v=catalog-23");
+                throw new Error("No se pudo cargar artistas.html?v=catalog-24");
             }
 
             const html = await response.text();
@@ -753,6 +779,7 @@ if (typeof initExplorar === "function") {
                 throw new Error("No se encontró .artists-page");
             }
 
+            if (request !== navigationRequest) return;
             mainHome.style.display = "none";
             pageContainer.innerHTML = "";
             pageContainer.appendChild(artistsPage);
@@ -778,6 +805,8 @@ if (typeof initExplorar === "function") {
             }
 
         } catch (error) {
+            if (request !== navigationRequest) return;
+            showNavigationError("artistas");
             console.error("Error al cargar Artistas:", error);
         }
     }
@@ -789,6 +818,8 @@ if (typeof initExplorar === "function") {
     function loadHome(
         updateHistory = true
     ) {
+
+        ++navigationRequest;
 
         document.body.classList.remove(
             "artist-profile-open"
@@ -1088,10 +1119,6 @@ if (typeof initExplorar === "function") {
     /* Restaurar el reproductor después de inicializar musica.js. */
 
 
-    setTimeout(() => {
-
-        restorePlayerState();
-
-    }, 100);
+    restorePlayerState();
 
 });

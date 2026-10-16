@@ -1,5 +1,11 @@
 
 function initExplorar(initialFilter = "all") {
+    window.sonoraExploreController?.abort();
+    const root = document.querySelector(".explore-page");
+    if (!root) return;
+    const controller = new AbortController();
+    window.sonoraExploreController = controller;
+    const on = (target, type, handler, options = {}) => target?.addEventListener(type, handler, {...options, signal: controller.signal});
 
     /* ELEMENTOS */
 
@@ -79,39 +85,6 @@ function initExplorar(initialFilter = "all") {
 
 
 
-
-
-    if (originalPlayButton) {
-
-        playButton =
-            originalPlayButton.cloneNode(true);
-
-        originalPlayButton.replaceWith(
-            playButton
-        );
-    }
-
-
-    if (originalPreviousButton) {
-
-        previousButton =
-            originalPreviousButton.cloneNode(true);
-
-        originalPreviousButton.replaceWith(
-            previousButton
-        );
-    }
-
-
-    if (originalNextButton) {
-
-        nextButton =
-            originalNextButton.cloneNode(true);
-
-        originalNextButton.replaceWith(
-            nextButton
-        );
-    }
 
 
     /* ESTADO */
@@ -228,7 +201,7 @@ function initExplorar(initialFilter = "all") {
 
 
     function updateActiveCard() {
-
+        currentSongIndex = songs.findIndex(song => new URL(song.audio, document.baseURI).href === audioPlayer.src);
         songCards.forEach(
             (card, index) => {
 
@@ -339,6 +312,7 @@ function initExplorar(initialFilter = "all") {
 
 
         window.sonoraPlaybackOwner = "explorar";
+        window.andromedaCore.setPlaybackQueue(songs, index, "explorar");
         currentSongIndex =
             index;
 
@@ -427,7 +401,7 @@ function initExplorar(initialFilter = "all") {
 
     if (playButton) {
 
-        playButton.addEventListener(
+        on(playButton,
             "click",
             async () => {
 
@@ -476,7 +450,7 @@ function initExplorar(initialFilter = "all") {
     /* EVENTOS DEL AUDIO */
 
 
-    audioPlayer.addEventListener(
+    on(audioPlayer,
         "play",
         () => {
 
@@ -487,7 +461,7 @@ function initExplorar(initialFilter = "all") {
     );
 
 
-    audioPlayer.addEventListener(
+    on(audioPlayer,
         "playing",
         () => {
 
@@ -498,7 +472,7 @@ function initExplorar(initialFilter = "all") {
     );
 
 
-    audioPlayer.addEventListener(
+    on(audioPlayer,
         "pause",
         () => {
 
@@ -512,7 +486,7 @@ function initExplorar(initialFilter = "all") {
     /* METADATOS */
 
 
-    audioPlayer.addEventListener(
+    on(audioPlayer,
         "loadedmetadata",
         () => {
 
@@ -530,7 +504,7 @@ function initExplorar(initialFilter = "all") {
     /* PROGRESO */
 
 
-    audioPlayer.addEventListener(
+    on(audioPlayer,
         "timeupdate",
         () => {
 
@@ -574,7 +548,7 @@ function initExplorar(initialFilter = "all") {
 
     if (progressBar) {
 
-        progressBar.addEventListener(
+        on(progressBar,
             "input",
             () => {
 
@@ -610,7 +584,7 @@ function initExplorar(initialFilter = "all") {
             );
 
 
-        volumeBar.addEventListener(
+        on(volumeBar,
             "input",
             () => {
 
@@ -628,7 +602,7 @@ function initExplorar(initialFilter = "all") {
 
     if (nextButton) {
 
-        nextButton.addEventListener(
+        on(nextButton,
             "click",
             () => {
 
@@ -666,7 +640,7 @@ function initExplorar(initialFilter = "all") {
 
     if (previousButton) {
 
-        previousButton.addEventListener(
+        on(previousButton,
             "click",
             () => {
 
@@ -702,7 +676,7 @@ function initExplorar(initialFilter = "all") {
     /* CUANDO TERMINA UNA CANCIÓN */
 
 
-    audioPlayer.addEventListener(
+    on(audioPlayer,
         "ended",
         () => {
 
@@ -737,7 +711,7 @@ function initExplorar(initialFilter = "all") {
     /* ERROR DE AUDIO */
 
 
-    audioPlayer.addEventListener(
+    on(audioPlayer,
         "error",
         () => {
 
@@ -766,12 +740,13 @@ function initExplorar(initialFilter = "all") {
 
             if (playCardButton) {
 
-                playCardButton.addEventListener(
+                on(playCardButton,
                     "click",
                     event => {
 
                         event.stopPropagation();
                         window.sonoraPlaybackOwner = "explorar";
+                        window.andromedaCore.setPlaybackQueue(songs, index, "explorar");
 
 
                         if (
@@ -809,7 +784,7 @@ function initExplorar(initialFilter = "all") {
             }
 
 
-            card.addEventListener(
+            on(card,
                 "click",
                 event => {
 
@@ -873,15 +848,15 @@ function initExplorar(initialFilter = "all") {
     if (total) total.textContent = songCards.length;
     if (artistTotal) artistTotal.textContent = new Set(songs.map(song => song.artist.split(" feat.")[0].toLowerCase())).size;
 
-    searchInput?.addEventListener("input", () => filterSongs(activeFilter));
-    sortSelect?.addEventListener("change", () => {
+    on(searchInput, "input", () => filterSongs(activeFilter));
+    on(sortSelect, "change", () => {
         const ordered = [...songCards];
         const key = sortSelect.value;
         if (key !== "original") ordered.sort((a,b) => (a.dataset[key] || "").localeCompare(b.dataset[key] || "", "es", {sensitivity:"base"}));
         ordered.forEach(card => grid.appendChild(card));
     });
     document.querySelectorAll("[data-explore-view]").forEach(button => {
-        button.addEventListener("click", () => {
+        on(button, "click", () => {
             grid.classList.toggle("explore-list", button.dataset.exploreView === "list");
             document.querySelectorAll("[data-explore-view]").forEach(control => {
                 const active = control === button;
@@ -916,8 +891,8 @@ function initExplorar(initialFilter = "all") {
         image.alt = `Portada de ${song.title}`;
         syncFeaturedPlayback();
     }
-    featuredButton?.addEventListener("click",() => songCards[featuredIndex].querySelector(".explore-play-button")?.click());
-    ["play","pause","loadedmetadata","emptied"].forEach(event => audioPlayer.addEventListener(event,syncFeaturedPlayback));
+    on(featuredButton, "click",() => songCards[featuredIndex].querySelector(".explore-play-button")?.click());
+    ["play","pause","loadedmetadata","emptied"].forEach(event => on(audioPlayer, event,syncFeaturedPlayback));
     window.sonoraExploreThemeObserver?.disconnect();
     window.sonoraExploreThemeObserver = new MutationObserver(updateFeaturedSong);
     window.sonoraExploreThemeObserver.observe(document.body,{attributes:true,attributeFilter:["data-theme"]});
@@ -1053,7 +1028,7 @@ function initExplorar(initialFilter = "all") {
     genreButtons.forEach(
         button => {
 
-            button.addEventListener(
+            on(button,
                 "click",
                 event => {
 
@@ -1083,6 +1058,16 @@ function initExplorar(initialFilter = "all") {
     );
 
     updatePlayButton();
+    updateActiveCard();
+    const themeObserver = window.sonoraExploreThemeObserver;
+    const observer = new MutationObserver(() => {
+        if (!root.isConnected) controller.abort();
+    });
+    if (root.parentNode) observer.observe(root.parentNode, {childList:true});
+    controller.signal.addEventListener("abort", () => {
+        observer.disconnect();
+        themeObserver?.disconnect();
+    }, {once:true});
 }
 
 

@@ -302,6 +302,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         window.sonoraPlaybackOwner = "inicio";
+        window.andromedaCore.setPlaybackQueue(songs, index, "inicio");
         currentSong = index;
 
         const song =
@@ -1028,13 +1029,13 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         exploreCatalogLoading =
-            fetch("explorar.html?v=catalog-23")
+            fetch("explorar.html?v=catalog-24")
                 .then(response => {
 
                     if (!response.ok) {
 
                         throw new Error(
-                            "No se pudo cargar explorar.html?v=catalog-23"
+                            "No se pudo cargar explorar.html?v=catalog-24"
                         );
 
                     }
@@ -1401,6 +1402,8 @@ document.addEventListener("DOMContentLoaded", () => {
                             return;
                         }
 
+                        window.sonoraPlaybackOwner = "busqueda";
+                        window.andromedaCore.setPlaybackQueue([song], 0, "busqueda");
                         audioPlayer.src =
                             song.audio;
 
