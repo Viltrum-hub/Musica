@@ -169,5 +169,5 @@
     audio.addEventListener('error', () => { if (audio.getAttribute('src')) playbackMessage('Este audio no está disponible. Puedes elegir otra canción.'); });
   });
 
-  window.andromedaCore = Object.freeze({setPlaybackQueue, escapeHTML, normalizeText, loadSongs, loadArtists, isRetiredAudio, resolveArtwork, resolveSongArtwork});
+  window.andromedaCore = Object.freeze({notify: playbackMessage, setPlaybackQueue, escapeHTML, normalizeText, loadSongs, loadArtists, isRetiredAudio, resolveArtwork, resolveSongArtwork});
 })();

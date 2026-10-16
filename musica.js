@@ -2031,9 +2031,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         if (!currentUser) {
 
-            alert(
-                "Debes iniciar sesión para guardar canciones en favoritos."
-            );
+            window.sonoraAccount?.signIn();
+            if (authMessage) authMessage.textContent = "Inicia sesión y vuelve a pulsar el corazón para guardar la canción.";
 
             return;
 
@@ -2236,9 +2235,7 @@ if (button) {
 
             } else {
 
-                alert(
-                    "No se pudo actualizar el favorito."
-                );
+                window.andromedaCore.notify("No se pudo actualizar el favorito. Inténtalo de nuevo.");
 
             }
 
