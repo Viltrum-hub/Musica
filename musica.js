@@ -3070,6 +3070,9 @@ if (button) {
 
                 registerMode =
                     !registerMode;
+                const passwordInput = document.getElementById("authPassword");
+                passwordInput.autocomplete = registerMode ? "new-password" : "current-password";
+                passwordInput.minLength = registerMode ? 6 : 1;
 
 
                 if (authMessage) {
@@ -3157,195 +3160,74 @@ if (button) {
     /* REGISTRO / INICIO DE SESIÓN */
 
 
+    const passwordVisibility = document.getElementById("authPasswordVisibility");
+    passwordVisibility?.addEventListener("click", () => {
+        const input = document.getElementById("authPassword");
+        const visible = input.type === "password";
+        input.type = visible ? "text" : "password";
+        passwordVisibility.setAttribute("aria-pressed", String(visible));
+        passwordVisibility.setAttribute("aria-label", visible ? "Ocultar contraseña" : "Mostrar contraseña");
+        passwordVisibility.innerHTML = `<i class="bi bi-${visible ? "eye-slash" : "eye"}" aria-hidden="true"></i>`;
+    });
+
     if (authForm) {
-
-        authForm.addEventListener(
-            "submit",
-            async (event) => {
-
-                event.preventDefault();
-
-
-                const emailInput =
-                    document.getElementById(
-                        "authEmail"
-                    );
-
-                const passwordInput =
-                    document.getElementById(
-                        "authPassword"
-                    );
-
-
-                const email =
-                    emailInput
-                        ? emailInput.value.trim()
-                        : "";
-
-
-                const password =
-                    passwordInput
-                        ? passwordInput.value
-                        : "";
-
-
-                if (
-                    !email ||
-                    !password
-                ) {
-                    return;
+        authForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            if (authSubmit.disabled) return;
+            const emailInput = document.getElementById("authEmail");
+            const passwordInput = document.getElementById("authPassword");
+            const email = emailInput.value.trim();
+            const password = passwordInput.value;
+            if (!email || !password || !authForm.reportValidity()) return;
+            const creatingAccount = registerMode;
+            authSubmit.disabled = true;
+            authSwitch.disabled = true;
+            authForm.setAttribute("aria-busy", "true");
+            authMessage.dataset.state = "pending";
+            authMessage.textContent = creatingAccount ? "Creando tu cuenta…" : "Iniciando sesión…";
+            try {
+                const {data, error} = creatingAccount
+                    ? await supabaseClient.auth.signUp({email, password, options: {
+                        emailRedirectTo: "https://viltrum-hub.github.io/Musica/"
+                    }})
+                    : await supabaseClient.auth.signInWithPassword({email, password});
+                if (error) throw error;
+                authOverlay?.classList.remove("show");
+                authForm.reset();
+                passwordInput.type = "password";
+                passwordVisibility?.setAttribute("aria-pressed", "false");
+                passwordVisibility?.setAttribute("aria-label", "Mostrar contraseña");
+                if (passwordVisibility) passwordVisibility.innerHTML = '<i class="bi bi-eye" aria-hidden="true"></i>';
+                authMessage.textContent = "";
+                const notice = document.getElementById("authNotice");
+                if (notice) {
+                    notice.textContent = creatingAccount && !data?.session
+                        ? "Registro completado. Revisa tu correo y confirma tu cuenta antes de iniciar sesión."
+                        : creatingAccount ? "Tu cuenta está lista. Bienvenido a ANDROMEDA." : "Bienvenido a ANDROMEDA.";
+                    notice.hidden = false;
+                    clearTimeout(notice.dismissTimer);
+                    notice.dismissTimer = setTimeout(() => { notice.hidden = true; }, 12000);
                 }
-
-
-                if (authMessage) {
-
-                    authMessage.textContent =
-                        "Procesando...";
-
+                if (data?.session) {
+                    updateUserInterface(data.session).catch(error => console.error("Error al actualizar perfil:", error));
                 }
-
-
-                if (authSubmit) {
-
-                    authSubmit.disabled =
-                        true;
-
-                }
-
-
-                try {
-
-                    if (registerMode) {
-
-                        const {
-                            error
-                        } =
-                            await supabaseClient
-                                .auth
-                                .signUp({
-
-                                    email:
-                                        email,
-
-                                    password:
-                                        password,
-
-                                    options: {
-
-                                        emailRedirectTo:
-                                            "https://viltrum-hub.github.io/Musica/"
-
-                                    }
-
-                                });
-
-
-                        if (error) {
-                            throw error;
-                        }
-
-
-                        if (authMessage) {
-
-                            authMessage.textContent =
-                                "Cuenta creada correctamente. Revisa tu correo para confirmar tu cuenta.";
-
-                        }
-
-                    } else {
-
-                        const {
-                            data,
-                            error
-                        } =
-                            await supabaseClient
-                                .auth
-                                .signInWithPassword({
-
-                                    email:
-                                        email,
-
-                                    password:
-                                        password
-
-                                });
-
-
-                        if (error) {
-                            throw error;
-                        }
-
-
-                        if (authMessage) {
-
-                            authMessage.textContent =
-                                "¡Bienvenido a ANDROMEDA!";
-
-                        }
-
-
-                        setTimeout(
-                            async () => {
-
-                                if (authOverlay) {
-
-                                    authOverlay.classList.remove(
-                                        "show"
-                                    );
-
-                                }
-
-
-                                authForm.reset();
-
-
-                                if (authMessage) {
-
-                                    authMessage.textContent =
-                                        "";
-
-                                }
-
-
-                                await updateUserInterface(
-                                    data.session
-                                );
-
-                            },
-                            1000
-                        );
-
-                    }
-
-                } catch (error) {
-
-                    console.error(
-                        "Error de autenticación:",
-                        error
-                    );
-
-
-                    if (authMessage) {
-
-                        authMessage.textContent =
-                            error.message;
-
-                    }
-
-                } finally {
-
-                    if (authSubmit) {
-
-                        authSubmit.disabled =
-                            false;
-
-                    }
-
-                }
-
+            } catch (error) {
+                const messages = {
+                    invalid_credentials: "El correo o la contraseña no son correctos.",
+                    email_not_confirmed: "Confirma tu correo antes de iniciar sesión.",
+                    user_already_exists: "Ya existe una cuenta con este correo. Inicia sesión.",
+                    weak_password: "Usa una contraseña más segura, con al menos 6 caracteres.",
+                    over_email_send_rate_limit: "Espera unos minutos antes de solicitar otro correo.",
+                    over_request_rate_limit: "Demasiados intentos. Espera unos minutos y vuelve a intentar."
+                };
+                authMessage.dataset.state = "error";
+                authMessage.textContent = messages[error.code] || "No pudimos completar la solicitud. Revisa los datos y tu conexión e inténtalo de nuevo.";
+            } finally {
+                authSubmit.disabled = false;
+                authSwitch.disabled = false;
+                authForm.removeAttribute("aria-busy");
             }
-        );
-
+        });
     }
 
 
