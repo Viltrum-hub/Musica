@@ -564,14 +564,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const response =
                 await fetch(
-                    "explorar.html?v=catalog-21"
+                    "explorar.html?v=catalog-22"
                 );
 
 
             if (!response.ok) {
 
                 throw new Error(
-                    "No se pudo cargar explorar.html?v=catalog-21"
+                    "No se pudo cargar explorar.html?v=catalog-22"
                 );
 
             }
@@ -738,10 +738,10 @@ if (typeof initExplorar === "function") {
 
         try {
 
-            const response = await fetch("artistas.html?v=catalog-21");
+            const response = await fetch("artistas.html?v=catalog-22");
 
             if (!response.ok) {
-                throw new Error("No se pudo cargar artistas.html?v=catalog-21");
+                throw new Error("No se pudo cargar artistas.html?v=catalog-22");
             }
 
             const html = await response.text();
