@@ -32,3 +32,15 @@ test('Abrir Mi perfil reconoce permisos nuevos y retirados sin recargar',async()
  isAdmin=true;window.dispatchEvent(new Event('sonora-profile-open'));await flush();assert.equal(link.hidden,false);
  isAdmin=false;window.dispatchEvent(new Event('sonora-profile-open'));await flush();assert.equal(link.hidden,true);
 });
+
+
+test('El panel evita las clases de publicidad ocultadas por EasyList',()=>{
+ // Selectores presentes en easylist_general_hide.txt de EasyList.
+ const advertisingClasses=['ad-main','ad-sidebar','ad-content','ad-heading'];
+ for(const name of ['admin.js','admin.html','admin.css']){
+  const source=fs.readFileSync(path.join(repo,name),'utf8');
+  for(const cls of advertisingClasses){
+   assert.equal(new RegExp('(?<![a-zA-Z0-9_-])'+cls+'(?![a-zA-Z0-9_-])').test(source),false,`${name} usa la clase de publicidad ${cls}`);
+  }
+ }
+});

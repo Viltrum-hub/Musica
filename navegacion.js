@@ -818,7 +818,7 @@ if (typeof initExplorar === "function") {
     async function loadAdmin(updateHistory = true) {
         const request = ++navigationRequest;
         try {
-            const response = await fetch('admin.html?v=1');
+            const response = await fetch('admin.html?v=3');
             if (!response.ok) throw new Error('No se pudo abrir Administración');
             const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
             const page = doc.querySelector('.andromeda-admin');
