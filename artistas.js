@@ -205,21 +205,9 @@ cards.forEach(card => {
     /* ORDEN SEGÚN UNIVERSO */
 
 
-    const featuredPriority = {
-        electronic: ['daft-punk', 'alan-walker', 'eiffel-65'],
-        rock: ['queen', 'axl-rose', 'scorpions', 'mana', 'the-police', 'the-outfield', 'chicago'],
-        pop: ['madonna', 'lady-gaga', 'elton-john', 'justin-bieber', 'george-michael', 'wham', 'mark-ronson'],
-        hiphop: ['eminem', 'snoop-dogg', '50-cent', 'dr-dre', 'the-notorious-b-i-g', 'ice-cube', 'travis-scott', 'coolio'],
-        celestial: ['steve-green', 'felipe-garibo', 'junior-kelly-marchena'],
-        aurora: ['luis-miguel', 'marco-antonio-solis', 'cristian-castro']
-    };
-    const matchesTheme = (song, theme) => song.genre === theme || (song.themeTags || '').split(/\s+/).includes(theme);
-    const themeFeatured = Object.fromEntries(Object.keys(window.andromedaCatalog.labels).map(theme => {
-        const eligible = featuredIds.filter(id => artistProfiles[id].tracks.some(song => matchesTheme(song, theme)));
-        const preferred = (featuredPriority[theme] || []).filter(id => eligible.includes(id));
-        const remaining = eligible.filter(id => !preferred.includes(id));
-        return [theme, [...preferred, ...remaining.filter(id => artistProfiles[id].universe === theme), ...remaining.filter(id => artistProfiles[id].universe !== theme)]];
-    }));
+    const matchesTheme = window.andromedaCatalog.matchesTheme;
+    const themeFeatured = Object.fromEntries(Object.keys(window.andromedaCatalog.labels).map(theme =>
+        [theme, window.andromedaCatalog.featuredArtists(artistProfiles, theme)]));
 
     function getFeaturedOrder() {
         const theme = document.body.dataset.theme || 'electronic';

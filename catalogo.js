@@ -1,6 +1,27 @@
 /* Catálogo compartido de Supabase. */
 (() => {
   const labels = {electronic:'Electrónica',rock:'Rock',pop:'Pop',hiphop:'Hip hop',celestial:'Cristiana',aurora:'Romántica'};
+  const featuredPriority = {
+        electronic: ['daft-punk', 'alan-walker', 'eiffel-65'],
+        rock: ['queen', 'axl-rose', 'scorpions', 'mana', 'the-police', 'the-outfield', 'chicago'],
+        pop: ['madonna', 'lady-gaga', 'elton-john', 'justin-bieber', 'george-michael', 'wham', 'mark-ronson'],
+        hiphop: ['eminem', 'snoop-dogg', '50-cent', 'dr-dre', 'the-notorious-b-i-g', 'ice-cube', 'travis-scott', 'coolio'],
+        celestial: ['steve-green', 'felipe-garibo', 'junior-kelly-marchena'],
+        aurora: ['luis-miguel', 'marco-antonio-solis', 'cristian-castro']
+    };
+  const matchesTheme = (song, theme) => song.genre === theme || (song.themeTags || '').split(/\s+/).includes(theme);
+  function featuredArtists(profiles, theme) {
+    const eligible = Object.keys(profiles).filter(id => profiles[id].tracks.some(song => matchesTheme(song, theme)));
+    const preferred = (featuredPriority[theme] || []).filter(id => eligible.includes(id));
+    const rest = eligible.filter(id => !preferred.includes(id));
+    return [...preferred, ...rest.filter(id => profiles[id].universe === theme), ...rest.filter(id => profiles[id].universe !== theme)];
+  }
+  function featuredSongs(songs, theme, artists = []) {
+    const eligible = songs.filter(song => matchesTheme(song, theme));
+    const rank = id => { const index = (featuredPriority[theme] || []).indexOf(id); return index < 0 ? 100 : index; };
+    const artistId = song => song.artistId || artists.find(a => a.name === song.artist)?.id;
+    return eligible.map((song, index) => ({song,index})).sort((a,b) => rank(artistId(a.song)) - rank(artistId(b.song)) || Number(b.song.genre === theme) - Number(a.song.genre === theme) || a.index-b.index).map(item => item.song);
+  }
   const escape = value => window.andromedaCore.escapeHTML(value);
   let snapshot, pending, expires = 0;
   const client = async () => {
@@ -47,7 +68,7 @@
   async function hydrateExplore(root) {
     const {songs} = await load();
     const grid = root.querySelector('#exploreSongGrid');
-    grid.innerHTML = songs.map(s => `<article class="explore-song-card" data-catalog-id="${escape(s.catalogId)}" data-title="${escape(s.title)}" data-artist="${escape(s.artist)}" data-genre="${escape(s.genre)}" data-theme-tags="${escape(s.themeTags)}" data-audio="${escape(s.audio)}" data-image="${escape(s.image)}"><div class="explore-song-image"><img loading="lazy" decoding="async" src="${escape(s.image)}" alt="Portada de ${escape(s.title)}"><button class="explore-play-button" type="button" aria-label="Reproducir ${escape(s.title)}"><i class="bi bi-play-fill" aria-hidden="true"></i></button></div><button type="button" class="favorite-song-btn" aria-label="Agregar a favoritos"><i class="bi bi-heart" aria-hidden="true"></i></button><div class="explore-song-info"><div><h3>${escape(s.title)}</h3><p>${escape(s.artist)}</p></div><span class="song-genre">${escape(labels[s.genre])}</span></div></article>`).join('');
+    grid.innerHTML = songs.map(s => `<article class="explore-song-card" data-catalog-id="${escape(s.catalogId)}" data-artist-id="${escape(s.artistId)}" data-title="${escape(s.title)}" data-artist="${escape(s.artist)}" data-genre="${escape(s.genre)}" data-theme-tags="${escape(s.themeTags)}" data-audio="${escape(s.audio)}" data-image="${escape(s.image)}"><div class="explore-song-image"><img loading="lazy" decoding="async" src="${escape(s.image)}" alt="Portada de ${escape(s.title)}"><button class="explore-play-button" type="button" aria-label="Reproducir ${escape(s.title)}"><i class="bi bi-play-fill" aria-hidden="true"></i></button></div><button type="button" class="favorite-song-btn" aria-label="Agregar a favoritos"><i class="bi bi-heart" aria-hidden="true"></i></button><div class="explore-song-info"><div><h3>${escape(s.title)}</h3><p>${escape(s.artist)}</p></div><span class="song-genre">${escape(labels[s.genre])}</span></div></article>`).join('');
   }
   async function hydrateArtists(root) {
     const {songs,artists} = await load(), profiles = {};
@@ -65,20 +86,41 @@
     if (!grid) return;
     grid.setAttribute('aria-busy','true');
     try {
-      const {songs} = await load();
-      const selected = [...grid.querySelectorAll('.home-track')].map((card,i) => {
-        const s = songs.find(s => s.audio === card.dataset.audio) || songs[i];
-        if (!s) {card.hidden = true; return null;}
-        card.hidden = false; Object.assign(card.dataset,s);
-        card.querySelector('h3').textContent = s.artist; card.querySelector('p').textContent = s.title;
-        card.querySelector('img').src = s.image; card.querySelector('img').alt = s.artist;
-        card.querySelector('button').setAttribute('aria-label',`Escuchar ${s.title}`);
-        return s;
+      const {songs,artists} = await load();
+      const theme = document.body.dataset.theme || 'electronic';
+      const ranked = featuredSongs(songs, theme, artists);
+      const seen = new Set();
+      const firstByArtist = ranked.filter(song => { if (seen.has(song.artistId)) return false; seen.add(song.artistId); return true; });
+      const selection = [...firstByArtist,...ranked.filter(song => !firstByArtist.includes(song))];
+      const selected = [...document.querySelectorAll('#mainHome .album-card')].map((card,i) => {
+        const sectionIndex = card.classList.contains('home-track') ? i : i - grid.querySelectorAll('.home-track').length;
+        const song = selection[sectionIndex];
+        card.hidden = !song;
+        if (!song) return null;
+        Object.assign(card.dataset,song);
+        card.querySelector('h3').textContent = card.classList.contains('home-track') ? song.artist : song.title;
+        card.querySelector('p').textContent = card.classList.contains('home-track') ? song.title : song.artist;
+        card.querySelector('img').src = song.image; card.querySelector('img').alt = song.artist;
+        card.querySelector('.play-card').setAttribute('aria-label',`Escuchar ${song.title}`);
+        return song;
+      });
+      const profiles = Object.fromEntries(artists.map(a => [a.id,{...a,tracks:songs.filter(song => song.artistId === a.id)}]));
+      const artistOrder = featuredArtists(profiles, theme);
+      document.querySelectorAll('#mainHome .artist-card').forEach((card,index) => {
+        const profile = profiles[artistOrder[index]];
+        card.hidden = !profile;
+        if (!profile) return;
+        card.querySelector('h3').textContent = profile.name; card.querySelector('p').textContent = profile.genre;
+        const image = card.querySelector('img'); image.src = safeURL(profile.image); image.alt = profile.name;
+        const button = card.querySelector('[data-artist-id]'); button.dataset.artistId = profile.id; button.setAttribute('aria-label',`Ver perfil de ${profile.name}`);
       });
       document.dispatchEvent(new CustomEvent('andromeda-home-catalog',{detail:selected}));
     } catch { grid.innerHTML = '<p role="status">No pudimos cargar la selección. <button type="button" class="catalog-retry">Reintentar</button></p>'; grid.querySelector('button').onclick = () => location.reload(); }
     finally {grid.removeAttribute('aria-busy');}
   }
-  window.andromedaCatalog = Object.freeze({client,load,invalidate,artwork,artistArtwork,hydrateExplore,hydrateArtists,hydrateHome,labels,safeURL});
-  document.addEventListener('DOMContentLoaded', hydrateHome);
+  window.andromedaCatalog = Object.freeze({client,load,invalidate,artwork,artistArtwork,hydrateExplore,hydrateArtists,hydrateHome,labels,safeURL,matchesTheme,featuredArtists,featuredSongs});
+  document.addEventListener('DOMContentLoaded', () => {
+    hydrateHome();
+    new MutationObserver(hydrateHome).observe(document.body,{attributes:true,attributeFilter:['data-theme']});
+  });
 })();

@@ -41,7 +41,7 @@
   window.initAlbumes = async () => {
     const root = document.querySelector('.sonora-albums'); if (!root) return;
     const featured = root.querySelector('.sa-featured'), grid = root.querySelector('.sa-grid'), dialog = root.querySelector('dialog');
-    let groups = [], genre = 'all', search = '', savedOnly = false, featuredArtist = "Guns N' Roses";
+    let groups = [], genre = 'all', search = '', savedOnly = false, featuredArtist = '';
     let saved = new Set();
     try { const value = JSON.parse(localStorage.getItem('sonora-saved-collections') || '[]'); if (Array.isArray(value)) saved = new Set(value.filter(value => typeof value === 'string')); } catch {}
     const collectionNames = {"Guns N' Roses": 'Rock sin límites', 'Madonna': 'Reina del pop', 'The police': 'Entre luz y sombra', 'Scorpions': 'El viento del rock', 'Eiffel 65': 'Un mundo en azul', 'The Outfield': 'Corazón de estadio', 'Queen': 'Una clase de magia', 'Alan Walker': 'Señales del futuro'};
@@ -62,7 +62,9 @@
       root.querySelector('.sa-count').textContent = `${matches.length} ${matches.length === 1 ? "colección" : "colecciones"}`;
       root.querySelector('.sa-status').textContent = matches.length ? '' : savedOnly ? 'Aún no hay colecciones guardadas con estos filtros. Guarda una con el botón de corazón.' : 'No encontramos colecciones. Prueba otra búsqueda o filtro.';
       featured.hidden = !matches.length;
-      const hero = matches.find(group => group.artist === featuredArtist) || matches[0];
+      const theme = document.body.dataset.theme || 'electronic';
+      const selected = window.andromedaCatalog.featuredSongs(matches.flatMap(group => group.songs), theme)[0];
+      const hero = matches.find(group => group.artist === featuredArtist) || matches.find(group => group.songs.includes(selected)) || matches[0];
       if (hero) {
         const index = matches.indexOf(hero), isSaved = saved.has(hero.artist);
         featured.innerHTML = `<div class="sa-featured-art"><div class="sa-disc" aria-hidden="true"></div><img class="sa-cover" src="${escape(hero.image)}" alt="${escape(hero.artist)}"></div><div class="sa-featured-copy"><span class="sa-eyebrow">COLECCIÓN DESTACADA</span><h2>${escape(collectionNames[hero.artist] || hero.artist)}</h2><p class="sa-artist-line">${escape(hero.artist)}</p><p class="sa-meta">${escape(labels[hero.genre] || hero.genre)} · ${hero.songs.length} ${hero.songs.length === 1 ? "canción" : "canciones"} · Selección ANDROMEDA</p><p class="sa-description">${escape(descriptions[hero.artist] || 'Las canciones que siempre vuelves a escuchar. Descubre a un artista que forma parte de tu historia.')}</p><div class="sa-actions"><button class="sa-button sa-button-primary" data-listen><i class="bi bi-play-fill" aria-hidden="true"></i>Escuchar</button><button class="sa-button" data-details>Ver canciones <span aria-hidden="true">↗</span></button><button class="sa-save" data-save aria-label="${isSaved ? 'Quitar de' : 'Guardar en'} mis colecciones" aria-pressed="${isSaved}"><i class="bi bi-heart${isSaved ? '-fill' : ''}" aria-hidden="true"></i></button></div></div><div class="sa-featured-controls"><span>${String(index + 1).padStart(2, '0')} / ${String(matches.length).padStart(2, '0')}</span><button class="sa-arrow" data-prev aria-label="Colección destacada anterior">‹</button><button class="sa-arrow" data-next aria-label="Colección destacada siguiente">›</button></div>`;
@@ -98,6 +100,12 @@
       groups = [...byArtist.values()].sort((a, b) => b.songs.length - a.songs.length);
       const {artists} = await window.andromedaCatalog.load();
       groups.forEach(group => { const profile = artists.find(a => group.songs.some(s => s.artistId === a.id)); if (profile) group.image = profile.image; });
+      window.andromedaAlbumsThemeObserver?.disconnect();
+      window.andromedaAlbumsThemeObserver = new MutationObserver(() => {
+        if (!root.isConnected) { window.andromedaAlbumsThemeObserver.disconnect(); return; }
+        featuredArtist = ''; render();
+      });
+      window.andromedaAlbumsThemeObserver.observe(document.body,{attributes:true,attributeFilter:['data-theme']});
       const filters = root.querySelector('.sa-filters');
       ['all', ...new Set(groups.map(group => group.genre))].forEach(value => {
         const button = document.createElement('button'); button.className = 'sa-chip'; button.textContent = value === 'all' ? 'Todos' : labels[value] || value; button.setAttribute('aria-pressed', String(value === genre));

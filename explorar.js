@@ -879,8 +879,9 @@ function initExplorar(initialFilter = "all") {
     function updateFeaturedSong() {
         if (!document.getElementById("exploreFeatureTitle")) return;
         const theme = document.body.dataset.theme || "electronic";
-        const match = songCards.findIndex(card => card.dataset.genre === theme || (card.dataset.themeTags || "").split(/\s+/).includes(theme));
-        featuredIndex = Math.max(0,match);
+        const candidates = songCards.map(card => ({...card.dataset, artistId:card.dataset.artistId}));
+        const selected = window.andromedaCatalog.featuredSongs(candidates, theme)[0];
+        featuredIndex = Math.max(0, candidates.indexOf(selected));
         const song = songs[featuredIndex];
         if (!song || !featuredButton) return;
         document.getElementById("exploreFeatureTitle").textContent = song.title;
