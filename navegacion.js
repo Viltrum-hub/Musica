@@ -624,6 +624,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
+            await window.andromedaCatalog.hydrateExplore(explorePage);
             if (request !== navigationRequest) return;
             mainHome.style.display =
                 "none";
@@ -779,13 +780,14 @@ if (typeof initExplorar === "function") {
                 throw new Error("No se encontró .artists-page");
             }
 
+            const profiles = await window.andromedaCatalog.hydrateArtists(artistsPage);
             if (request !== navigationRequest) return;
             mainHome.style.display = "none";
             pageContainer.innerHTML = "";
             pageContainer.appendChild(artistsPage);
 
             if (typeof initArtistas === "function") {
-                initArtistas({ initialArtist });
+                initArtistas({ initialArtist, profiles });
             }
 
             setActivePage("artistas");
@@ -811,6 +813,32 @@ if (typeof initExplorar === "function") {
         }
     }
 
+
+    /* Panel privado de administración. */
+    async function loadAdmin(updateHistory = true) {
+        const request = ++navigationRequest;
+        try {
+            const response = await fetch('admin.html?v=1');
+            if (!response.ok) throw new Error('No se pudo abrir Administración');
+            const doc = new DOMParser().parseFromString(await response.text(), 'text/html');
+            const page = doc.querySelector('.andromeda-admin');
+            if (request !== navigationRequest) return;
+            document.body.classList.remove('artist-profile-open');
+            document.getElementById('profileOverlay')?.classList.remove('show');
+            mainHome.style.display = 'none'; pageContainer.replaceChildren(page);
+            setActivePage('admin'); closeMobileMenu();
+            window.scrollTo({top:0,behavior:'instant'});
+            if (updateHistory) history.pushState({page:'admin'},'', 'index.html?page=admin');
+            await window.initAdmin();
+        } catch (error) {
+            if (request === navigationRequest) showNavigationError('admin');
+        }
+    }
+    document.addEventListener('click', event => {
+        const link = event.target.closest('[data-page="admin"]');
+        if (!link) return;
+        event.preventDefault(); loadAdmin();
+    });
 
     /* VOLVER A INICIO */
 
@@ -1051,6 +1079,8 @@ if (typeof initExplorar === "function") {
 
             } else if (page === "biblioteca") {
                 loadLibrary(false, params.get("playlist") || "");
+            } else if (page === "admin") {
+                loadAdmin(false);
             } else if (page === "albumes") {
                 loadAlbums(false);
             } else {
@@ -1102,6 +1132,8 @@ if (typeof initExplorar === "function") {
 
     } else if (currentPage === "biblioteca") {
         loadLibrary(false, params.get("playlist") || "");
+    } else if (currentPage === "admin") {
+        loadAdmin(false);
     } else if (currentPage === "albumes") {
         loadAlbums(false);
     } else {

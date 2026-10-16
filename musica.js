@@ -50,6 +50,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }));
 
 
+    document.addEventListener('andromeda-home-catalog', event => {
+        songs.splice(0, songs.length, ...event.detail.map(song => song || {}));
+    });
+
     /* VISUALIZADOR DE AUDIO */
 
 
@@ -1019,107 +1023,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     async function loadExploreSearchCatalog() {
-
-        if (exploreCatalogLoaded) {
-            return exploreSearchSongs;
-        }
-
-        if (exploreCatalogLoading) {
-            return exploreCatalogLoading;
-        }
-
-        exploreCatalogLoading =
-            fetch("explorar.html?v=catalog-25")
-                .then(response => {
-
-                    if (!response.ok) {
-
-                        throw new Error(
-                            "No se pudo cargar explorar.html?v=catalog-25"
-                        );
-
-                    }
-
-                    return response.text();
-
-                })
-                .then(html => {
-
-                    const parser =
-                        new DOMParser();
-
-                    const documentHTML =
-                        parser.parseFromString(
-                            html,
-                            "text/html"
-                        );
-
-                    const cards =
-                        documentHTML.querySelectorAll(
-                            ".explore-song-card"
-                        );
-
-                    exploreSearchSongs =
-                        Array.from(cards).map(
-                            card => ({
-
-                                title:
-                                    card.dataset.title ||
-                                    card.querySelector("h3")?.textContent.trim() ||
-                                    "Canción",
-
-                                artist:
-                                    card.dataset.artist ||
-                                    card.querySelector("p")?.textContent.trim() ||
-                                    "Artista",
-
-                                genre:
-                                    card.dataset.genre ||
-                                    card.querySelector(".song-genre")?.textContent.trim() ||
-                                    "",
-
-                                audio:
-                                    card.dataset.audio ||
-                                    "",
-
-                                image:
-                                    card.dataset.image ||
-                                    card.querySelector("img")?.src ||
-                                    "",
-
-                                source:
-                                    "explore"
-
-                            })
-                        );
-
-                    exploreCatalogLoaded =
-                        true;
-
-                    return exploreSearchSongs;
-
-                })
-                .catch(error => {
-
-                    console.error(
-                        "Error cargando canciones de Explorar:",
-                        error
-                    );
-
-                    exploreSearchSongs = [];
-
-                    return [];
-
-                })
-                .finally(() => {
-
-                    exploreCatalogLoading =
-                        null;
-
-                });
-
-        return exploreCatalogLoading;
-
+        try { exploreSearchSongs = (await window.andromedaCore.loadSongs()).map(song => ({...song, source:"explore"})); }
+        catch { exploreSearchSongs = []; }
+        return exploreSearchSongs;
     }
 
 
@@ -4011,6 +3917,7 @@ if (button) {
         get user() { return currentUser; },
         signIn() { authOverlay?.classList.add("show"); }
     };
+    document.dispatchEvent(new Event("andromeda-account-ready"));
     checkUserSession();
 
     setupFavoriteButtons();

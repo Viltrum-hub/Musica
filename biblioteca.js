@@ -7,6 +7,7 @@
   let tab = 'favorites', selected = null, search = '', generation = 0, loading = false, loadError = '';
   let editing = null, pickerPlaylist = null, busy = false, catalogPromise;
   let queue = [], position = 0, ownedSource = '';
+  document.addEventListener('andromeda-catalog-changed', () => { catalogPromise = null; });
   const audio = () => document.getElementById('audioPlayer');
   const ownsAudio = () => window.sonoraPlaybackOwner === 'biblioteca' && ownedSource && audio()?.src === ownedSource;
   const status = message => { if (root?.isConnected) root.querySelector('.sl-status').textContent = message; };

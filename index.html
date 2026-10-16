@@ -50,6 +50,7 @@
 <link rel="stylesheet" href="biblioteca.css?v=1">
 <link rel="stylesheet" href="explorar-premium.css?v=2">
 <link rel="stylesheet" href="andromeda-brand.css?v=1"><link rel="icon" href="assets/andromeda/pulsar.svg" type="image/svg+xml"><link rel="stylesheet" href="andromeda-premium.css?v=12">
+<link rel="stylesheet" href="admin.css?v=1">
 </head>
 
 
@@ -1144,7 +1145,7 @@
 
 <!-- AUDIO -->
 
-<audio id="audioPlayer"></audio>
+<audio id="audioPlayer" crossorigin="anonymous"></audio>
 
 
 
@@ -1212,22 +1213,23 @@
 <!-- SUPABASE -->
 
 <script
-    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0"
 ></script>
 
 
 <!-- TU JAVASCRIPT -->
 
-<script src="andromeda-core.js?v=catalog-26"></script>
-<script src="musica.js?v=catalog-26"></script>
+<script src="andromeda-core.js?v=admin-1"></script>
+<script src="catalogo.js?v=admin-1"></script>
+<script src="musica.js?v=admin-1"></script>
 
 <!-- JAVASCRIPT EXPLORAR -->
 
 <script src="explorar.js?v=catalog-25"></script>
 
 <!-- JAVASCRIPT ARTISTAS -->
-<script src="artistas.js?v=catalog-25"></script>
-<script src="albumes.js?v=catalog-25"></script>
+<script src="artistas.js?v=admin-1"></script>
+<script src="albumes.js?v=admin-1"></script>
 <script src="inicio-premium.js?v=andromeda-ui-3"></script>
 
 
@@ -1657,6 +1659,7 @@
 
 
 
+<a class="admin-profile-link" href="index.html?page=admin" data-page="admin" hidden><i class="bi bi-shield-lock" aria-hidden="true"></i> Panel de administración <i class="bi bi-arrow-up-right" aria-hidden="true"></i></a>
 <section class="sl-profile-collection" aria-label="Mis playlists"><div class="sl-profile-heading"><h3>Mis playlists</h3><a href="index.html?page=biblioteca" data-page="biblioteca">Ver biblioteca <i class="bi bi-arrow-up-right"></i></a></div><div class="sl-profile-rows"><p class="sl-profile-note">Tus playlists aparecerán aquí.</p></div></section>
         <button
             type="button"
@@ -1678,10 +1681,11 @@
 
 
 <!-- NAVEGACIÓN SPA MANTIENE VIVO EL REPRODUCTOR -->
-<script src="navegacion.js?v=catalog-25"></script>
+<script src="navegacion.js?v=admin-1"></script>
 
 <script src="reproductor-premium.js?v=andromeda-ui-3"></script>
 
-<script src="biblioteca.js?v=catalog-25"></script>
+<script src="biblioteca.js?v=admin-1"></script>
+<script src="admin.js?v=1"></script>
 
 
