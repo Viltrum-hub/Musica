@@ -144,7 +144,8 @@
     const ext=file.name.split('.').pop().toLowerCase(),type=extensions[ext];
     if(!type||file.size>(bucket==='andromeda-covers'?5242880:26214400)||!file.size)throw new Error('Revisa el formato y el tamaño del archivo.');
     const path=`${verifiedUser}/${crypto.randomUUID()}.${ext}`;
-    const {error}=await db.storage.from(bucket).upload(path,file,{contentType:type,cacheControl:'3600',upsert:false});if(error)throw error;
+    const body=file.slice(0,file.size,type);
+    const {error}=await db.storage.from(bucket).upload(path,body,{contentType:type,cacheControl:'3600',upsert:false});if(error)throw error;
     uploads.push({bucket,path});return db.storage.from(bucket).getPublicUrl(path).data.publicUrl;
   }
   async function save(form,row,artistMode){
@@ -179,7 +180,8 @@
       await catalog.hydrateHome();
     }catch(error){
       const db=await catalog.client();await Promise.allSettled(uploads.map(u=>db.storage.from(u.bucket).remove([u.path])));
-      const text=error.code==='23505'?'Ya existe una canción o artista con esos datos.':error.code==='42501'?'Tu cuenta no tiene permiso para guardar este cambio.':error.message?.startsWith('Selecciona')||error.message?.startsWith('Agrega')||error.message?.startsWith('Revisa')||error.message?.startsWith('Este registro')?error.message:'No pudimos guardar. Revisa tu conexión, el espacio disponible y vuelve a intentar.';
+      const storageCode=error.error||error.code;
+      const text=storageCode==='InvalidMimeType'||/mime type.*not supported/i.test(error.message||'')?'Revisa el formato del archivo: el servidor no lo reconoce como audio o imagen compatible.':storageCode==='EntityTooLarge'||String(error.statusCode)==='413'?'Revisa el tamaño del archivo: audio hasta 25 MB y portadas hasta 5 MB.':error.code==='23505'?'Ya existe una canción o artista con esos datos.':error.code==='42501'?'Tu cuenta no tiene permiso para guardar este cambio.':error.message?.startsWith('Selecciona')||error.message?.startsWith('Agrega')||error.message?.startsWith('Revisa')||error.message?.startsWith('Este registro')?error.message:'No pudimos guardar. Revisa tu conexión, el espacio disponible y vuelve a intentar.';
       if(currentRoot.isConnected){validation(text,true);message(text,true);}
     }finally{busy=false;if(form.isConnected)form.querySelectorAll('button,input,select,textarea').forEach(el=>el.disabled=false);}
   }
