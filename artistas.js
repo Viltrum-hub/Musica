@@ -96,7 +96,7 @@ function initArtistas(options = {}) {
     "the-outfield": {
         "name": "The Outfield",
         "genre": "Rock",
-        "image": "assets/andromeda/artists/the-outfield.svg?v=catalog-20",
+        "image": "assets/andromeda/artists/the-outfield.svg?v=catalog-21",
         "bio": "Explora la selección de The Outfield en ANDROMEDA. Sus canciones disponibles se reúnen aquí para escucharlas, guardarlas y volver a ellas.",
         "tags": [
             "Rock",
@@ -107,26 +107,26 @@ function initArtistas(options = {}) {
                 "title": "Your Love",
                 "artist": "The Outfield",
                 "audio": "Canciones/The Outfield - Your Love.mp3.mpeg",
-                "image": "assets/andromeda/artists/the-outfield.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/the-outfield.svg?v=catalog-21"
             },
             {
                 "title": "Say It Isn't So",
                 "artist": "The Outfield",
                 "audio": "Canciones/The Outfield - Say It Isn't So (1).mp3.mpeg",
-                "image": "assets/andromeda/artists/the-outfield.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/the-outfield.svg?v=catalog-21"
             },
             {
                 "title": "All The Love In The World",
                 "artist": "The Outfield",
                 "audio": "Canciones/The Outfield - All The Love In The World (1).mp3.mpeg",
-                "image": "assets/andromeda/artists/the-outfield.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/the-outfield.svg?v=catalog-21"
             }
         ]
     },
     "madonna": {
         "name": "Madonna",
         "genre": "Pop · Dance Pop",
-        "image": "assets/andromeda/artists/madonna.svg?v=catalog-20",
+        "image": "assets/andromeda/artists/madonna.svg?v=catalog-21",
         "bio": "Una de las figuras más influyentes del pop, Madonna ha construido una carrera marcada por la reinvención constante, la música dance y una identidad visual que ha acompañado distintas generaciones.",
         "tags": [
             "Estados Unidos",
@@ -139,56 +139,56 @@ function initArtistas(options = {}) {
                 "title": "Like A Virgin",
                 "artist": "Madonna",
                 "audio": "Canciones/Madonna  - Like A Virgin (Lyrics) (1).mp3.mpeg",
-                "image": "assets/andromeda/artists/madonna.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/madonna.svg?v=catalog-21"
             },
             {
                 "title": "Hung Up",
                 "artist": "Madonna",
                 "audio": "Canciones/Madonna - Hung Up (Official Video) [HD] (1).mp3.mpeg",
-                "image": "assets/andromeda/artists/madonna.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/madonna.svg?v=catalog-21"
             },
             {
                 "title": "Like a Prayer",
                 "artist": "Madonna",
                 "audio": "Canciones/Madonna - Like a Prayer (7  Version) (1).mp3.mpeg",
-                "image": "assets/andromeda/artists/madonna.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/madonna.svg?v=catalog-21"
             },
             {
                 "title": "Material Girl",
                 "artist": "Madonna",
                 "audio": "Canciones/Madonna - Material Girl (1).mp3.mpeg",
-                "image": "assets/andromeda/artists/madonna.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/madonna.svg?v=catalog-21"
             },
             {
                 "title": "Into the Groove",
                 "artist": "Madonna",
                 "audio": "Canciones/madonna-into-the-groove.mp3",
-                "image": "assets/andromeda/artists/madonna.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/madonna.svg?v=catalog-21"
             },
             {
                 "title": "Lucky Star",
                 "artist": "Madonna",
                 "audio": "Canciones/madonna-lucky-star.mp3",
-                "image": "assets/andromeda/artists/madonna.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/madonna.svg?v=catalog-21"
             },
             {
                 "title": "Papa Don’t Preach",
                 "artist": "Madonna",
                 "audio": "Canciones/madonna-papa-dont-preach.mp3",
-                "image": "assets/andromeda/artists/madonna.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/madonna.svg?v=catalog-21"
             },
             {
                 "title": "La Isla Bonita",
                 "artist": "Madonna",
                 "audio": "Canciones/madonna-la-isla-bonita.mp3",
-                "image": "assets/andromeda/artists/madonna.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/madonna.svg?v=catalog-21"
             }
         ]
     },
     "queen": {
         "name": "Queen",
         "genre": "Rock",
-        "image": "assets/andromeda/artists/queen.svg?v=catalog-20",
+        "image": "assets/andromeda/artists/queen.svg?v=catalog-21",
         "bio": "Explora la selección de Queen en ANDROMEDA. Sus canciones disponibles se reúnen aquí para escucharlas, guardarlas y volver a ellas.",
         "tags": [
             "Rock",
@@ -199,38 +199,38 @@ function initArtistas(options = {}) {
                 "title": "Another One Bites the Dust",
                 "artist": "Queen",
                 "audio": "Canciones/Queen - Another One Bites the Dust (Official Video Remastered) (1).mp3.mpeg",
-                "image": "assets/andromeda/artists/queen.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/queen.svg?v=catalog-21"
             },
             {
                 "title": "Don't Stop Me Now",
                 "artist": "Queen",
                 "audio": "Canciones/Queen - Don't Stop Me Now (Official Video) (1).mp3.mpeg",
-                "image": "assets/andromeda/artists/queen.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/queen.svg?v=catalog-21"
             },
             {
                 "title": "We Are The Champions",
                 "artist": "Queen",
                 "audio": "Canciones/Queen - We Are The Champions (Official Video Remastered) (1).mp3.mpeg",
-                "image": "assets/andromeda/artists/queen.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/queen.svg?v=catalog-21"
             },
             {
                 "title": "We Will Rock You",
                 "artist": "Queen",
                 "audio": "Canciones/Queen - We Will Rock You (Lyrics) (1).mp3.mpeg",
-                "image": "assets/andromeda/artists/queen.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/queen.svg?v=catalog-21"
             },
             {
                 "title": "Bohemian Rhapsody",
                 "artist": "Queen",
                 "audio": "Canciones/Queen – Bohemian Rhapsody (Official Video Remastered) (1).mp3.mpeg",
-                "image": "assets/andromeda/artists/queen.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/queen.svg?v=catalog-21"
             }
         ]
     },
     "alan-walker": {
         "name": "Alan Walker",
         "genre": "Electrónica",
-        "image": "assets/andromeda/artists/alan-walker.svg?v=catalog-20",
+        "image": "assets/andromeda/artists/alan-walker.svg?v=catalog-21",
         "bio": "Explora la selección de Alan Walker en ANDROMEDA. Sus canciones disponibles se reúnen aquí para escucharlas, guardarlas y volver a ellas.",
         "tags": [
             "Electrónica",
@@ -241,25 +241,25 @@ function initArtistas(options = {}) {
                 "title": "Alone",
                 "artist": "Alan Walker",
                 "audio": "Canciones/Alan Walker - Alone (1).mp3.mpeg",
-                "image": "assets/andromeda/artists/alan-walker.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/alan-walker.svg?v=catalog-21"
             },
             {
                 "title": "Faded",
                 "artist": "Alan Walker",
                 "audio": "Canciones/Alan Walker - Faded (1).mp3.mpeg",
-                "image": "assets/andromeda/artists/alan-walker.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/alan-walker.svg?v=catalog-21"
             },
             {
                 "title": "Sing Me To Sleep",
                 "artist": "Alan Walker",
                 "audio": "Canciones/Alan Walker - Sing Me To Sleep (1).mp3.mpeg",
-                "image": "assets/andromeda/artists/alan-walker.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/alan-walker.svg?v=catalog-21"
             },
             {
                 "title": "The Spectre",
                 "artist": "Alan Walker",
                 "audio": "Canciones/Alan Walker - The Spectre (1).mp3.mpeg",
-                "image": "assets/andromeda/artists/alan-walker.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/alan-walker.svg?v=catalog-21"
             }
         ]
     },
@@ -380,7 +380,7 @@ function initArtistas(options = {}) {
     "lady-gaga": {
         "name": "Lady Gaga",
         "genre": "Pop",
-        "image": "assets/andromeda/artists/lady-gaga.svg?v=catalog-20",
+        "image": "assets/andromeda/artists/lady-gaga.svg?v=catalog-21",
         "bio": "Pop, dance y una identidad artística marcada por la teatralidad y la reinvención.",
         "tags": [
             "Pop",
@@ -391,37 +391,37 @@ function initArtistas(options = {}) {
                 "title": "Paparazzi",
                 "artist": "Lady Gaga",
                 "audio": "Canciones/lady-gaga-paparazzi.mp3",
-                "image": "assets/andromeda/artists/lady-gaga.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/lady-gaga.svg?v=catalog-21"
             },
             {
                 "title": "Poker Face",
                 "artist": "Lady Gaga",
                 "audio": "Canciones/lady-gaga-poker-face.mp3",
-                "image": "assets/andromeda/artists/lady-gaga.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/lady-gaga.svg?v=catalog-21"
             },
             {
                 "title": "Bad Romance",
                 "artist": "Lady Gaga",
                 "audio": "Canciones/lady-gaga-bad-romance.mp3",
-                "image": "assets/andromeda/artists/lady-gaga.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/lady-gaga.svg?v=catalog-21"
             },
             {
                 "title": "Just Dance",
                 "artist": "Lady Gaga feat. Colby O’Donis",
                 "audio": "Canciones/lady-gaga-just-dance.mp3",
-                "image": "assets/andromeda/artists/lady-gaga.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/lady-gaga.svg?v=catalog-21"
             },
             {
                 "title": "Judas",
                 "artist": "Lady Gaga",
                 "audio": "Canciones/lady-gaga-judas.mp3",
-                "image": "assets/andromeda/artists/lady-gaga.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/lady-gaga.svg?v=catalog-21"
             },
             {
                 "title": "Die With a Smile",
                 "artist": "Lady Gaga feat. Bruno Mars",
                 "audio": "Canciones/lady-gaga-die-with-a-smile.mp3",
-                "image": "assets/andromeda/artists/lady-gaga.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/lady-gaga.svg?v=catalog-21"
             }
         ]
     },
@@ -506,7 +506,7 @@ function initArtistas(options = {}) {
     "eminem": {
         "name": "Eminem",
         "genre": "Hip Hop",
-        "image": "assets/andromeda/artists/eminem.svg?v=catalog-20",
+        "image": "assets/andromeda/artists/eminem.svg?v=catalog-21",
         "bio": "Una voz incisiva y un estilo de rap que combina energía, narración y juegos de palabras.",
         "tags": [
             "Hip Hop",
@@ -517,31 +517,31 @@ function initArtistas(options = {}) {
                 "title": "Superman",
                 "artist": "Eminem feat. Dina Rae",
                 "audio": "Canciones/eminem-superman.mp3",
-                "image": "assets/andromeda/artists/eminem.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/eminem.svg?v=catalog-21"
             },
             {
                 "title": "Lose Yourself",
                 "artist": "Eminem",
                 "audio": "Canciones/eminem-lose-yourself.mp3",
-                "image": "assets/andromeda/artists/eminem.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/eminem.svg?v=catalog-21"
             },
             {
                 "title": "Stan",
                 "artist": "Eminem feat. Dido",
                 "audio": "Canciones/eminem-stan.mp3",
-                "image": "assets/andromeda/artists/eminem.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/eminem.svg?v=catalog-21"
             },
             {
                 "title": "The Real Slim Shady",
                 "artist": "Eminem",
                 "audio": "Canciones/eminem-the-real-slim-shady.mp3",
-                "image": "assets/andromeda/artists/eminem.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/eminem.svg?v=catalog-21"
             },
             {
                 "title": "Mockingbird",
                 "artist": "Eminem",
                 "audio": "Canciones/eminem-mockingbird.mp3",
-                "image": "assets/andromeda/artists/eminem.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/eminem.svg?v=catalog-21"
             }
         ]
     },
@@ -675,7 +675,7 @@ function initArtistas(options = {}) {
     "cristian-castro": {
         "name": "Cristian Castro",
         "genre": "Romántica · Balada pop",
-        "image": "assets/andromeda/artists/cristian-castro.svg?v=catalog-20",
+        "image": "assets/andromeda/artists/cristian-castro.svg?v=catalog-21",
         "bio": "Descubre la selección de Cristian Castro en ANDROMEDA. Reúne sus canciones en tu biblioteca y vuelve a tus favoritas desde su perfil.",
         "tags": [
             "Romántica",
@@ -686,13 +686,13 @@ function initArtistas(options = {}) {
                 "title": "No podrás",
                 "artist": "Cristian Castro",
                 "audio": "Canciones/cristian-castro-no-podras.mp3",
-                "image": "assets/andromeda/artists/cristian-castro.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/cristian-castro.svg?v=catalog-21"
             },
             {
                 "title": "Por amarte así",
                 "artist": "Cristian Castro",
                 "audio": "Canciones/cristian-castro-por-amarte-asi.mp3",
-                "image": "assets/andromeda/artists/cristian-castro.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/cristian-castro.svg?v=catalog-21"
             }
         ]
     },
@@ -717,7 +717,7 @@ function initArtistas(options = {}) {
     "elton-john": {
         "name": "Elton John",
         "genre": "Pop · Pop rock",
-        "image": "assets/andromeda/artists/elton-john.svg?v=catalog-20",
+        "image": "assets/andromeda/artists/elton-john.svg?v=catalog-21",
         "bio": "Descubre la selección de Elton John en ANDROMEDA. Reúne sus canciones en tu biblioteca y vuelve a tus favoritas desde su perfil.",
         "tags": [
             "Pop",
@@ -728,61 +728,67 @@ function initArtistas(options = {}) {
                 "title": "I’m Still Standing",
                 "artist": "Elton John",
                 "audio": "Canciones/elton-john-im-still-standing.mp3",
-                "image": "assets/andromeda/artists/elton-john.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/elton-john.svg?v=catalog-21"
             }
         ]
     },
     "felipe-garibo": {
         "name": "Felipe Garibo",
         "genre": "Cristiana",
-        "image": "assets/andromeda/artists/felipe-garibo.svg?v=catalog-20",
+        "image": "assets/andromeda/artists/felipe-garibo.svg?v=catalog-21",
         "bio": "Descubre la selección de Felipe Garibo en ANDROMEDA. Reúne sus canciones en tu biblioteca y vuelve a tus favoritas desde su perfil.",
         "tags": [
             "Cristiana",
-            "7 canciones"
+            "8 canciones"
         ],
         "tracks": [
             {
                 "title": "Bienvenido",
                 "artist": "Felipe Garibo",
                 "audio": "Canciones/felipe-garibo-bienvenido.mp3",
-                "image": "assets/andromeda/artists/felipe-garibo.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/felipe-garibo.svg?v=catalog-21"
             },
             {
                 "title": "Renacer",
                 "artist": "Felipe Garibo",
                 "audio": "Canciones/felipe-garibo-renacer.mp3",
-                "image": "assets/andromeda/artists/felipe-garibo.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/felipe-garibo.svg?v=catalog-21"
             },
             {
                 "title": "Cómo resistirme",
                 "artist": "Felipe Garibo",
                 "audio": "Canciones/felipe-garibo-como-resistirme.mp3",
-                "image": "assets/andromeda/artists/felipe-garibo.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/felipe-garibo.svg?v=catalog-21"
             },
             {
                 "title": "El loco",
                 "artist": "Felipe Garibo",
                 "audio": "Canciones/felipe-garibo-el-loco.mp3",
-                "image": "assets/andromeda/artists/felipe-garibo.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/felipe-garibo.svg?v=catalog-21"
             },
             {
                 "title": "Fue por amor",
                 "artist": "Felipe Garibo",
                 "audio": "Canciones/felipe-garibo-fue-por-amor.mp3",
-                "image": "assets/andromeda/artists/felipe-garibo.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/felipe-garibo.svg?v=catalog-21"
             },
             {
                 "title": "Jesús, el pan de vida",
                 "artist": "Felipe Garibo",
                 "audio": "Canciones/felipe-garibo-jesus-el-pan-de-vida.mp3",
-                "image": "assets/andromeda/artists/felipe-garibo.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/felipe-garibo.svg?v=catalog-21"
             },
             {
                 "title": "Aunque haya pruebas",
                 "artist": "Felipe Garibo",
                 "audio": "Canciones/felipe-garibo-aunque-haya-pruebas.mp3",
-                "image": "assets/andromeda/artists/felipe-garibo.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/felipe-garibo.svg?v=catalog-21"
+            },
+            {
+                "title": "Y llegaste tú",
+                "artist": "Felipe Garibo",
+                "audio": "Canciones/felipe-garibo-y-llegaste-tu.mp3",
+                "image": "assets/andromeda/artists/felipe-garibo.svg?v=catalog-21"
             }
         ]
     },
@@ -807,30 +813,48 @@ function initArtistas(options = {}) {
     "marco-antonio-solis": {
         "name": "Marco Antonio Solís",
         "genre": "Romántica · Balada latina",
-        "image": "assets/andromeda/artists/marco-antonio-solis.svg?v=catalog-20",
+        "image": "assets/andromeda/artists/marco-antonio-solis.svg?v=catalog-21",
         "bio": "Descubre la selección de Marco Antonio Solís en ANDROMEDA. Reúne sus canciones en tu biblioteca y vuelve a tus favoritas desde su perfil.",
         "tags": [
             "Romántica",
-            "3 canciones"
+            "6 canciones"
         ],
         "tracks": [
             {
                 "title": "Mi eterno amor secreto",
                 "artist": "Marco Antonio Solís",
                 "audio": "Canciones/marco-antonio-solis-mi-eterno-amor-secreto.mp3",
-                "image": "assets/andromeda/artists/marco-antonio-solis.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/marco-antonio-solis.svg?v=catalog-21"
             },
             {
                 "title": "Si No Te Hubieras Ido",
                 "artist": "Marco Antonio Solís",
                 "audio": "Canciones/marco-antonio-solis-si-no-te-hubieras-ido.mp3",
-                "image": "assets/andromeda/artists/marco-antonio-solis.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/marco-antonio-solis.svg?v=catalog-21"
             },
             {
                 "title": "Invéntame",
                 "artist": "Marco Antonio Solís",
                 "audio": "Canciones/marco-antonio-solis-inventame.mp3",
-                "image": "assets/andromeda/artists/marco-antonio-solis.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/marco-antonio-solis.svg?v=catalog-21"
+            },
+            {
+                "title": "¿A dónde vamos a parar?",
+                "artist": "Marco Antonio Solís",
+                "audio": "Canciones/marco-antonio-solis-a-donde-vamos-a-parar.mp3",
+                "image": "assets/andromeda/artists/marco-antonio-solis.svg?v=catalog-21"
+            },
+            {
+                "title": "O me voy o te vas",
+                "artist": "Marco Antonio Solís",
+                "audio": "Canciones/marco-antonio-solis-o-me-voy-o-te-vas.mp3",
+                "image": "assets/andromeda/artists/marco-antonio-solis.svg?v=catalog-21"
+            },
+            {
+                "title": "Si te pudiera mentir",
+                "artist": "Marco Antonio Solís",
+                "audio": "Canciones/marco-antonio-solis-si-te-pudiera-mentir.mp3",
+                "image": "assets/andromeda/artists/marco-antonio-solis.svg?v=catalog-21"
             }
         ]
     },
@@ -855,37 +879,49 @@ function initArtistas(options = {}) {
     "junior-kelly-marchena": {
         "name": "Junior Kelly Marchena",
         "genre": "Cristiana",
-        "image": "assets/andromeda/artists/junior-kelly-marchena.svg?v=catalog-20",
+        "image": "assets/andromeda/artists/junior-kelly-marchena.svg?v=catalog-21",
         "bio": "Su repertorio cristiano combina un mensaje de esperanza con voces y arreglos de adoración. Escucha sus canciones y guárdalas en tu biblioteca.",
         "tags": [
             "Cristiana",
-            "3 canciones"
+            "5 canciones"
         ],
         "tracks": [
             {
                 "title": "Jesucristo Rey",
                 "artist": "Junior Kelly Marchena",
                 "audio": "Canciones/junior-kelly-marchena-jesucristo-rey.mp3",
-                "image": "assets/andromeda/artists/junior-kelly-marchena.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/junior-kelly-marchena.svg?v=catalog-21"
             },
             {
                 "title": "El clamor final",
                 "artist": "Junior Kelly Marchena",
                 "audio": "Canciones/junior-kelly-marchena-el-clamor-final.mp3",
-                "image": "assets/andromeda/artists/junior-kelly-marchena.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/junior-kelly-marchena.svg?v=catalog-21"
             },
             {
                 "title": "Nadie pudo hacer",
                 "artist": "Junior Kelly Marchena",
                 "audio": "Canciones/junior-kelly-marchena-nadie-pudo-hacer.mp3",
-                "image": "assets/andromeda/artists/junior-kelly-marchena.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/junior-kelly-marchena.svg?v=catalog-21"
+            },
+            {
+                "title": "Santuario",
+                "artist": "Junior Kelly Marchena",
+                "audio": "Canciones/junior-kelly-marchena-santuario.mp3",
+                "image": "assets/andromeda/artists/junior-kelly-marchena.svg?v=catalog-21"
+            },
+            {
+                "title": "Ven Señor",
+                "artist": "Junior Kelly Marchena",
+                "audio": "Canciones/junior-kelly-marchena-ven-senor.mp3",
+                "image": "assets/andromeda/artists/junior-kelly-marchena.svg?v=catalog-21"
             }
         ]
     },
     "justin-bieber": {
         "name": "Justin Bieber",
         "genre": "Pop · Dance pop",
-        "image": "assets/andromeda/artists/justin-bieber.svg?v=catalog-20",
+        "image": "assets/andromeda/artists/justin-bieber.svg?v=catalog-21",
         "bio": "Una de las voces más reconocidas del pop contemporáneo. Su repertorio une melodías pegadizas con ritmos de dance pop y R&B.",
         "tags": [
             "Pop",
@@ -896,50 +932,62 @@ function initArtistas(options = {}) {
                 "title": "Beauty and a Beat",
                 "artist": "Justin Bieber feat. Nicki Minaj",
                 "audio": "Canciones/justin-bieber-beauty-and-a-beat.mp3",
-                "image": "assets/andromeda/artists/justin-bieber.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/justin-bieber.svg?v=catalog-21"
             }
         ]
     },
     "mana": {
         "name": "Maná",
         "genre": "Rock · Rock latino",
-        "image": "assets/andromeda/artists/mana.svg?v=catalog-20",
+        "image": "assets/andromeda/artists/mana.svg?v=catalog-21",
         "bio": "La banda mexicana une guitarras de rock, ritmos latinos y grandes baladas. Su sonido y sus historias han acompañado a varias generaciones.",
         "tags": [
             "Rock",
-            "4 canciones"
+            "6 canciones"
         ],
         "tracks": [
             {
                 "title": "Clavado en un bar",
                 "artist": "Maná",
                 "audio": "Canciones/mana-clavado-en-un-bar.mp3",
-                "image": "assets/andromeda/artists/mana.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/mana.svg?v=catalog-21"
             },
             {
                 "title": "En el muelle de San Blas",
                 "artist": "Maná",
                 "audio": "Canciones/mana-en-el-muelle-de-san-blas.mp3",
-                "image": "assets/andromeda/artists/mana.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/mana.svg?v=catalog-21"
             },
             {
                 "title": "Labios Compartidos",
                 "artist": "Maná",
                 "audio": "Canciones/mana-labios-compartidos.mp3",
-                "image": "assets/andromeda/artists/mana.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/mana.svg?v=catalog-21"
             },
             {
                 "title": "Oye mi amor",
                 "artist": "Maná",
                 "audio": "Canciones/mana-oye-mi-amor.mp3",
-                "image": "assets/andromeda/artists/mana.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/mana.svg?v=catalog-21"
+            },
+            {
+                "title": "Manda una señal",
+                "artist": "Maná",
+                "audio": "Canciones/mana-manda-una-senal.mp3",
+                "image": "assets/andromeda/artists/mana.svg?v=catalog-21"
+            },
+            {
+                "title": "Rayando el sol",
+                "artist": "Maná",
+                "audio": "Canciones/mana-rayando-el-sol.mp3",
+                "image": "assets/andromeda/artists/mana.svg?v=catalog-21"
             }
         ]
     },
     "phil-collins": {
         "name": "Phil Collins",
         "genre": "Pop · Soft rock",
-        "image": "assets/andromeda/artists/phil-collins.svg?v=catalog-20",
+        "image": "assets/andromeda/artists/phil-collins.svg?v=catalog-21",
         "bio": "La selección de Phil Collins reúne una voz inconfundible, melodías de pop y arreglos de soft rock. Escucha sus canciones y guarda tus favoritas en la biblioteca.",
         "tags": [
             "Pop · Soft rock",
@@ -950,25 +998,50 @@ function initArtistas(options = {}) {
                 "title": "Another Day in Paradise",
                 "artist": "Phil Collins",
                 "audio": "Canciones/phil-collins-another-day-in-paradise.mp3",
-                "image": "assets/andromeda/artists/phil-collins.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/phil-collins.svg?v=catalog-21"
             }
         ]
     },
     "travis-scott": {
         "name": "Travis Scott",
         "genre": "Hip Hop · Trap",
-        "image": "assets/andromeda/artists/travis-scott.svg?v=catalog-20",
+        "image": "assets/andromeda/artists/travis-scott.svg?v=catalog-21",
         "bio": "El universo de Travis Scott combina rap, trap y atmósferas envolventes. Explora sus canciones, guárdalas en tu biblioteca y vuelve a tus favoritas desde su perfil.",
         "tags": [
             "Hip Hop · Trap",
-            "1 canción"
+            "1 canción",
+            "2 canciones"
         ],
         "tracks": [
             {
                 "title": "goosebumps",
                 "artist": "Travis Scott feat. Kendrick Lamar",
                 "audio": "Canciones/travis-scott-goosebumps.mp3",
-                "image": "assets/andromeda/artists/travis-scott.svg?v=catalog-20"
+                "image": "assets/andromeda/artists/travis-scott.svg?v=catalog-21"
+            },
+            {
+                "title": "SICKO MODE",
+                "artist": "Travis Scott feat. Drake",
+                "audio": "Canciones/travis-scott-sicko-mode.mp3",
+                "image": "assets/andromeda/artists/travis-scott.svg?v=catalog-21"
+            }
+        ]
+    },
+    "steve-green": {
+        "name": "Steve Green",
+        "genre": "Cristiana",
+        "image": "assets/andromeda/artists/steve-green.svg?v=catalog-21",
+        "bio": "La voz de Steve Green reúne melodías de inspiración cristiana y mensajes de fe. Descubre sus canciones y guarda tus favoritas en la biblioteca.",
+        "tags": [
+            "Cristiana",
+            "1 canción"
+        ],
+        "tracks": [
+            {
+                "title": "Aquel que la buena obra empezó",
+                "artist": "Steve Green",
+                "audio": "Canciones/steve-green-aquel-que-la-buena-obra-empezo.mp3",
+                "image": "assets/andromeda/artists/steve-green.svg?v=catalog-21"
             }
         ]
     }
@@ -1154,12 +1227,12 @@ cards.forEach(card => {
     /* ARTISTAS DEL CARRUSEL */
 
 
-    const featuredIds = ["the-police", "scorpions", "eiffel-65", "the-outfield", "madonna", "queen", "alan-walker", "the-notorious-b-i-g", "george-michael", "dr-dre", "luis-miguel", "chicago", "lady-gaga", "50-cent", "wiz-khalifa-snoop-dogg", "ice-cube", "eminem", "coolio", "snoop-dogg", "2pac-pop-smoke", "wham", "axl-rose", "cristian-castro", "daft-punk", "elton-john", "felipe-garibo", "demi-lovato", "marco-antonio-solis", "mark-ronson", "junior-kelly-marchena", "justin-bieber", "mana", "phil-collins", "travis-scott"];
+    const featuredIds = ["the-police", "scorpions", "eiffel-65", "the-outfield", "madonna", "queen", "alan-walker", "the-notorious-b-i-g", "george-michael", "dr-dre", "luis-miguel", "chicago", "lady-gaga", "50-cent", "wiz-khalifa-snoop-dogg", "ice-cube", "eminem", "coolio", "snoop-dogg", "2pac-pop-smoke", "wham", "axl-rose", "cristian-castro", "daft-punk", "elton-john", "felipe-garibo", "demi-lovato", "marco-antonio-solis", "mark-ronson", "junior-kelly-marchena", "justin-bieber", "mana", "phil-collins", "travis-scott", "steve-green"];
 
     /* ORDEN SEGÚN UNIVERSO */
 
 
-    const themeFeatured = {"electronic": ["alan-walker", "eiffel-65", "daft-punk"], "rock": ["scorpions", "axl-rose", "queen", "the-police", "chicago", "the-outfield", "mana", "phil-collins"], "pop": ["lady-gaga", "madonna", "george-michael", "wham", "elton-john", "demi-lovato", "mark-ronson", "justin-bieber", "phil-collins"], "hiphop": ["eminem", "50-cent", "snoop-dogg", "ice-cube", "dr-dre", "coolio", "the-notorious-b-i-g", "2pac-pop-smoke", "wiz-khalifa-snoop-dogg", "travis-scott"], "aurora": ["luis-miguel", "george-michael", "chicago", "scorpions", "cristian-castro", "marco-antonio-solis", "lady-gaga", "mana"], "celestial": ["felipe-garibo", "junior-kelly-marchena"]};
+    const themeFeatured = {"electronic": ["alan-walker", "eiffel-65", "daft-punk"], "rock": ["scorpions", "axl-rose", "queen", "the-police", "chicago", "the-outfield", "mana", "phil-collins"], "pop": ["lady-gaga", "madonna", "george-michael", "wham", "elton-john", "demi-lovato", "mark-ronson", "justin-bieber", "phil-collins"], "hiphop": ["eminem", "50-cent", "snoop-dogg", "ice-cube", "dr-dre", "coolio", "the-notorious-b-i-g", "2pac-pop-smoke", "wiz-khalifa-snoop-dogg", "travis-scott"], "aurora": ["luis-miguel", "george-michael", "chicago", "scorpions", "cristian-castro", "marco-antonio-solis", "lady-gaga", "mana"], "celestial": ["felipe-garibo", "junior-kelly-marchena", "steve-green"]};
 
     function getFeaturedOrder() {
         const theme =
